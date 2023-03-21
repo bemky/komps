@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/bemky/komps/issues"
   },
-  "homepage": "https://github.com/bemky/komps#readme"
+  "homepage": "https://github.com/bemky/komps#readme",
+  "dependencies": {
+    "dolla": "^1.0.0"
+  }
 }
