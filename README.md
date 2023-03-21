@@ -1,6 +1,9 @@
 # komps
 
-Komps is a library of javascript components and elements for building a UI.
+Komps is a library of javascript components and elements for building a UI. Komps is platform-agnostic, with each component is fully tree-shakeable by an bundler.
+
+## Dependencies
+[Dolla](https://dollajs.com)
 
 
 ## Installation
