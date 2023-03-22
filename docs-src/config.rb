@@ -53,6 +53,12 @@ page '/*.txt', layout: false
 
 helpers do
   
+  def asset_path(*args)
+    path = super
+    path = "/komps" + path if build?
+    path
+  end
+  
   def code(language=nil, content=nil, options={}, &block)
     unless content
       from_block = true
