@@ -24,7 +24,9 @@ Checkout details about each method on [bemky.github.io/komps](https://bemky.gith
 
 ## Development
 ### Testing
-    TODO
+    npm link # to make global reference
+    npm link komps # to link global reference
+    npm run test
 ### Documenation
 #### Develope
     cd docs-src
