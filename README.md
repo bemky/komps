@@ -8,7 +8,7 @@ Komps is a library of javascript components and elements for building a UI. Komp
 
 ## Installation
 
-    npm install dolla
+    npm install komps
 
 ## Usage
 
@@ -23,5 +23,14 @@ new Modal({content: "Hello World"});
 Checkout details about each method on [todo.tld](http://todo.tld)
 
 ## Development
+### Testing
+    TODO
+### Documenation
+#### Develope
+    cd docs-src
+    be middleman server
+#### Build
+    cd docs-src
+    be middleman build
 ### Release
     npm publish
