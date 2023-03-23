@@ -1,11 +1,10 @@
-// depends_on ../../../../lib/*.js
-import {Modal} from 'komps';
+// depends_on ../../../../lib/**/*.js
+import {Modal, Popover} from 'komps';
+import {addEventListenerFor} from 'dolla';
 
 
 document.addEventListener('DOMContentLoaded', function () {
-    document.querySelector('.js-launch-modal').addEventListener('click', e => {
-        new Modal({
-            content: "Hello World"
-        }).render()
+    addEventListenerFor(document, '.js-toggle-source', 'click', e => {
+        document.querySelector(e.delegateTarget.getAttribute('rel')).classList.toggle('hide')
     })
 })

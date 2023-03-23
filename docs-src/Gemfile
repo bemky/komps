@@ -11,3 +11,4 @@ gem 'uniform-ui', require: 'uniform', github: 'bemky/uniform'
 gem 'github-markup'
 gem 'commonmarker'
 gem 'middleman-syntax', github: 'tnir/middleman-syntax', branch: "haml-6.x"
+gem 'byebug'

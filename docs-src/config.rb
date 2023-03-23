@@ -1,3 +1,5 @@
+require 'github/markup'
+require "helpers/source_helpers"
 # Activate and configure extensions
 # https://middlemanapp.com/advanced/configuration/#configuring-extensions
 
@@ -50,6 +52,10 @@ page '/*.txt', layout: false
 #   activate :minify_css
 #   activate :minify_javascript
 # end
+
+SourceHelpers.components.each do |component|
+  proxy "/#{component[:name]}", "/component.html", locals: {component: component}, :layout => "layout"
+end
 
 helpers do
   

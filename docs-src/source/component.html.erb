@@ -1,0 +1,36 @@
+<div class="section space-v-3x">
+    
+    <div class="">
+        <h1 class="text-2x text-overflow-hidden text-nowrap">
+            <%= component[:name].camelize %>
+        </h1>
+    
+        <div class="text-light text-lg">
+            <%= markdown component["Description"] %>
+        </div>
+    </div>
+    
+    <% component.except(:name, :params, :source, "Description").each do |header, content| %>
+        <div class="">
+            <h2><%= header %></h2>
+            <% if content.include?("<") %>
+                <%= content %>
+            <% else %>
+                <%= markdown(content).gsub(/\s\#(\w+)/, '<span class="uniformLabel -gray-50 -outline text-normal text-xs text-uppercase align-middle">\1</span>') %>
+            <% end %>
+            
+        </div>
+    <% end %>
+    
+    <button class="js-toggle-source reset text-sm text-bold text-gray-30 hover:text-blue" rel="#source-for-<%= component[:name] %>">
+        SHOW SOURCE
+    </button>
+    <div class="source hide" id="source-for-<%= component[:name] %>">
+        <div class="border border-blue bg-blue rounded-xl overflow-hidden">
+            <div class="text-white text-sm text-bold pad-h pad-v-1/4x">
+                SOURCE CODE
+            </div>
+            <%= code 'javascript', component[:source] %>
+        </div>
+    </div>
+</div>
