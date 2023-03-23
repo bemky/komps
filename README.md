@@ -20,7 +20,7 @@ new Modal({content: "Hello World"});
 ```
 
 ## Documentation
-Checkout details about each method on [todo.tld](http://todo.tld)
+Checkout details about each method on [bemky.github.io/komps](https://bemky.github.io/komps/)
 
 ## Development
 ### Testing
