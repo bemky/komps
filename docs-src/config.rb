@@ -54,8 +54,9 @@ page '/*.txt', layout: false
 # end
 
 SourceHelpers.components.each do |component|
-  proxy "/#{component[:name]}", "/component.html", locals: {component: component}, :layout => "layout"
+  proxy "/#{component[:name]}/index.html", "/component.html", locals: {component: component}, :layout => "layout"
 end
+ignore "/component.html"
 
 helpers do
   

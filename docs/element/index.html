@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Use the title from a page's frontmatter if it has one -->
+    <title>Komps</title>
+    <link href="/komps/assets/site-95a06d7dc60636701627185774c79ccd24686b086432a78bd3acd4696a0c8ea3.css" rel="stylesheet" />
+    <script src="/komps/assets/site-7b56abf1763b6fb377d5c67cc466a47a46d105b1e2de4f3f0f8c7a57d57fef13.js"></script>
+</head>
+<body>
+    <div class="side-nav">
+        <div class="pad-2x text-center">
+            <a href="/" class="reset">
+                Komps
+            </a>
+        </div>
+        <div class="uniformNav -vertical -gray flex-fill -active-purple">
+                <a href="/element">
+                    element
+                </a>
+                <a href="/modal">
+                    modal
+                </a>
+                <a href="/popover">
+                    popover
+                </a>
+        </div>
+    </div>
+    <div class="main-content overflow-hidden">
+        <div class="section space-v-3x">
+    
+    <div class="">
+        <h1 class="text-2x text-overflow-hidden text-nowrap">
+            Element
+        </h1>
+    
+        <div class="text-light text-lg">
+            
+        </div>
+    </div>
+    
+    
+    <button class="js-toggle-source reset text-sm text-bold text-gray-30 hover:text-blue" rel="#source-for-element">
+        SHOW SOURCE
+    </button>
+    <div class="source hide" id="source-for-element">
+        <div class="border border-blue bg-blue rounded-xl overflow-hidden">
+            <div class="text-white text-sm text-bold pad-h pad-v-1/4x">
+                SOURCE CODE
+            </div>
+            <div class="highlight"><pre class=" javascript"><code><span class="k">import</span> <span class="p">{</span><span class="nx">content</span><span class="p">,</span> <span class="nx">append</span><span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">dolla</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nx">KompElement</span> <span class="kd">extends</span> <span class="nx">HTMLElement</span> <span class="p">{</span>
+    
+    <span class="kd">static</span> <span class="nx">defaults</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="kd">static</span> <span class="nx">style</span> <span class="o">=</span> <span class="dl">''</span>
+    
+    <span class="kd">constructor</span><span class="p">(</span><span class="nx">attrs</span><span class="o">=</span><span class="p">{})</span> <span class="p">{</span>
+        <span class="k">super</span><span class="p">()</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">inititalAttributes</span> <span class="o">=</span> <span class="nx">attrs</span><span class="p">;</span>
+        
+        <span class="kd">const</span> <span class="nx">style</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CSSStyleSheet</span><span class="p">();</span>
+        <span class="nx">style</span><span class="p">.</span><span class="nx">replaceSync</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="kd">constructor</span><span class="p">.</span><span class="nx">style</span><span class="p">)</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">body</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">attachShadow</span><span class="p">({</span> <span class="na">mode</span><span class="p">:</span> <span class="dl">"</span><span class="s2">open</span><span class="dl">"</span> <span class="p">});</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">adoptedStyleSheets</span> <span class="o">=</span> <span class="p">[</span><span class="nx">style</span><span class="p">]</span>
+    <span class="p">}</span>
+    
+    <span class="nx">connected</span> <span class="p">()</span> <span class="p">{}</span>
+    <span class="nx">connectedCallback</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="kd">constructor</span><span class="p">.</span><span class="nx">defaults</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">key</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="kd">const</span> <span class="nx">value</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">inititalAttributes</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="nx">key</span><span class="p">)</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">dataset</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="kd">constructor</span><span class="p">.</span><span class="nx">defaults</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span>
+            
+            <span class="k">if</span> <span class="p">(</span><span class="nx">key</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">content</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">append</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">body</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="k">this</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">})</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">connected</span><span class="p">()</span>
+    <span class="p">}</span>
+    
+<span class="p">}</span></code></pre></div>
+        </div>
+    </div>
+</div>
+    </div>
+</body>
+</html>
