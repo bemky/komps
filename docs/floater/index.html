@@ -1,0 +1,410 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+    <!-- Use the title from a page's frontmatter if it has one -->
+    <title>Komps</title>
+    <link href="/komps/assets/site-d202055143c6b46826099c340b5ce6c2b471164adc1d3603336f735e6930c2ef.css" rel="stylesheet" />
+    <script src="/komps/assets/site-970c40ca90cfc03ec65192a1f29a790c9fc68b51cac813bbc933354e682a5dc3.js"></script>
+</head>
+<body>
+    <div class="side-nav">
+        <div class="pad-2x text-center">
+            <a href="/" class="reset">
+                <img class="width-3/4 height-auto inline-block" src="/komps/assets/logo-7b1623d8d9db3b0d0d79dd30b2a5c2a0f0be2b945944f75d18e3be1e67177443.svg" />
+            </a>
+        </div>
+        <div class="uniformNav -vertical -gray flex-fill -active-green">
+                <a href="/element" class="">
+                    element
+                </a>
+                <a href="/floater" class="active">
+                    floater
+                </a>
+                <a href="/modal" class="">
+                    modal
+                </a>
+        </div>
+    </div>
+    <div class="main-content overflow-hidden">
+        <div class="section space-v-3x">
+    
+    <div class="">
+        <h1 class="text-2x text-overflow-hidden text-nowrap">
+            Floater
+        </h1>
+    
+        <div class="text-light text-lg">
+            <p>Render content on a layer above an anchored element.</p>
+
+        </div>
+    </div>
+    
+    <div class="">
+        <h2>Syntax</h2>
+        <div class="highlight"><pre class=" javascript"><code><span class="k">new</span> <span class="nx">Floater</span><span class="p">({</span>
+    <span class="na">content</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Hello World</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">anchor</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#hi-button</span><span class="dl">'</span>
+<span class="p">})</span>
+</code></pre></div>
+<p>HTML</p>
+<div class="highlight"><pre class=" html"><code><span class="nt">&lt;komp-floater</span> <span class="na">anchor=</span><span class="s">"#hi-button"</span><span class="nt">&gt;</span>
+    Hello World
+<span class="nt">&lt;/komp-floater&gt;</span>
+</code></pre></div>
+
+    </div>
+    
+    <div class="">
+        <h2>Example</h2>
+        <script>
+            function resizeIframe(obj) {
+                obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
+            }
+        </script>
+        <iframe class="overflow-hidden rounded-lg" width="100%" height="10px" src="floater/example" frameborder="0" scrolling="no" onload="resizeIframe(this)"></iframe>
+    </div>
+    
+        <div class="">
+            <h2>Options</h2>
+                <table class="uniformTable">
+                    <tr>
+                        <th></th>
+                            <th>types</th>
+                            <th>description</th>
+                            <th>required</th>
+                            <th>default</th>
+                    </tr>
+                        <tr>
+                            <td>
+                                <code>content</code>
+                            </td>
+                                <td>
+                                        String, HTMLElement, Array, Object
+                                </td>
+                                <td>
+                                        <p>content for the floater, uses <a href="https://dollajs.com/#content">Dolla's <code>content</code></a></p>
+
+                                </td>
+                                <td>
+                                        
+                                </td>
+                                <td>
+                                        
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>anchor</code>
+                            </td>
+                                <td>
+                                        HTMLElement
+                                </td>
+                                <td>
+                                        <p>element to anchor positioning to</p>
+
+                                </td>
+                                <td>
+                                        true
+                                </td>
+                                <td>
+                                        
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>placement</code>
+                            </td>
+                                <td>
+                                        String
+                                </td>
+                                <td>
+                                        <p>how the floater is anchored options like &quot;top&quot;, &quot;top-start&quot;, &quot;top-end&quot;, &quot;left&quot;, &quot;left-start&quot;...</p>
+
+                                </td>
+                                <td>
+                                        
+                                </td>
+                                <td>
+                                        bottom
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>strategy</code>
+                            </td>
+                                <td>
+                                        String
+                                </td>
+                                <td>
+                                        <p>how the floater is positioned in the document. &quot;absolute&quot; or &quot;fixed&quot;</p>
+
+                                </td>
+                                <td>
+                                        
+                                </td>
+                                <td>
+                                        absolute
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>flip</code>
+                            </td>
+                                <td>
+                                        Boolean, Object
+                                </td>
+                                <td>
+                                        <p>See <a href="https://floating-ui.com/docs/flip">https://floating-ui.com/docs/flip</a>, defaults to false in favor of autoPlacement</p>
+
+                                </td>
+                                <td>
+                                        
+                                </td>
+                                <td>
+                                        false
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>offset</code>
+                            </td>
+                                <td>
+                                        Boolean, Object
+                                </td>
+                                <td>
+                                        <p>See <a href="https://floating-ui.com/docs/offset">https://floating-ui.com/docs/offset</a></p>
+
+                                </td>
+                                <td>
+                                        
+                                </td>
+                                <td>
+                                        false
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>shift</code>
+                            </td>
+                                <td>
+                                        Boolean, Object
+                                </td>
+                                <td>
+                                        <p>See <a href="https://floating-ui.com/docs/shift">https://floating-ui.com/docs/shift</a></p>
+
+                                </td>
+                                <td>
+                                        
+                                </td>
+                                <td>
+                                        true
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>arrow</code>
+                            </td>
+                                <td>
+                                        Boolean, Object, HTMLElement
+                                </td>
+                                <td>
+                                        <p>See <a href="https://floating-ui.com/docs/arrow">https://floating-ui.com/docs/arrow</a>, element, uses default options with provided element</p>
+
+                                </td>
+                                <td>
+                                        
+                                </td>
+                                <td>
+                                        false
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>size</code>
+                            </td>
+                                <td>
+                                        Boolean, Object
+                                </td>
+                                <td>
+                                        <p>See <a href="https://floating-ui.com/docs/size">https://floating-ui.com/docs/size</a></p>
+
+                                </td>
+                                <td>
+                                        
+                                </td>
+                                <td>
+                                        false
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>autoPlacement</code>
+                            </td>
+                                <td>
+                                        Boolean, Object
+                                </td>
+                                <td>
+                                        <p>See <a href="https://floating-ui.com/docs/autoPlacement">https://floating-ui.com/docs/autoPlacement</a></p>
+
+                                </td>
+                                <td>
+                                        
+                                </td>
+                                <td>
+                                        true
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>inline</code>
+                            </td>
+                                <td>
+                                        Boolean, Object
+                                </td>
+                                <td>
+                                        <p>See <a href="https://floating-ui.com/docs/inline">https://floating-ui.com/docs/inline</a></p>
+
+                                </td>
+                                <td>
+                                        
+                                </td>
+                                <td>
+                                        false
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>autoUpdate</code>
+                            </td>
+                                <td>
+                                        Boolean, Object
+                                </td>
+                                <td>
+                                        <p>See <a href="https://floating-ui.com/docs/autoUpdate#options">https://floating-ui.com/docs/autoUpdate#options</a></p>
+
+                                </td>
+                                <td>
+                                        
+                                </td>
+                                <td>
+                                        true
+                                </td>
+                        </tr>
+                </table>
+        </div>
+        <div class="">
+            <h2>Transition Animation</h2>
+                <p>The floater will follow the transition effects set by CSS, it adds classes <code>-left</code>, <code>-right</code>, <code>-top</code>, <code>-bottom</code>, based on selected alignment, and adds classes <code>-out</code> and <code>-in</code> when hiding and showing.</p>
+
+        </div>
+    
+    <button class="js-toggle-source reset text-sm text-bold text-gray-30 hover:text-blue" rel="#source-for-floater">
+        SHOW SOURCE
+    </button>
+    <div class="source hide" id="source-for-floater">
+        <div class="border border-blue bg-blue rounded-xl overflow-hidden">
+            <div class="text-white text-sm text-bold pad-h pad-v-1/4x">
+                SOURCE CODE
+            </div>
+            <div class="highlight"><pre class=" javascript"><code><span class="kd">class</span> <span class="nx">Floater</span> <span class="kd">extends</span> <span class="nx">KompElement</span> <span class="p">{</span>
+    
+    <span class="kd">static</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="dl">'</span><span class="s1">content</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">anchor</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">placement</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">strategy</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">flip</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">offset</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">shift</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">arrow</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">size</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">autoPlacement</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">inline</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">autoUpdate</span><span class="dl">'</span>
+    <span class="p">]</span>
+
+    <span class="nx">autoPlacement</span> <span class="o">=</span> <span class="kc">true</span>
+    <span class="nx">shift</span> <span class="o">=</span> <span class="kc">true</span>
+    <span class="nx">strategy</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">absolute</span><span class="dl">'</span>
+    <span class="nx">placement</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">bottom</span><span class="dl">'</span>
+
+    <span class="nx">connected</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="k">this</span><span class="p">.</span><span class="nx">anchor</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">anchor</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getRootNode</span><span class="p">().</span><span class="nx">querySelector</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">anchor</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">position</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">strategy</span>
+        
+        <span class="kd">const</span> <span class="nx">root</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getRootNode</span><span class="p">()</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">root</span><span class="p">)</span> <span class="p">{</span> <span class="k">throw</span> <span class="dl">'</span><span class="s1">Floater needs root to find anchor to position to.</span><span class="dl">'</span> <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">anchor</span><span class="p">)</span> <span class="p">{</span> <span class="k">throw</span> <span class="dl">'</span><span class="s1">Floater needs anchor to position to.</span><span class="dl">'</span> <span class="p">}</span>
+        
+        <span class="kd">const</span> <span class="nx">middleware</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">middlewares</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">key</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">[</span><span class="nx">key</span><span class="p">])</span> <span class="p">{</span> <span class="nx">middleware</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">middlewares</span><span class="p">[</span><span class="nx">key</span><span class="p">](</span><span class="k">this</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">===</span> <span class="kc">true</span> <span class="p">?</span> <span class="p">{}</span> <span class="p">:</span> <span class="k">this</span><span class="p">[</span><span class="nx">key</span><span class="p">]))</span> <span class="p">}</span>
+        <span class="p">})</span>
+
+        <span class="kd">const</span> <span class="nx">transitionDuration</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(...</span><span class="nx">css</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="dl">'</span><span class="s1">transition-duration</span><span class="dl">'</span><span class="p">).</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2">, </span><span class="dl">"</span><span class="p">).</span><span class="nx">map</span><span class="p">(</span><span class="nx">x</span> <span class="o">=&gt;</span> <span class="nb">parseFloat</span><span class="p">(</span><span class="nx">x</span><span class="p">)))</span> <span class="o">*</span> <span class="mi">1000</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">-in</span><span class="dl">'</span><span class="p">)</span>
+        <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="dl">'</span><span class="s1">-in</span><span class="dl">'</span><span class="p">)</span>
+        <span class="p">},</span> <span class="nx">transitionDuration</span><span class="p">)</span>
+        
+        <span class="k">this</span><span class="p">.</span><span class="nx">cleanupCallbacks</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">autoUpdate</span><span class="p">(</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">anchor</span><span class="p">,</span>
+            <span class="k">this</span><span class="p">,</span>
+            <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="nx">computePosition</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">anchor</span><span class="p">,</span> <span class="k">this</span><span class="p">,</span> <span class="p">{</span>
+                    <span class="na">strategy</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">strategy</span><span class="p">,</span>
+                    <span class="na">placement</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">placement</span><span class="p">,</span>
+                    <span class="nx">middleware</span>
+                <span class="p">}).</span><span class="nx">then</span><span class="p">(({</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">placement</span><span class="p">,</span> <span class="nx">middlewareData</span><span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                    <span class="k">this</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">left</span> <span class="o">=</span> <span class="s2">`</span><span class="p">${</span><span class="nx">x</span><span class="p">}</span><span class="s2">px`</span><span class="p">;</span>
+                    <span class="k">this</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">top</span> <span class="o">=</span> <span class="s2">`</span><span class="p">${</span><span class="nx">y</span><span class="p">}</span><span class="s2">px`</span><span class="p">;</span>
+                    <span class="k">this</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">-</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">placement</span><span class="p">);</span>
+            
+                    <span class="k">if</span> <span class="p">(</span><span class="nx">middlewareData</span><span class="p">.</span><span class="nx">arrow</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="kd">const</span> <span class="p">{</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">}</span> <span class="o">=</span> <span class="nx">middlewareData</span><span class="p">.</span><span class="nx">arrow</span><span class="p">;</span>
+ 
+                        <span class="kd">const</span> <span class="nx">staticSide</span> <span class="o">=</span> <span class="p">{</span>
+                          <span class="na">top</span><span class="p">:</span> <span class="dl">'</span><span class="s1">bottom</span><span class="dl">'</span><span class="p">,</span>
+                          <span class="na">right</span><span class="p">:</span> <span class="dl">'</span><span class="s1">left</span><span class="dl">'</span><span class="p">,</span>
+                          <span class="na">bottom</span><span class="p">:</span> <span class="dl">'</span><span class="s1">top</span><span class="dl">'</span><span class="p">,</span>
+                          <span class="na">left</span><span class="p">:</span> <span class="dl">'</span><span class="s1">right</span><span class="dl">'</span><span class="p">,</span>
+                        <span class="p">}[</span><span class="nx">placement</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">'</span><span class="s1">-</span><span class="dl">'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]];</span>
+                
+                        <span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">arrow</span><span class="p">.</span><span class="nx">style</span><span class="p">,</span> <span class="p">{</span>
+                            <span class="na">left</span><span class="p">:</span> <span class="nx">x</span> <span class="o">!=</span> <span class="kc">null</span> <span class="p">?</span> <span class="s2">`</span><span class="p">${</span><span class="nx">x</span><span class="p">}</span><span class="s2">px`</span> <span class="p">:</span> <span class="dl">''</span><span class="p">,</span>
+                            <span class="na">top</span><span class="p">:</span> <span class="nx">y</span> <span class="o">!=</span> <span class="kc">null</span> <span class="p">?</span> <span class="s2">`</span><span class="p">${</span><span class="nx">y</span><span class="p">}</span><span class="s2">px`</span> <span class="p">:</span> <span class="dl">''</span><span class="p">,</span>
+                            <span class="na">right</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span>
+                            <span class="na">bottom</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span>
+                            <span class="p">[</span><span class="nx">staticSide</span><span class="p">]:</span> <span class="dl">'</span><span class="s1">-4px</span><span class="dl">'</span><span class="p">,</span>
+                        <span class="p">});</span>
+                    <span class="p">}</span>
+                <span class="p">})</span>
+            <span class="p">},</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">autoUpdate</span>
+        <span class="p">))</span>
+    <span class="p">}</span>
+    
+    <span class="nx">remove</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">transitionDuration</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(...</span><span class="nx">css</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="dl">'</span><span class="s1">transition-duration</span><span class="dl">'</span><span class="p">).</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2">, </span><span class="dl">"</span><span class="p">).</span><span class="nx">map</span><span class="p">(</span><span class="nx">x</span> <span class="o">=&gt;</span> <span class="nb">parseFloat</span><span class="p">(</span><span class="nx">x</span><span class="p">)))</span> <span class="o">*</span> <span class="mi">1000</span>
+        <span class="k">super</span><span class="p">.</span><span class="nx">remove</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">(</span><span class="nx">resolve</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">-out</span><span class="dl">'</span><span class="p">)</span>
+            <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="nx">resolve</span><span class="p">()</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="dl">'</span><span class="s1">-out</span><span class="dl">'</span><span class="p">);</span>
+            <span class="p">},</span> <span class="nx">transitionDuration</span><span class="p">)</span>
+        <span class="p">}))</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">customElements</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="dl">'</span><span class="s1">komp-floater</span><span class="dl">'</span><span class="p">,</span> <span class="nx">Floater</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">middlewares</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">size</span><span class="p">:</span> <span class="nx">size</span><span class="p">,</span>
+    <span class="na">offset</span><span class="p">:</span> <span class="nx">offset</span><span class="p">,</span>
+    <span class="na">shift</span><span class="p">:</span> <span class="nx">shift</span><span class="p">,</span>
+    <span class="na">autoPlacement</span><span class="p">:</span> <span class="nx">autoPlacement</span><span class="p">,</span>
+    <span class="na">flip</span><span class="p">:</span> <span class="nx">flip</span><span class="p">,</span>
+    <span class="na">inline</span><span class="p">:</span> <span class="nx">inline</span><span class="p">,</span>
+    <span class="na">arrow</span><span class="p">:</span> <span class="nx">arrow</span>
+<span class="p">}</span></code></pre></div>
+        </div>
+    </div>
+</div>
+    </div>
+</body>
+</html>

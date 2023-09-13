@@ -5,27 +5,29 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport"
     content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
     <!-- Use the title from a page's frontmatter if it has one -->
     <title>Komps</title>
-    <link href="/komps/assets/site-95a06d7dc60636701627185774c79ccd24686b086432a78bd3acd4696a0c8ea3.css" rel="stylesheet" />
-    <script src="/komps/assets/site-7b56abf1763b6fb377d5c67cc466a47a46d105b1e2de4f3f0f8c7a57d57fef13.js"></script>
+    <link href="/komps/assets/site-d202055143c6b46826099c340b5ce6c2b471164adc1d3603336f735e6930c2ef.css" rel="stylesheet" />
+    <script src="/komps/assets/site-970c40ca90cfc03ec65192a1f29a790c9fc68b51cac813bbc933354e682a5dc3.js"></script>
 </head>
 <body>
     <div class="side-nav">
         <div class="pad-2x text-center">
             <a href="/" class="reset">
-                Komps
+                <img class="width-3/4 height-auto inline-block" src="/komps/assets/logo-7b1623d8d9db3b0d0d79dd30b2a5c2a0f0be2b945944f75d18e3be1e67177443.svg" />
             </a>
         </div>
-        <div class="uniformNav -vertical -gray flex-fill -active-purple">
-                <a href="/element">
+        <div class="uniformNav -vertical -gray flex-fill -active-green">
+                <a href="/element" class="">
                     element
                 </a>
-                <a href="/modal">
-                    modal
+                <a href="/floater" class="">
+                    floater
                 </a>
-                <a href="/popover">
-                    popover
+                <a href="/modal" class="active">
+                    modal
                 </a>
         </div>
     </div>
@@ -43,19 +45,48 @@
         </div>
     </div>
     
-        <div class="">
-            <h2>Syntax</h2>
-                <div class="highlight"><pre class=" javascript"><code><span class="k">new</span> <span class="nx">Modal</span><span class="p">({</span><span class="na">content</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Hello World</span><span class="dl">"</span><span class="p">})</span>
+    <div class="">
+        <h2>Syntax</h2>
+        <p>HTML</p>
+<div class="highlight"><pre class=" html"><code><span class="nt">&lt;komp-modal&gt;</span>Hello World<span class="nt">&lt;/komp-modal&gt;</span>
+</code></pre></div>
+<p>JS</p>
+<div class="highlight"><pre class=" javascript"><code><span class="k">new</span> <span class="nx">Modal</span><span class="p">({</span><span class="na">content</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Hello World</span><span class="dl">"</span><span class="p">})</span>
 </code></pre></div>
 
-            
-        </div>
+    </div>
+    
+    <div class="">
+        <h2>Example</h2>
+        <script>
+            function resizeIframe(obj) {
+                obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
+            }
+        </script>
+        <iframe class="overflow-hidden rounded-lg" width="100%" height="10px" src="modal/example" frameborder="0" scrolling="no" onload="resizeIframe(this)"></iframe>
+    </div>
+    
         <div class="">
             <h2>Options</h2>
-                <h3><code>content</code></h3>
-<p>A string, element, array, or object accepted by <a href="https://dollajs.com/#append">dolla</a></p>
+                <table class="uniformTable">
+                    <tr>
+                        <th></th>
+                            <th>types</th>
+                            <th>description</th>
+                    </tr>
+                        <tr>
+                            <td>
+                                <code>content</code>
+                            </td>
+                                <td>
+                                        String, HTMLElement, Array, Object
+                                </td>
+                                <td>
+                                        <p>content for the floater, uses <a href="https://dollajs.com/#content">Dolla's <code>content</code></a></p>
 
-            
+                                </td>
+                        </tr>
+                </table>
         </div>
     
     <button class="js-toggle-source reset text-sm text-bold text-gray-30 hover:text-blue" rel="#source-for-modal">
@@ -66,84 +97,84 @@
             <div class="text-white text-sm text-bold pad-h pad-v-1/4x">
                 SOURCE CODE
             </div>
-            <div class="highlight"><pre class=" javascript"><code><span class="kd">class</span> <span class="nx">Modal</span> <span class="p">{</span>
-    
-    <span class="kd">constructor</span> <span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">options</span> <span class="o">=</span> <span class="p">{};</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">klass</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">klass</span> <span class="o">||</span> <span class="kc">false</span><span class="p">;</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">content</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">content</span><span class="p">;</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">el</span> <span class="o">=</span> <span class="nx">createElement</span><span class="p">()</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">el</span><span class="p">.</span><span class="nx">removeAttribute</span><span class="p">(</span><span class="dl">'</span><span class="s1">content</span><span class="dl">'</span><span class="p">);</span>
+            <div class="highlight"><pre class=" javascript"><code><span class="c1">// TODO move to custom built-in element to extend HTMLDialogElement</span>
+<span class="c1">// when supported by apple https://bugs.webkit.org/show_bug.cgi?id=182671</span>
 
-        <span class="k">this</span><span class="p">.</span><span class="nx">el</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">uniformModal</span><span class="dl">'</span><span class="p">);</span>
-        <span class="c1">// this.listenTo(document, 'keyup', this.keyup);</span>
-        <span class="c1">// this.listenTo(this.el, 'click', this.checkClose);</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">el</span><span class="p">.</span><span class="nx">modal</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
-    <span class="p">}</span>
+<span class="kd">class</span> <span class="nx">Modal</span> <span class="kd">extends</span> <span class="nx">KompElement</span> <span class="p">{</span>
     
-    <span class="nx">keyup</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">which</span> <span class="o">!=</span> <span class="mi">27</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
-    <span class="p">}</span>
-    
-    <span class="nx">render</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="kd">var</span> <span class="nx">that</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
-
-        <span class="k">this</span><span class="p">.</span><span class="nx">highest_z_index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-
-        <span class="k">if</span> <span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">.uniformModal</span><span class="dl">'</span><span class="p">).</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">this</span><span class="p">.</span><span class="nx">highest_z_index</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(</span><span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">map</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">.uniformModal</span><span class="dl">'</span><span class="p">),</span> <span class="kd">function</span><span class="p">(</span><span class="nx">el</span><span class="p">){</span>
-                <span class="k">return</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">css</span><span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="dl">'</span><span class="s1">zIndex</span><span class="dl">'</span><span class="p">));</span>
-            <span class="p">}));</span>
-            <span class="k">this</span><span class="p">.</span><span class="nx">el</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">zIndex</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">highest_z_index</span> <span class="o">+</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="kd">static</span> <span class="nx">style</span> <span class="o">=</span> <span class="s2">`
+        komp-modal-backdrop {
+            position: fixed;
+            inset: 0;
+            overflow: scroll;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0,0,0, 0.6);
+            backdrop-filter: blur(4px); // Not supported for dialog::backdrop as of 2023-09-13
+        }
+        komp-modal-container {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            padding: 2em;
+        }
+        komp-modal-close {
+            width: 0;
+            position: relative;
+            background: red;
+        }
+        komp-modal-close button {
+            position: absolute;
+            bottom: 100%;
+            left: 0;
+            padding: 0.25em;
+            outline: none;
+            appearance: none;
+            border: none;
+            background:none;
+            padding: 0;
+            margin: 0;
+            list-style:none;
+            text-decoration: none;
+            color: white;
+            cursor: pointer;
+            opacity: 0.75;
+        }
+        komp-modal-close button:hover {
+            opacity: 1;
+        }
+    `</span>
+        
+    <span class="nx">connected</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">parentElement</span><span class="p">.</span><span class="nx">tagName</span> <span class="o">!=</span> <span class="dl">"</span><span class="s2">KOMP-MODAL-CONTAINER</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kd">const</span> <span class="nx">container</span> <span class="o">=</span> <span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">komp-modal-container</span><span class="dl">'</span><span class="p">)</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">backdrop</span> <span class="o">=</span> <span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">komp-modal-backdrop</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span><span class="na">content</span><span class="p">:</span> <span class="nx">container</span><span class="p">})</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">backdrop</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="nx">e</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span> <span class="o">==</span> <span class="k">this</span><span class="p">.</span><span class="nx">backdrop</span><span class="p">)</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">remove</span><span class="p">()</span> <span class="p">}</span>
+            <span class="p">})</span>
+            
+            <span class="k">this</span><span class="p">.</span><span class="nx">replaceWith</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">backdrop</span><span class="p">)</span>
+            <span class="nx">container</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+            <span class="nx">container</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">komp-modal-close</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+                <span class="na">content</span><span class="p">:</span> <span class="nx">listenerElement</span><span class="p">({</span>
+                    <span class="na">content</span><span class="p">:</span> <span class="s2">`&lt;svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"&gt;&lt;line x1="18" y1="6" x2="6" y2="18"&gt;&lt;/line&gt;&lt;line x1="6" y1="6" x2="18" y2="18"&gt;&lt;/line&gt;&lt;/svg&gt;`</span>
+                <span class="p">},</span> <span class="nx">e</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                    <span class="k">this</span><span class="p">.</span><span class="nx">remove</span><span class="p">()</span>
+                <span class="p">})</span>
+            <span class="p">}))</span>
         <span class="p">}</span>
-
-        <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">uniformModal-active</span><span class="dl">'</span><span class="p">);</span>
-        <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">el</span><span class="p">);</span>
-
-        <span class="kd">const</span> <span class="nx">container</span> <span class="o">=</span> <span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">div</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
-            <span class="na">class</span><span class="p">:</span> <span class="dl">'</span><span class="s1">uniformModal-container</span><span class="dl">'</span><span class="p">,</span>
-            <span class="na">children</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">content</span><span class="p">,</span>
-            <span class="na">tabindex</span><span class="p">:</span> <span class="mi">0</span>
-        <span class="p">});</span>
-
-        <span class="kd">const</span> <span class="nx">closeButton</span> <span class="o">=</span> <span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">div</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
-            <span class="na">class</span><span class="p">:</span> <span class="dl">'</span><span class="s1">uniformModal-close-container</span><span class="dl">'</span><span class="p">,</span>
-            <span class="na">children</span><span class="p">:</span> <span class="p">{</span>
-                <span class="na">class</span><span class="p">:</span> <span class="dl">'</span><span class="s1">uniformModal-close js-modal-close</span><span class="dl">'</span>
-            <span class="p">}</span>
-        <span class="p">});</span>
-
-        <span class="k">this</span><span class="p">.</span><span class="nx">el</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">container</span><span class="p">);</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">el</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">closeButton</span><span class="p">);</span>
-        <span class="kd">const</span> <span class="nx">focusable</span> <span class="o">=</span> <span class="nx">container</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])</span><span class="dl">'</span><span class="p">)</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">focusable</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">focusable</span><span class="p">.</span><span class="nx">focus</span><span class="p">()</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">container</span><span class="p">.</span><span class="nx">focus</span><span class="p">()</span>
-        <span class="p">}</span>
-
-        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">klass</span><span class="p">)</span> <span class="nx">container</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">klass</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">content</span><span class="p">.</span><span class="nx">innerHTML</span><span class="p">)</span> <span class="nx">trigger</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">content</span><span class="p">,</span> <span class="dl">'</span><span class="s1">rendered</span><span class="dl">'</span><span class="p">);</span>
-        <span class="c1">// this.trigger('rendered');</span>
-
-        <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">getRootNode</span><span class="p">().</span><span class="nx">body</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">overflow</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">hidden</span><span class="dl">'</span>
     <span class="p">}</span>
     
-    <span class="nx">checkClose</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">matches</span><span class="p">(</span><span class="dl">'</span><span class="s1">.js-modal-close, .uniformModal</span><span class="dl">'</span><span class="p">)){</span>
-            <span class="k">this</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
-        <span class="p">}</span>
+    <span class="nx">remove</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">super</span><span class="p">.</span><span class="nx">remove</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">getRootNode</span><span class="p">().</span><span class="nx">body</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">overflow</span> <span class="o">=</span> <span class="dl">''</span>
+            <span class="nx">remove</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">backdrop</span><span class="p">)</span>
+        <span class="p">})</span>
     <span class="p">}</span>
-    
-    <span class="nx">close</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="c1">// this.trigger('closed');</span>
-        <span class="c1">// this.remove();</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">.uniformModal</span><span class="dl">'</span><span class="p">).</span><span class="nx">length</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="dl">'</span><span class="s1">uniformModal-active</span><span class="dl">'</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">customElements</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="dl">'</span><span class="s1">komp-modal</span><span class="dl">'</span><span class="p">,</span> <span class="nx">Modal</span><span class="p">);</span></code></pre></div>
         </div>
     </div>
 </div>

@@ -5,27 +5,29 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport"
     content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
     <!-- Use the title from a page's frontmatter if it has one -->
     <title>Komps</title>
-    <link href="/komps/assets/site-95a06d7dc60636701627185774c79ccd24686b086432a78bd3acd4696a0c8ea3.css" rel="stylesheet" />
-    <script src="/komps/assets/site-7b56abf1763b6fb377d5c67cc466a47a46d105b1e2de4f3f0f8c7a57d57fef13.js"></script>
+    <link href="/komps/assets/site-d202055143c6b46826099c340b5ce6c2b471164adc1d3603336f735e6930c2ef.css" rel="stylesheet" />
+    <script src="/komps/assets/site-970c40ca90cfc03ec65192a1f29a790c9fc68b51cac813bbc933354e682a5dc3.js"></script>
 </head>
 <body>
     <div class="side-nav">
         <div class="pad-2x text-center">
             <a href="/" class="reset">
-                Komps
+                <img class="width-3/4 height-auto inline-block" src="/komps/assets/logo-7b1623d8d9db3b0d0d79dd30b2a5c2a0f0be2b945944f75d18e3be1e67177443.svg" />
             </a>
         </div>
-        <div class="uniformNav -vertical -gray flex-fill -active-purple">
-                <a href="/element">
+        <div class="uniformNav -vertical -gray flex-fill -active-green">
+                <a href="/element" class="active">
                     element
                 </a>
-                <a href="/modal">
-                    modal
+                <a href="/floater" class="">
+                    floater
                 </a>
-                <a href="/popover">
-                    popover
+                <a href="/modal" class="">
+                    modal
                 </a>
         </div>
     </div>
@@ -42,6 +44,255 @@
         </div>
     </div>
     
+    <div class="">
+        <h2>Syntax</h2>
+        <div class="highlight"><pre class=" javascript"><code><span class="kd">class</span> <span class="nx">DropzoneElement</span> <span class="kd">extends</span> <span class="nx">KompsElement</span> <span class="p">{}</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">customElements</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="dl">'</span><span class="s1">komp-dropzone</span><span class="dl">'</span><span class="p">,</span> <span class="nx">DropzoneElement</span><span class="p">);</span>
+</code></pre></div>
+
+    </div>
+    
+    
+        <div class="">
+            <h2>Options</h2>
+                <table class="uniformTable">
+                    <tr>
+                        <th></th>
+                            <th>types</th>
+                            <th>description</th>
+                    </tr>
+                        <tr>
+                            <td>
+                                <code>content</code>
+                            </td>
+                                <td>
+                                        String, HTMLElement, Array, Object
+                                </td>
+                                <td>
+                                        <p>content to append to element. Passed to <a href="https://dollajs.com/#content">Dolla's <code>content</code></a></p>
+
+                                </td>
+                        </tr>
+                </table>
+        </div>
+        <div class="">
+            <h2>Extending</h2>
+                <table class="uniformTable">
+                    <tr>
+                        <th></th>
+                            <th>static</th>
+                            <th>types</th>
+                            <th>description</th>
+                            <th>arguments</th>
+                    </tr>
+                        <tr>
+                            <td>
+                                <code>style</code>
+                            </td>
+                                <td>
+                                        true
+                                </td>
+                                <td>
+                                        String
+                                </td>
+                                <td>
+                                        <p>Define style that is dynamically appended when component is used for the first time.</p>
+
+                                </td>
+                                <td>
+                                        
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>defaults</code>
+                            </td>
+                                <td>
+                                        true
+                                </td>
+                                <td>
+                                        Object
+                                </td>
+                                <td>
+                                        <p>keys and values to set on initialization</p>
+
+                                </td>
+                                <td>
+                                        
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>connected</code>
+                            </td>
+                                <td>
+                                        
+                                </td>
+                                <td>
+                                        Function
+                                </td>
+                                <td>
+                                        <p>called when element is connected to a DOM element</p>
+
+                                </td>
+                                <td>
+                                        
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>disconnected</code>
+                            </td>
+                                <td>
+                                        
+                                </td>
+                                <td>
+                                        Function
+                                </td>
+                                <td>
+                                        <p>called when element is disconnected from a DOM element</p>
+
+                                </td>
+                                <td>
+                                        
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>remove</code>
+                            </td>
+                                <td>
+                                        
+                                </td>
+                                <td>
+                                        Function
+                                </td>
+                                <td>
+                                        <p>remove element, calls callback between event Triggers beforeRemove and afterRemove</p>
+
+                                </td>
+                                <td>
+                                        callback:Function
+                                </td>
+                        </tr>
+                </table>
+        </div>
+        <div class="">
+            <h2>Events</h2>
+                <table class="uniformTable">
+                    <tr>
+                        <th></th>
+                            <th>arguments</th>
+                            <th>description</th>
+                    </tr>
+                        <tr>
+                            <td>
+                                <code>beforeRemove</code>
+                            </td>
+                                <td>
+                                        []
+                                </td>
+                                <td>
+                                        <p>called before element is removed</p>
+
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>afterRemove</code>
+                            </td>
+                                <td>
+                                        []
+                                </td>
+                                <td>
+                                        <p>called after element is removed</p>
+
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>beforeConnect</code>
+                            </td>
+                                <td>
+                                        []
+                                </td>
+                                <td>
+                                        <p>called before element is connected</p>
+
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>afterConnect</code>
+                            </td>
+                                <td>
+                                        []
+                                </td>
+                                <td>
+                                        <p>called before element is connected</p>
+
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>beforeDisconnect</code>
+                            </td>
+                                <td>
+                                        []
+                                </td>
+                                <td>
+                                        <p>called before element is disconnected</p>
+
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>afterDisconnect</code>
+                            </td>
+                                <td>
+                                        []
+                                </td>
+                                <td>
+                                        <p>called before element is disconnected</p>
+
+                                </td>
+                        </tr>
+                </table>
+        </div>
+        <div class="">
+            <h2>Methods</h2>
+                <table class="uniformTable">
+                    <tr>
+                        <th></th>
+                            <th>arguments</th>
+                            <th>description</th>
+                    </tr>
+                        <tr>
+                            <td>
+                                <code>trigger</code>
+                            </td>
+                                <td>
+                                        eventName:string, ...args
+                                </td>
+                                <td>
+                                        <p>triggers an event this element passes args</p>
+
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>addEventListenerFor</code>
+                            </td>
+                                <td>
+                                        element:HTMLElement, eventType:string, ...args
+                                </td>
+                                <td>
+                                        <p>calls callback when eventType is triggered on element, enables component to tear down listener when disconnected.</p>
+
+                                </td>
+                        </tr>
+                </table>
+        </div>
     
     <button class="js-toggle-source reset text-sm text-bold text-gray-30 hover:text-blue" rel="#source-for-element">
         SHOW SOURCE
@@ -51,37 +302,81 @@
             <div class="text-white text-sm text-bold pad-h pad-v-1/4x">
                 SOURCE CODE
             </div>
-            <div class="highlight"><pre class=" javascript"><code><span class="k">import</span> <span class="p">{</span><span class="nx">content</span><span class="p">,</span> <span class="nx">append</span><span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">dolla</span><span class="dl">'</span><span class="p">;</span>
-
-<span class="kd">class</span> <span class="nx">KompElement</span> <span class="kd">extends</span> <span class="nx">HTMLElement</span> <span class="p">{</span>
+            <div class="highlight"><pre class=" javascript"><code><span class="kd">class</span> <span class="nx">KompElement</span> <span class="kd">extends</span> <span class="nx">HTMLElement</span> <span class="p">{</span>
     
-    <span class="kd">static</span> <span class="nx">defaults</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="kd">static</span> <span class="nx">style</span> <span class="o">=</span> <span class="dl">''</span>
+    <span class="kd">static</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="kd">static</span> <span class="nx">style</span> <span class="o">=</span> <span class="s2">``</span>
+    
+    <span class="nx">cleanupCallbacks</span> <span class="o">=</span> <span class="p">[]</span>
     
     <span class="kd">constructor</span><span class="p">(</span><span class="nx">attrs</span><span class="o">=</span><span class="p">{})</span> <span class="p">{</span>
         <span class="k">super</span><span class="p">()</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">inititalAttributes</span> <span class="o">=</span> <span class="nx">attrs</span><span class="p">;</span>
-        
-        <span class="kd">const</span> <span class="nx">style</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CSSStyleSheet</span><span class="p">();</span>
-        <span class="nx">style</span><span class="p">.</span><span class="nx">replaceSync</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="kd">constructor</span><span class="p">.</span><span class="nx">style</span><span class="p">)</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">body</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">attachShadow</span><span class="p">({</span> <span class="na">mode</span><span class="p">:</span> <span class="dl">"</span><span class="s2">open</span><span class="dl">"</span> <span class="p">});</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">adoptedStyleSheets</span> <span class="o">=</span> <span class="p">[</span><span class="nx">style</span><span class="p">]</span>
+        <span class="k">this</span><span class="p">.</span><span class="kd">constructor</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">key</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">attrs</span><span class="p">[</span><span class="nx">key</span><span class="p">])</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">key</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">content</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">content</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">attrs</span><span class="p">[</span><span class="nx">key</span><span class="p">])</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="k">this</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">attrs</span><span class="p">[</span><span class="nx">key</span><span class="p">])</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">})</span>
     <span class="p">}</span>
     
     <span class="nx">connected</span> <span class="p">()</span> <span class="p">{}</span>
     <span class="nx">connectedCallback</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="kd">constructor</span><span class="p">.</span><span class="nx">defaults</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">key</span> <span class="o">=&gt;</span> <span class="p">{</span>
-            <span class="kd">const</span> <span class="nx">value</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">inititalAttributes</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="nx">key</span><span class="p">)</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">dataset</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="kd">constructor</span><span class="p">.</span><span class="nx">defaults</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span>
-            
-            <span class="k">if</span> <span class="p">(</span><span class="nx">key</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">content</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">append</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">body</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="dl">'</span><span class="s1">beforeConnect</span><span class="dl">'</span><span class="p">)</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">appendStyle</span><span class="p">()</span>
+        <span class="k">this</span><span class="p">.</span><span class="kd">constructor</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">key</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="kd">const</span> <span class="nx">value</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="nx">key</span><span class="p">)</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">dataset</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">||</span> <span class="k">this</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">key</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">content</span><span class="dl">"</span> <span class="o">&amp;&amp;</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">removeAttribute</span><span class="p">(</span><span class="dl">'</span><span class="s1">content</span><span class="dl">'</span><span class="p">)</span>
+                <span class="nx">content</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span>
             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                <span class="k">this</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
+                <span class="k">this</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">value</span>
             <span class="p">}</span>
         <span class="p">})</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">connected</span><span class="p">()</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="dl">'</span><span class="s1">afterConnect</span><span class="dl">'</span><span class="p">)</span>
     <span class="p">}</span>
     
+    <span class="nx">disconnected</span> <span class="p">()</span> <span class="p">{}</span>
+    <span class="nx">disconnectedCallback</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="dl">'</span><span class="s1">beforeDisconnect</span><span class="dl">'</span><span class="p">)</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">cleanupCallbacks</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">cb</span> <span class="o">=&gt;</span> <span class="nx">cb</span><span class="p">());</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">cleanupCallbacks</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">disconnected</span><span class="p">()</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="dl">'</span><span class="s1">afterDisconnect</span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="nx">appendStyle</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="kd">constructor</span><span class="p">.</span><span class="nx">style</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kd">const</span> <span class="nx">root</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getRootNode</span><span class="p">()</span>
+            <span class="kd">const</span> <span class="nx">id</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">()</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">root</span> <span class="o">&amp;&amp;</span> <span class="nx">root</span><span class="p">.</span><span class="nx">adoptedStyleSheets</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">root</span><span class="p">.</span><span class="nx">adoptedStyleSheets</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">s</span> <span class="o">=&gt;</span> <span class="nx">s</span><span class="p">.</span><span class="nx">id</span> <span class="o">!=</span> <span class="nx">id</span><span class="p">))</span> <span class="p">{</span>
+                <span class="kd">const</span> <span class="nx">style</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CSSStyleSheet</span><span class="p">()</span>
+                <span class="nx">style</span><span class="p">.</span><span class="nx">replaceSync</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="kd">constructor</span><span class="p">.</span><span class="nx">style</span><span class="p">)</span>
+                <span class="nx">style</span><span class="p">.</span><span class="nx">id</span> <span class="o">=</span> <span class="nx">id</span>
+                <span class="nx">root</span><span class="p">.</span><span class="nx">adoptedStyleSheets</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">style</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="nx">remove</span> <span class="p">(</span><span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="dl">'</span><span class="s1">beforeRemove</span><span class="dl">'</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">callback</span><span class="p">)</span> <span class="nx">callback</span><span class="p">()</span>
+        <span class="nx">remove</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="dl">'</span><span class="s1">afterRemove</span><span class="dl">'</span><span class="p">)</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="nx">addEventListenerFor</span><span class="p">(...</span><span class="nx">listener</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">cleanupCallbacks</span><span class="p">.</span><span class="nx">push</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">listener</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">removeEventListener</span><span class="p">(...</span><span class="nx">listener</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+        <span class="p">})</span>
+        <span class="nx">listener</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">addEventListener</span><span class="p">(...</span><span class="nx">listener</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
+    <span class="p">}</span>
+    
+    <span class="nx">trigger</span><span class="p">(...</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span> <span class="nx">trigger</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="p">...</span><span class="nx">args</span><span class="p">)</span> <span class="p">}</span>
 <span class="p">}</span></code></pre></div>
         </div>
     </div>
