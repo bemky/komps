@@ -1,6 +1,17 @@
+<p align="center">
+    <a href="https://bemky.github.io/komps/" style="display:block; max-width:300px;">
+        <img src="https://raw.githubusercontent.com/bemky/komps/master/docs-src/source/assets/images/logo.svg" width="300" alt="Dolla">
+    </a>
+    <p align="center">
+        Komps is a library of javascript style-less components and elements for building a UI. Komps is platform-agnostic, with each component is fully tree-shakeable by an bundler.
+        <a href="https://bemky.github.io/komps/">
+            Documentation
+        </a>
+    </p>
+</p>
 # komps
 
-Komps is a library of javascript components and elements for building a UI. Komps is platform-agnostic, with each component is fully tree-shakeable by an bundler.
+
 
 ## Dependencies
 [Dolla](https://dollajs.com)
