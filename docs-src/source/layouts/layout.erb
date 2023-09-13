@@ -5,6 +5,8 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport"
     content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
     <!-- Use the title from a page's frontmatter if it has one -->
     <title><%= current_page.data.title || "Komps" %></title>
     <%= stylesheet_link_tag "site" %>
@@ -14,13 +16,13 @@
     <div class="side-nav">
         <div class="pad-2x text-center">
             <a href="/" class="reset">
-                Komps
+                <%= image_tag "logo", class: 'width-3/4 height-auto inline-block' %>
             </a>
         </div>
-        <div class="uniformNav -vertical -gray flex-fill -active-purple">
-            <% components.each do |component| %>
-                <a href="/<%= component[:name] %>">
-                    <%= component[:name] %>
+        <div class="uniformNav -vertical -gray flex-fill -active-green">
+            <% component_names.each do |component_name| %>
+                <a href="/<%= component_name %>" class="<%= "active" if current_path =~ /^#{component_name}/ %>">
+                    <%= component_name %>
                 </a>
             <% end %>
         </div>

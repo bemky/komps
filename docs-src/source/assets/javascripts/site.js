@@ -1,6 +1,6 @@
 // depends_on ../../../../lib/**/*.js
-import {Modal, Popover} from 'komps';
-import {addEventListenerFor} from 'dolla';
+import { Modal, Floater } from 'komps';
+import { addEventListenerFor } from 'dolla';
 
 
 document.addEventListener('DOMContentLoaded', function () {

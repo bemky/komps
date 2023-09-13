@@ -15,6 +15,10 @@ $uniform_configs: (
         )
     ),
     colors: (
+        "green": (
+            "color": #00c964,
+            "spectrum": true
+        ),
         "orange": (
             "color": #ffad00,
             "spectrum": true
@@ -36,7 +40,7 @@ html, body{
     line-height: 1.5;
     font-size: 14px;
     color: #20327c;
-    background: lighten(color('blue-10'), 8);
+    background: lighten(color('green-10'), 8);
 }
 
 .section{
@@ -115,7 +119,7 @@ h2 {
 .highlight{
     border-radius: 0.5em;
     overflow: auto;
-    background: lighten(color('blue-10'), 5);
+    background: lighten(color('green-10'), 5);
     overflow-x: auto;
     pre{
         padding: 1em;
@@ -126,8 +130,8 @@ h2 {
 }
 code{
     border-radius: 0.25em;
-    color: color('purple');
-    background-color: rgba(color('purple'), 0.1);
+    color: color('green');
+    background-color: rgba(color('green'), 0.1);
     padding: .15em 0.1em;
     font-size: 0.9em;
 }

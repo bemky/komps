@@ -53,10 +53,12 @@ page '/*.txt', layout: false
 #   activate :minify_javascript
 # end
 
-SourceHelpers.components.each do |component|
-  proxy "/#{component[:name]}/index.html", "/component.html", locals: {component: component}, :layout => "layout"
+SourceHelpers.component_names.each do |component_name|
+  proxy "/#{component_name}/index.html", "/component.html", locals: {component_name: component_name}, :layout => "layout"
+  proxy "/#{component_name}/example/index.html", "/example.html", locals: {component_name: component_name}, :layout => "empty"
 end
 ignore "/component.html"
+ignore "/example.html"
 
 helpers do
   
@@ -96,12 +98,21 @@ helpers do
     end
   end
   
-  def markdown(markup)
+  def markdown(markup, language="javascript")
     return "" unless markup
     html = GitHub::Markup.render_s(GitHub::Markups::MARKUP_MARKDOWN, markup)
-    html = html.gsub(/<pre><code>.*<\/code><\/pre>/m) do |match|
-      code('javascript', CGI.unescapeHTML(match.sub("<pre><code>", "").sub("</code></pre>", "")))
-    end
+    html = html.split(/<\/?pre>?/).map.with_index do |part, index|
+      if index % 2 == 1
+        lang = part.match(/(?<=lang=\")\w+/)&.to_s || language
+        part = part.sub(/^[^>]*>/m, "")
+        part = part.gsub(/<\/?code>/m, "")
+        
+        code(lang, CGI.unescapeHTML(part))
+      else
+        part
+      end
+    end.join("")
+    
     html
   end
 end
