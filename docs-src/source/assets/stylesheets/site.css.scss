@@ -142,3 +142,15 @@ pre {
         padding: initial;
     }
 }
+
+komp-data-table {
+    gap: 1px;
+    komp-data-table-cell {
+        background: white;
+        padding: 0.5em 1em;
+        &.-header {
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+    }
+}

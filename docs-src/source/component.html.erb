@@ -1,9 +1,15 @@
 <% component = SourceHelpers.component(component_name) %>
+<% extended_component = SourceHelpers.component(component[:extends]) if component[:extends] %>
 <div class="section space-v-3x">
     
     <div class="">
         <h1 class="text-2x text-overflow-hidden text-nowrap">
-            <%= component[:name].camelize %>
+            <%= component[:name] %>
+            <% if extended_component %>
+            <span class="text-light text-italic text-gray-50 text-xl">
+                (extends <%= extended_component[:name] %>)
+            </span>
+            <% end %>
         </h1>
     
         <div class="text-light text-lg">
@@ -30,11 +36,23 @@
     </div>
     <% end %>
     
-    <% component.except(:name, :params, :source, :example_url, "Description", "Example", "Syntax").each do |header, content| %>
+    <% component.except(:name, :extends, :file_name, :params, :source, :example_url, "Description", "Example", "Syntax").each do |header, content| %>
         <div class="">
             <h2><%= header %></h2>
-            <% if content =~ /^\w+\:/ %>
-                <% table_data = YAML.load(content) %>
+            <%
+                yaml = ""
+                content.gsub!(/^\s*\w+:.*/) do |match|
+                    yaml += match + "\n"
+                    ""
+                end
+            %>
+            <% if content.include?("<") %>
+                <%= content %>
+            <% else %>
+                <%= markdown(content).gsub(/\s\#(\w+)/, '<span class="uniformLabel -gray-50 -outline text-normal text-xs text-uppercase align-middle">\1</span>') %>
+            <% end %>
+            <% if yaml.present? %>
+                <% table_data = YAML.load(yaml) %>
                 <% headers = table_data.map {|k, v| v.keys}.flatten.uniq %>
                 <table class="uniformTable">
                     <tr>
@@ -60,18 +78,14 @@
                         </tr>
                     <% end %>
                 </table>
-            <% elsif content.include?("<") %>
-                <%= content %>
-            <% else %>
-                <%= markdown(content).gsub(/\s\#(\w+)/, '<span class="uniformLabel -gray-50 -outline text-normal text-xs text-uppercase align-middle">\1</span>') %>
             <% end %>
         </div>
     <% end %>
     
-    <button class="js-toggle-source reset text-sm text-bold text-gray-30 hover:text-blue" rel="#source-for-<%= component[:name] %>">
+    <button class="js-toggle-source reset text-sm text-bold text-gray-30 hover:text-blue" rel="#source-for-<%= component[:file_name] %>">
         SHOW SOURCE
     </button>
-    <div class="source hide" id="source-for-<%= component[:name] %>">
+    <div class="source hide" id="source-for-<%= component[:file_name] %>">
         <div class="border border-blue bg-blue rounded-xl overflow-hidden">
             <div class="text-white text-sm text-bold pad-h pad-v-1/4x">
                 SOURCE CODE

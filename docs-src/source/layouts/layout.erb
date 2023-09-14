@@ -22,7 +22,7 @@
         <div class="uniformNav -vertical -gray flex-fill -active-green">
             <% component_names.each do |component_name| %>
                 <a href="/<%= component_name %>" class="<%= "active" if current_path =~ /^#{component_name}/ %>">
-                    <%= component_name %>
+                    <%= component_name.gsub('-', '_').camelize %>
                 </a>
             <% end %>
         </div>
