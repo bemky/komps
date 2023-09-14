@@ -1,11 +1,10 @@
 {
   "name": "komps",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Javascript components and elements for building a UI",
   "main": "lib/komps.js",
   "scripts": {
-    "test": "mocha -r jsdom-global/register"
   },
   "repository": {
     "type": "git",
@@ -22,11 +21,7 @@
     "url": "https://github.com/bemky/komps/issues"
   },
   "homepage": "https://github.com/bemky/komps#readme",
-  "devDependencies": {
-    "jsdom": "^21.1.1",
-    "jsdom-global": "^3.0.2",
-    "mocha": "^10.2.0"
-  },
+  "devDependencies": {},
   "dependencies": {
     "@floating-ui/dom": "^1.5.2",
     "dolla": "^1.2.4"
