@@ -9,8 +9,8 @@
     <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
     <!-- Use the title from a page's frontmatter if it has one -->
     <title>Komps</title>
-    <link href="/assets/site-ba6e263fcf6afacb752ba1a43acc42d0108b47e52db7a950aef5e9d1f38a4dd6.css" rel="stylesheet" />
-    <script src="/assets/site-b589e5cdb1e9004042d07b11ee3d1975f1bfaf2847aa18760a8180382bbdf21d.js"></script>
+    <link href="/assets/site-e5e0789de2347caf2a0c251cd0edaa42e64f953893219860a3d7332619785de3.css" rel="stylesheet" />
+    <script src="/assets/site-0071f3a60042b15fa875f78281693453d45445c9da78582ac37ccfe489c29fa4.js"></script>
 </head>
 <body>
     <div class="side-nav">
@@ -32,6 +32,9 @@
                 <a href="/modal" class="">
                     Modal
                 </a>
+                <a href="/tooltip" class="">
+                    Tooltip
+                </a>
         </div>
     </div>
     <div class="main-content overflow-hidden">
@@ -40,6 +43,9 @@
     <div class="">
         <h1 class="text-2x text-overflow-hidden text-nowrap">
             Floater
+            <span class="text-light text-italic text-gray-50 text-xl">
+                (extends KompElement)
+            </span>
         </h1>
     
         <div class="text-light text-lg">
@@ -215,10 +221,10 @@
                                 <code>arrow</code>
                             </td>
                                 <td>
-                                        Boolean, Object, HTMLElement
+                                        Boolean, Number
                                 </td>
                                 <td>
-                                        <p>See <a href="https://floating-ui.com/docs/arrow">https://floating-ui.com/docs/arrow</a>, element, uses default options with provided element</p>
+                                        <p>True to show default size, or pass integer to set size in ems</p>
 
                                 </td>
                                 <td>
@@ -304,7 +310,11 @@
         </div>
         <div class="">
             <h2>Transition Animation</h2>
-                <p>The floater will follow the transition effects set by CSS, it adds classes <code>-left</code>, <code>-right</code>, <code>-top</code>, <code>-bottom</code>, based on selected alignment, and adds classes <code>-out</code> and <code>-in</code> when hiding and showing.</p>
+                <p>The floater will follow the transition effects set by CSS, and adds classes <code>-out</code>, <code>-out-start</code>, <code>-in</code> and <code>-in-start</code> when hiding and showing.</p>
+<p>Additionally, the floater adds classes for placement <code>-left</code>, <code>-right</code>, <code>-top</code>, <code>-bottom</code></p>
+<p>Example Transition Effect</p>
+<div class="highlight"><pre class=" scss"><code><span class="nt">TODO</span>
+</code></pre></div>
 
         </div>
     
@@ -316,39 +326,104 @@
             <div class="text-white text-sm text-bold pad-h pad-v-1/4x">
                 SOURCE CODE
             </div>
-            <div class="highlight"><pre class=" javascript"><code><span class="kd">class</span> <span class="nx">Floater</span> <span class="kd">extends</span> <span class="nx">KompElement</span> <span class="p">{</span>
+            <div class="highlight"><pre class=" javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">computePosition</span><span class="p">,</span> <span class="nx">offset</span><span class="p">,</span> <span class="nx">flip</span><span class="p">,</span> <span class="nx">shift</span><span class="p">,</span> <span class="nx">arrow</span><span class="p">,</span> <span class="nx">size</span><span class="p">,</span> <span class="nx">autoPlacement</span><span class="p">,</span> <span class="nx">inline</span><span class="p">,</span> <span class="nx">autoUpdate</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@floating-ui/dom</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">css</span><span class="p">,</span> <span class="nx">createElement</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">dolla</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="k">import</span> <span class="nx">KompElement</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./element.js</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nx">Floater</span> <span class="kd">extends</span> <span class="nx">KompElement</span> <span class="p">{</span>
     
-    <span class="kd">static</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="kd">static</span> <span class="nx">assignableAttributes</span> <span class="o">=</span> <span class="p">[</span>
         <span class="dl">'</span><span class="s1">content</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">anchor</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">placement</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">strategy</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">flip</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">offset</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">shift</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">arrow</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">size</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">autoPlacement</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">inline</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">autoUpdate</span><span class="dl">'</span>
     <span class="p">]</span>
+    
+    <span class="kd">static</span> <span class="nx">style</span> <span class="o">=</span> <span class="s2">`
+        .komp-floater-arrow {
+            --arrow-size: 0.5em;
+            --arrow-left: 0;
+            --arrow-top: 0;
+        }
+        .komp-floater-arrow:after{
+            content: '';
+            clip-path: polygon(0 0, 50% 100%, 100% 0);
+            z-index: 1;
+            position:absolute;
+            top: calc(var(--arrow-top) - var(--arrow-size));
+            left: calc(var(--arrow-left) - var(--arrow-size));
+            width: calc(var(--arrow-size) * 2);
+            height: var(--arrow-size);
+            overflow: hidden;
+            border-style: solid;
+            border-width: inherit;
+            box-shadow: inherit;
+            background: inherit;
+            border: inherit;
+        }
+        .komp-floater-arrow.-top:after{
+            top: 100%;
+        }
+        .komp-floater-arrow.-bottom:after{
+            top: auto;
+            bottom: 100%;
+            transform: rotate(180deg);
+        }
+        .komp-floater-arrow.-left:after,
+        .komp-floater-arrow.-right:after {
+            clip-path: polygon(0 0, 100% 50%, 0 100%);
+            width: var(--arrow-size);
+            height: calc(var(--arrow-size) * 2);
+        }
+        .komp-floater-arrow.-left:after{
+            left: 100%;
+        }
+        .komp-floater-arrow.-right:after{
+            left: auto;
+            right: 100%;
+            transform: rotate(180deg);
+        }
+    `</span>
 
     <span class="nx">autoPlacement</span> <span class="o">=</span> <span class="kc">true</span>
     <span class="nx">shift</span> <span class="o">=</span> <span class="kc">true</span>
     <span class="nx">strategy</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">absolute</span><span class="dl">'</span>
-    <span class="nx">placement</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">bottom</span><span class="dl">'</span>
-
-    <span class="nx">connected</span> <span class="p">()</span> <span class="p">{</span>
+        
+    <span class="kd">constructor</span> <span class="p">(...</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">super</span><span class="p">(...</span><span class="nx">args</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="nx">instantiate</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">super</span><span class="p">.</span><span class="nx">instantiate</span><span class="p">()</span>
         <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="k">this</span><span class="p">.</span><span class="nx">anchor</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">this</span><span class="p">.</span><span class="nx">anchor</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getRootNode</span><span class="p">().</span><span class="nx">querySelector</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">anchor</span><span class="p">);</span>
         <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="nx">connected</span> <span class="p">()</span> <span class="p">{</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">position</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">strategy</span>
         
-        <span class="kd">const</span> <span class="nx">root</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getRootNode</span><span class="p">()</span>
-        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">root</span><span class="p">)</span> <span class="p">{</span> <span class="k">throw</span> <span class="dl">'</span><span class="s1">Floater needs root to find anchor to position to.</span><span class="dl">'</span> <span class="p">}</span>
         <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">anchor</span><span class="p">)</span> <span class="p">{</span> <span class="k">throw</span> <span class="dl">'</span><span class="s1">Floater needs anchor to position to.</span><span class="dl">'</span> <span class="p">}</span>
         
         <span class="kd">const</span> <span class="nx">middleware</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">middlewares</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">key</span> <span class="o">=&gt;</span> <span class="p">{</span>
-            <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">[</span><span class="nx">key</span><span class="p">])</span> <span class="p">{</span> <span class="nx">middleware</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">middlewares</span><span class="p">[</span><span class="nx">key</span><span class="p">](</span><span class="k">this</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">===</span> <span class="kc">true</span> <span class="p">?</span> <span class="p">{}</span> <span class="p">:</span> <span class="k">this</span><span class="p">[</span><span class="nx">key</span><span class="p">]))</span> <span class="p">}</span>
+            <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">[</span><span class="nx">key</span><span class="p">])</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">key</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">arrow</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="kd">const</span> <span class="nx">arrowEl</span> <span class="o">=</span> <span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">div</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span><span class="na">style</span><span class="p">:</span> <span class="p">{</span><span class="na">position</span><span class="p">:</span> <span class="dl">'</span><span class="s1">absolute</span><span class="dl">'</span><span class="p">,</span> <span class="na">left</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="na">top</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="na">width</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1px</span><span class="dl">"</span><span class="p">,</span> <span class="na">height</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1px</span><span class="dl">"</span><span class="p">}})</span>
+                    <span class="k">this</span><span class="p">.</span><span class="nx">prepend</span><span class="p">(</span><span class="nx">arrowEl</span><span class="p">)</span>
+                    <span class="nx">middleware</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">arrow</span><span class="p">({</span><span class="na">element</span><span class="p">:</span> <span class="nx">arrowEl</span><span class="p">}))</span>
+                    <span class="k">this</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">komp-floater-arrow</span><span class="dl">'</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="k">this</span><span class="p">.</span><span class="nx">arrow</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">number</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="k">this</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">setProperty</span><span class="p">(</span><span class="dl">'</span><span class="s1">--arrow-size</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">arrow</span><span class="p">)</span>
+                    <span class="p">}</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">offset</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="k">this</span><span class="p">.</span><span class="nx">offset</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">arrow</span> <span class="o">===</span> <span class="kc">true</span> <span class="p">?</span> <span class="mi">10</span> <span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">arrow</span>
+                    <span class="p">}</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="nx">middleware</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">middlewares</span><span class="p">[</span><span class="nx">key</span><span class="p">](</span><span class="k">this</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">===</span> <span class="kc">true</span> <span class="p">?</span> <span class="p">{}</span> <span class="p">:</span> <span class="k">this</span><span class="p">[</span><span class="nx">key</span><span class="p">]))</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
         <span class="p">})</span>
 
-        <span class="kd">const</span> <span class="nx">transitionDuration</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(...</span><span class="nx">css</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="dl">'</span><span class="s1">transition-duration</span><span class="dl">'</span><span class="p">).</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2">, </span><span class="dl">"</span><span class="p">).</span><span class="nx">map</span><span class="p">(</span><span class="nx">x</span> <span class="o">=&gt;</span> <span class="nb">parseFloat</span><span class="p">(</span><span class="nx">x</span><span class="p">)))</span> <span class="o">*</span> <span class="mi">1000</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">-in</span><span class="dl">'</span><span class="p">)</span>
-        <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-            <span class="k">this</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="dl">'</span><span class="s1">-in</span><span class="dl">'</span><span class="p">)</span>
-        <span class="p">},</span> <span class="nx">transitionDuration</span><span class="p">)</span>
-        
-        <span class="k">this</span><span class="p">.</span><span class="nx">cleanupCallbacks</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">autoUpdate</span><span class="p">(</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">_cleanupCallbacks</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">autoUpdate</span><span class="p">(</span>
             <span class="k">this</span><span class="p">.</span><span class="nx">anchor</span><span class="p">,</span>
             <span class="k">this</span><span class="p">,</span>
             <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
@@ -359,38 +434,40 @@
                 <span class="p">}).</span><span class="nx">then</span><span class="p">(({</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">placement</span><span class="p">,</span> <span class="nx">middlewareData</span><span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
                     <span class="k">this</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">left</span> <span class="o">=</span> <span class="s2">`</span><span class="p">${</span><span class="nx">x</span><span class="p">}</span><span class="s2">px`</span><span class="p">;</span>
                     <span class="k">this</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">top</span> <span class="o">=</span> <span class="s2">`</span><span class="p">${</span><span class="nx">y</span><span class="p">}</span><span class="s2">px`</span><span class="p">;</span>
+                    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">placement</span><span class="p">);</span>
+                    <span class="k">this</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="dl">'</span><span class="s1">-top</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">-left</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">-bottom</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">-right</span><span class="dl">'</span><span class="p">)</span>
                     <span class="k">this</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">-</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">placement</span><span class="p">);</span>
             
                     <span class="k">if</span> <span class="p">(</span><span class="nx">middlewareData</span><span class="p">.</span><span class="nx">arrow</span><span class="p">)</span> <span class="p">{</span>
                         <span class="kd">const</span> <span class="p">{</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">}</span> <span class="o">=</span> <span class="nx">middlewareData</span><span class="p">.</span><span class="nx">arrow</span><span class="p">;</span>
- 
-                        <span class="kd">const</span> <span class="nx">staticSide</span> <span class="o">=</span> <span class="p">{</span>
-                          <span class="na">top</span><span class="p">:</span> <span class="dl">'</span><span class="s1">bottom</span><span class="dl">'</span><span class="p">,</span>
-                          <span class="na">right</span><span class="p">:</span> <span class="dl">'</span><span class="s1">left</span><span class="dl">'</span><span class="p">,</span>
-                          <span class="na">bottom</span><span class="p">:</span> <span class="dl">'</span><span class="s1">top</span><span class="dl">'</span><span class="p">,</span>
-                          <span class="na">left</span><span class="p">:</span> <span class="dl">'</span><span class="s1">right</span><span class="dl">'</span><span class="p">,</span>
-                        <span class="p">}[</span><span class="nx">placement</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">'</span><span class="s1">-</span><span class="dl">'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]];</span>
-                
-                        <span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">arrow</span><span class="p">.</span><span class="nx">style</span><span class="p">,</span> <span class="p">{</span>
-                            <span class="na">left</span><span class="p">:</span> <span class="nx">x</span> <span class="o">!=</span> <span class="kc">null</span> <span class="p">?</span> <span class="s2">`</span><span class="p">${</span><span class="nx">x</span><span class="p">}</span><span class="s2">px`</span> <span class="p">:</span> <span class="dl">''</span><span class="p">,</span>
-                            <span class="na">top</span><span class="p">:</span> <span class="nx">y</span> <span class="o">!=</span> <span class="kc">null</span> <span class="p">?</span> <span class="s2">`</span><span class="p">${</span><span class="nx">y</span><span class="p">}</span><span class="s2">px`</span> <span class="p">:</span> <span class="dl">''</span><span class="p">,</span>
-                            <span class="na">right</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span>
-                            <span class="na">bottom</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span>
-                            <span class="p">[</span><span class="nx">staticSide</span><span class="p">]:</span> <span class="dl">'</span><span class="s1">-4px</span><span class="dl">'</span><span class="p">,</span>
-                        <span class="p">});</span>
+                        <span class="k">if</span> <span class="p">(</span><span class="nx">x</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">setProperty</span><span class="p">(</span><span class="dl">'</span><span class="s1">--arrow-left</span><span class="dl">'</span><span class="p">,</span> <span class="s2">`</span><span class="p">${</span><span class="nx">x</span><span class="p">}</span><span class="s2">px`</span><span class="p">)</span> <span class="p">}</span>
+                        <span class="k">if</span> <span class="p">(</span><span class="nx">y</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">setProperty</span><span class="p">(</span><span class="dl">'</span><span class="s1">--arrow-top</span><span class="dl">'</span><span class="p">,</span> <span class="s2">`</span><span class="p">${</span><span class="nx">y</span><span class="p">}</span><span class="s2">px`</span><span class="p">)</span> <span class="p">}</span>
                     <span class="p">}</span>
                 <span class="p">})</span>
             <span class="p">},</span>
             <span class="k">this</span><span class="p">.</span><span class="nx">autoUpdate</span>
         <span class="p">))</span>
+        
+        <span class="k">this</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">-in</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">-in-start</span><span class="dl">'</span><span class="p">)</span>
+        <span class="kd">const</span> <span class="nx">transitionDuration</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(...</span><span class="nx">css</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="dl">'</span><span class="s1">transition-duration</span><span class="dl">'</span><span class="p">).</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2">, </span><span class="dl">"</span><span class="p">).</span><span class="nx">map</span><span class="p">(</span><span class="nx">x</span> <span class="o">=&gt;</span> <span class="nb">parseFloat</span><span class="p">(</span><span class="nx">x</span><span class="p">)))</span> <span class="o">*</span> <span class="mi">1000</span>
+        <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="dl">'</span><span class="s1">-in-start</span><span class="dl">'</span><span class="p">)</span>
+        <span class="p">},</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="dl">'</span><span class="s1">-in</span><span class="dl">'</span><span class="p">)</span>
+        <span class="p">},</span> <span class="nx">transitionDuration</span><span class="p">)</span>
     <span class="p">}</span>
     
-    <span class="nx">remove</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="kd">const</span> <span class="nx">transitionDuration</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(...</span><span class="nx">css</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="dl">'</span><span class="s1">transition-duration</span><span class="dl">'</span><span class="p">).</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2">, </span><span class="dl">"</span><span class="p">).</span><span class="nx">map</span><span class="p">(</span><span class="nx">x</span> <span class="o">=&gt;</span> <span class="nb">parseFloat</span><span class="p">(</span><span class="nx">x</span><span class="p">)))</span> <span class="o">*</span> <span class="mi">1000</span>
+    <span class="nx">remove</span> <span class="p">(</span><span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">super</span><span class="p">.</span><span class="nx">remove</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">(</span><span class="nx">resolve</span> <span class="o">=&gt;</span> <span class="p">{</span>
-            <span class="k">this</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">-out</span><span class="dl">'</span><span class="p">)</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">-out</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">-out-start</span><span class="dl">'</span><span class="p">)</span>
+            <span class="kd">const</span> <span class="nx">transitionDuration</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(...</span><span class="nx">css</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="dl">'</span><span class="s1">transition-duration</span><span class="dl">'</span><span class="p">).</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2">, </span><span class="dl">"</span><span class="p">).</span><span class="nx">map</span><span class="p">(</span><span class="nx">x</span> <span class="o">=&gt;</span> <span class="nb">parseFloat</span><span class="p">(</span><span class="nx">x</span><span class="p">)))</span> <span class="o">*</span> <span class="mi">1000</span>
+            <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="dl">'</span><span class="s1">-out-start</span><span class="dl">'</span><span class="p">)</span>
+            <span class="p">},</span> <span class="mi">0</span><span class="p">)</span>
             <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
                 <span class="nx">resolve</span><span class="p">()</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">callback</span><span class="p">)</span> <span class="p">{</span> <span class="nx">callback</span><span class="p">()</span> <span class="p">}</span>
                 <span class="k">this</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="dl">'</span><span class="s1">-out</span><span class="dl">'</span><span class="p">);</span>
             <span class="p">},</span> <span class="nx">transitionDuration</span><span class="p">)</span>
         <span class="p">}))</span>
@@ -399,12 +476,12 @@
 <span class="nb">window</span><span class="p">.</span><span class="nx">customElements</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="dl">'</span><span class="s1">komp-floater</span><span class="dl">'</span><span class="p">,</span> <span class="nx">Floater</span><span class="p">);</span>
 <span class="kd">const</span> <span class="nx">middlewares</span> <span class="o">=</span> <span class="p">{</span>
     <span class="na">size</span><span class="p">:</span> <span class="nx">size</span><span class="p">,</span>
-    <span class="na">offset</span><span class="p">:</span> <span class="nx">offset</span><span class="p">,</span>
     <span class="na">shift</span><span class="p">:</span> <span class="nx">shift</span><span class="p">,</span>
     <span class="na">autoPlacement</span><span class="p">:</span> <span class="nx">autoPlacement</span><span class="p">,</span>
     <span class="na">flip</span><span class="p">:</span> <span class="nx">flip</span><span class="p">,</span>
     <span class="na">inline</span><span class="p">:</span> <span class="nx">inline</span><span class="p">,</span>
-    <span class="na">arrow</span><span class="p">:</span> <span class="nx">arrow</span>
+    <span class="na">arrow</span><span class="p">:</span> <span class="nx">arrow</span><span class="p">,</span>
+    <span class="na">offset</span><span class="p">:</span> <span class="nx">offset</span>
 <span class="p">}</span></code></pre></div>
         </div>
     </div>

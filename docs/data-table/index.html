@@ -9,8 +9,8 @@
     <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
     <!-- Use the title from a page's frontmatter if it has one -->
     <title>Komps</title>
-    <link href="/assets/site-ba6e263fcf6afacb752ba1a43acc42d0108b47e52db7a950aef5e9d1f38a4dd6.css" rel="stylesheet" />
-    <script src="/assets/site-b589e5cdb1e9004042d07b11ee3d1975f1bfaf2847aa18760a8180382bbdf21d.js"></script>
+    <link href="/assets/site-e5e0789de2347caf2a0c251cd0edaa42e64f953893219860a3d7332619785de3.css" rel="stylesheet" />
+    <script src="/assets/site-0071f3a60042b15fa875f78281693453d45445c9da78582ac37ccfe489c29fa4.js"></script>
 </head>
 <body>
     <div class="side-nav">
@@ -31,6 +31,9 @@
                 </a>
                 <a href="/modal" class="">
                     Modal
+                </a>
+                <a href="/tooltip" class="">
+                    Tooltip
                 </a>
         </div>
     </div>
@@ -218,7 +221,7 @@
 <span class="k">import</span> <span class="nx">KompElement</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./element.js</span><span class="dl">'</span><span class="p">;</span>
 
 <span class="kd">class</span> <span class="nx">DataTable</span> <span class="kd">extends</span> <span class="nx">KompElement</span> <span class="p">{</span>
-    <span class="kd">static</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">data</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">columns</span><span class="dl">'</span><span class="p">]</span>
+    <span class="kd">static</span> <span class="nx">assignableAttributes</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">data</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">columns</span><span class="dl">'</span><span class="p">]</span>
     <span class="nx">_columns</span> <span class="o">=</span> <span class="p">[]</span>
     
     <span class="kd">static</span> <span class="nx">style</span> <span class="o">=</span> <span class="s2">`
