@@ -61,12 +61,12 @@ ignore "/component.html"
 ignore "/example.html"
 
 helpers do
-  
-  def asset_path(*args)
-    path = super
-    path = "/komps" + path if build?
-    path
-  end
+  # Required if deploying to a subdir site like bemky.github.io/komps
+  # def asset_path(*args)
+  #   path = super
+  #   path = "/komps" + path if build?
+  #   path
+  # end
   
   def code(language=nil, content=nil, options={}, &block)
     unless content
