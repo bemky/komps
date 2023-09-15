@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+    <!-- Use the title from a page's frontmatter if it has one -->
+    <title>Komps</title>
+    <link href="/komps/assets/site-ba6e263fcf6afacb752ba1a43acc42d0108b47e52db7a950aef5e9d1f38a4dd6.css" rel="stylesheet" />
+    <script src="/komps/assets/site-b589e5cdb1e9004042d07b11ee3d1975f1bfaf2847aa18760a8180382bbdf21d.js"></script>
+</head>
+<body class="bg-purple-10 min-height-100-vh">
+    <div class="pad-2x"></div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelector('div').append(new DataTable({
+            class: 'rounded overflow-hidden',
+            data: [{
+                name: "Corey Seager",
+                team: "Texas Rangers",
+                ops: 1.023,
+                avg: 0.311,
+                positions: ["SS"]
+            }, {
+                name: "Marcus Semien",
+                team: "Texas Rangers",
+                ops: 0.823,
+                avg: 0.283,
+                positions: ["2B"]
+            }],
+            columns: {
+                name: {order: true},
+                team: {},
+                ops: [
+                    r => r.ops.toLocaleString().replace(/^0/, ''),
+                    {
+                        header: 'OPS',
+                        order: true,
+                    }
+                ]
+            }
+        }))
+    });
+</script>
+
+
+</body>
+</html>

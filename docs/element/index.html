@@ -9,8 +9,8 @@
     <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
     <!-- Use the title from a page's frontmatter if it has one -->
     <title>Komps</title>
-    <link href="/komps/assets/site-d202055143c6b46826099c340b5ce6c2b471164adc1d3603336f735e6930c2ef.css" rel="stylesheet" />
-    <script src="/komps/assets/site-970c40ca90cfc03ec65192a1f29a790c9fc68b51cac813bbc933354e682a5dc3.js"></script>
+    <link href="/komps/assets/site-ba6e263fcf6afacb752ba1a43acc42d0108b47e52db7a950aef5e9d1f38a4dd6.css" rel="stylesheet" />
+    <script src="/komps/assets/site-b589e5cdb1e9004042d07b11ee3d1975f1bfaf2847aa18760a8180382bbdf21d.js"></script>
 </head>
 <body>
     <div class="side-nav">
@@ -20,14 +20,17 @@
             </a>
         </div>
         <div class="uniformNav -vertical -gray flex-fill -active-green">
+                <a href="/data-table" class="">
+                    DataTable
+                </a>
                 <a href="/element" class="active">
-                    element
+                    Element
                 </a>
                 <a href="/floater" class="">
-                    floater
+                    Floater
                 </a>
                 <a href="/modal" class="">
-                    modal
+                    Modal
                 </a>
         </div>
     </div>
@@ -36,7 +39,7 @@
     
     <div class="">
         <h1 class="text-2x text-overflow-hidden text-nowrap">
-            Element
+            KompElement
         </h1>
     
         <div class="text-light text-lg">
@@ -55,6 +58,7 @@
     
         <div class="">
             <h2>Options</h2>
+                
                 <table class="uniformTable">
                     <tr>
                         <th></th>
@@ -77,6 +81,7 @@
         </div>
         <div class="">
             <h2>Extending</h2>
+                
                 <table class="uniformTable">
                     <tr>
                         <th></th>
@@ -179,6 +184,7 @@
         </div>
         <div class="">
             <h2>Events</h2>
+                
                 <table class="uniformTable">
                     <tr>
                         <th></th>
@@ -261,6 +267,7 @@
         </div>
         <div class="">
             <h2>Methods</h2>
+                
                 <table class="uniformTable">
                     <tr>
                         <th></th>
@@ -302,7 +309,9 @@
             <div class="text-white text-sm text-bold pad-h pad-v-1/4x">
                 SOURCE CODE
             </div>
-            <div class="highlight"><pre class=" javascript"><code><span class="kd">class</span> <span class="nx">KompElement</span> <span class="kd">extends</span> <span class="nx">HTMLElement</span> <span class="p">{</span>
+            <div class="highlight"><pre class=" javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">content</span><span class="p">,</span> <span class="nx">remove</span><span class="p">,</span> <span class="nx">trigger</span><span class="p">,</span> <span class="nx">setAttributes</span><span class="p">,</span> <span class="nx">HTML_ATTRIBUTES</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">dolla</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nx">KompElement</span> <span class="kd">extends</span> <span class="nx">HTMLElement</span> <span class="p">{</span>
     
     <span class="kd">static</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="kd">static</span> <span class="nx">style</span> <span class="o">=</span> <span class="s2">``</span>
@@ -312,14 +321,10 @@
     <span class="kd">constructor</span><span class="p">(</span><span class="nx">attrs</span><span class="o">=</span><span class="p">{})</span> <span class="p">{</span>
         <span class="k">super</span><span class="p">()</span>
         <span class="k">this</span><span class="p">.</span><span class="kd">constructor</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">key</span> <span class="o">=&gt;</span> <span class="p">{</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">attrs</span><span class="p">[</span><span class="nx">key</span><span class="p">])</span> <span class="p">{</span>
-                <span class="k">if</span> <span class="p">(</span><span class="nx">key</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">content</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="nx">content</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">attrs</span><span class="p">[</span><span class="nx">key</span><span class="p">])</span>
-                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                    <span class="k">this</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">attrs</span><span class="p">[</span><span class="nx">key</span><span class="p">])</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
+            <span class="k">this</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">attrs</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span>
+            <span class="k">delete</span> <span class="nx">attrs</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span>
         <span class="p">})</span>
+        <span class="nx">setAttributes</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">attrs</span><span class="p">)</span>
     <span class="p">}</span>
     
     <span class="nx">connected</span> <span class="p">()</span> <span class="p">{}</span>
