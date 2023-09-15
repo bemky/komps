@@ -4,17 +4,16 @@
     </a>
     <p align="center">
         Komps is a library of javascript style-less components and elements for building a UI. Komps is platform-agnostic, with each component is fully tree-shakeable by an bundler.
-        <a href="https://bemky.github.io/komps/">
+        <a href="https://komps.js.org/">
             Documentation
         </a>
     </p>
 </p>
-# komps
-
 
 
 ## Dependencies
 [Dolla](https://dollajs.com)
+[Floating UI](https://floating-ui.com/)
 
 
 ## Installation
@@ -23,7 +22,7 @@
 
 ## Usage
 
-Import only the methods you use.
+Import only the components you use.
 ```javascript
 import {Modal} from 'komps';
 
@@ -31,13 +30,11 @@ new Modal({content: "Hello World"});
 ```
 
 ## Documentation
-Checkout details about each method on [bemky.github.io/komps](https://bemky.github.io/komps/)
+Checkout details about each method on [komps.js.org](https://komps.js.org/)
 
 ## Development
 ### Testing
-    npm link # to make global reference
-    npm link komps # to link global reference
-    npm run test
+    TODO
 ### Documenation
 #### Develope
     cd docs-src
