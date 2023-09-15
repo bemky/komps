@@ -3,6 +3,7 @@ $uniform_configs: (
         pad: (
           3x: 3rem,
           4x: 4rem,
+          8x: 8rem,
         ),
         space: (
           3x: 3rem
@@ -153,4 +154,19 @@ komp-data-table {
             text-transform: uppercase;
         }
     }
+}
+
+.custom-transition-fade {
+    --transform: translateY(-10px);
+    &.-in, &.-out {
+        transition: transform 50ms, opacity 50ms;
+    }
+    &.-out, &.-in-start {
+        opacity: 0;
+        transform: var(--transform);
+    }
+    &.-top { --transform: translateY(-10px) }
+    &.-bottom { --transform: translateY(10px) }
+    &.-left { --transform: translateX(-10px) }
+    &.-right { --transform: translateX(10px) }
 }
