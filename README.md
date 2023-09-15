@@ -1,5 +1,5 @@
 <p align="center">
-    <a href="https://bemky.github.io/komps/" style="display:block; max-width:300px;">
+    <a href="https://komps.js.org" style="display:block; max-width:300px;">
         <img src="https://raw.githubusercontent.com/bemky/komps/master/docs-src/source/assets/images/logo.svg" width="300" alt="Dolla">
     </a>
     <p align="center">

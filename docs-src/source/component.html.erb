@@ -12,17 +12,10 @@
             <% end %>
         </h1>
     
-        <div class="text-light text-lg">
+        <div class="text-light text-xl">
             <%= markdown component["Description"] %>
         </div>
     </div>
-    
-    <% if component["Syntax"] %>
-    <div class="">
-        <h2>Syntax</h2>
-        <%= markdown(component["Syntax"]) %>
-    </div>
-    <% end %>
     
     <% if component["Example"] %>
     <div class="">
@@ -36,12 +29,19 @@
     </div>
     <% end %>
     
+    <% if component["Syntax"] %>
+    <div class="">
+        <h2>Syntax</h2>
+        <%= markdown(component["Syntax"]) %>
+    </div>
+    <% end %>
+    
     <% component.except(:name, :extends, :file_name, :params, :source, :example_url, "Description", "Example", "Syntax").each do |header, content| %>
         <div class="">
             <h2><%= header %></h2>
             <%
                 yaml = ""
-                content.gsub!(/^\s*\w+:.*/) do |match|
+                content.gsub!(/^\s*[\w\[\]\'\"]+:.*/) do |match|
                     yaml += match + "\n"
                     ""
                 end

@@ -26,8 +26,9 @@ module SourceHelpers
       name: file_name.gsub('-', '_').camelize
     }
     sections = content.split(/([^\n]+)\n(\-{2,})\n/)
+    
     sections.each_with_index do |part, i|
-      next unless part =~ /\-{2,}/
+      next unless part =~ /^\-{2,}/
       component_details[sections[i - 1]] = sections[i + 1]
     end
 
