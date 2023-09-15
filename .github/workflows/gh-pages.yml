@@ -13,7 +13,7 @@ jobs:
       - name: Build & Deploy to GitHub Pages
         with:
           SITE_LOCATION: docs-src
-          REMOTE_BRANCH: gh-pages
+          REMOTE_BRANCH: main
           BUILD_LOCATION: docs
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         uses: yurikoval/middleman-gh-pages-action@master
