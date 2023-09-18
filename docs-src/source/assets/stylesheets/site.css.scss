@@ -25,7 +25,10 @@ $uniform_configs: (
             "spectrum": true
         ),
         "midnight": #415190,
-        "dusk": #677395
+        "dusk": (
+            "color": #677395,
+            "spectrum": true
+        )
     )
 );
 
@@ -40,7 +43,7 @@ html, body{
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;;
     line-height: 1.5;
     font-size: 14px;
-    color: #20327c;
+    color: color('dusk-60');
     background: lighten(color('green-10'), 8);
 }
 
@@ -72,7 +75,7 @@ html, body{
 }
 
 h1 {
-    color: color('gray-90');
+    color: color('dusk-80');
 }
 
 h2 {
@@ -98,7 +101,7 @@ h2 {
         a {
             padding-left: 1em;
             border-left-width: 0.5em;
-            color: color('dusk');
+            color: color('dusk-60');
         }
         .active {
             background-color: rgba(var(--active-color), 0.15);
@@ -144,9 +147,11 @@ pre {
     }
 }
 
-komp-data-table {
+komp-data-table,
+komp-spreadsheet {
     gap: 1px;
-    komp-data-table-cell {
+    komp-data-table-cell,
+    komp-spreadsheet-cell {
         background: white;
         padding: 0.5em 1em;
         &.-header {
@@ -169,4 +174,15 @@ komp-data-table {
     &.-bottom { --transform: translateY(10px) }
     &.-left { --transform: translateX(-10px) }
     &.-right { --transform: translateX(10px) }
+}
+
+.uniformButton {
+    svg {
+        transition: transform 100ms;
+    }
+    &.-active {
+        svg {
+            transform: rotate(180deg);
+        }
+    }
 }
