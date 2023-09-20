@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+    <!-- Use the title from a page's frontmatter if it has one -->
+    <title>Komps</title>
+    <link href="/assets/site-0dff4924a9cf886602cd1c6d87bfd1388c20e7bad62a3edefa919214d6742039.css" rel="stylesheet" />
+    <script src="/assets/site-34dcfa7c3ee36c18d93a83e3f04dd652645654d3fb091b596bbf94a61a9ef1cc.js"></script>
+</head>
+<body class="bg-purple-10 min-height-100-vh">
+    <div class="pad-v-2x height-300-px bg-purple-10 flex justify-content-center align-start rounded-lg">
+<button id="example" class="flex align-center gap-1/2x uniformButton">
+    Click Me
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
+</button>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const dropdown = new Dropdown({
+        anchor: '#example',
+        class: 'custom-transition-fade -away bg-white shadow-lg rounded-bottom-lg z-99',
+        content: `
+            <div class="uniformNav -vertical">
+                <a>Home</a>
+                <a>Players</a>
+                <a>Teams</a>
+                <a>Leagues</a>
+            </div>
+        `
+    })
+    dropdown.addEventListener('afterConnect', () => {
+        dropdown.style.minWidth = dropdown.anchor.offsetWidth + "px"
+    })
+    document.body.append(dropdown)
+})
+</script>
+</div>
+
+
+</body>
+</html>

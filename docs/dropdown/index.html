@@ -1,0 +1,203 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+    <!-- Use the title from a page's frontmatter if it has one -->
+    <title>Komps</title>
+    <link href="/assets/site-0dff4924a9cf886602cd1c6d87bfd1388c20e7bad62a3edefa919214d6742039.css" rel="stylesheet" />
+    <script src="/assets/site-34dcfa7c3ee36c18d93a83e3f04dd652645654d3fb091b596bbf94a61a9ef1cc.js"></script>
+</head>
+<body>
+    <div class="side-nav">
+        <div class="pad-2x text-center">
+            <a href="/" class="reset">
+                <img class="width-3/4 height-auto inline-block" src="/assets/logo-7b1623d8d9db3b0d0d79dd30b2a5c2a0f0be2b945944f75d18e3be1e67177443.svg" />
+            </a>
+        </div>
+        <div class="uniformNav -vertical -gray flex-fill -active-green">
+            <a href="/" class="">
+                Usage
+            </a>
+            <a href="/element" class="">
+                Base Element
+            </a>
+            <div class="height-0 width-full">
+                <div class="border-green-80 border-opacity-30 border-bottom border-1px width-full"></div>
+            </div>
+                <a href="/data-table" class="">
+                    DataTable
+                </a>
+                <a href="/dropdown" class="active">
+                    Dropdown
+                </a>
+                <a href="/floater" class="">
+                    Floater
+                </a>
+                <a href="/modal" class="">
+                    Modal
+                </a>
+                <a href="/tooltip" class="">
+                    Tooltip
+                </a>
+        </div>
+    </div>
+    <div class="main-content overflow-hidden">
+        <div class="section space-v-3x">
+    
+    <div class="">
+        <h1 class="text-2x text-overflow-hidden text-nowrap">
+            Dropdown
+            <span class="text-light text-italic text-gray-50 text-xl">
+                (extends Tooltip)
+            </span>
+        </h1>
+    
+        <div class="text-light text-xl">
+            <p>Assign a floater panel to a <a href="https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent">MouseEvent</a></p>
+
+        </div>
+    </div>
+    
+    <div class="">
+        <h2>Example</h2>
+        <script>
+            function resizeIframe(obj) {
+                obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
+            }
+        </script>
+        <iframe class="overflow-hidden rounded-lg" width="100%" height="10px" src="/dropdown/example/index.html" frameborder="0" scrolling="no" onload="resizeIframe(this)"></iframe>
+    </div>
+    
+    <div class="">
+        <h2>Syntax</h2>
+        <div class="highlight"><pre class=" javascript"><code><span class="k">new</span> <span class="nx">Dropdown</span><span class="p">({</span>
+    <span class="na">content</span><span class="p">:</span> <span class="nx">createElement</span><span class="p">({</span>
+        <span class="na">class</span><span class="p">:</span> <span class="dl">'</span><span class="s1">bg-white pad</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">content</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Hello World</span><span class="dl">'</span>
+    <span class="p">}),</span>
+    <span class="na">anchor</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#hi-button</span><span class="dl">'</span>
+<span class="p">})</span>
+</code></pre></div>
+<p>HTML</p>
+<div class="highlight"><pre class=" html"><code><span class="nt">&lt;komp-dropdown</span> <span class="na">anchor=</span><span class="s">"#hi-button"</span><span class="nt">&gt;</span>
+    Hello World
+<span class="nt">&lt;/komp-dropdown&gt;</span>
+</code></pre></div>
+
+    </div>
+    
+        <div class="">
+            <h2>Options</h2>
+                
+                <table class="uniformTable">
+                    <tr>
+                        <th></th>
+                            <th>types</th>
+                            <th>default</th>
+                            <th>description</th>
+                    </tr>
+                        <tr>
+                            <td>
+                                <code>mouseevent</code>
+                            </td>
+                                <td>
+                                        String
+                                </td>
+                                <td>
+                                        click
+                                </td>
+                                <td>
+                                        <p>MouseEvent that toggles floater</p>
+
+                                </td>
+                        </tr>
+                </table>
+        </div>
+    
+    <button class="js-toggle-source reset text-sm text-bold text-gray-30 hover:text-blue" rel="#source-for-dropdown">
+        SHOW SOURCE
+    </button>
+    <div class="source hide" id="source-for-dropdown">
+        <div class="border border-blue bg-blue rounded-xl overflow-hidden">
+            <div class="text-white text-sm text-bold pad-h pad-v-1/4x">
+                SOURCE CODE
+            </div>
+            <div class="highlight"><pre class=" javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">createElement</span><span class="p">,</span> <span class="nx">remove</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">dolla</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">Tooltip</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./tooltip.js</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nx">Dropdown</span> <span class="kd">extends</span> <span class="nx">Tooltip</span> <span class="p">{</span>
+    
+    <span class="kd">static</span> <span class="nx">assignableAttributes</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="na">mouseevent</span><span class="p">:</span> <span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">placement</span><span class="p">:</span> <span class="dl">'</span><span class="s1">bottom</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">arrow</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">}</span>
+    
+    <span class="nx">connected</span> <span class="p">(...</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">addEventListenerFor</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">getRootNode</span><span class="p">(),</span> <span class="dl">'</span><span class="s1">focusin</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">checkFocus</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">))</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">addEventListenerFor</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">getRootNode</span><span class="p">(),</span> <span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">checkFocus</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">))</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">addEventListenerFor</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">getRootNode</span><span class="p">(),</span> <span class="dl">'</span><span class="s1">keyup</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">checkEscape</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">))</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">mouseenter</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">clearHide</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">))</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">mouseevent</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">mouseenter</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">mouseleave</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">hide</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">))</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="k">super</span><span class="p">.</span><span class="nx">connected</span><span class="p">(...</span><span class="nx">args</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="nx">show</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">super</span><span class="p">.</span><span class="nx">show</span><span class="p">()</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">anchor</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">-active</span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="nx">hide</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">super</span><span class="p">.</span><span class="nx">hide</span><span class="p">()</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">anchor</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="dl">'</span><span class="s1">-active</span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="nx">anchorChanged</span> <span class="p">(</span><span class="nx">was</span><span class="p">,</span> <span class="nx">now</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">mouseevent</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">mouseenter</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">super</span><span class="p">.</span><span class="nx">anchorChanged</span><span class="p">(</span><span class="nx">was</span><span class="p">,</span> <span class="nx">now</span><span class="p">)</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">was</span> <span class="o">&amp;&amp;</span> <span class="nx">was</span> <span class="k">instanceof</span> <span class="nx">HTMLElement</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">was</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">mouseevent</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">toggle</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">))</span>
+            <span class="p">}</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">now</span> <span class="o">&amp;&amp;</span> <span class="nx">now</span> <span class="k">instanceof</span> <span class="nx">HTMLElement</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">now</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">mouseevent</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">toggle</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">))</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="nx">checkFocus</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">defaultPrevented</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span> <span class="o">==</span> <span class="k">this</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span> <span class="o">==</span> <span class="k">this</span><span class="p">.</span><span class="nx">anchor</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">contains</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">))</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">anchor</span><span class="p">.</span><span class="nx">contains</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">))</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">hide</span><span class="p">()</span>
+    <span class="p">}</span>
+    
+    <span class="nx">checkEscape</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">which</span> <span class="o">!=</span> <span class="mi">27</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">hide</span><span class="p">();</span>
+    <span class="p">}</span>
+    
+    <span class="nx">clearHide</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_hideTimeout</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">clearTimeout</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_hideTimeout</span><span class="p">)</span>
+            <span class="k">delete</span> <span class="k">this</span><span class="p">.</span><span class="nx">_hideTimeout</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">customElements</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="dl">'</span><span class="s1">komp-dropdown</span><span class="dl">'</span><span class="p">,</span> <span class="nx">Dropdown</span><span class="p">);</span></code></pre></div>
+        </div>
+    </div>
+</div>
+    </div>
+</body>
+</html>

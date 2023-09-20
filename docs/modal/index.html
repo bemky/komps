@@ -9,8 +9,8 @@
     <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
     <!-- Use the title from a page's frontmatter if it has one -->
     <title>Komps</title>
-    <link href="/assets/site-e5e0789de2347caf2a0c251cd0edaa42e64f953893219860a3d7332619785de3.css" rel="stylesheet" />
-    <script src="/assets/site-0071f3a60042b15fa875f78281693453d45445c9da78582ac37ccfe489c29fa4.js"></script>
+    <link href="/assets/site-0dff4924a9cf886602cd1c6d87bfd1388c20e7bad62a3edefa919214d6742039.css" rel="stylesheet" />
+    <script src="/assets/site-34dcfa7c3ee36c18d93a83e3f04dd652645654d3fb091b596bbf94a61a9ef1cc.js"></script>
 </head>
 <body>
     <div class="side-nav">
@@ -20,11 +20,20 @@
             </a>
         </div>
         <div class="uniformNav -vertical -gray flex-fill -active-green">
+            <a href="/" class="">
+                Usage
+            </a>
+            <a href="/element" class="">
+                Base Element
+            </a>
+            <div class="height-0 width-full">
+                <div class="border-green-80 border-opacity-30 border-bottom border-1px width-full"></div>
+            </div>
                 <a href="/data-table" class="">
                     DataTable
                 </a>
-                <a href="/element" class="">
-                    Element
+                <a href="/dropdown" class="">
+                    Dropdown
                 </a>
                 <a href="/floater" class="">
                     Floater
@@ -48,10 +57,20 @@
             </span>
         </h1>
     
-        <div class="text-light text-lg">
+        <div class="text-light text-xl">
             <p>Render any content into a modal</p>
 
         </div>
+    </div>
+    
+    <div class="">
+        <h2>Example</h2>
+        <script>
+            function resizeIframe(obj) {
+                obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
+            }
+        </script>
+        <iframe class="overflow-hidden rounded-lg" width="100%" height="10px" src="/modal/example/index.html" frameborder="0" scrolling="no" onload="resizeIframe(this)"></iframe>
     </div>
     
     <div class="">
@@ -63,16 +82,6 @@
 <div class="highlight"><pre class=" javascript"><code><span class="k">new</span> <span class="nx">Modal</span><span class="p">({</span><span class="na">content</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Hello World</span><span class="dl">"</span><span class="p">})</span>
 </code></pre></div>
 
-    </div>
-    
-    <div class="">
-        <h2>Example</h2>
-        <script>
-            function resizeIframe(obj) {
-                obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
-            }
-        </script>
-        <iframe class="overflow-hidden rounded-lg" width="100%" height="10px" src="/modal/example/index.html" frameborder="0" scrolling="no" onload="resizeIframe(this)"></iframe>
     </div>
     
         <div class="">

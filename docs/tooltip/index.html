@@ -9,8 +9,8 @@
     <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
     <!-- Use the title from a page's frontmatter if it has one -->
     <title>Komps</title>
-    <link href="/assets/site-e5e0789de2347caf2a0c251cd0edaa42e64f953893219860a3d7332619785de3.css" rel="stylesheet" />
-    <script src="/assets/site-0071f3a60042b15fa875f78281693453d45445c9da78582ac37ccfe489c29fa4.js"></script>
+    <link href="/assets/site-0dff4924a9cf886602cd1c6d87bfd1388c20e7bad62a3edefa919214d6742039.css" rel="stylesheet" />
+    <script src="/assets/site-34dcfa7c3ee36c18d93a83e3f04dd652645654d3fb091b596bbf94a61a9ef1cc.js"></script>
 </head>
 <body>
     <div class="side-nav">
@@ -20,11 +20,20 @@
             </a>
         </div>
         <div class="uniformNav -vertical -gray flex-fill -active-green">
+            <a href="/" class="">
+                Usage
+            </a>
+            <a href="/element" class="">
+                Base Element
+            </a>
+            <div class="height-0 width-full">
+                <div class="border-green-80 border-opacity-30 border-bottom border-1px width-full"></div>
+            </div>
                 <a href="/data-table" class="">
                     DataTable
                 </a>
-                <a href="/element" class="">
-                    Element
+                <a href="/dropdown" class="">
+                    Dropdown
                 </a>
                 <a href="/floater" class="">
                     Floater
@@ -48,10 +57,20 @@
             </span>
         </h1>
     
-        <div class="text-light text-lg">
+        <div class="text-light text-xl">
             <p>Assign a message to show on hover.</p>
 
         </div>
+    </div>
+    
+    <div class="">
+        <h2>Example</h2>
+        <script>
+            function resizeIframe(obj) {
+                obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
+            }
+        </script>
+        <iframe class="overflow-hidden rounded-lg" width="100%" height="10px" src="/tooltip/example/index.html" frameborder="0" scrolling="no" onload="resizeIframe(this)"></iframe>
     </div>
     
     <div class="">
@@ -69,21 +88,6 @@
 
     </div>
     
-    <div class="">
-        <h2>Example</h2>
-        <script>
-            function resizeIframe(obj) {
-                obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
-            }
-        </script>
-        <iframe class="overflow-hidden rounded-lg" width="100%" height="10px" src="/tooltip/example/index.html" frameborder="0" scrolling="no" onload="resizeIframe(this)"></iframe>
-    </div>
-    
-        <div class="">
-            <h2>----</h2>
-                <p>Options</p>
-
-        </div>
         <div class="">
             <h2>Options</h2>
                 
@@ -123,18 +127,34 @@
 
     <span class="kd">static</span> <span class="nx">watch</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">anchor</span><span class="dl">'</span><span class="p">]</span>
     
-    <span class="nx">autoPlacement</span> <span class="o">=</span> <span class="kc">false</span>
-    <span class="nx">flip</span> <span class="o">=</span> <span class="kc">true</span>
-    <span class="nx">shift</span> <span class="o">=</span> <span class="kc">true</span>
-    <span class="nx">strategy</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">absolute</span><span class="dl">'</span>
-    <span class="nx">placement</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">top</span><span class="dl">'</span>
-    <span class="nx">arrow</span> <span class="o">=</span> <span class="kc">true</span>
+    <span class="kd">static</span> <span class="nx">assignableAttributes</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="na">autoPlacement</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="na">flip</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">shift</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">strategy</span><span class="p">:</span> <span class="dl">'</span><span class="s1">absolute</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">placement</span><span class="p">:</span> <span class="dl">'</span><span class="s1">top</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">arrow</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">}</span>
+    
+    <span class="nx">_showing</span> <span class="o">=</span> <span class="kc">false</span>
+    
+    <span class="kd">constructor</span> <span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="p">...</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">super</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="p">...</span><span class="nx">args</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">anchor</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">anchorChanged</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">anchor</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">anchor</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">options</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">needsFirstRemoval</span> <span class="o">=</span> <span class="kc">true</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
     
     <span class="nx">instantiate</span> <span class="p">()</span> <span class="p">{</span>
         <span class="k">super</span><span class="p">.</span><span class="nx">instantiate</span><span class="p">();</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">container</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">parentElement</span><span class="p">;</span>
-        <span class="nx">remove</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
-        <span class="k">return</span> <span class="kc">false</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_showing</span> <span class="o">==</span> <span class="kc">false</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">remove</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+            <span class="k">return</span> <span class="kc">false</span>
+        <span class="p">}</span>
     <span class="p">}</span>
     
     <span class="nx">anchorChanged</span> <span class="p">(</span><span class="nx">was</span><span class="p">,</span> <span class="nx">now</span><span class="p">)</span> <span class="p">{</span>
@@ -149,15 +169,26 @@
     <span class="p">}</span>
     
     <span class="nx">show</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">parentElement</span><span class="p">)</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">container</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="k">this</span><span class="p">)</span> <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">container</span><span class="p">)</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">container</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">anchor</span><span class="p">.</span><span class="nx">parentElement</span> <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">parentElement</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">_showing</span> <span class="o">=</span> <span class="kc">true</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">container</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">_showing</span> <span class="o">=</span> <span class="kc">false</span>
+        <span class="p">}</span>
     <span class="p">}</span>
     
     <span class="nx">hide</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">parentElement</span><span class="p">)</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">remove</span><span class="p">()</span> <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_hideTimeout</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">_hideTimeout</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">parentElement</span><span class="p">)</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">remove</span><span class="p">()</span> <span class="p">}</span>
+            <span class="k">delete</span> <span class="k">this</span><span class="p">.</span><span class="nx">_hideTimeout</span><span class="p">;</span>
+        <span class="p">},</span> <span class="k">this</span><span class="p">.</span><span class="nx">timeout</span><span class="p">)</span>
     <span class="p">}</span>
     
     <span class="nx">toggle</span> <span class="p">(</span><span class="nx">shouldHide</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">shouldHide</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span> <span class="nx">shouldHide</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">offsetParent</span> <span class="o">===</span> <span class="kc">undefined</span> <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">shouldHide</span> <span class="o">!==</span> <span class="dl">'</span><span class="s1">boolean</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">shouldHide</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">offsetParent</span> <span class="o">!==</span> <span class="kc">null</span>
+        <span class="p">}</span>
         <span class="k">this</span><span class="p">[</span><span class="nx">shouldHide</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">hide</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">show</span><span class="dl">'</span><span class="p">]()</span>
     <span class="p">}</span>
 
