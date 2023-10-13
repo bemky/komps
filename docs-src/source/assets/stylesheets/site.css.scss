@@ -159,6 +159,32 @@ komp-spreadsheet {
             text-transform: uppercase;
         }
     }
+    komp-data-table-row:first-of-type,
+    komp-spreadsheet-row:first-of-type {
+        komp-data-table-cell:first-of-type,
+        komp-spreadsheet-cell:first-of-type {
+            border-top-left-radius: 0.35em;
+        }
+        komp-data-table-cell:last-of-type,
+        komp-spreadsheet-cell:last-of-type {
+            border-top-right-radius: 0.35em;
+        }
+    }
+    
+    komp-data-table-row:last-of-type,
+    komp-spreadsheet-row:last-of-type {
+        komp-data-table-cell:first-of-type,
+        komp-spreadsheet-cell:first-of-type {
+            border-bottom-left-radius: 0.35em;
+        }
+        komp-data-table-cell:last-of-type,
+        komp-spreadsheet-cell:last-of-type {
+            border-bottom-right-radius: 0.35em;
+        }
+    }
+    komp-spreadsheet-cell.komp-header {
+        background: rgb(248,248,251);
+    }
 }
 
 .custom-transition-fade {
