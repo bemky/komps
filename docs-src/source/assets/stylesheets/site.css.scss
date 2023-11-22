@@ -152,15 +152,20 @@ komp-spreadsheet {
     gap: 1px;
     border-radius: 0.35em;
     komp-data-table-cell,
-    komp-spreadsheet-cell {
+    komp-spreadsheet-cell,
+    komp-spreadsheet-inputcell {
         background: white;
         padding: 0.5em 1em;
-        box-shadow: 0 0 0 1px color('purple-10');
         &.header {
             font-weight: bold;
             text-transform: uppercase;
             background: rgb(248,248,251);
         }
+    }
+
+    komp-data-table-cell,
+    komp-spreadsheet-cell {
+        box-shadow: 0 0 0 1px color('purple-10');
     }
 }
 
