@@ -7,13 +7,13 @@
             <%= component[:name] %>
             <% if extended_component %>
             <span class="text-light text-italic text-gray-50 text-xl">
-                (extends <%= extended_component[:name] %>)
+                (extends <%= link_to extended_component[:name], extended_component[:file_name], class: 'reset hover:text-underline' %>)
             </span>
             <% end %>
         </h1>
     
         <div class="text-light text-xl">
-            <%= markdown component["Description"] %>
+            <%= markdown component["Description"][:body] %>
         </div>
     </div>
     
@@ -32,36 +32,28 @@
     <% if component["Syntax"] %>
     <div class="">
         <h2>Syntax</h2>
-        <%= markdown(component["Syntax"]) %>
+        <%= markdown(component["Syntax"][:body]) %>
     </div>
     <% end %>
     
     <% component.except(:name, :extends, :file_name, :params, :source, :example_url, "Description", "Example", "Syntax").each do |header, content| %>
         <div class="">
             <h2><%= header %></h2>
-            <%
-                yaml = ""
-                content.gsub!(/^\s*[\w\[\]\'\"]+:.*/) do |match|
-                    yaml += match + "\n"
-                    ""
-                end
-            %>
-            <% if content.include?("<") %>
-                <%= content %>
+            <% if content[:body].include?("<") %>
+                <%= content[:body] %>
             <% else %>
-                <%= markdown(content).gsub(/\s\#(\w+)/, '<span class="uniformLabel -gray-50 -outline text-normal text-xs text-uppercase align-middle">\1</span>') %>
+                <%= markdown(content[:body]).gsub(/\s\#(\w+)/, '<span class="uniformLabel -gray-50 -outline text-normal text-xs text-uppercase align-middle">\1</span>') %>
             <% end %>
-            <% if yaml.present? %>
-                <% table_data = YAML.load(yaml) %>
-                <% headers = table_data.map {|k, v| v.keys}.flatten.uniq %>
-                <table class="uniformTable">
+            <% if content[:attributes].present? %>
+                <% headers = content[:attributes].map {|k, v| v.keys}.flatten.uniq %>
+                <table class="uniformTable border-gray-20">
                     <tr>
                         <th></th>
                         <% headers.each do |header| %>
                             <th><%= header %></th>
                         <% end %>
                     </tr>
-                    <% table_data.each do |key, row| %>
+                    <% content[:attributes].each do |key, row| %>
                         <tr>
                             <td>
                                 <code><%= key %></code>
