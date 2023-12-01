@@ -15,9 +15,15 @@ module SourceHelpers
   end
   
   def component(name)
+    if name == "HTMLElement"
+      return {
+        name: "HTMLElement",
+        file_name: "https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement"
+      }
+    end
     file = files.find{|x| x =~ /#{name}\.js$/}
     body = File.read(File.join(base, file))
-    content = body.match(/\/\*.*(?=\*\/)/m).to_s
+    content = body.match(/\/\*.*(?=^\*\/)/m).to_s
     source = body.split(/\*\//, 2).last
 
     file_name = file.gsub(/\.js$/, '')
@@ -30,6 +36,8 @@ module SourceHelpers
       if extended_class_path = source.match(/import[\s\{]+#{extended_class}[\s\}]+from\s+[\'\"]([\w\.\/\-]+)/).try(:[], 1)
         component_details[:extends] = extended_class_path.match(/(\w+).js$/).try(:[], 1)
         extended_component = component(component_details[:extends])
+      else
+        component_details[:extends] = extended_class
       end
     end
     
