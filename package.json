@@ -4,8 +4,7 @@
   "version": "0.0.2",
   "description": "Javascript components and elements for building a UI",
   "main": "lib/komps.js",
-  "scripts": {
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bemky/komps.git"
@@ -21,9 +20,8 @@
     "url": "https://github.com/bemky/komps/issues"
   },
   "homepage": "https://github.com/bemky/komps#readme",
-  "devDependencies": {},
   "dependencies": {
     "@floating-ui/dom": "^1.5.2",
-    "dolla": "^1.2.4"
+    "dolla": "^1.2.6"
   }
 }

@@ -149,13 +149,13 @@ pre {
 
 komp-data-table,
 komp-spreadsheet {
+    --cell-padding: 0.5em 1em;
     gap: 1px;
     border-radius: 0.35em;
     komp-data-table-cell,
     komp-spreadsheet-cell,
     komp-spreadsheet-inputcell {
         background: white;
-        padding: 0.5em 1em;
         &.header {
             font-weight: bold;
             text-transform: uppercase;
