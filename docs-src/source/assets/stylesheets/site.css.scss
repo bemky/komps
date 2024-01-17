@@ -200,3 +200,41 @@ komp-spreadsheet {
         }
     }
 }
+
+.animate {
+    animation-duration: 150ms;
+    animation-iteration-count: 1;
+    &.-in {
+        animation-name: fadein;
+    }
+    &.-out {
+        animation-name: fadeout;
+    }
+    --transform: translateY(-10px);
+    &.-top { --transform: translateY(-10px) }
+    &.-bottom { --transform: translateY(10px) }
+    &.-left { --transform: translateX(-10px) }
+    &.-right { --transform: translateX(10px) }
+}
+@keyframes fadein {
+    from {
+        opacity: 0;
+        transform: var(--transform);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+@keyframes fadeout {
+    from {
+        opacity: 1;
+        transform: none;
+    }
+
+    to {
+        opacity: 0;
+        transform: var(--transform);
+    }
+}
