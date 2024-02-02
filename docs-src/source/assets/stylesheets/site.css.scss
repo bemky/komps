@@ -238,3 +238,11 @@ komp-spreadsheet {
         transform: var(--transform);
     }
 }
+
+select.uniformInput, .uniformInputs select, .uniformInputs select {
+    background-color: white;
+}
+
+option[value="null"] {
+    font-style: italic;
+}
