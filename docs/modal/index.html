@@ -9,8 +9,8 @@
     <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
     <!-- Use the title from a page's frontmatter if it has one -->
     <title>Komps</title>
-    <link href="/assets/site-0dff4924a9cf886602cd1c6d87bfd1388c20e7bad62a3edefa919214d6742039.css" rel="stylesheet" />
-    <script src="/assets/site-34dcfa7c3ee36c18d93a83e3f04dd652645654d3fb091b596bbf94a61a9ef1cc.js"></script>
+    <link href="/assets/site-dcaa840662e8a88cf6833670c3e0abb477a0de8b7144d0029bb77a12403bf332.css" rel="stylesheet" />
+    <script src="/assets/site-2eaedaaee09f2b3c0157a0376ef81f9e249360cbaa2e7a37f832a2bb1879c67f.js"></script>
 </head>
 <body>
     <div class="side-nav">
@@ -29,17 +29,32 @@
             <div class="height-0 width-full">
                 <div class="border-green-80 border-opacity-30 border-bottom border-1px width-full"></div>
             </div>
+                <a href="/auto-grid" class="">
+                    AutoGrid
+                </a>
+                <a href="/content-area" class="">
+                    ContentArea
+                </a>
                 <a href="/data-table" class="">
                     DataTable
                 </a>
                 <a href="/dropdown" class="">
                     Dropdown
                 </a>
+                <a href="/dropzone" class="">
+                    Dropzone
+                </a>
                 <a href="/floater" class="">
                     Floater
                 </a>
+                <a href="/input" class="">
+                    Input
+                </a>
                 <a href="/modal" class="active">
                     Modal
+                </a>
+                <a href="/spreadsheet" class="">
+                    Spreadsheet
                 </a>
                 <a href="/tooltip" class="">
                     Tooltip
@@ -53,7 +68,7 @@
         <h1 class="text-2x text-overflow-hidden text-nowrap">
             Modal
             <span class="text-light text-italic text-gray-50 text-xl">
-                (extends KompElement)
+                (extends <a href="element" class="reset hover:text-underline">KompElement</a>)
             </span>
         </h1>
     
@@ -67,10 +82,10 @@
         <h2>Example</h2>
         <script>
             function resizeIframe(obj) {
-                obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
+                obj.style.minHeight = obj.contentWindow.document.documentElement.scrollHeight + 'px';
             }
         </script>
-        <iframe class="overflow-hidden rounded-lg" width="100%" height="10px" src="/modal/example/index.html" frameborder="0" scrolling="no" onload="resizeIframe(this)"></iframe>
+        <iframe class="overflow-hidden rounded-lg" width="100%" height="10px" src="/modal/example/index.html" frameborder="0" scrolling="no" onload="setTimeout(function () {resizeIframe(this)}.bind(this), 50)"></iframe>
     </div>
     
     <div class="">
@@ -87,7 +102,7 @@
         <div class="">
             <h2>Options</h2>
                 
-                <table class="uniformTable">
+                <table class="uniformTable border-gray-20">
                     <tr>
                         <th></th>
                             <th>types</th>
@@ -123,30 +138,63 @@
 <span class="k">import</span> <span class="nx">KompElement</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./element.js</span><span class="dl">'</span><span class="p">;</span>
 
 <span class="kd">class</span> <span class="nx">Modal</span> <span class="kd">extends</span> <span class="nx">KompElement</span> <span class="p">{</span>
+
+    <span class="kd">static</span> <span class="nx">tagName</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">komp-modal</span><span class="dl">"</span><span class="p">;</span>
     
-    <span class="kd">static</span> <span class="nx">style</span> <span class="o">=</span> <span class="s2">`
-        komp-modal-backdrop {
+    <span class="nx">connected</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">parentElement</span><span class="p">.</span><span class="nx">tagName</span> <span class="o">!=</span> <span class="s2">`</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">()}</span><span class="s2">-CONTAINER`</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kd">const</span> <span class="nx">container</span> <span class="o">=</span> <span class="nx">createElement</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">-container`</span><span class="p">)</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">backdrop</span> <span class="o">=</span> <span class="nx">createElement</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">-backdrop`</span><span class="p">,</span> <span class="p">{</span><span class="na">content</span><span class="p">:</span> <span class="nx">container</span><span class="p">})</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">backdrop</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="nx">e</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span> <span class="o">==</span> <span class="k">this</span><span class="p">.</span><span class="nx">backdrop</span> <span class="o">||</span> <span class="nx">e</span><span class="p">.</span><span class="nx">target</span> <span class="o">==</span> <span class="nx">container</span><span class="p">)</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">remove</span><span class="p">()</span> <span class="p">}</span>
+            <span class="p">})</span>
+            
+            <span class="k">this</span><span class="p">.</span><span class="nx">replaceWith</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">backdrop</span><span class="p">)</span>
+            <span class="nx">container</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+            <span class="nx">container</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">-close`</span><span class="p">,</span> <span class="p">{</span>
+                <span class="na">content</span><span class="p">:</span> <span class="nx">listenerElement</span><span class="p">({</span>
+                    <span class="na">content</span><span class="p">:</span> <span class="s2">`&lt;svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"&gt;&lt;line x1="18" y1="6" x2="6" y2="18"&gt;&lt;/line&gt;&lt;line x1="6" y1="6" x2="18" y2="18"&gt;&lt;/line&gt;&lt;/svg&gt;`</span>
+                <span class="p">},</span> <span class="nx">e</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                    <span class="k">this</span><span class="p">.</span><span class="nx">remove</span><span class="p">()</span>
+                <span class="p">})</span>
+            <span class="p">}))</span>
+        <span class="p">}</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">getRootNode</span><span class="p">().</span><span class="nx">body</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">overflow</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">hidden</span><span class="dl">'</span>
+    <span class="p">}</span>
+    
+    <span class="nx">remove</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">getRootNode</span><span class="p">().</span><span class="nx">body</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">overflow</span> <span class="o">=</span> <span class="dl">''</span>
+        <span class="nx">remove</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">backdrop</span><span class="p">)</span>
+        <span class="k">return</span> <span class="k">super</span><span class="p">.</span><span class="nx">remove</span><span class="p">()</span>
+    <span class="p">}</span>
+    
+    <span class="kd">static</span> <span class="nx">style</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="s2">`
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2"> {
+            max-width: 100%;
+        }
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">-backdrop {
             position: fixed;
             inset: 0;
             overflow: scroll;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: start;
             background: rgba(0,0,0, 0.6);
-            backdrop-filter: blur(4px); // Not supported for dialog::backdrop as of 2023-09-13
+            backdrop-filter: blur(4px); /* Not supported for dialog::backdrop as of 2023-09-13 */
         }
-        komp-modal-container {
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">-container {
+            max-width: 100%;
             display: flex;
             justify-content: center;
             align-items: stretch;
             padding: 2em;
         }
-        komp-modal-close {
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">-close {
             width: 0;
             position: relative;
             background: red;
         }
-        komp-modal-close button {
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">-close button {
             position: absolute;
             bottom: 100%;
             left: 0;
@@ -163,40 +211,12 @@
             cursor: pointer;
             opacity: 0.75;
         }
-        komp-modal-close button:hover {
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">-close button:hover {
             opacity: 1;
         }
-    `</span>
-        
-    <span class="nx">connected</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">parentElement</span><span class="p">.</span><span class="nx">tagName</span> <span class="o">!=</span> <span class="dl">"</span><span class="s2">KOMP-MODAL-CONTAINER</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
-            <span class="kd">const</span> <span class="nx">container</span> <span class="o">=</span> <span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">komp-modal-container</span><span class="dl">'</span><span class="p">)</span>
-            <span class="k">this</span><span class="p">.</span><span class="nx">backdrop</span> <span class="o">=</span> <span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">komp-modal-backdrop</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span><span class="na">content</span><span class="p">:</span> <span class="nx">container</span><span class="p">})</span>
-            <span class="k">this</span><span class="p">.</span><span class="nx">backdrop</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="nx">e</span> <span class="o">=&gt;</span> <span class="p">{</span>
-                <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span> <span class="o">==</span> <span class="k">this</span><span class="p">.</span><span class="nx">backdrop</span><span class="p">)</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">remove</span><span class="p">()</span> <span class="p">}</span>
-            <span class="p">})</span>
-            
-            <span class="k">this</span><span class="p">.</span><span class="nx">replaceWith</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">backdrop</span><span class="p">)</span>
-            <span class="nx">container</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
-            <span class="nx">container</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">komp-modal-close</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
-                <span class="na">content</span><span class="p">:</span> <span class="nx">listenerElement</span><span class="p">({</span>
-                    <span class="na">content</span><span class="p">:</span> <span class="s2">`&lt;svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"&gt;&lt;line x1="18" y1="6" x2="6" y2="18"&gt;&lt;/line&gt;&lt;line x1="6" y1="6" x2="18" y2="18"&gt;&lt;/line&gt;&lt;/svg&gt;`</span>
-                <span class="p">},</span> <span class="nx">e</span> <span class="o">=&gt;</span> <span class="p">{</span>
-                    <span class="k">this</span><span class="p">.</span><span class="nx">remove</span><span class="p">()</span>
-                <span class="p">})</span>
-            <span class="p">}))</span>
-        <span class="p">}</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">getRootNode</span><span class="p">().</span><span class="nx">body</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">overflow</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">hidden</span><span class="dl">'</span>
-    <span class="p">}</span>
-    
-    <span class="nx">remove</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="k">super</span><span class="p">.</span><span class="nx">remove</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-            <span class="k">this</span><span class="p">.</span><span class="nx">getRootNode</span><span class="p">().</span><span class="nx">body</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">overflow</span> <span class="o">=</span> <span class="dl">''</span>
-            <span class="nx">remove</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">backdrop</span><span class="p">)</span>
-        <span class="p">})</span>
-    <span class="p">}</span>
+    `</span><span class="p">}</span>
 <span class="p">}</span>
-<span class="nb">window</span><span class="p">.</span><span class="nx">customElements</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="dl">'</span><span class="s1">komp-modal</span><span class="dl">'</span><span class="p">,</span> <span class="nx">Modal</span><span class="p">);</span></code></pre></div>
+<span class="nb">window</span><span class="p">.</span><span class="nx">customElements</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="nx">Modal</span><span class="p">.</span><span class="nx">tagName</span><span class="p">,</span> <span class="nx">Modal</span><span class="p">);</span></code></pre></div>
         </div>
     </div>
 </div>

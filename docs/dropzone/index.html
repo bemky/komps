@@ -1,0 +1,511 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+    <!-- Use the title from a page's frontmatter if it has one -->
+    <title>Komps</title>
+    <link href="/assets/site-dcaa840662e8a88cf6833670c3e0abb477a0de8b7144d0029bb77a12403bf332.css" rel="stylesheet" />
+    <script src="/assets/site-2eaedaaee09f2b3c0157a0376ef81f9e249360cbaa2e7a37f832a2bb1879c67f.js"></script>
+</head>
+<body>
+    <div class="side-nav">
+        <div class="pad-2x text-center">
+            <a href="/" class="reset">
+                <img class="width-3/4 height-auto inline-block" src="/assets/logo-7b1623d8d9db3b0d0d79dd30b2a5c2a0f0be2b945944f75d18e3be1e67177443.svg" />
+            </a>
+        </div>
+        <div class="uniformNav -vertical -gray flex-fill -active-green">
+            <a href="/" class="">
+                Usage
+            </a>
+            <a href="/element" class="">
+                Base Element
+            </a>
+            <div class="height-0 width-full">
+                <div class="border-green-80 border-opacity-30 border-bottom border-1px width-full"></div>
+            </div>
+                <a href="/auto-grid" class="">
+                    AutoGrid
+                </a>
+                <a href="/content-area" class="">
+                    ContentArea
+                </a>
+                <a href="/data-table" class="">
+                    DataTable
+                </a>
+                <a href="/dropdown" class="">
+                    Dropdown
+                </a>
+                <a href="/dropzone" class="active">
+                    Dropzone
+                </a>
+                <a href="/floater" class="">
+                    Floater
+                </a>
+                <a href="/input" class="">
+                    Input
+                </a>
+                <a href="/modal" class="">
+                    Modal
+                </a>
+                <a href="/spreadsheet" class="">
+                    Spreadsheet
+                </a>
+                <a href="/tooltip" class="">
+                    Tooltip
+                </a>
+        </div>
+    </div>
+    <div class="main-content overflow-hidden">
+        <div class="section space-v-3x">
+    
+    <div class="">
+        <h1 class="text-2x text-overflow-hidden text-nowrap">
+            Dropzone
+            <span class="text-light text-italic text-gray-50 text-xl">
+                (extends <a href="element" class="reset hover:text-underline">KompElement</a>)
+            </span>
+        </h1>
+    
+        <div class="text-light text-xl">
+            <p>A container that handles drag/drop events</p>
+
+        </div>
+    </div>
+    
+    <div class="">
+        <h2>Example</h2>
+        <script>
+            function resizeIframe(obj) {
+                obj.style.minHeight = obj.contentWindow.document.documentElement.scrollHeight + 'px';
+            }
+        </script>
+        <iframe class="overflow-hidden rounded-lg" width="100%" height="10px" src="/dropzone/example/index.html" frameborder="0" scrolling="no" onload="setTimeout(function () {resizeIframe(this)}.bind(this), 50)"></iframe>
+    </div>
+    
+    
+        <div class="">
+            <h2>Options</h2>
+                
+                <table class="uniformTable border-gray-20">
+                    <tr>
+                        <th></th>
+                            <th>types</th>
+                            <th>description</th>
+                            <th>default</th>
+                    </tr>
+                        <tr>
+                            <td>
+                                <code>content</code>
+                            </td>
+                                <td>
+                                        String, HTMLElement, Array, Object
+                                </td>
+                                <td>
+                                        <p>content to append to element. Passed to <a href="https://dollajs.com/#content">Dolla's <code>content</code></a></p>
+
+                                </td>
+                                <td>
+                                        
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>overlay</code>
+                            </td>
+                                <td>
+                                        Function, HTMLElement, Object
+                                </td>
+                                <td>
+                                        <p>layer to render over dropzone when drag happens on window</p>
+
+                                </td>
+                                <td>
+                                        Drag Here
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>onFileDrop</code>
+                            </td>
+                                <td>
+                                        Function(`File`)
+                                </td>
+                                <td>
+                                        <p>callback for drop action</p>
+
+                                </td>
+                                <td>
+                                        
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>enabled</code>
+                            </td>
+                                <td>
+                                        Boolean
+                                </td>
+                                <td>
+                                        <p>setup events</p>
+
+                                </td>
+                                <td>
+                                        true
+                                </td>
+                        </tr>
+                </table>
+        </div>
+        <div class="">
+            <h2>Methods</h2>
+                
+                <table class="uniformTable border-gray-20">
+                    <tr>
+                        <th></th>
+                            <th>arguments</th>
+                            <th>description</th>
+                    </tr>
+                        <tr>
+                            <td>
+                                <code>trigger</code>
+                            </td>
+                                <td>
+                                        eventName:string, ...args
+                                </td>
+                                <td>
+                                        <p>triggers an event this element passes args</p>
+
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>addEventListenerFor</code>
+                            </td>
+                                <td>
+                                        element:HTMLElement, eventType:string, ...args
+                                </td>
+                                <td>
+                                        <p>calls callback when eventType is triggered on element, enables component to tear down listener when disconnected.</p>
+
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>changed</code>
+                            </td>
+                                <td>
+                                        attribute, was, now
+                                </td>
+                                <td>
+                                        <p>called every time an attribute of the element changes. Must include attribute in <code>static watch = ['foo']</code></p>
+
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>[attribute]Changed</code>
+                            </td>
+                                <td>
+                                        was, now
+                                </td>
+                                <td>
+                                        <p>called every time <code>attribute</code> of the element changes. Must include attribute in <code>static watch = ['foo']</code></p>
+
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>enabled</code>
+                            </td>
+                                <td>
+                                        none
+                                </td>
+                                <td>
+                                        <p>sets up events</p>
+
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>disabled</code>
+                            </td>
+                                <td>
+                                        none
+                                </td>
+                                <td>
+                                        <p>tears down events</p>
+
+                                </td>
+                        </tr>
+                </table>
+        </div>
+        <div class="">
+            <h2>Events</h2>
+                
+                <table class="uniformTable border-gray-20">
+                    <tr>
+                        <th></th>
+                            <th>arguments</th>
+                            <th>description</th>
+                    </tr>
+                        <tr>
+                            <td>
+                                <code>beforeRemove</code>
+                            </td>
+                                <td>
+                                        []
+                                </td>
+                                <td>
+                                        <p>called before element is removed</p>
+
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>afterRemove</code>
+                            </td>
+                                <td>
+                                        []
+                                </td>
+                                <td>
+                                        <p>called after element is removed</p>
+
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>beforeConnect</code>
+                            </td>
+                                <td>
+                                        []
+                                </td>
+                                <td>
+                                        <p>called before element is connected</p>
+
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>afterConnect</code>
+                            </td>
+                                <td>
+                                        []
+                                </td>
+                                <td>
+                                        <p>called before element is connected</p>
+
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>beforeDisconnect</code>
+                            </td>
+                                <td>
+                                        []
+                                </td>
+                                <td>
+                                        <p>called before element is disconnected</p>
+
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>afterDisconnect</code>
+                            </td>
+                                <td>
+                                        []
+                                </td>
+                                <td>
+                                        <p>called before element is disconnected</p>
+
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>filedrop</code>
+                            </td>
+                                <td>
+                                        File
+                                </td>
+                                <td>
+                                        <p>called in <code>onDrop</code> for each file dropped</p>
+
+                                </td>
+                        </tr>
+                </table>
+        </div>
+    
+    <button class="js-toggle-source reset text-sm text-bold text-gray-30 hover:text-blue" rel="#source-for-dropzone">
+        SHOW SOURCE
+    </button>
+    <div class="source hide" id="source-for-dropzone">
+        <div class="border border-blue bg-blue rounded-xl overflow-hidden">
+            <div class="text-white text-sm text-bold pad-h pad-v-1/4x">
+                SOURCE CODE
+            </div>
+            <div class="highlight"><pre class=" javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">css</span><span class="p">,</span> <span class="nx">createElement</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">dolla</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">KompElement</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./element.js</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nx">Dropzone</span> <span class="kd">extends</span> <span class="nx">KompElement</span> <span class="p">{</span>
+    <span class="kd">static</span> <span class="nx">tagName</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">komp-dropzone</span><span class="dl">"</span>
+    
+    <span class="kd">static</span> <span class="nx">assignableAttributes</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="na">enabled</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">onFileDrop</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="na">overlay</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">content</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Drag Here</span><span class="dl">'</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="kd">static</span> <span class="nx">bindMethods</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">windowDragEnter</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">windowDragLeave</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">windowDrop</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">drop</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">dragOver</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">dragEnter</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">dragLeave</span><span class="dl">'</span><span class="p">]</span>
+    
+    <span class="kd">constructor</span> <span class="p">(...</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">super</span><span class="p">(...</span><span class="nx">args</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="k">this</span><span class="p">.</span><span class="nx">overlay</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">object</span><span class="dl">"</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">overlay</span> <span class="k">instanceof</span> <span class="nx">HTMLElement</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">overlay</span> <span class="o">=</span> <span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">komp-dropzone-overlay</span><span class="dl">'</span><span class="p">,</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">({},</span> <span class="k">this</span><span class="p">.</span><span class="kd">constructor</span><span class="p">.</span><span class="nx">assignableAttributes</span><span class="p">.</span><span class="nx">overlay</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">overlay</span><span class="p">))</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="nx">addEventListeners</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">getRootNode</span><span class="p">())</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">getRootNode</span><span class="p">().</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">dragenter</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">windowDragEnter</span><span class="p">);</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">getRootNode</span><span class="p">().</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">dragleave</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">windowDragLeave</span><span class="p">);</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">getRootNode</span><span class="p">().</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">drop</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">windowDrop</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">drop</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">drop</span><span class="p">)</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">dragover</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">dragOver</span><span class="p">)</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">dragenter</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">dragEnter</span><span class="p">)</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">dragleave</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">dragLeave</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="nx">removeEventListeners</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">getRootNode</span><span class="p">())</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">getRootNode</span><span class="p">().</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">dragenter</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">windowDragEnter</span><span class="p">);</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">getRootNode</span><span class="p">().</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">dragleave</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">windowDragLeave</span><span class="p">);</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">getRootNode</span><span class="p">().</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">drop</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">windowDrop</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">drop</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">drop</span><span class="p">)</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">dragover</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">dragOver</span><span class="p">)</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">dragenter</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">dragEnter</span><span class="p">)</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">dragleave</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">dragLeave</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="nx">connected</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">css</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="dl">'</span><span class="s1">position</span><span class="dl">'</span><span class="p">)</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">static</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">position</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">relative</span><span class="dl">'</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">enabled</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">addEventListeners</span><span class="p">()</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="nx">disconnected</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">enabled</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">removeEventListeners</span><span class="p">()</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="nx">enable</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">enabled</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">enabled</span> <span class="o">=</span> <span class="kc">true</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">addEventListeners</span><span class="p">()</span>
+    <span class="p">}</span>
+    
+    <span class="nx">disable</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">enabled</span> <span class="o">==</span> <span class="kc">false</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">enabled</span> <span class="o">=</span> <span class="kc">false</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">removeEventListeners</span><span class="p">()</span>
+    <span class="p">}</span>
+    
+    <span class="cm">/*
+        This Events
+    */</span>
+    
+    <span class="nx">drop</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span> <span class="o">==</span> <span class="k">this</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">contains</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">))</span> <span class="p">{</span>
+            <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+            <span class="p">([...</span><span class="nx">e</span><span class="p">.</span><span class="nx">dataTransfer</span><span class="p">.</span><span class="nx">files</span><span class="p">]).</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">file</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">onFileDrop</span><span class="p">)</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">onFileDrop</span><span class="p">(</span><span class="nx">file</span><span class="p">)</span> <span class="p">}</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="dl">'</span><span class="s1">filedrop</span><span class="dl">'</span><span class="p">,</span> <span class="nx">file</span><span class="p">)</span>
+            <span class="p">});</span>
+        <span class="p">}</span>
+        
+    <span class="p">}</span>
+    
+    <span class="nx">dragEnter</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">()</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">overlay</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">active</span><span class="dl">'</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="nx">dragLeave</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">()</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">contains</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">relatedTarget</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">overlay</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="dl">'</span><span class="s1">active</span><span class="dl">'</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="nx">dragOver</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+    <span class="p">}</span>
+    
+    <span class="cm">/*
+        Window Events
+    */</span>
+    
+    <span class="nx">windowDragEnter</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">e</span><span class="p">.</span><span class="nx">relatedTarget</span> <span class="o">||</span> <span class="nx">e</span><span class="p">.</span><span class="nx">relatedTarget</span><span class="p">.</span><span class="nx">getRootNode</span><span class="p">()</span> <span class="o">!=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getRootNode</span><span class="p">())</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">overlay</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="dl">'</span><span class="s1">active</span><span class="dl">'</span><span class="p">);</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">overlay</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="nx">windowDragLeave</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">e</span><span class="p">.</span><span class="nx">relatedTarget</span> <span class="o">||</span> <span class="nx">e</span><span class="p">.</span><span class="nx">relatedTarget</span><span class="p">.</span><span class="nx">getRootNode</span><span class="p">()</span> <span class="o">!=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getRootNode</span><span class="p">())</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">overlay</span><span class="p">.</span><span class="nx">remove</span><span class="p">()</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="nx">windowDrop</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">overlay</span><span class="p">.</span><span class="nx">remove</span><span class="p">()</span>
+    <span class="p">}</span>
+    
+    <span class="kd">static</span> <span class="nx">style</span> <span class="o">=</span> <span class="s2">`
+        komp-dropzone {
+            display: inline-block;
+            position: relative;
+        }
+        komp-dropzone-overlay {
+            display: flex;
+            position:absolute;
+            inset: 0;
+            border: 2px dashed blue;
+            background: rgba(255,255,255, 0.5);
+            backdrop-filter: blur(2px);
+            z-index:2;
+            color: blue;
+            font-weight: bold;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+        }
+        komp-dropzone-overlay.active {
+            background: rgba(0,0,0, 0.3);
+            color: black;
+        }
+    `</span>
+<span class="p">}</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">customElements</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="nx">Dropzone</span><span class="p">.</span><span class="nx">tagName</span><span class="p">,</span> <span class="nx">Dropzone</span><span class="p">);</span></code></pre></div>
+        </div>
+    </div>
+</div>
+    </div>
+</body>
+</html>

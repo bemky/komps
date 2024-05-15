@@ -9,8 +9,8 @@
     <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
     <!-- Use the title from a page's frontmatter if it has one -->
     <title>Komps</title>
-    <link href="/assets/site-0dff4924a9cf886602cd1c6d87bfd1388c20e7bad62a3edefa919214d6742039.css" rel="stylesheet" />
-    <script src="/assets/site-34dcfa7c3ee36c18d93a83e3f04dd652645654d3fb091b596bbf94a61a9ef1cc.js"></script>
+    <link href="/assets/site-dcaa840662e8a88cf6833670c3e0abb477a0de8b7144d0029bb77a12403bf332.css" rel="stylesheet" />
+    <script src="/assets/site-2eaedaaee09f2b3c0157a0376ef81f9e249360cbaa2e7a37f832a2bb1879c67f.js"></script>
 </head>
 <body>
     <div class="side-nav">
@@ -29,17 +29,32 @@
             <div class="height-0 width-full">
                 <div class="border-green-80 border-opacity-30 border-bottom border-1px width-full"></div>
             </div>
+                <a href="/auto-grid" class="">
+                    AutoGrid
+                </a>
+                <a href="/content-area" class="">
+                    ContentArea
+                </a>
                 <a href="/data-table" class="">
                     DataTable
                 </a>
                 <a href="/dropdown" class="">
                     Dropdown
                 </a>
+                <a href="/dropzone" class="">
+                    Dropzone
+                </a>
                 <a href="/floater" class="active">
                     Floater
                 </a>
+                <a href="/input" class="">
+                    Input
+                </a>
                 <a href="/modal" class="">
                     Modal
+                </a>
+                <a href="/spreadsheet" class="">
+                    Spreadsheet
                 </a>
                 <a href="/tooltip" class="">
                     Tooltip
@@ -53,7 +68,7 @@
         <h1 class="text-2x text-overflow-hidden text-nowrap">
             Floater
             <span class="text-light text-italic text-gray-50 text-xl">
-                (extends KompElement)
+                (extends <a href="element" class="reset hover:text-underline">KompElement</a>)
             </span>
         </h1>
     
@@ -67,10 +82,10 @@
         <h2>Example</h2>
         <script>
             function resizeIframe(obj) {
-                obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
+                obj.style.minHeight = obj.contentWindow.document.documentElement.scrollHeight + 'px';
             }
         </script>
-        <iframe class="overflow-hidden rounded-lg" width="100%" height="10px" src="/floater/example/index.html" frameborder="0" scrolling="no" onload="resizeIframe(this)"></iframe>
+        <iframe class="overflow-hidden rounded-lg" width="100%" height="10px" src="/floater/example/index.html" frameborder="0" scrolling="no" onload="setTimeout(function () {resizeIframe(this)}.bind(this), 50)"></iframe>
     </div>
     
     <div class="">
@@ -90,8 +105,9 @@
     
         <div class="">
             <h2>Options</h2>
-                
-                <table class="uniformTable">
+                <p>container</p>
+
+                <table class="uniformTable border-gray-20">
                     <tr>
                         <th></th>
                             <th>types</th>
@@ -122,17 +138,17 @@
                                 <code>anchor</code>
                             </td>
                                 <td>
-                                        HTMLElement
+                                        String, HTMLElement
                                 </td>
                                 <td>
-                                        <p>element to anchor positioning to</p>
+                                        <p>element to append floater to. If <code>String</code>, then used as selector for <code>this.closest(selector)</code></p>
 
                                 </td>
                                 <td>
                                         true
                                 </td>
                                 <td>
-                                        
+                                        null/anchor.parentElement
                                 </td>
                         </tr>
                         <tr>
@@ -315,6 +331,149 @@
                                         true
                                 </td>
                         </tr>
+                        <tr>
+                            <td>
+                                <code>removeOnBlur</code>
+                            </td>
+                                <td>
+                                        Boolean
+                                </td>
+                                <td>
+                                        <p>hide floater on outside click/focus or escape key</p>
+
+                                </td>
+                                <td>
+                                        
+                                </td>
+                                <td>
+                                        fase
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>timeout</code>
+                            </td>
+                                <td>
+                                        Number
+                                </td>
+                                <td>
+                                        <p>ms to wait until hiding after mouseout</p>
+
+                                </td>
+                                <td>
+                                        
+                                </td>
+                                <td>
+                                        0
+                                </td>
+                        </tr>
+                </table>
+        </div>
+        <div class="">
+            <h2>Events</h2>
+                
+                <table class="uniformTable border-gray-20">
+                    <tr>
+                        <th></th>
+                            <th>arguments</th>
+                            <th>description</th>
+                    </tr>
+                        <tr>
+                            <td>
+                                <code>beforeRemove</code>
+                            </td>
+                                <td>
+                                        []
+                                </td>
+                                <td>
+                                        <p>called before element is removed</p>
+
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>afterRemove</code>
+                            </td>
+                                <td>
+                                        []
+                                </td>
+                                <td>
+                                        <p>called after element is removed</p>
+
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>beforeConnect</code>
+                            </td>
+                                <td>
+                                        []
+                                </td>
+                                <td>
+                                        <p>called before element is connected</p>
+
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>afterConnect</code>
+                            </td>
+                                <td>
+                                        []
+                                </td>
+                                <td>
+                                        <p>called before element is connected</p>
+
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>beforeDisconnect</code>
+                            </td>
+                                <td>
+                                        []
+                                </td>
+                                <td>
+                                        <p>called before element is disconnected</p>
+
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>afterDisconnect</code>
+                            </td>
+                                <td>
+                                        []
+                                </td>
+                                <td>
+                                        <p>called before element is disconnected</p>
+
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>shown</code>
+                            </td>
+                                <td>
+                                        
+                                </td>
+                                <td>
+                                        <p>when floater is shown</p>
+
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>hidden</code>
+                            </td>
+                                <td>
+                                        
+                                </td>
+                                <td>
+                                        <p>when floater is hidden</p>
+
+                                </td>
+                        </tr>
                 </table>
         </div>
         <div class="">
@@ -354,61 +513,13 @@
         <span class="na">arrow</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
         <span class="na">autoPlacement</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
         <span class="na">inline</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-        <span class="na">autoUpdate</span><span class="p">:</span> <span class="p">{}</span>
+        <span class="na">autoUpdate</span><span class="p">:</span> <span class="p">{},</span>
+        <span class="na">removeOnBlur</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="na">container</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="na">timeout</span><span class="p">:</span> <span class="mi">0</span>
     <span class="p">}</span>
     
-    <span class="kd">static</span> <span class="nx">style</span> <span class="o">=</span> <span class="s2">`
-        .komp-floater-arrow {
-            --arrow-size: 0.5em;
-            --arrow-left: 0;
-            --arrow-top: 0;
-        }
-        .komp-floater-arrow:after{
-            content: '';
-            clip-path: polygon(0 0, 50% 100%, 100% 0);
-            z-index: 1;
-            position:absolute;
-            top: calc(var(--arrow-top) - var(--arrow-size));
-            left: calc(var(--arrow-left) - var(--arrow-size));
-            width: calc(var(--arrow-size) * 2);
-            height: var(--arrow-size);
-            overflow: hidden;
-            border-style: solid;
-            border-width: inherit;
-            box-shadow: inherit;
-            background: inherit;
-            border: inherit;
-        }
-        .komp-floater-arrow.-top:after{
-            top: 100%;
-        }
-        .komp-floater-arrow.-bottom:after{
-            top: auto;
-            bottom: 100%;
-            transform: rotate(180deg);
-        }
-        .komp-floater-arrow.-left:after,
-        .komp-floater-arrow.-right:after {
-            clip-path: polygon(0 0, 100% 50%, 0 100%);
-            width: var(--arrow-size);
-            height: calc(var(--arrow-size) * 2);
-        }
-        .komp-floater-arrow.-left:after{
-            left: 100%;
-        }
-        .komp-floater-arrow.-right:after{
-            left: auto;
-            right: 100%;
-            transform: rotate(180deg);
-        }
-        komp-floater-arrow-locator {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 0;
-            height 0;
-        }
-    `</span>
+    <span class="kd">static</span> <span class="nx">bindMethods</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">show</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">hide</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">checkFocus</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">checkEscape</span><span class="dl">'</span><span class="p">]</span>
     
     <span class="nx">instantiate</span> <span class="p">()</span> <span class="p">{</span>
         <span class="k">super</span><span class="p">.</span><span class="nx">instantiate</span><span class="p">()</span>
@@ -468,30 +579,143 @@
             <span class="k">this</span><span class="p">.</span><span class="nx">autoUpdate</span>
         <span class="p">))</span>
         
-        <span class="k">this</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">-in</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">-in-start</span><span class="dl">'</span><span class="p">)</span>
-        <span class="kd">const</span> <span class="nx">transitionDuration</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(...</span><span class="nx">css</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="dl">'</span><span class="s1">transition-duration</span><span class="dl">'</span><span class="p">).</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2">, </span><span class="dl">"</span><span class="p">).</span><span class="nx">map</span><span class="p">(</span><span class="nx">x</span> <span class="o">=&gt;</span> <span class="nb">parseFloat</span><span class="p">(</span><span class="nx">x</span><span class="p">)))</span> <span class="o">*</span> <span class="mi">1000</span>
-        <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-            <span class="k">this</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="dl">'</span><span class="s1">-in-start</span><span class="dl">'</span><span class="p">)</span>
-        <span class="p">},</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">-in</span><span class="dl">'</span><span class="p">)</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">animationend</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
             <span class="k">this</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="dl">'</span><span class="s1">-in</span><span class="dl">'</span><span class="p">)</span>
-        <span class="p">},</span> <span class="nx">transitionDuration</span><span class="p">)</span>
+        <span class="p">},</span> <span class="p">{</span><span class="na">once</span><span class="p">:</span> <span class="kc">true</span><span class="p">})</span>
+        
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">removeOnBlur</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">manageEventListenerFor</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">getRootNode</span><span class="p">().</span><span class="nx">body</span><span class="p">,</span> <span class="dl">'</span><span class="s1">focusin</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">checkFocus</span><span class="p">)</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">manageEventListenerFor</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">getRootNode</span><span class="p">().</span><span class="nx">body</span><span class="p">,</span> <span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">checkFocus</span><span class="p">)</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">manageEventListenerFor</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">getRootNode</span><span class="p">().</span><span class="nx">body</span><span class="p">,</span> <span class="dl">'</span><span class="s1">keyup</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">checkEscape</span><span class="p">)</span>
+        <span class="p">}</span>
     <span class="p">}</span>
     
-    <span class="nx">remove</span> <span class="p">(</span><span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">super</span><span class="p">.</span><span class="nx">remove</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">(</span><span class="nx">resolve</span> <span class="o">=&gt;</span> <span class="p">{</span>
-            <span class="k">this</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">-out</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">-out-start</span><span class="dl">'</span><span class="p">)</span>
-            <span class="kd">const</span> <span class="nx">transitionDuration</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(...</span><span class="nx">css</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="dl">'</span><span class="s1">transition-duration</span><span class="dl">'</span><span class="p">).</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2">, </span><span class="dl">"</span><span class="p">).</span><span class="nx">map</span><span class="p">(</span><span class="nx">x</span> <span class="o">=&gt;</span> <span class="nb">parseFloat</span><span class="p">(</span><span class="nx">x</span><span class="p">)))</span> <span class="o">*</span> <span class="mi">1000</span>
-            <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-                <span class="k">this</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="dl">'</span><span class="s1">-out-start</span><span class="dl">'</span><span class="p">)</span>
-            <span class="p">},</span> <span class="mi">0</span><span class="p">)</span>
-            <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-                <span class="nx">resolve</span><span class="p">()</span>
-                <span class="k">if</span> <span class="p">(</span><span class="nx">callback</span><span class="p">)</span> <span class="p">{</span> <span class="nx">callback</span><span class="p">()</span> <span class="p">}</span>
-                <span class="k">this</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="dl">'</span><span class="s1">-out</span><span class="dl">'</span><span class="p">);</span>
-            <span class="p">},</span> <span class="nx">transitionDuration</span><span class="p">)</span>
-        <span class="p">}))</span>
+    <span class="nx">checkFocus</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">defaultPrevented</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span> <span class="o">==</span> <span class="k">this</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span> <span class="o">==</span> <span class="k">this</span><span class="p">.</span><span class="nx">anchor</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">contains</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">))</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">anchor</span><span class="p">.</span><span class="nx">contains</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">))</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">hide</span><span class="p">()</span>
     <span class="p">}</span>
+    
+    <span class="nx">checkEscape</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">which</span> <span class="o">!=</span> <span class="mi">27</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">hide</span><span class="p">();</span>
+    <span class="p">}</span>
+    
+    <span class="nx">remove</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">(</span><span class="nx">resolve</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">-out</span><span class="dl">'</span><span class="p">)</span>
+        
+            <span class="kd">const</span> <span class="nx">done</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="dl">'</span><span class="s1">-out</span><span class="dl">'</span><span class="p">)</span>
+                <span class="k">super</span><span class="p">.</span><span class="nx">remove</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="nx">resolve</span><span class="p">)</span>
+            <span class="p">}</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">css</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="dl">'</span><span class="s1">animation-name</span><span class="dl">'</span><span class="p">)</span> <span class="o">!=</span> <span class="dl">"</span><span class="s2">none</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">animationend</span><span class="dl">'</span><span class="p">,</span> <span class="nx">done</span><span class="p">,</span> <span class="p">{</span><span class="na">once</span><span class="p">:</span> <span class="kc">true</span><span class="p">})</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nx">done</span><span class="p">()</span>
+            <span class="p">}</span>
+        <span class="p">})</span>
+    <span class="p">}</span>
+    
+    <span class="nx">show</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_hideTimeout</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">clearTimeout</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_hideTimeout</span><span class="p">);</span>
+            <span class="k">delete</span> <span class="k">this</span><span class="p">.</span><span class="nx">_hideTimeout</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_removing</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_removing</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">show</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="k">this</span><span class="p">.</span><span class="nx">container</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">container</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">closest</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">container</span><span class="p">)</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">anchor</span><span class="p">.</span><span class="nx">closest</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">container</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">container</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">container</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">parentElement</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">anchor</span><span class="p">.</span><span class="nx">parentElement</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">parentElement</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">_showing</span> <span class="o">=</span> <span class="kc">true</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">container</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">_showing</span> <span class="o">=</span> <span class="kc">false</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="dl">'</span><span class="s1">shown</span><span class="dl">'</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="nx">hide</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_hideTimeout</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_hiding</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">_hideTimeout</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">parentElement</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">_removing</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">remove</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                    <span class="k">this</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="dl">'</span><span class="s1">hidden</span><span class="dl">'</span><span class="p">)</span>
+                    <span class="k">delete</span> <span class="k">this</span><span class="p">.</span><span class="nx">_hideTimeout</span><span class="p">;</span>
+                    <span class="k">delete</span> <span class="k">this</span><span class="p">.</span><span class="nx">_removing</span><span class="p">;</span>
+                <span class="p">})</span>
+            <span class="p">}</span>
+        <span class="p">},</span> <span class="k">this</span><span class="p">.</span><span class="nx">timeout</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="nx">toggle</span> <span class="p">(</span><span class="nx">shouldHide</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">shouldHide</span> <span class="o">!==</span> <span class="dl">'</span><span class="s1">boolean</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">shouldHide</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">offsetParent</span> <span class="o">!==</span> <span class="kc">null</span>
+        <span class="p">}</span>
+        <span class="k">this</span><span class="p">[</span><span class="nx">shouldHide</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">hide</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">show</span><span class="dl">'</span><span class="p">]()</span>
+    <span class="p">}</span>
+    
+    <span class="kd">static</span> <span class="nx">style</span> <span class="o">=</span> <span class="s2">`
+        .komp-floater-arrow {
+            --arrow-size: 0.5em;
+            --arrow-left: 0;
+            --arrow-top: 0;
+        }
+        .komp-floater-arrow:after{
+            content: '';
+            clip-path: polygon(0 0, 50% 100%, 100% 0);
+            z-index: 1;
+            position:absolute;
+            top: calc(var(--arrow-top) - var(--arrow-size));
+            left: calc(var(--arrow-left) - var(--arrow-size));
+            width: calc(var(--arrow-size) * 2);
+            height: var(--arrow-size);
+            overflow: hidden;
+            border-style: solid;
+            border-width: inherit;
+            box-shadow: inherit;
+            background: inherit;
+            border: inherit;
+        }
+        .komp-floater-arrow.-top:after{
+            top: 100%;
+        }
+        .komp-floater-arrow.-bottom:after{
+            top: auto;
+            bottom: 100%;
+            transform: rotate(180deg);
+        }
+        .komp-floater-arrow.-left:after,
+        .komp-floater-arrow.-right:after {
+            clip-path: polygon(0 0, 100% 50%, 0 100%);
+            width: var(--arrow-size);
+            height: calc(var(--arrow-size) * 2);
+        }
+        .komp-floater-arrow.-left:after{
+            left: 100%;
+        }
+        .komp-floater-arrow.-right:after{
+            left: auto;
+            right: 100%;
+            transform: rotate(180deg);
+        }
+        komp-floater-arrow-locator {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 0;
+            height 0;
+        }
+    `</span>
 <span class="p">}</span>
 <span class="nb">window</span><span class="p">.</span><span class="nx">customElements</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="dl">'</span><span class="s1">komp-floater</span><span class="dl">'</span><span class="p">,</span> <span class="nx">Floater</span><span class="p">);</span>
 <span class="kd">const</span> <span class="nx">middlewares</span> <span class="o">=</span> <span class="p">{</span>

@@ -1,0 +1,200 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+    <!-- Use the title from a page's frontmatter if it has one -->
+    <title>Komps</title>
+    <link href="/assets/site-dcaa840662e8a88cf6833670c3e0abb477a0de8b7144d0029bb77a12403bf332.css" rel="stylesheet" />
+    <script src="/assets/site-2eaedaaee09f2b3c0157a0376ef81f9e249360cbaa2e7a37f832a2bb1879c67f.js"></script>
+</head>
+<body>
+    <div class="side-nav">
+        <div class="pad-2x text-center">
+            <a href="/" class="reset">
+                <img class="width-3/4 height-auto inline-block" src="/assets/logo-7b1623d8d9db3b0d0d79dd30b2a5c2a0f0be2b945944f75d18e3be1e67177443.svg" />
+            </a>
+        </div>
+        <div class="uniformNav -vertical -gray flex-fill -active-green">
+            <a href="/" class="">
+                Usage
+            </a>
+            <a href="/element" class="">
+                Base Element
+            </a>
+            <div class="height-0 width-full">
+                <div class="border-green-80 border-opacity-30 border-bottom border-1px width-full"></div>
+            </div>
+                <a href="/auto-grid" class="active">
+                    AutoGrid
+                </a>
+                <a href="/content-area" class="">
+                    ContentArea
+                </a>
+                <a href="/data-table" class="">
+                    DataTable
+                </a>
+                <a href="/dropdown" class="">
+                    Dropdown
+                </a>
+                <a href="/dropzone" class="">
+                    Dropzone
+                </a>
+                <a href="/floater" class="">
+                    Floater
+                </a>
+                <a href="/input" class="">
+                    Input
+                </a>
+                <a href="/modal" class="">
+                    Modal
+                </a>
+                <a href="/spreadsheet" class="">
+                    Spreadsheet
+                </a>
+                <a href="/tooltip" class="">
+                    Tooltip
+                </a>
+        </div>
+    </div>
+    <div class="main-content overflow-hidden">
+        <div class="section space-v-3x">
+    
+    <div class="">
+        <h1 class="text-2x text-overflow-hidden text-nowrap">
+            AutoGrid
+            <span class="text-light text-italic text-gray-50 text-xl">
+                (extends <a href="element" class="reset hover:text-underline">KompElement</a>)
+            </span>
+        </h1>
+    
+        <div class="text-light text-xl">
+            <p>Starts with max number of columns given content, and reduces column count until no cells overflow</p>
+
+        </div>
+    </div>
+    
+    <div class="">
+        <h2>Example</h2>
+        <script>
+            function resizeIframe(obj) {
+                obj.style.minHeight = obj.contentWindow.document.documentElement.scrollHeight + 'px';
+            }
+        </script>
+        <iframe class="overflow-hidden rounded-lg" width="100%" height="10px" src="/auto-grid/example/index.html" frameborder="0" scrolling="no" onload="setTimeout(function () {resizeIframe(this)}.bind(this), 50)"></iframe>
+    </div>
+    
+    <div class="">
+        <h2>Syntax</h2>
+        <div class="highlight"><pre class=" javascript"><code><span class="o">&lt;</span><span class="nx">auto</span><span class="o">-</span><span class="nx">grid</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="mi">2</span><span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="mi">3</span><span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/auto-grid</span><span class="err">&gt;
+</span></code></pre></div>
+
+    </div>
+    
+        <div class="">
+            <h2>Options</h2>
+                
+                <table class="uniformTable border-gray-20">
+                    <tr>
+                        <th></th>
+                            <th>types</th>
+                            <th>description</th>
+                            <th>default</th>
+                    </tr>
+                        <tr>
+                            <td>
+                                <code>content</code>
+                            </td>
+                                <td>
+                                        String, HTMLElement, Array, Object
+                                </td>
+                                <td>
+                                        <p>content to append to element. Passed to <a href="https://dollajs.com/#content">Dolla's <code>content</code></a></p>
+
+                                </td>
+                                <td>
+                                        
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>columnWidth</code>
+                            </td>
+                                <td>
+                                        
+                                </td>
+                                <td>
+                                        <p>width of each column</p>
+
+                                </td>
+                                <td>
+                                        minmax(max-content, 1fr)
+                                </td>
+                        </tr>
+                </table>
+        </div>
+    
+    <button class="js-toggle-source reset text-sm text-bold text-gray-30 hover:text-blue" rel="#source-for-auto-grid">
+        SHOW SOURCE
+    </button>
+    <div class="source hide" id="source-for-auto-grid">
+        <div class="border border-blue bg-blue rounded-xl overflow-hidden">
+            <div class="text-white text-sm text-bold pad-h pad-v-1/4x">
+                SOURCE CODE
+            </div>
+            <div class="highlight"><pre class=" javascript"><code><span class="k">import</span> <span class="nx">KompElement</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./element.js</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">class</span> <span class="nx">AutoGrid</span> <span class="kd">extends</span> <span class="nx">KompElement</span> <span class="p">{</span>
+    
+    <span class="kd">static</span> <span class="nx">observer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ResizeObserver</span><span class="p">(</span><span class="nx">entries</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">entries</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">entry</span> <span class="o">=&gt;</span> <span class="nx">entry</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">resize</span><span class="p">())</span>
+    <span class="p">})</span>
+    
+    <span class="kd">static</span> <span class="nx">assignableAttributes</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="na">columnWidth</span><span class="p">:</span> <span class="dl">'</span><span class="s1">max-content</span><span class="dl">'</span>
+    <span class="p">}</span>
+    
+    <span class="nx">connected</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="kd">constructor</span><span class="p">.</span><span class="nx">observer</span><span class="p">.</span><span class="nx">observe</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">resize</span><span class="p">()</span>
+    <span class="p">}</span>
+    
+    <span class="nx">disconnected</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="kd">constructor</span><span class="p">.</span><span class="nx">observer</span><span class="p">.</span><span class="nx">unobserve</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="nx">resize</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">style</span> <span class="o">=</span> <span class="nx">getComputedStyle</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+        <span class="kd">const</span> <span class="nx">children</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">children</span><span class="p">)</span>
+        
+        <span class="kd">let</span> <span class="nx">columns</span> <span class="o">=</span> <span class="nx">children</span><span class="p">.</span><span class="nx">length</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="kd">let</span> <span class="nx">isOverflow</span><span class="p">;</span>
+        <span class="k">do</span> <span class="p">{</span>
+            <span class="nx">columns</span> <span class="o">-=</span> <span class="mi">1</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">setProperty</span><span class="p">(</span><span class="dl">'</span><span class="s1">grid-template-columns</span><span class="dl">'</span><span class="p">,</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="nx">columns</span><span class="p">).</span><span class="nx">fill</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">columnWidth</span><span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">))</span>
+            <span class="nx">isOverflow</span> <span class="o">=</span> <span class="nx">children</span><span class="p">.</span><span class="nx">some</span><span class="p">(</span><span class="nx">el</span> <span class="o">=&gt;</span> <span class="nx">el</span><span class="p">.</span><span class="nx">offsetLeft</span> <span class="o">&lt;</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">offsetLeft</span> <span class="o">-</span> <span class="nb">parseFloat</span><span class="p">(</span><span class="nx">style</span><span class="p">.</span><span class="nx">paddingLeft</span><span class="p">)))</span>
+            <span class="nx">isOverflow</span> <span class="o">=</span> <span class="nx">isOverflow</span> <span class="o">||</span> <span class="nx">children</span><span class="p">.</span><span class="nx">some</span><span class="p">(</span><span class="nx">el</span> <span class="o">=&gt;</span> <span class="nx">el</span><span class="p">.</span><span class="nx">offsetLeft</span> <span class="o">+</span> <span class="nx">el</span><span class="p">.</span><span class="nx">offsetWidth</span> <span class="o">&gt;</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">offsetLeft</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">offsetWidth</span> <span class="o">-</span> <span class="nb">parseFloat</span><span class="p">(</span><span class="nx">style</span><span class="p">.</span><span class="nx">paddingRight</span><span class="p">)))</span>
+        <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nx">columns</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="nx">isOverflow</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="kd">static</span> <span class="nx">style</span> <span class="o">=</span> <span class="s2">`
+        auto-grid {
+            display: grid;
+        }
+    `</span>
+<span class="p">}</span>
+
+<span class="nb">window</span><span class="p">.</span><span class="nx">customElements</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="dl">'</span><span class="s1">auto-grid</span><span class="dl">'</span><span class="p">,</span> <span class="nx">AutoGrid</span><span class="p">)</span></code></pre></div>
+        </div>
+    </div>
+</div>
+    </div>
+</body>
+</html>

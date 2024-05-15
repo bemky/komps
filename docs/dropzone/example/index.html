@@ -13,37 +13,17 @@
     <script src="/assets/site-2eaedaaee09f2b3c0157a0376ef81f9e249360cbaa2e7a37f832a2bb1879c67f.js"></script>
 </head>
 <body class="bg-purple-10 min-height-100-vh">
-    <div class="pad-2x"></div>
+    <div class="pad-2x text-center"></div>
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        document.querySelector('div').append(new DataTable({
-            class: 'rounded overflow-hidden',
-            data: [{
-                name: "Corey Seager",
-                team: "Texas Rangers",
-                ops: 1.023,
-                avg: 0.311,
-                positions: ["SS"]
-            }, {
-                name: "Marcus Semien",
-                team: "Texas Rangers",
-                ops: 0.823,
-                avg: 0.283,
-                positions: ["2B"]
-            }],
-            columns: {
-                name: {order: true},
-                team: {},
-                ops: [
-                    r => r.ops.toLocaleString().replace(/^0/, ''),
-                    {
-                        header: 'OPS',
-                        order: true,
-                    }
-                ]
+        document.querySelector('div').append(new Dropzone({
+            onFileDrop: console.log,
+            content: {
+                content: 'Drag Something Here',
+                class: 'height-100-px width-200-px flex justify-content-center align-center bg-gray-10  border-2px border-dashed'
             }
         }))
-    });
+    })
 </script>
 
 

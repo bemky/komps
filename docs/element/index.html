@@ -9,8 +9,8 @@
     <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
     <!-- Use the title from a page's frontmatter if it has one -->
     <title>Komps</title>
-    <link href="/assets/site-0dff4924a9cf886602cd1c6d87bfd1388c20e7bad62a3edefa919214d6742039.css" rel="stylesheet" />
-    <script src="/assets/site-34dcfa7c3ee36c18d93a83e3f04dd652645654d3fb091b596bbf94a61a9ef1cc.js"></script>
+    <link href="/assets/site-dcaa840662e8a88cf6833670c3e0abb477a0de8b7144d0029bb77a12403bf332.css" rel="stylesheet" />
+    <script src="/assets/site-2eaedaaee09f2b3c0157a0376ef81f9e249360cbaa2e7a37f832a2bb1879c67f.js"></script>
 </head>
 <body>
     <div class="side-nav">
@@ -29,17 +29,32 @@
             <div class="height-0 width-full">
                 <div class="border-green-80 border-opacity-30 border-bottom border-1px width-full"></div>
             </div>
+                <a href="/auto-grid" class="">
+                    AutoGrid
+                </a>
+                <a href="/content-area" class="">
+                    ContentArea
+                </a>
                 <a href="/data-table" class="">
                     DataTable
                 </a>
                 <a href="/dropdown" class="">
                     Dropdown
                 </a>
+                <a href="/dropzone" class="">
+                    Dropzone
+                </a>
                 <a href="/floater" class="">
                     Floater
                 </a>
+                <a href="/input" class="">
+                    Input
+                </a>
                 <a href="/modal" class="">
                     Modal
+                </a>
+                <a href="/spreadsheet" class="">
+                    Spreadsheet
                 </a>
                 <a href="/tooltip" class="">
                     Tooltip
@@ -52,6 +67,9 @@
     <div class="">
         <h1 class="text-2x text-overflow-hidden text-nowrap">
             KompElement
+            <span class="text-light text-italic text-gray-50 text-xl">
+                (extends <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement" class="reset hover:text-underline">HTMLElement</a>)
+            </span>
         </h1>
     
         <div class="text-light text-xl">
@@ -72,7 +90,7 @@
         <div class="">
             <h2>Options</h2>
                 
-                <table class="uniformTable">
+                <table class="uniformTable border-gray-20">
                     <tr>
                         <th></th>
                             <th>types</th>
@@ -95,7 +113,7 @@
         <div class="">
             <h2>Extending</h2>
                 
-                <table class="uniformTable">
+                <table class="uniformTable border-gray-20">
                     <tr>
                         <th></th>
                             <th>static</th>
@@ -216,7 +234,7 @@
         <div class="">
             <h2>Events</h2>
                 
-                <table class="uniformTable">
+                <table class="uniformTable border-gray-20">
                     <tr>
                         <th></th>
                             <th>arguments</th>
@@ -299,7 +317,7 @@
         <div class="">
             <h2>Methods</h2>
                 
-                <table class="uniformTable">
+                <table class="uniformTable border-gray-20">
                     <tr>
                         <th></th>
                             <th>arguments</th>
@@ -364,24 +382,28 @@
             <div class="text-white text-sm text-bold pad-h pad-v-1/4x">
                 SOURCE CODE
             </div>
-            <div class="highlight"><pre class=" javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">content</span><span class="p">,</span> <span class="nx">remove</span><span class="p">,</span> <span class="nx">trigger</span><span class="p">,</span> <span class="nx">setAttributes</span><span class="p">,</span> <span class="nx">HTML_ATTRIBUTES</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">dolla</span><span class="dl">'</span><span class="p">;</span>
+            <div class="highlight"><pre class=" javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">content</span><span class="p">,</span> <span class="nx">remove</span><span class="p">,</span> <span class="nx">trigger</span><span class="p">,</span> <span class="nx">setAttributes</span><span class="p">,</span> <span class="nx">HTML_ATTRIBUTES</span><span class="p">,</span> <span class="nx">addEventListenerFor</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">dolla</span><span class="dl">'</span><span class="p">;</span>
 <span class="k">import</span> <span class="p">{</span> <span class="nx">scanPrototypesFor</span><span class="p">,</span> <span class="nx">result</span><span class="p">,</span> <span class="nx">isFunction</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../support</span><span class="dl">'</span><span class="p">;</span>
 
 <span class="kd">class</span> <span class="nx">KompElement</span> <span class="kd">extends</span> <span class="nx">HTMLElement</span> <span class="p">{</span>
     
     <span class="kd">static</span> <span class="nx">assignableAttributes</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="kd">static</span> <span class="nx">assignableMethods</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="kd">static</span> <span class="nx">bindMethods</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="kd">static</span> <span class="nx">style</span> <span class="o">=</span> <span class="s2">``</span>
     <span class="kd">static</span> <span class="nx">watch</span> <span class="o">=</span> <span class="p">[]</span>
     
     <span class="kd">static</span> <span class="kd">get</span> <span class="nx">observedAttributes</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">watch</span> <span class="p">}</span>
     
     <span class="nx">_assignableAttributes</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="nx">_assignableMethods</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="nx">_attributes</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="nx">_cleanupCallbacks</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="nx">is_instantiated</span> <span class="o">=</span> <span class="kc">false</span>
     
     <span class="kd">constructor</span><span class="p">(</span><span class="nx">attrs</span><span class="o">=</span><span class="p">{})</span> <span class="p">{</span>
         <span class="k">super</span><span class="p">()</span>
+        <span class="kd">const</span> <span class="nx">htmlAttrs</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">({},</span> <span class="nx">attrs</span><span class="p">)</span>
         <span class="nx">scanPrototypesFor</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="kd">constructor</span><span class="p">,</span> <span class="dl">'</span><span class="s1">assignableAttributes</span><span class="dl">'</span><span class="p">).</span><span class="nx">filter</span><span class="p">(</span><span class="nx">x</span> <span class="o">=&gt;</span> <span class="nx">x</span><span class="p">).</span><span class="nx">reverse</span><span class="p">().</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">attributes</span> <span class="o">=&gt;</span> <span class="p">{</span>
             <span class="k">if</span> <span class="p">(</span><span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="nx">attributes</span><span class="p">))</span> <span class="p">{</span>
                 <span class="nx">attributes</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">attr</span> <span class="o">=&gt;</span> <span class="p">{</span>
@@ -398,7 +420,7 @@
                 <span class="na">get</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">_attributes</span><span class="p">[</span><span class="nx">attribute</span><span class="p">],</span>
                 <span class="na">set</span><span class="p">:</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
                     <span class="kd">const</span> <span class="nx">was</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_attributes</span><span class="p">[</span><span class="nx">attribute</span><span class="p">]</span>
-                    <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="o">!=</span> <span class="nx">was</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="o">!==</span> <span class="nx">was</span><span class="p">)</span> <span class="p">{</span>
                         <span class="k">this</span><span class="p">.</span><span class="nx">_attributes</span><span class="p">[</span><span class="nx">attribute</span><span class="p">]</span> <span class="o">=</span> <span class="nx">value</span>
                         <span class="k">this</span><span class="p">.</span><span class="nx">attributeChangedCallback</span><span class="p">(</span><span class="nx">attribute</span><span class="p">,</span> <span class="nx">was</span><span class="p">,</span> <span class="nx">value</span><span class="p">);</span>
                     <span class="p">}</span>
@@ -406,15 +428,31 @@
             <span class="p">});</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">attrs</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">attribute</span><span class="p">))</span> <span class="p">{</span>
                 <span class="k">this</span><span class="p">.</span><span class="nx">_attributes</span><span class="p">[</span><span class="nx">attribute</span><span class="p">]</span> <span class="o">=</span> <span class="nx">attrs</span><span class="p">[</span><span class="nx">attribute</span><span class="p">]</span>
-                <span class="k">delete</span> <span class="nx">attrs</span><span class="p">[</span><span class="nx">attribute</span><span class="p">]</span>
+                <span class="k">delete</span> <span class="nx">htmlAttrs</span><span class="p">[</span><span class="nx">attribute</span><span class="p">]</span>
             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
                 <span class="k">this</span><span class="p">.</span><span class="nx">_attributes</span><span class="p">[</span><span class="nx">attribute</span><span class="p">]</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_assignableAttributes</span><span class="p">[</span><span class="nx">attribute</span><span class="p">]</span>
             <span class="p">}</span>
         <span class="p">})</span>
-        <span class="nx">setAttributes</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">attrs</span><span class="p">)</span>
+        
+        <span class="nx">scanPrototypesFor</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="kd">constructor</span><span class="p">,</span> <span class="dl">'</span><span class="s1">assignableMethods</span><span class="dl">'</span><span class="p">).</span><span class="nx">filter</span><span class="p">(</span><span class="nx">x</span> <span class="o">=&gt;</span> <span class="nx">x</span><span class="p">).</span><span class="nx">reverse</span><span class="p">().</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">methods</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">methods</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">method</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">attrs</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">method</span><span class="p">))</span> <span class="p">{</span>
+                    <span class="k">this</span><span class="p">[</span><span class="nx">method</span><span class="p">]</span> <span class="o">=</span> <span class="nx">attrs</span><span class="p">[</span><span class="nx">method</span><span class="p">]</span>
+                    <span class="k">delete</span> <span class="nx">htmlAttrs</span><span class="p">[</span><span class="nx">method</span><span class="p">]</span>
+                <span class="p">}</span>
+            <span class="p">})</span>
+        <span class="p">})</span>
+        
+        <span class="nx">scanPrototypesFor</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="kd">constructor</span><span class="p">,</span> <span class="dl">'</span><span class="s1">bindMethods</span><span class="dl">'</span><span class="p">).</span><span class="nx">filter</span><span class="p">(</span><span class="nx">x</span> <span class="o">=&gt;</span> <span class="nx">x</span><span class="p">).</span><span class="nx">reverse</span><span class="p">().</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">methods</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">methods</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">method</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="k">this</span><span class="p">[</span><span class="nx">method</span><span class="p">]</span> <span class="o">=</span> <span class="k">this</span><span class="p">[</span><span class="nx">method</span><span class="p">].</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+            <span class="p">})</span>
+        <span class="p">})</span>
+        <span class="nx">setAttributes</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">htmlAttrs</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="nx">instantiate</span> <span class="p">()</span> <span class="p">{</span>
+        
         <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_assignableAttributes</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">attribute</span> <span class="o">=&gt;</span> <span class="p">{</span>
             <span class="kd">const</span> <span class="nx">value</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="nx">attribute</span><span class="p">)</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">dataset</span><span class="p">[</span><span class="nx">attribute</span><span class="p">]</span> <span class="o">||</span> <span class="k">this</span><span class="p">[</span><span class="nx">attribute</span><span class="p">]</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">attribute</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">content</span><span class="dl">"</span> <span class="o">&amp;&amp;</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
@@ -473,12 +511,12 @@
     <span class="k">async</span> <span class="nx">remove</span> <span class="p">(</span><span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="dl">'</span><span class="s1">beforeRemove</span><span class="dl">'</span><span class="p">)</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">callback</span><span class="p">)</span> <span class="k">await</span> <span class="nx">callback</span><span class="p">()</span>
-        <span class="nx">remove</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+        <span class="k">super</span><span class="p">.</span><span class="nx">remove</span><span class="p">()</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="dl">'</span><span class="s1">afterRemove</span><span class="dl">'</span><span class="p">)</span>
         <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
     <span class="p">}</span>
     
-    <span class="nx">addEventListenerFor</span><span class="p">(...</span><span class="nx">listener</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">manageEventListenerFor</span><span class="p">(...</span><span class="nx">listener</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">_cleanupCallbacks</span><span class="p">.</span><span class="nx">push</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
             <span class="nx">listener</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">removeEventListener</span><span class="p">(...</span><span class="nx">listener</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
         <span class="p">})</span>

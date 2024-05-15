@@ -9,8 +9,8 @@
     <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
     <!-- Use the title from a page's frontmatter if it has one -->
     <title>Komps</title>
-    <link href="/assets/site-0dff4924a9cf886602cd1c6d87bfd1388c20e7bad62a3edefa919214d6742039.css" rel="stylesheet" />
-    <script src="/assets/site-34dcfa7c3ee36c18d93a83e3f04dd652645654d3fb091b596bbf94a61a9ef1cc.js"></script>
+    <link href="/assets/site-dcaa840662e8a88cf6833670c3e0abb477a0de8b7144d0029bb77a12403bf332.css" rel="stylesheet" />
+    <script src="/assets/site-2eaedaaee09f2b3c0157a0376ef81f9e249360cbaa2e7a37f832a2bb1879c67f.js"></script>
 </head>
 <body>
     <div class="side-nav">
@@ -29,17 +29,32 @@
             <div class="height-0 width-full">
                 <div class="border-green-80 border-opacity-30 border-bottom border-1px width-full"></div>
             </div>
+                <a href="/auto-grid" class="">
+                    AutoGrid
+                </a>
+                <a href="/content-area" class="">
+                    ContentArea
+                </a>
                 <a href="/data-table" class="">
                     DataTable
                 </a>
                 <a href="/dropdown" class="">
                     Dropdown
                 </a>
+                <a href="/dropzone" class="">
+                    Dropzone
+                </a>
                 <a href="/floater" class="">
                     Floater
                 </a>
+                <a href="/input" class="">
+                    Input
+                </a>
                 <a href="/modal" class="">
                     Modal
+                </a>
+                <a href="/spreadsheet" class="">
+                    Spreadsheet
                 </a>
                 <a href="/tooltip" class="active">
                     Tooltip
@@ -53,7 +68,7 @@
         <h1 class="text-2x text-overflow-hidden text-nowrap">
             Tooltip
             <span class="text-light text-italic text-gray-50 text-xl">
-                (extends Floater)
+                (extends <a href="floater" class="reset hover:text-underline">Floater</a>)
             </span>
         </h1>
     
@@ -67,10 +82,10 @@
         <h2>Example</h2>
         <script>
             function resizeIframe(obj) {
-                obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
+                obj.style.minHeight = obj.contentWindow.document.documentElement.scrollHeight + 'px';
             }
         </script>
-        <iframe class="overflow-hidden rounded-lg" width="100%" height="10px" src="/tooltip/example/index.html" frameborder="0" scrolling="no" onload="resizeIframe(this)"></iframe>
+        <iframe class="overflow-hidden rounded-lg" width="100%" height="10px" src="/tooltip/example/index.html" frameborder="0" scrolling="no" onload="setTimeout(function () {resizeIframe(this)}.bind(this), 50)"></iframe>
     </div>
     
     <div class="">
@@ -91,12 +106,248 @@
         <div class="">
             <h2>Options</h2>
                 
-                <table class="uniformTable">
+                <table class="uniformTable border-gray-20">
                     <tr>
                         <th></th>
                             <th>types</th>
                             <th>description</th>
+                            <th>required</th>
+                            <th>default</th>
                     </tr>
+                        <tr>
+                            <td>
+                                <code>content</code>
+                            </td>
+                                <td>
+                                        String, HTMLElement, Array, Object
+                                </td>
+                                <td>
+                                        <p>content for the floater, uses <a href="https://dollajs.com/#content">Dolla's <code>content</code></a></p>
+
+                                </td>
+                                <td>
+                                        
+                                </td>
+                                <td>
+                                        
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>anchor</code>
+                            </td>
+                                <td>
+                                        String, HTMLElement
+                                </td>
+                                <td>
+                                        <p>element to append floater to. If <code>String</code>, then used as selector for <code>this.closest(selector)</code></p>
+
+                                </td>
+                                <td>
+                                        true
+                                </td>
+                                <td>
+                                        null/anchor.parentElement
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>placement</code>
+                            </td>
+                                <td>
+                                        String
+                                </td>
+                                <td>
+                                        <p>how the floater is anchored options like &quot;top&quot;, &quot;top-start&quot;, &quot;top-end&quot;, &quot;left&quot;, &quot;left-start&quot;...</p>
+
+                                </td>
+                                <td>
+                                        
+                                </td>
+                                <td>
+                                        bottom
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>strategy</code>
+                            </td>
+                                <td>
+                                        String
+                                </td>
+                                <td>
+                                        <p>how the floater is positioned in the document. &quot;absolute&quot; or &quot;fixed&quot;</p>
+
+                                </td>
+                                <td>
+                                        
+                                </td>
+                                <td>
+                                        absolute
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>flip</code>
+                            </td>
+                                <td>
+                                        Boolean, Object
+                                </td>
+                                <td>
+                                        <p>See <a href="https://floating-ui.com/docs/flip">https://floating-ui.com/docs/flip</a>, defaults to false in favor of autoPlacement</p>
+
+                                </td>
+                                <td>
+                                        
+                                </td>
+                                <td>
+                                        false
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>offset</code>
+                            </td>
+                                <td>
+                                        Boolean, Object
+                                </td>
+                                <td>
+                                        <p>See <a href="https://floating-ui.com/docs/offset">https://floating-ui.com/docs/offset</a></p>
+
+                                </td>
+                                <td>
+                                        
+                                </td>
+                                <td>
+                                        false
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>shift</code>
+                            </td>
+                                <td>
+                                        Boolean, Object
+                                </td>
+                                <td>
+                                        <p>See <a href="https://floating-ui.com/docs/shift">https://floating-ui.com/docs/shift</a></p>
+
+                                </td>
+                                <td>
+                                        
+                                </td>
+                                <td>
+                                        true
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>arrow</code>
+                            </td>
+                                <td>
+                                        Boolean, Number
+                                </td>
+                                <td>
+                                        <p>True to show default size, or number in pixels</p>
+
+                                </td>
+                                <td>
+                                        
+                                </td>
+                                <td>
+                                        false
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>size</code>
+                            </td>
+                                <td>
+                                        Boolean, Object
+                                </td>
+                                <td>
+                                        <p>See <a href="https://floating-ui.com/docs/size">https://floating-ui.com/docs/size</a></p>
+
+                                </td>
+                                <td>
+                                        
+                                </td>
+                                <td>
+                                        false
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>autoPlacement</code>
+                            </td>
+                                <td>
+                                        Boolean, Object
+                                </td>
+                                <td>
+                                        <p>See <a href="https://floating-ui.com/docs/autoPlacement">https://floating-ui.com/docs/autoPlacement</a></p>
+
+                                </td>
+                                <td>
+                                        
+                                </td>
+                                <td>
+                                        true
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>inline</code>
+                            </td>
+                                <td>
+                                        Boolean, Object
+                                </td>
+                                <td>
+                                        <p>See <a href="https://floating-ui.com/docs/inline">https://floating-ui.com/docs/inline</a></p>
+
+                                </td>
+                                <td>
+                                        
+                                </td>
+                                <td>
+                                        false
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>autoUpdate</code>
+                            </td>
+                                <td>
+                                        Boolean, Object
+                                </td>
+                                <td>
+                                        <p>See <a href="https://floating-ui.com/docs/autoUpdate#options">https://floating-ui.com/docs/autoUpdate#options</a></p>
+
+                                </td>
+                                <td>
+                                        
+                                </td>
+                                <td>
+                                        true
+                                </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>removeOnBlur</code>
+                            </td>
+                                <td>
+                                        Boolean
+                                </td>
+                                <td>
+                                        <p>hide floater on outside click/focus or escape key</p>
+
+                                </td>
+                                <td>
+                                        
+                                </td>
+                                <td>
+                                        fase
+                                </td>
+                        </tr>
                         <tr>
                             <td>
                                 <code>timeout</code>
@@ -105,8 +356,14 @@
                                         Number
                                 </td>
                                 <td>
-                                        <p>Number of milliseconds to wait to remove after showing</p>
+                                        <p>ms to wait until hiding after mouseout</p>
 
+                                </td>
+                                <td>
+                                        
+                                </td>
+                                <td>
+                                        300
                                 </td>
                         </tr>
                 </table>
@@ -121,7 +378,7 @@
                 SOURCE CODE
             </div>
             <div class="highlight"><pre class=" javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">createElement</span><span class="p">,</span> <span class="nx">remove</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">dolla</span><span class="dl">'</span><span class="p">;</span>
-<span class="k">import</span> <span class="nx">Floater</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./floater.js</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">Floater</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./floater.js</span><span class="dl">'</span><span class="p">;</span> 
 
 <span class="kd">class</span> <span class="nx">Tooltip</span> <span class="kd">extends</span> <span class="nx">Floater</span> <span class="p">{</span>
 
@@ -133,7 +390,8 @@
         <span class="na">shift</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
         <span class="na">strategy</span><span class="p">:</span> <span class="dl">'</span><span class="s1">absolute</span><span class="dl">'</span><span class="p">,</span>
         <span class="na">placement</span><span class="p">:</span> <span class="dl">'</span><span class="s1">top</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">arrow</span><span class="p">:</span> <span class="kc">true</span>
+        <span class="na">arrow</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">timeout</span><span class="p">:</span> <span class="mi">300</span>
     <span class="p">}</span>
     
     <span class="nx">_showing</span> <span class="o">=</span> <span class="kc">false</span>
@@ -148,12 +406,13 @@
         <span class="p">}</span>
     <span class="p">}</span>
     
-    <span class="nx">instantiate</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="k">super</span><span class="p">.</span><span class="nx">instantiate</span><span class="p">();</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">container</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">parentElement</span><span class="p">;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_showing</span> <span class="o">==</span> <span class="kc">false</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">remove</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
-            <span class="k">return</span> <span class="kc">false</span>
+    <span class="nx">connected</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">super</span><span class="p">.</span><span class="nx">connected</span><span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">getRootNode</span><span class="p">()</span> <span class="o">==</span> <span class="k">this</span><span class="p">.</span><span class="nx">anchor</span><span class="p">.</span><span class="nx">getRootNode</span><span class="p">())</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_showing</span> <span class="o">==</span> <span class="kc">false</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">remove</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+                <span class="k">return</span> <span class="kc">false</span>
+            <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
     
@@ -166,30 +425,6 @@
             <span class="nx">now</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">mouseenter</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">show</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">))</span>
             <span class="nx">now</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">mouseleave</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">hide</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">))</span>
         <span class="p">}</span>
-    <span class="p">}</span>
-    
-    <span class="nx">show</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">container</span><span class="p">)</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">container</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">anchor</span><span class="p">.</span><span class="nx">parentElement</span> <span class="p">}</span>
-        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">parentElement</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">this</span><span class="p">.</span><span class="nx">_showing</span> <span class="o">=</span> <span class="kc">true</span>
-            <span class="k">this</span><span class="p">.</span><span class="nx">container</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
-            <span class="k">this</span><span class="p">.</span><span class="nx">_showing</span> <span class="o">=</span> <span class="kc">false</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-    
-    <span class="nx">hide</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_hideTimeout</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">_hideTimeout</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-            <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">parentElement</span><span class="p">)</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">remove</span><span class="p">()</span> <span class="p">}</span>
-            <span class="k">delete</span> <span class="k">this</span><span class="p">.</span><span class="nx">_hideTimeout</span><span class="p">;</span>
-        <span class="p">},</span> <span class="k">this</span><span class="p">.</span><span class="nx">timeout</span><span class="p">)</span>
-    <span class="p">}</span>
-    
-    <span class="nx">toggle</span> <span class="p">(</span><span class="nx">shouldHide</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">shouldHide</span> <span class="o">!==</span> <span class="dl">'</span><span class="s1">boolean</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">shouldHide</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">offsetParent</span> <span class="o">!==</span> <span class="kc">null</span>
-        <span class="p">}</span>
-        <span class="k">this</span><span class="p">[</span><span class="nx">shouldHide</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">hide</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">show</span><span class="dl">'</span><span class="p">]()</span>
     <span class="p">}</span>
 
 <span class="p">}</span>
