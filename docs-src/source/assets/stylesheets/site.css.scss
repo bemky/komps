@@ -147,12 +147,11 @@ pre {
     }
 }
 
-komp-data-table,
+komp-data-grid,
 komp-spreadsheet {
-    --cell-padding: 0.5em 1em;
     gap: 1px;
     border-radius: 0.35em;
-    komp-data-table-cell,
+    komp-data-grid-cell,
     komp-spreadsheet-cell,
     komp-spreadsheet-inputcell {
         background: white;
@@ -163,8 +162,9 @@ komp-spreadsheet {
         }
     }
 
-    komp-data-table-cell,
+    komp-data-grid-cell,
     komp-spreadsheet-cell {
+        padding: 0.5em 1em;
         box-shadow: 0 0 0 1px color('purple-10');
     }
 }
