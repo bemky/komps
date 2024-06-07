@@ -5,7 +5,7 @@ module SourceHelpers
   end
     
   def files
-    Dir.glob("*.js", base: base)
+    Dir.glob("**/*.js", base: base)
   end
   
   def component_names
@@ -22,6 +22,7 @@ module SourceHelpers
       }
     end
     file = files.find{|x| x =~ /#{name}\.js$/}
+    
     body = File.read(File.join(base, file))
     content = body.match(/\/\*.*(?=^\*\/)/m).to_s
     source = body.split(/\*\//, 2).last
