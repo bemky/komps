@@ -155,17 +155,19 @@ komp-spreadsheet {
     komp-spreadsheet-cell,
     komp-spreadsheet-inputcell {
         background: white;
-        &.header {
-            font-weight: bold;
-            text-transform: uppercase;
-            background: rgb(248,248,251);
-        }
     }
 
     komp-data-grid-cell,
     komp-spreadsheet-cell {
         padding: 0.5em 1em;
-        box-shadow: 0 0 0 1px color('purple-10');
+        outline: 1px solid color('purple-10');
+    }
+    komp-spreadsheet-header {
+        komp-spreadsheet-cell {
+            background: rgb(248,248,251);
+            font-weight: bold;
+            text-transform: uppercase;
+        }
     }
 }
 
