@@ -10,7 +10,7 @@
     <!-- Use the title from a page's frontmatter if it has one -->
     <title>Komps</title>
     <link href="/assets/site-dcaa840662e8a88cf6833670c3e0abb477a0de8b7144d0029bb77a12403bf332.css" rel="stylesheet" />
-    <script src="/assets/site-d5337730503f556f9ab5e68e47a6bc60505ccaac25b10236f8e0203a73a730cb.js"></script>
+    <script src="/assets/site-29cc5badfb162fcfdd44946dd4f7f151e2c59b4bb150542eea491875dca6ce2f.js"></script>
 </head>
 <body>
     <div class="side-nav">
@@ -52,6 +52,9 @@
                 </a>
                 <a href="/modal" class="">
                     Modal
+                </a>
+                <a href="/notification-center" class="">
+                    NotificationCenter
                 </a>
                 <a href="/spreadsheet" class="">
                     Spreadsheet
@@ -289,7 +292,7 @@
                 SOURCE CODE
             </div>
             <div class="highlight"><pre class=" javascript"><code><span class="k">import</span> <span class="nx">KompElement</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./element.js</span><span class="dl">'</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">except</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../support.js</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">except</span><span class="p">,</span> <span class="nx">dig</span><span class="p">,</span> <span class="nx">bury</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../support.js</span><span class="dl">'</span><span class="p">;</span>
 <span class="k">import</span> <span class="p">{</span> <span class="nx">createElement</span><span class="p">,</span> <span class="nx">HTML_ATTRIBUTES</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">dolla</span><span class="dl">'</span><span class="p">;</span>
 
 <span class="kd">class</span> <span class="nx">Input</span> <span class="kd">extends</span> <span class="nx">KompElement</span> <span class="p">{</span>
@@ -302,7 +305,7 @@
         <span class="na">load</span><span class="p">:</span> <span class="p">(</span><span class="nx">v</span><span class="p">,</span> <span class="nx">record</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">v</span>
     <span class="p">}</span>
     
-    <span class="kd">constructor</span> <span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">constructor</span> <span class="p">(</span><span class="nx">options</span><span class="o">=</span><span class="p">{})</span> <span class="p">{</span>
         <span class="kd">const</span> <span class="nx">optionsWas</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">({},</span> <span class="nx">options</span><span class="p">)</span>
         <span class="kd">const</span> <span class="nx">prototype</span> <span class="o">=</span> <span class="p">{</span>
             <span class="na">button</span><span class="p">:</span> <span class="nx">ButtonInput</span><span class="p">.</span><span class="nx">prototype</span><span class="p">,</span>
@@ -333,6 +336,14 @@
         <span class="k">this</span><span class="p">.</span><span class="nx">setupRecordListener</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">recordChange</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
     <span class="p">}</span>
     
+    <span class="kd">get</span> <span class="nx">value</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">value</span>
+    <span class="p">}</span>
+    
+    <span class="kd">set</span> <span class="nx">value</span> <span class="p">(</span><span class="nx">v</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">v</span>
+    <span class="p">}</span>
+    
     <span class="nx">createInput</span> <span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">input</span><span class="dl">'</span><span class="p">,</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">({</span>
             <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">text</span><span class="dl">'</span>
@@ -347,10 +358,13 @@
         <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">record</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">this</span><span class="p">.</span><span class="nx">record</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">change</span><span class="dl">'</span><span class="p">,</span> <span class="nx">listener</span><span class="p">);</span>
         <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">record</span><span class="p">.</span><span class="nx">addListener</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">record</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="nx">listener</span><span class="p">)</span>
+        <span class="p">}</span>
     <span class="p">}</span>
     
     <span class="nx">inputChange</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="kd">const</span> <span class="nx">valueWas</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">record</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">attribute</span><span class="p">])</span>
+        <span class="kd">const</span> <span class="nx">valueWas</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_loadValue</span><span class="p">())</span>
         <span class="kd">const</span> <span class="nx">value</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_dump</span><span class="p">()</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="dl">'</span><span class="s1">change</span><span class="dl">'</span><span class="p">,</span> <span class="nx">value</span><span class="p">,</span> <span class="nx">valueWas</span><span class="p">)</span>
     <span class="p">}</span>
@@ -360,13 +374,26 @@
     <span class="p">}</span>
     
     <span class="nx">_load</span> <span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="nx">v</span> <span class="p">?</span> <span class="nx">v</span> <span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">record</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">attribute</span><span class="p">])</span>
+        <span class="kd">const</span> <span class="nx">value</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="nx">v</span> <span class="p">?</span> <span class="nx">v</span> <span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">_loadValue</span><span class="p">())</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="o">!==</span> <span class="kc">undefined</span> <span class="o">&amp;&amp;</span> <span class="nx">value</span> <span class="o">!==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">value</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="nx">_loadValue</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">dig</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">record</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">attribute</span><span class="p">)</span>
     <span class="p">}</span>
     
     <span class="nx">_dump</span> <span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span> <span class="p">{</span>
         <span class="kd">const</span> <span class="nx">value</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">dump</span><span class="p">(</span><span class="nx">v</span> <span class="p">?</span> <span class="nx">v</span> <span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">record</span><span class="p">)</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">record</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">attribute</span><span class="p">]</span> <span class="o">=</span> <span class="nx">value</span>
-        <span class="k">return</span> <span class="nx">value</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_dumpValue</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="nx">_dumpValue</span><span class="p">(</span><span class="nx">v</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">attributes</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">attribute</span><span class="p">)</span> <span class="p">?</span> <span class="k">this</span><span class="p">.</span><span class="nx">attribute</span> <span class="p">:</span> <span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">attribute</span><span class="p">]</span>
+        <span class="nx">attributes</span> <span class="o">=</span> <span class="nx">attributes</span><span class="p">.</span><span class="nx">concat</span><span class="p">([</span><span class="nx">v</span><span class="p">])</span>
+        <span class="nx">bury</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">record</span><span class="p">,</span> <span class="p">...</span><span class="nx">attributes</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nx">v</span>
     <span class="p">}</span>
     
     <span class="kd">static</span> <span class="nx">style</span> <span class="o">=</span> <span class="s2">`
@@ -379,23 +406,34 @@
 
 <span class="kd">class</span> <span class="nx">BinaryInput</span> <span class="kd">extends</span> <span class="nx">Input</span> <span class="p">{</span>
     <span class="nx">_load</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="kd">const</span> <span class="nx">value</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">record</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">attribute</span><span class="p">])</span>
-        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">hasAttribute</span><span class="p">(</span><span class="dl">'</span><span class="s1">value</span><span class="dl">'</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">value</span> <span class="o">!=</span> <span class="dl">"</span><span class="s2">on</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">checked</span> <span class="o">=</span> <span class="nx">value</span> <span class="o">==</span> <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">value</span>
+        <span class="kd">const</span> <span class="nx">value</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_loadValue</span><span class="p">())</span>
+        <span class="kd">const</span> <span class="nx">inputValue</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">value</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">on</span><span class="dl">"</span> <span class="p">?</span> <span class="kc">true</span> <span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">value</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">multiple</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">checked</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">?</span> <span class="nx">value</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="nx">inputValue</span><span class="p">)</span> <span class="p">:</span> <span class="kc">false</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">checked</span> <span class="o">=</span> <span class="nx">value</span> <span class="o">===</span> <span class="kc">true</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">checked</span> <span class="o">=</span> <span class="nx">value</span> <span class="o">==</span> <span class="nx">inputValue</span>
         <span class="p">}</span>
     <span class="p">}</span>
     <span class="nx">_dump</span> <span class="p">()</span> <span class="p">{</span>
         <span class="kd">let</span> <span class="nx">value</span>
-        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">hasAttribute</span><span class="p">(</span><span class="dl">'</span><span class="s1">value</span><span class="dl">'</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">value</span> <span class="o">!=</span> <span class="dl">"</span><span class="s2">on</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">value</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">dump</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">checked</span> <span class="p">?</span> <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">value</span> <span class="p">:</span> <span class="kc">null</span><span class="p">)</span>
-            <span class="k">this</span><span class="p">.</span><span class="nx">record</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">attribute</span><span class="p">]</span> <span class="o">=</span> <span class="nx">value</span>
+        <span class="kd">let</span> <span class="nx">inputValue</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">value</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">on</span><span class="dl">"</span> <span class="p">?</span> <span class="kc">true</span> <span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">value</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">multiple</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kd">const</span> <span class="nx">currentValues</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_loadValue</span><span class="p">()</span> <span class="o">||</span> <span class="p">[]</span>
+            <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">checked</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">currentValues</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="nx">inputValue</span><span class="p">))</span> <span class="p">{</span>
+                    <span class="nx">value</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">dump</span><span class="p">(</span><span class="nx">currentValues</span><span class="p">)</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="nx">value</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">dump</span><span class="p">(</span><span class="nx">currentValues</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="nx">inputValue</span><span class="p">))</span>
+                <span class="p">}</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nx">value</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">dump</span><span class="p">(</span><span class="nx">currentValues</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">x</span> <span class="o">=&gt;</span> <span class="nx">x</span> <span class="o">!=</span> <span class="nx">inputValue</span><span class="p">))</span>
+            <span class="p">}</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">inputValue</span> <span class="o">==</span> <span class="dl">'</span><span class="s1">boolean</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">value</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">dump</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">checked</span> <span class="p">?</span> <span class="nx">inputValue</span> <span class="p">:</span> <span class="o">!</span><span class="nx">inputValue</span><span class="p">)</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">value</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">dump</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">checked</span><span class="p">)</span>
-            <span class="k">this</span><span class="p">.</span><span class="nx">record</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">attribute</span><span class="p">]</span> <span class="o">=</span> <span class="nx">value</span>
+            <span class="nx">value</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">dump</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">checked</span> <span class="p">?</span> <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">value</span> <span class="p">:</span> <span class="kc">null</span><span class="p">)</span>
         <span class="p">}</span>
-        <span class="k">return</span> <span class="nx">value</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_dumpValue</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
@@ -405,7 +443,7 @@
     <span class="p">}</span>
     
     <span class="nx">_load</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kd">let</span> <span class="nx">value</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">record</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">attribute</span><span class="p">]</span>
+        <span class="kd">let</span> <span class="nx">value</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_loadValue</span><span class="p">()</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="k">instanceof</span> <span class="nb">Date</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">value</span> <span class="o">=</span> <span class="p">[</span>
                 <span class="nx">value</span><span class="p">.</span><span class="nx">getUTCFullYear</span><span class="p">(),</span>
@@ -425,7 +463,7 @@
 
 <span class="kd">class</span> <span class="nx">DateTimeInput</span> <span class="kd">extends</span> <span class="nx">Input</span> <span class="p">{</span>
     <span class="nx">_load</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kd">let</span> <span class="nx">value</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">record</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">attribute</span><span class="p">]</span>
+        <span class="kd">let</span> <span class="nx">value</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_loadValue</span><span class="p">()</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="k">instanceof</span> <span class="nb">Date</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">value</span> <span class="o">=</span> <span class="p">[</span>
                 <span class="p">[</span>
@@ -479,7 +517,7 @@
     <span class="p">}</span>
     <span class="nx">_load</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">multiple</span><span class="p">)</span> <span class="p">{</span>
-            <span class="kd">const</span> <span class="nx">values</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">record</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">attribute</span><span class="p">]);</span>
+            <span class="kd">const</span> <span class="nx">values</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_loadValue</span><span class="p">());</span>
             <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">option</span><span class="dl">'</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">option</span> <span class="o">=&gt;</span> <span class="p">{</span>
                 <span class="k">if</span> <span class="p">(</span><span class="nx">values</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="nx">option</span><span class="p">.</span><span class="nx">value</span><span class="p">))</span> <span class="p">{</span>
                     <span class="nx">option</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">'</span><span class="s1">selected</span><span class="dl">'</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
@@ -494,13 +532,13 @@
     <span class="nx">_dump</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">multiple</span><span class="p">)</span> <span class="p">{</span>
             <span class="kd">const</span> <span class="nx">values</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">options</span><span class="p">).</span><span class="nx">filter</span><span class="p">(</span><span class="nx">x</span> <span class="o">=&gt;</span> <span class="nx">x</span><span class="p">.</span><span class="nx">selected</span><span class="p">).</span><span class="nx">map</span><span class="p">(</span><span class="nx">x</span> <span class="o">=&gt;</span> <span class="nx">x</span><span class="p">.</span><span class="nx">value</span><span class="p">)</span>
-            <span class="k">this</span><span class="p">.</span><span class="nx">record</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">attribute</span><span class="p">]</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">dump</span><span class="p">(</span><span class="nx">values</span><span class="p">);</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">_dumpValue</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">dump</span><span class="p">(</span><span class="nx">values</span><span class="p">))</span>
             <span class="k">return</span> <span class="nx">values</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="kd">let</span> <span class="nx">value</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">value</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">null</span><span class="dl">"</span><span class="p">)</span> <span class="nx">value</span> <span class="o">=</span> <span class="kc">null</span>
             <span class="nx">value</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">dump</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span>
-            <span class="k">this</span><span class="p">.</span><span class="nx">record</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">attribute</span><span class="p">]</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">_dumpValue</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span>
             <span class="k">return</span> <span class="nx">value</span>
         <span class="p">}</span>
     <span class="p">}</span>

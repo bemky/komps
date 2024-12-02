@@ -10,7 +10,7 @@
     <!-- Use the title from a page's frontmatter if it has one -->
     <title>Komps</title>
     <link href="/assets/site-dcaa840662e8a88cf6833670c3e0abb477a0de8b7144d0029bb77a12403bf332.css" rel="stylesheet" />
-    <script src="/assets/site-d5337730503f556f9ab5e68e47a6bc60505ccaac25b10236f8e0203a73a730cb.js"></script>
+    <script src="/assets/site-29cc5badfb162fcfdd44946dd4f7f151e2c59b4bb150542eea491875dca6ce2f.js"></script>
 </head>
 <body>
     <div class="side-nav">
@@ -52,6 +52,9 @@
                 </a>
                 <a href="/modal" class="">
                     Modal
+                </a>
+                <a href="/notification-center" class="">
+                    NotificationCenter
                 </a>
                 <a href="/spreadsheet" class="">
                     Spreadsheet
@@ -417,11 +420,11 @@
     <span class="p">}</span>
     
     <span class="nx">anchorChanged</span> <span class="p">(</span><span class="nx">was</span><span class="p">,</span> <span class="nx">now</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">was</span> <span class="o">&amp;&amp;</span> <span class="nx">was</span> <span class="k">instanceof</span> <span class="nx">HTMLElement</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">was</span> <span class="o">&amp;&amp;</span> <span class="nx">was</span> <span class="k">instanceof</span> <span class="nx">Element</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">was</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">mouseenter</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">show</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">))</span>
             <span class="nx">was</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">mouseleave</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">hide</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">))</span>
         <span class="p">}</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">now</span> <span class="o">&amp;&amp;</span> <span class="nx">now</span> <span class="k">instanceof</span> <span class="nx">HTMLElement</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">now</span> <span class="o">&amp;&amp;</span> <span class="nx">now</span> <span class="k">instanceof</span> <span class="nx">Element</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">now</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">mouseenter</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">show</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">))</span>
             <span class="nx">now</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">mouseleave</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">hide</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">))</span>
         <span class="p">}</span>

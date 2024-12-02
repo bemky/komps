@@ -10,7 +10,7 @@
     <!-- Use the title from a page's frontmatter if it has one -->
     <title>Komps</title>
     <link href="/assets/site-dcaa840662e8a88cf6833670c3e0abb477a0de8b7144d0029bb77a12403bf332.css" rel="stylesheet" />
-    <script src="/assets/site-d5337730503f556f9ab5e68e47a6bc60505ccaac25b10236f8e0203a73a730cb.js"></script>
+    <script src="/assets/site-29cc5badfb162fcfdd44946dd4f7f151e2c59b4bb150542eea491875dca6ce2f.js"></script>
 </head>
 <body>
     <div class="side-nav">
@@ -52,6 +52,9 @@
                 </a>
                 <a href="/modal" class="">
                     Modal
+                </a>
+                <a href="/notification-center" class="">
+                    NotificationCenter
                 </a>
                 <a href="/spreadsheet" class="">
                     Spreadsheet
@@ -480,7 +483,9 @@
             <h2>Transition Animation</h2>
                 <p>The floater will follow the transition effects set by CSS, and adds classes <code>-out</code>, <code>-out-start</code>, <code>-in</code> and <code>-in-start</code> when hiding and showing.</p>
 <p>Additionally, the floater adds classes for placement <code>-left</code>, <code>-right</code>, <code>-top</code>, <code>-bottom</code></p>
-<p>Example Transition Effect</p>
+<p>// TODO convert to Popover and use <a href="https://developer.mozilla.org/en-US/docs/Web/API/Popover_API">Popover API</a>
+// TODO convert to use <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_anchor_positioning">CSS anchor positioning</a>
+Example Transition Effect</p>
 <div class="highlight"><pre class=" scss"><code><span class="nt">TODO</span>
 </code></pre></div>
 
@@ -641,6 +646,7 @@
             <span class="k">this</span><span class="p">.</span><span class="nx">_showing</span> <span class="o">=</span> <span class="kc">false</span>
             <span class="k">this</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="dl">'</span><span class="s1">shown</span><span class="dl">'</span><span class="p">)</span>
         <span class="p">}</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
     <span class="p">}</span>
     
     <span class="nx">hide</span> <span class="p">()</span> <span class="p">{</span>
@@ -655,6 +661,7 @@
                 <span class="p">})</span>
             <span class="p">}</span>
         <span class="p">},</span> <span class="k">this</span><span class="p">.</span><span class="nx">timeout</span><span class="p">)</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
     <span class="p">}</span>
     
     <span class="nx">toggle</span> <span class="p">(</span><span class="nx">shouldHide</span><span class="p">)</span> <span class="p">{</span>
@@ -662,6 +669,7 @@
             <span class="nx">shouldHide</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">offsetParent</span> <span class="o">!==</span> <span class="kc">null</span>
         <span class="p">}</span>
         <span class="k">this</span><span class="p">[</span><span class="nx">shouldHide</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">hide</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">show</span><span class="dl">'</span><span class="p">]()</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
     <span class="p">}</span>
     
     <span class="kd">static</span> <span class="nx">style</span> <span class="o">=</span> <span class="s2">`
