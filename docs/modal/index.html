@@ -10,7 +10,7 @@
     <!-- Use the title from a page's frontmatter if it has one -->
     <title>Komps</title>
     <link href="/assets/site-dcaa840662e8a88cf6833670c3e0abb477a0de8b7144d0029bb77a12403bf332.css" rel="stylesheet" />
-    <script src="/assets/site-a87bb3cf88e3a18c051f61cc6c8c8df7f24eed343d1ffd4bb12461a2af142ba4.js"></script>
+    <script src="/assets/site-ab02f7b8ebd6f2cf0c6481cbae7e361c75ede1c374a6fc3db86cd9ab286b3edc.js"></script>
 </head>
 <body>
     <div class="side-nav">
@@ -144,6 +144,13 @@
 
     <span class="kd">static</span> <span class="nx">tagName</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">komp-modal</span><span class="dl">"</span><span class="p">;</span>
     
+    <span class="kd">constructor</span> <span class="p">(...</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">super</span><span class="p">(...</span><span class="nx">args</span><span class="p">)</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">container</span> <span class="o">=</span> <span class="nx">createElement</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">-popover`</span><span class="p">,</span> <span class="p">{</span>
+            <span class="na">popover</span><span class="p">:</span> <span class="dl">'</span><span class="s1">manual</span><span class="dl">'</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+    
     <span class="nx">connected</span> <span class="p">()</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">parentElement</span><span class="p">.</span><span class="nx">localName</span> <span class="o">!=</span> <span class="s2">`</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">localName</span><span class="p">}</span><span class="s2">-popover`</span><span class="p">)</span> <span class="p">{</span>
             <span class="kd">const</span> <span class="nx">existingModals</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">parentElement</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">komp-modal-popover</span><span class="dl">'</span><span class="p">))</span>
@@ -153,9 +160,6 @@
                 <span class="nx">modal</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">modalOrder</span> <span class="o">=</span> <span class="nx">modal</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">modalOrder</span> <span class="o">||</span> <span class="nx">index</span><span class="o">++</span>
             <span class="p">})</span>
             
-            <span class="k">this</span><span class="p">.</span><span class="nx">container</span> <span class="o">=</span> <span class="nx">createElement</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">-popover`</span><span class="p">,</span> <span class="p">{</span>
-                <span class="na">popover</span><span class="p">:</span> <span class="dl">'</span><span class="s1">manual</span><span class="dl">'</span>
-            <span class="p">});</span>
             <span class="k">this</span><span class="p">.</span><span class="nx">replaceWith</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">container</span><span class="p">);</span>
             <span class="k">this</span><span class="p">.</span><span class="nx">container</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="nx">e</span> <span class="o">=&gt;</span> <span class="p">{</span>
                 <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span> <span class="o">==</span> <span class="k">this</span><span class="p">.</span><span class="nx">container</span><span class="p">)</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">remove</span><span class="p">()</span> <span class="p">}</span>
