@@ -3,7 +3,7 @@
         <img src="https://raw.githubusercontent.com/bemky/komps/master/docs-src/source/assets/images/logo.svg" width="300" alt="Dolla">
     </a>
     <p align="center">
-        Komps is a library of javascript style-less components and elements for building a UI. Komps is platform-agnostic, with each component is fully tree-shakeable by an bundler.
+        Komps is a library of style-less Web Components for building UIs. Komps is platform-agnostic, and each component is fully tree-shakeable by any bundler. 
         <a href="https://komps.js.org/">
             Documentation
         </a>
@@ -13,6 +13,7 @@
 
 ## Dependencies
 [Dolla](https://dollajs.com)
+
 [Floating UI](https://floating-ui.com/)
 
 
