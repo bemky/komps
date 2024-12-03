@@ -1,2 +1,2 @@
 <% component = SourceHelpers.component(component_name) %>
-<%= component["Example"][:body] %>
+<%= component["Example"].try(:[], :body) %>

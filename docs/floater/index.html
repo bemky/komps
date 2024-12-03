@@ -3,14 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport"
-    content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no">
     <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
     <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
     <!-- Use the title from a page's frontmatter if it has one -->
     <title>Komps</title>
-    <link href="/assets/site-dcaa840662e8a88cf6833670c3e0abb477a0de8b7144d0029bb77a12403bf332.css" rel="stylesheet" />
-    <script src="/assets/site-ab02f7b8ebd6f2cf0c6481cbae7e361c75ede1c374a6fc3db86cd9ab286b3edc.js"></script>
+    <link href="/assets/site-3cff6205bea1a8a2ae99f7e34bc9a47274bdc1bd7a850668ef9645a5269bb3f8.css" rel="stylesheet" />
+    <script src="/assets/site-e9712547542067c3972cb36cbbf19eaeb5af16b9287e53923a2b22ef9f6bb327.js"></script>
 </head>
 <body>
     <div class="side-nav">
@@ -20,57 +19,114 @@
             </a>
         </div>
         <div class="uniformNav -vertical -gray flex-fill -active-green">
-            <a href="/" class="">
-                Usage
+    <a href="/" class="">
+        Usage
+    </a>
+    <a href="/element" class="">
+        Base Element
+    </a>
+    <div class="height-0 width-full">
+        <div class="border-green-80 border-opacity-30 border-bottom border-1px width-full"></div>
+    </div>
+        <a href="/auto-grid" class="">
+            AutoGrid
+        </a>
+        <a href="/content-area" class="">
+            ContentArea
+        </a>
+        <a href="/data-table" class="">
+            DataTable
+        </a>
+        <a href="/dropdown" class="">
+            Dropdown
+        </a>
+        <a href="/dropzone" class="">
+            Dropzone
+        </a>
+        <a href="/floater" class="active">
+            Floater
+        </a>
+        <a href="/input" class="">
+            Input
+        </a>
+        <a href="/modal" class="">
+            Modal
+        </a>
+        <a href="/notification-center" class="">
+            NotificationCenter
+        </a>
+        <a href="/spreadsheet" class="">
+            Spreadsheet
+        </a>
+        <a href="/tooltip" class="">
+            Tooltip
+        </a>
+</div>
+    </div>
+    <div class="hide sm:show sticky top-0 bg-white">
+        <div class="mobile-nav flex flex-col align-center">
+            <div class="uniformNav -vertical -gray flex-fill -active-green">
+    <a href="/" class="">
+        Usage
+    </a>
+    <a href="/element" class="">
+        Base Element
+    </a>
+    <div class="height-0 width-full">
+        <div class="border-green-80 border-opacity-30 border-bottom border-1px width-full"></div>
+    </div>
+        <a href="/auto-grid" class="">
+            AutoGrid
+        </a>
+        <a href="/content-area" class="">
+            ContentArea
+        </a>
+        <a href="/data-table" class="">
+            DataTable
+        </a>
+        <a href="/dropdown" class="">
+            Dropdown
+        </a>
+        <a href="/dropzone" class="">
+            Dropzone
+        </a>
+        <a href="/floater" class="active">
+            Floater
+        </a>
+        <a href="/input" class="">
+            Input
+        </a>
+        <a href="/modal" class="">
+            Modal
+        </a>
+        <a href="/notification-center" class="">
+            NotificationCenter
+        </a>
+        <a href="/spreadsheet" class="">
+            Spreadsheet
+        </a>
+        <a href="/tooltip" class="">
+            Tooltip
+        </a>
+</div>
+        </div>
+        <div class="flex align-stretch relative z-3">
+            <button type="button" class="reset width-50-px flex justify-content-center align-center" onClick="document.body.classList.toggle('active-mobile-nav')">
+                <img class="active:hide" src="/assets/menu-1412be30d711c8336d0757e5557b785242945a44db28cde24ba2b6f2afe30de4.svg" />
+                <img class="hide active:show" src="/assets/x-947e98617952bbdb89b1b18633e1a4f7ded1e3faa29fbd20cdd08ab0dc196dce.svg" />
+            </button>
+            <a href="/" class="reset flex-none pad-v-2x">
+                <img width="200" src="/assets/logo-7b1623d8d9db3b0d0d79dd30b2a5c2a0f0be2b945944f75d18e3be1e67177443.svg" />
             </a>
-            <a href="/element" class="">
-                Base Element
-            </a>
-            <div class="height-0 width-full">
-                <div class="border-green-80 border-opacity-30 border-bottom border-1px width-full"></div>
-            </div>
-                <a href="/auto-grid" class="">
-                    AutoGrid
-                </a>
-                <a href="/content-area" class="">
-                    ContentArea
-                </a>
-                <a href="/data-table" class="">
-                    DataTable
-                </a>
-                <a href="/dropdown" class="">
-                    Dropdown
-                </a>
-                <a href="/dropzone" class="">
-                    Dropzone
-                </a>
-                <a href="/floater" class="active">
-                    Floater
-                </a>
-                <a href="/input" class="">
-                    Input
-                </a>
-                <a href="/modal" class="">
-                    Modal
-                </a>
-                <a href="/notification-center" class="">
-                    NotificationCenter
-                </a>
-                <a href="/spreadsheet" class="">
-                    Spreadsheet
-                </a>
-                <a href="/tooltip" class="">
-                    Tooltip
-                </a>
         </div>
     </div>
     <div class="main-content overflow-hidden">
         <div class="section space-v-3x">
     
     <div class="">
-        <h1 class="text-2x text-overflow-hidden text-nowrap">
+        <h1 class="text-2x">
             Floater
-            <span class="text-light text-italic text-gray-50 text-xl">
+            <span class="text-light text-nowrap text-italic text-gray-50 text-xl">
                 (extends <a href="element" class="reset hover:text-underline">KompElement</a>)
             </span>
         </h1>
@@ -110,374 +166,378 @@
             <h2>Options</h2>
                 <p>container</p>
 
-                <table class="uniformTable border-gray-20">
-                    <tr>
-                        <th></th>
-                            <th>types</th>
-                            <th>description</th>
-                            <th>required</th>
-                            <th>default</th>
-                    </tr>
+                <div class="overflow-auto">
+                    <table class="uniformTable border-gray-20 overflow-auto max-width-full">
                         <tr>
-                            <td>
-                                <code>content</code>
-                            </td>
-                                <td>
-                                        String, HTMLElement, Array, Object
-                                </td>
-                                <td>
-                                        <p>content for the floater, uses <a href="https://dollajs.com/#content">Dolla's <code>content</code></a></p>
-
-                                </td>
-                                <td>
-                                        
-                                </td>
-                                <td>
-                                        
-                                </td>
+                            <th></th>
+                                <th>types</th>
+                                <th>description</th>
+                                <th>required</th>
+                                <th>default</th>
                         </tr>
-                        <tr>
-                            <td>
-                                <code>anchor</code>
-                            </td>
+                            <tr>
                                 <td>
-                                        String, HTMLElement
+                                    <code>content</code>
                                 </td>
-                                <td>
-                                        <p>element to append floater to. If <code>String</code>, then used as selector for <code>this.closest(selector)</code></p>
+                                    <td>
+                                            String, HTMLElement, Array, Object
+                                    </td>
+                                    <td>
+                                            <p>content for the floater, uses <a href="https://dollajs.com/#content">Dolla's <code>content</code></a></p>
 
-                                </td>
+                                    </td>
+                                    <td>
+                                            
+                                    </td>
+                                    <td>
+                                            
+                                    </td>
+                            </tr>
+                            <tr>
                                 <td>
-                                        true
+                                    <code>anchor</code>
                                 </td>
-                                <td>
-                                        null/anchor.parentElement
-                                </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <code>placement</code>
-                            </td>
-                                <td>
-                                        String
-                                </td>
-                                <td>
-                                        <p>how the floater is anchored options like &quot;top&quot;, &quot;top-start&quot;, &quot;top-end&quot;, &quot;left&quot;, &quot;left-start&quot;...</p>
+                                    <td>
+                                            String, HTMLElement
+                                    </td>
+                                    <td>
+                                            <p>element to append floater to. If <code>String</code>, then used as selector for <code>this.closest(selector)</code></p>
 
-                                </td>
+                                    </td>
+                                    <td>
+                                            true
+                                    </td>
+                                    <td>
+                                            null/anchor.parentElement
+                                    </td>
+                            </tr>
+                            <tr>
                                 <td>
-                                        
+                                    <code>placement</code>
                                 </td>
-                                <td>
-                                        bottom
-                                </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <code>strategy</code>
-                            </td>
-                                <td>
-                                        String
-                                </td>
-                                <td>
-                                        <p>how the floater is positioned in the document. &quot;absolute&quot; or &quot;fixed&quot;</p>
+                                    <td>
+                                            String
+                                    </td>
+                                    <td>
+                                            <p>how the floater is anchored options like &quot;top&quot;, &quot;top-start&quot;, &quot;top-end&quot;, &quot;left&quot;, &quot;left-start&quot;...</p>
 
-                                </td>
+                                    </td>
+                                    <td>
+                                            
+                                    </td>
+                                    <td>
+                                            bottom
+                                    </td>
+                            </tr>
+                            <tr>
                                 <td>
-                                        
+                                    <code>strategy</code>
                                 </td>
-                                <td>
-                                        absolute
-                                </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <code>flip</code>
-                            </td>
-                                <td>
-                                        Boolean, Object
-                                </td>
-                                <td>
-                                        <p>See <a href="https://floating-ui.com/docs/flip">https://floating-ui.com/docs/flip</a>, defaults to false in favor of autoPlacement</p>
+                                    <td>
+                                            String
+                                    </td>
+                                    <td>
+                                            <p>how the floater is positioned in the document. &quot;absolute&quot; or &quot;fixed&quot;</p>
 
-                                </td>
+                                    </td>
+                                    <td>
+                                            
+                                    </td>
+                                    <td>
+                                            absolute
+                                    </td>
+                            </tr>
+                            <tr>
                                 <td>
-                                        
+                                    <code>flip</code>
                                 </td>
-                                <td>
-                                        false
-                                </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <code>offset</code>
-                            </td>
-                                <td>
-                                        Boolean, Object
-                                </td>
-                                <td>
-                                        <p>See <a href="https://floating-ui.com/docs/offset">https://floating-ui.com/docs/offset</a></p>
+                                    <td>
+                                            Boolean, Object
+                                    </td>
+                                    <td>
+                                            <p>See <a href="https://floating-ui.com/docs/flip">https://floating-ui.com/docs/flip</a>, defaults to false in favor of autoPlacement</p>
 
-                                </td>
+                                    </td>
+                                    <td>
+                                            
+                                    </td>
+                                    <td>
+                                            false
+                                    </td>
+                            </tr>
+                            <tr>
                                 <td>
-                                        
+                                    <code>offset</code>
                                 </td>
-                                <td>
-                                        false
-                                </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <code>shift</code>
-                            </td>
-                                <td>
-                                        Boolean, Object
-                                </td>
-                                <td>
-                                        <p>See <a href="https://floating-ui.com/docs/shift">https://floating-ui.com/docs/shift</a></p>
+                                    <td>
+                                            Boolean, Object
+                                    </td>
+                                    <td>
+                                            <p>See <a href="https://floating-ui.com/docs/offset">https://floating-ui.com/docs/offset</a></p>
 
-                                </td>
+                                    </td>
+                                    <td>
+                                            
+                                    </td>
+                                    <td>
+                                            false
+                                    </td>
+                            </tr>
+                            <tr>
                                 <td>
-                                        
+                                    <code>shift</code>
                                 </td>
-                                <td>
-                                        true
-                                </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <code>arrow</code>
-                            </td>
-                                <td>
-                                        Boolean, Number
-                                </td>
-                                <td>
-                                        <p>True to show default size, or number in pixels</p>
+                                    <td>
+                                            Boolean, Object
+                                    </td>
+                                    <td>
+                                            <p>See <a href="https://floating-ui.com/docs/shift">https://floating-ui.com/docs/shift</a></p>
 
-                                </td>
+                                    </td>
+                                    <td>
+                                            
+                                    </td>
+                                    <td>
+                                            true
+                                    </td>
+                            </tr>
+                            <tr>
                                 <td>
-                                        
+                                    <code>arrow</code>
                                 </td>
-                                <td>
-                                        false
-                                </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <code>size</code>
-                            </td>
-                                <td>
-                                        Boolean, Object
-                                </td>
-                                <td>
-                                        <p>See <a href="https://floating-ui.com/docs/size">https://floating-ui.com/docs/size</a></p>
+                                    <td>
+                                            Boolean, Number
+                                    </td>
+                                    <td>
+                                            <p>True to show default size, or number in pixels</p>
 
-                                </td>
+                                    </td>
+                                    <td>
+                                            
+                                    </td>
+                                    <td>
+                                            false
+                                    </td>
+                            </tr>
+                            <tr>
                                 <td>
-                                        
+                                    <code>size</code>
                                 </td>
-                                <td>
-                                        false
-                                </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <code>autoPlacement</code>
-                            </td>
-                                <td>
-                                        Boolean, Object
-                                </td>
-                                <td>
-                                        <p>See <a href="https://floating-ui.com/docs/autoPlacement">https://floating-ui.com/docs/autoPlacement</a></p>
+                                    <td>
+                                            Boolean, Object
+                                    </td>
+                                    <td>
+                                            <p>See <a href="https://floating-ui.com/docs/size">https://floating-ui.com/docs/size</a></p>
 
-                                </td>
+                                    </td>
+                                    <td>
+                                            
+                                    </td>
+                                    <td>
+                                            false
+                                    </td>
+                            </tr>
+                            <tr>
                                 <td>
-                                        
+                                    <code>autoPlacement</code>
                                 </td>
-                                <td>
-                                        true
-                                </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <code>inline</code>
-                            </td>
-                                <td>
-                                        Boolean, Object
-                                </td>
-                                <td>
-                                        <p>See <a href="https://floating-ui.com/docs/inline">https://floating-ui.com/docs/inline</a></p>
+                                    <td>
+                                            Boolean, Object
+                                    </td>
+                                    <td>
+                                            <p>See <a href="https://floating-ui.com/docs/autoPlacement">https://floating-ui.com/docs/autoPlacement</a></p>
 
-                                </td>
+                                    </td>
+                                    <td>
+                                            
+                                    </td>
+                                    <td>
+                                            true
+                                    </td>
+                            </tr>
+                            <tr>
                                 <td>
-                                        
+                                    <code>inline</code>
                                 </td>
-                                <td>
-                                        false
-                                </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <code>autoUpdate</code>
-                            </td>
-                                <td>
-                                        Boolean, Object
-                                </td>
-                                <td>
-                                        <p>See <a href="https://floating-ui.com/docs/autoUpdate#options">https://floating-ui.com/docs/autoUpdate#options</a></p>
+                                    <td>
+                                            Boolean, Object
+                                    </td>
+                                    <td>
+                                            <p>See <a href="https://floating-ui.com/docs/inline">https://floating-ui.com/docs/inline</a></p>
 
-                                </td>
+                                    </td>
+                                    <td>
+                                            
+                                    </td>
+                                    <td>
+                                            false
+                                    </td>
+                            </tr>
+                            <tr>
                                 <td>
-                                        
+                                    <code>autoUpdate</code>
                                 </td>
-                                <td>
-                                        true
-                                </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <code>removeOnBlur</code>
-                            </td>
-                                <td>
-                                        Boolean
-                                </td>
-                                <td>
-                                        <p>hide floater on outside click/focus or escape key</p>
+                                    <td>
+                                            Boolean, Object
+                                    </td>
+                                    <td>
+                                            <p>See <a href="https://floating-ui.com/docs/autoUpdate#options">https://floating-ui.com/docs/autoUpdate#options</a></p>
 
-                                </td>
+                                    </td>
+                                    <td>
+                                            
+                                    </td>
+                                    <td>
+                                            true
+                                    </td>
+                            </tr>
+                            <tr>
                                 <td>
-                                        
+                                    <code>removeOnBlur</code>
                                 </td>
-                                <td>
-                                        fase
-                                </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <code>timeout</code>
-                            </td>
-                                <td>
-                                        Number
-                                </td>
-                                <td>
-                                        <p>ms to wait until hiding after mouseout</p>
+                                    <td>
+                                            Boolean
+                                    </td>
+                                    <td>
+                                            <p>hide floater on outside click/focus or escape key</p>
 
-                                </td>
+                                    </td>
+                                    <td>
+                                            
+                                    </td>
+                                    <td>
+                                            fase
+                                    </td>
+                            </tr>
+                            <tr>
                                 <td>
-                                        
+                                    <code>timeout</code>
                                 </td>
-                                <td>
-                                        0
-                                </td>
-                        </tr>
-                </table>
+                                    <td>
+                                            Number
+                                    </td>
+                                    <td>
+                                            <p>ms to wait until hiding after mouseout</p>
+
+                                    </td>
+                                    <td>
+                                            
+                                    </td>
+                                    <td>
+                                            0
+                                    </td>
+                            </tr>
+                    </table>
+                </div>
         </div>
         <div class="">
             <h2>Events</h2>
                 
-                <table class="uniformTable border-gray-20">
-                    <tr>
-                        <th></th>
-                            <th>arguments</th>
-                            <th>description</th>
-                    </tr>
+                <div class="overflow-auto">
+                    <table class="uniformTable border-gray-20 overflow-auto max-width-full">
                         <tr>
-                            <td>
-                                <code>beforeRemove</code>
-                            </td>
-                                <td>
-                                        []
-                                </td>
-                                <td>
-                                        <p>called before element is removed</p>
-
-                                </td>
+                            <th></th>
+                                <th>arguments</th>
+                                <th>description</th>
                         </tr>
-                        <tr>
-                            <td>
-                                <code>afterRemove</code>
-                            </td>
+                            <tr>
                                 <td>
-                                        []
+                                    <code>beforeRemove</code>
                                 </td>
-                                <td>
-                                        <p>called after element is removed</p>
+                                    <td>
+                                            []
+                                    </td>
+                                    <td>
+                                            <p>called before element is removed</p>
 
-                                </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <code>beforeConnect</code>
-                            </td>
+                                    </td>
+                            </tr>
+                            <tr>
                                 <td>
-                                        []
+                                    <code>afterRemove</code>
                                 </td>
-                                <td>
-                                        <p>called before element is connected</p>
+                                    <td>
+                                            []
+                                    </td>
+                                    <td>
+                                            <p>called after element is removed</p>
 
-                                </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <code>afterConnect</code>
-                            </td>
+                                    </td>
+                            </tr>
+                            <tr>
                                 <td>
-                                        []
+                                    <code>beforeConnect</code>
                                 </td>
-                                <td>
-                                        <p>called before element is connected</p>
+                                    <td>
+                                            []
+                                    </td>
+                                    <td>
+                                            <p>called before element is connected</p>
 
-                                </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <code>beforeDisconnect</code>
-                            </td>
+                                    </td>
+                            </tr>
+                            <tr>
                                 <td>
-                                        []
+                                    <code>afterConnect</code>
                                 </td>
-                                <td>
-                                        <p>called before element is disconnected</p>
+                                    <td>
+                                            []
+                                    </td>
+                                    <td>
+                                            <p>called before element is connected</p>
 
-                                </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <code>afterDisconnect</code>
-                            </td>
+                                    </td>
+                            </tr>
+                            <tr>
                                 <td>
-                                        []
+                                    <code>beforeDisconnect</code>
                                 </td>
-                                <td>
-                                        <p>called before element is disconnected</p>
+                                    <td>
+                                            []
+                                    </td>
+                                    <td>
+                                            <p>called before element is disconnected</p>
 
-                                </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <code>shown</code>
-                            </td>
+                                    </td>
+                            </tr>
+                            <tr>
                                 <td>
-                                        
+                                    <code>afterDisconnect</code>
                                 </td>
-                                <td>
-                                        <p>when floater is shown</p>
+                                    <td>
+                                            []
+                                    </td>
+                                    <td>
+                                            <p>called before element is disconnected</p>
 
-                                </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <code>hidden</code>
-                            </td>
+                                    </td>
+                            </tr>
+                            <tr>
                                 <td>
-                                        
+                                    <code>shown</code>
                                 </td>
-                                <td>
-                                        <p>when floater is hidden</p>
+                                    <td>
+                                            
+                                    </td>
+                                    <td>
+                                            <p>when floater is shown</p>
 
+                                    </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <code>hidden</code>
                                 </td>
-                        </tr>
-                </table>
+                                    <td>
+                                            
+                                    </td>
+                                    <td>
+                                            <p>when floater is hidden</p>
+
+                                    </td>
+                            </tr>
+                    </table>
+                </div>
         </div>
         <div class="">
             <h2>Transition Animation</h2>
@@ -720,8 +780,8 @@ Example Transition Effect</p>
             position: absolute;
             left: 0;
             top: 0;
-            width: 0;
-            height 0;
+            width: 1px;
+            height 1px;
         }
     `</span>
 <span class="p">}</span>
@@ -738,6 +798,16 @@ Example Transition Effect</p>
         </div>
     </div>
 </div>
+    </div>
+    <div class="pad text-right md:text-lg flex justify-content-end divide-h align-center border-gray-30">
+        <div class="pad-h">
+            &copy; 2024
+            <a href="https://github.com/bemky/" class="reset">Ben Ehmke</a>
+        </div>
+        <a href="https://github.com/bemky/komps" class="reset pad-h inline-flex align-center gap-1/2x">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                Komps on GitHub
+        </a>
     </div>
 </body>
 </html>
