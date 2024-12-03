@@ -3,10 +3,10 @@
 <div class="section space-v-3x">
     
     <div class="">
-        <h1 class="text-2x text-overflow-hidden text-nowrap">
+        <h1 class="text-2x">
             <%= component[:name] %>
             <% if extended_component %>
-            <span class="text-light text-italic text-gray-50 text-xl">
+            <span class="text-light text-nowrap text-italic text-gray-50 text-xl">
                 (extends <%= link_to extended_component[:name], extended_component[:file_name], class: 'reset hover:text-underline' %>)
             </span>
             <% end %>
@@ -46,30 +46,32 @@
             <% end %>
             <% if content[:attributes].present? %>
                 <% headers = content[:attributes].map {|k, v| v.keys}.flatten.uniq %>
-                <table class="uniformTable border-gray-20">
-                    <tr>
-                        <th></th>
-                        <% headers.each do |header| %>
-                            <th><%= header %></th>
-                        <% end %>
-                    </tr>
-                    <% content[:attributes].each do |key, row| %>
+                <div class="overflow-auto">
+                    <table class="uniformTable border-gray-20 overflow-auto max-width-full">
                         <tr>
-                            <td>
-                                <code><%= key %></code>
-                            </td>
+                            <th></th>
                             <% headers.each do |header| %>
-                                <td>
-                                    <% if header == "description" %>
-                                        <%= markdown(row[header]) %>
-                                    <% else %>
-                                        <%= row[header] %>
-                                    <% end %>
-                                </td>
+                                <th><%= header %></th>
                             <% end %>
                         </tr>
-                    <% end %>
-                </table>
+                        <% content[:attributes].each do |key, row| %>
+                            <tr>
+                                <td>
+                                    <code><%= key %></code>
+                                </td>
+                                <% headers.each do |header| %>
+                                    <td>
+                                        <% if header == "description" %>
+                                            <%= markdown(row[header]) %>
+                                        <% else %>
+                                            <%= row[header] %>
+                                        <% end %>
+                                    </td>
+                                <% end %>
+                            </tr>
+                        <% end %>
+                    </table>
+                </div>
             <% end %>
         </div>
     <% end %>

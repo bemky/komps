@@ -3,8 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport"
-    content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no">
     <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
     <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
     <!-- Use the title from a page's frontmatter if it has one -->
@@ -19,25 +18,34 @@
                 <%= image_tag "logo", class: 'width-3/4 height-auto inline-block' %>
             </a>
         </div>
-        <div class="uniformNav -vertical -gray flex-fill -active-green">
-            <a href="/" class="<%= "active" if current_path == "index.html" %>">
-                Usage
+        <%= partial 'layouts/nav' %>
+    </div>
+    <div class="hide sm:show sticky top-0 bg-white">
+        <div class="mobile-nav flex flex-col align-center">
+            <%= partial 'layouts/nav' %>
+        </div>
+        <div class="flex align-stretch relative z-3">
+            <button type="button" class="reset width-50-px flex justify-content-center align-center" onClick="document.body.classList.toggle('active-mobile-nav')">
+                <%= image_tag "menu", class: 'active:hide' %>
+                <%= image_tag "x", class: 'hide active:show' %>
+            </button>
+            <a href="/" class="reset flex-none pad-v-2x">
+                <%= image_tag "logo", width: 200 %>
             </a>
-            <a href="/element" class="<%= "active" if current_path =~ /^element/ %>">
-                Base Element
-            </a>
-            <div class="height-0 width-full">
-                <div class="border-green-80 border-opacity-30 border-bottom border-1px width-full"></div>
-            </div>
-            <% component_names.without('element').each do |component_name| %>
-                <a href="/<%= component_name %>" class="<%= "active" if current_path =~ /^#{component_name}/ %>">
-                    <%= component_name.gsub('-', '_').camelize %>
-                </a>
-            <% end %>
         </div>
     </div>
     <div class="main-content overflow-hidden">
         <%= yield %>
+    </div>
+    <div class="pad text-right md:text-lg flex justify-content-end divide-h align-center border-gray-30">
+        <div class="pad-h">
+            &copy; <%= Date.today.year %>
+            <a href="https://github.com/bemky/" class="reset">Ben Ehmke</a>
+        </div>
+        <a href="https://github.com/bemky/komps" class="reset pad-h inline-flex align-center gap-1/2x">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                Komps on GitHub
+        </a>
     </div>
 </body>
 </html>

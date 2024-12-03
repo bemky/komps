@@ -1,0 +1,16 @@
+<div class="uniformNav -vertical -gray flex-fill -active-green">
+    <a href="/" class="<%= "active" if current_path == "index.html" %>">
+        Usage
+    </a>
+    <a href="/element" class="<%= "active" if current_path =~ /^element/ %>">
+        Base Element
+    </a>
+    <div class="height-0 width-full">
+        <div class="border-green-80 border-opacity-30 border-bottom border-1px width-full"></div>
+    </div>
+    <% component_names.without('element').each do |component_name| %>
+        <a href="/<%= component_name %>" class="<%= "active" if current_path =~ /^#{component_name}/ %>">
+            <%= component_name.gsub('-', '_').camelize %>
+        </a>
+    <% end %>
+</div>

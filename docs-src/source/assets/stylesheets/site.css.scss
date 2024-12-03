@@ -47,10 +47,19 @@ html, body{
     background: lighten(color('green-10'), 8);
 }
 
+.bg-green-02 {
+    background: lighten(color('green-10'), 8);
+}
+
 .section{
     width:100%;
     padding: 100px 50px;
     background: white;
+    
+    @media only screen and (max-width: 700px) {
+        padding-block: 2rem;
+    }
+    
     & + & {
         border-top:2px dashed darken(white, 20);
     }
@@ -63,8 +72,8 @@ html, body{
     h4,
     h5,
     h6{
-        margin-top:1.5rem;
-        margin-bottom:0.5rem;
+        line-height: 1;
+        margin-block:1.5rem;
         &:first-child{
             margin-top: 0;
         }
@@ -109,7 +118,34 @@ h2 {
     }
 }
 
+.mobile-nav {
+    background: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100svh;
+    margin-left: -100%;
+    transition: margin 150ms ease-in-out;
+    overflow: auto;
+    padding-top: 6rem;
+}
+body.active-mobile-nav {
+    overflow: hidden;
+    .mobile-nav {
+        margin-left: 0;
+    }
+    .active\:show {
+        display: inherit;
+    }
+    .active\:hide {
+        display: none;
+    }
+}
+
 .main-content{
+    background: white;
     margin-left:250px;
     @media only screen and (max-width: 700px) {
         margin-left: 0;
@@ -246,3 +282,13 @@ select.uniformInput, .uniformInputs select, .uniformInputs select {
 option[value="null"] {
     font-style: italic;
 }
+
+.overflow-auto {
+    overflow: auto;
+}
+
+.bg-graph {
+    background-image: url("graph-paper");
+    background-blend-mode: overlay;
+}
+
