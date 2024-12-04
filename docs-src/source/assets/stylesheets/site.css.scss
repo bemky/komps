@@ -288,7 +288,7 @@ option[value="null"] {
 }
 
 .bg-graph {
-    background-image: url("graph-paper");
+    background-image: asset_url("graph-paper.svg");
     background-blend-mode: overlay;
 }
 
