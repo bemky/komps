@@ -16,7 +16,7 @@ GIT
 
 GIT
   remote: https://github.com/malomalo/middleman-condenser.git
-  revision: 312865831e0e82bfb99cfe6c0b6ab2761859d858
+  revision: 09e7028e22c670bb7db30a4296e9ffe2c7ae4d73
   specs:
     middleman-condenser (0.0.3)
       condenser (>= 0.1)
