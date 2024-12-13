@@ -2,18 +2,18 @@
 title: Komps
 ---
 
-<div class="text-right pad bg-white">
+<div class="text-right pad sm:hide">
     <a href="https://github.com/bemky/komps" class="reset inline-flex align-center gap-1/2x text-lg">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
         Komps on GitHub
     </a>
 </div>
-<div class="text-center margin-top-2x pad-top-2x">
+<div class="text-center pad-top-4x pad sm:hide">
     <%= image_tag 'logo.svg', class: 'inline-block width-300-px max-width-full' %>
 </div>
 <div class="section">
     <p class="text-light text-xl">
-        Komps is a library of style-less javascript components and elements for building a UI. Komps is platform-agnostic, with each component is fully tree-shakeable by an bundler.
+        Komps is a library of style-less <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_components">Web Components</a> for building UIs. Komps is platform-agnostic, and each component is fully tree-shakeable by any bundler.
     </p>
     <h1>Installation</h1>
     <% code 'javascript' do %>
@@ -30,4 +30,13 @@ title: Komps
 
     new Modal({content: "Hello World"});
     <% end %>
+</div>
+<div class="section hide sm:show">
+    <div class="uniformNav -vertical -pills">
+        <% component_names.without('element').each do |component_name| %>
+            <a href="/<%= component_name %>" class="<%= "active" if current_path =~ /^#{component_name}/ %>">
+                <%= component_name.gsub('-', '_').camelize %>
+            </a>
+        <% end %>
+    </div>
 </div>
