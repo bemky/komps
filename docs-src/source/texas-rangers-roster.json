@@ -6,6 +6,10 @@
     "POS": "2B",
     "GP": 162,
     "DOB": "1990-05-17",
+    "CAPTAIN": true,
+    "bats": [{
+      "weight": "100oz"
+    }],
     "AB": 670,
     "R": 122,
     "H": 185,
@@ -28,6 +32,13 @@
     "URL": "https://www.espn.com/mlb/player/_/id/40538",
     "TEAM": "Texas Rangers",
     "POS": "1B",
+    "bats": [{
+      "weight": "120oz"
+    }, {
+      "weight": "110oz"
+    }, {
+      "weight": "90oz"
+    }],
     "GP": 161,
     "AB": 623,
     "R": 89,
@@ -51,6 +62,9 @@
     "URL": "https://www.espn.com/mlb/player/_/id/35537",
     "TEAM": "Texas Rangers",
     "POS": "RF",
+    "bats": [{
+      "weight": "100oz"
+    }],
     "GP": 148,
     "AB": 555,
     "R": 108,
@@ -120,6 +134,8 @@
     "URL": "https://www.espn.com/mlb/player/_/id/32691",
     "TEAM": "Texas Rangers",
     "POS": "SS",
+    "CAPTAIN": true,
+    "Team MVP": true,
     "GP": 119,
     "AB": 477,
     "R": 88,
