@@ -183,27 +183,32 @@ pre {
     }
 }
 
-komp-data-grid,
+komp-table,
 komp-spreadsheet {
     gap: 1px;
     border-radius: 0.35em;
-    komp-data-grid-cell,
+    
+    komp-table-header-cell,
+    komp-table-cell,
     komp-spreadsheet-cell,
+    komp-spreadsheet-header-cell,
     komp-spreadsheet-inputcell {
         background: white;
     }
 
-    komp-data-grid-cell,
+    komp-table-header-cell,
+    komp-table-cell,
+    komp-spreadsheet-header-cell,
     komp-spreadsheet-cell {
         padding: 0.5em 1em;
         outline: 1px solid color('purple-10');
     }
-    komp-spreadsheet-header {
-        komp-spreadsheet-cell {
-            background: rgb(248,248,251);
-            font-weight: bold;
-            text-transform: uppercase;
-        }
+
+    komp-table-header-cell,
+    komp-spreadsheet-header-cell {
+      background: rgb(248,248,251);
+      font-weight: bold;
+      text-transform: uppercase;
     }
 }
 

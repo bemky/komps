@@ -8,9 +8,34 @@
     <div class="height-0 width-full">
         <div class="border-green-80 border-opacity-30 border-bottom border-1px width-full"></div>
     </div>
-    <% component_names.without('element').each do |component_name| %>
-        <a href="/<%= component_name %>" class="<%= "active" if current_path =~ /^#{component_name}/ %>">
-            <%= component_name.gsub('-', '_').camelize %>
+    <% links = {} %>
+    <% component_names.without('element').each do |component_name|
+        if component_name.include?("/")
+            parts = component_name.split("/")
+            links[parts.first] ||= {}
+            links[parts.first][:children] ||= []
+            links[parts.first][:children] << {
+                path: component_name,
+                title: parts.last.gsub('-', '_').camelize
+            }
+        else
+            links[component_name] ||= {}
+            links[component_name][:path] = component_name
+            links[component_name][:title] = component_name.gsub('-', '_').camelize
+        end
+    end %>
+    <% links.each do |path, link| %>
+        <a href="/<%= link[:path] %>" class="<%= "active" if current_path =~ /^#{link[:path]}/ %>">
+            <%= link[:title] %>
         </a>
+        <% if link[:children] && current_path =~ /^#{link[:path]}/ %>
+            <div class="uniformNav -vertical pad-left-2x text-sm">
+                <% link[:children].each do |link| %>
+                    <a href="/<%= link[:path] %>" class="<%= "active" if current_path =~ /^#{link[:path]}/ %>">
+                        <%= link[:title] %>
+                    </a>
+                <% end %>
+            </div>
+        <% end %>
     <% end %>
 </div>

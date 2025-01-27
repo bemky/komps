@@ -10,8 +10,11 @@ module SourceHelpers
   
   def component_names
     files.map do |file|
-      file.gsub(/\.js$/, '')
-    end.reject{|x| x == "support"}
+      body = File.read(File.join(base, file))
+      if body.include?("Description\n----")
+        file.gsub(/\.js$/, '')
+      end
+    end.compact
   end
   
   def component(name)
