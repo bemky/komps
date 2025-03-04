@@ -10,6 +10,15 @@
     "bats": [{
       "weight": "100oz"
     }],
+    "gloves": [{
+      "position": "2B",
+      "brand": "Wilson",
+      "model": "A2000"
+    },{
+      "brand": "Nike",
+      "model": "Sha",
+      "position": "SS"
+    }],
     "AB": 670,
     "R": 122,
     "H": 185,
@@ -35,11 +44,33 @@
     "TEAM": "Texas Rangers",
     "POS": "1B",
     "bats": [{
-      "weight": "120oz"
+      "weight": "120oz",
+      "type": "oak"
     }, {
-      "weight": "110oz"
+      "weight": "110oz",
+      "type": "maple"
     }, {
-      "weight": "90oz"
+      "weight": "90oz",
+      "type": "birch"
+    }, {
+      "weight": "95oz",
+      "type": "oak"
+    }, {
+      "weight": "85oz",
+      "type": "birch"
+    }],
+    "gloves": [{
+      "position": "1B",
+      "brand": "Wilson",
+      "model": "A2000"
+    },{
+      "brand": "Nike",
+      "model": "Sha",
+      "position": "LF"
+    },{
+      "brand": "Mizuno",
+      "model": "5",
+      "position": "2B"
     }],
     "GP": 161,
     "AB": 623,
@@ -482,6 +513,17 @@
     "OBP": 0.25,
     "SLG": 0.143,
     "OPS": 0.393,
-    "WAR": 0
+    "WAR": 0,
+    "bats": [{
+      "weight": "120oz"
+    }, {
+      "weight": "110oz"
+    }, {
+      "weight": "90oz"
+    }, {
+      "weight": "95oz"
+    }, {
+      "weight": "85oz"
+    }]
   }
 ]
