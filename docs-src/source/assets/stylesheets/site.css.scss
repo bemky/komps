@@ -203,6 +203,9 @@ komp-spreadsheet {
         padding: 0.5em 1em;
         outline: 1px solid color('purple-10');
     }
+    komp-table-row {
+        outline: 1px solid color('purple-10');
+    }
 
     komp-table-header-cell,
     komp-spreadsheet-header-cell {
