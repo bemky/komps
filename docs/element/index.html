@@ -9,7 +9,7 @@
     <!-- Use the title from a page's frontmatter if it has one -->
     <title>Komps</title>
     <link href="/assets/site-22cf15a669101651d19ad04c4fce6e6d1fe3ae366248e3c72997637d43d5cfd5.css" rel="stylesheet" />
-    <script src="/assets/site-b5c3c55c116f287111be05ca61f4fde7d735b3f2c8d9464b54d0d1b90963f71c.js"></script>
+    <script src="/assets/site-d3a3a773475509c97afdc6e841118543fbd1a36726532e2d7f3d24359349b85f.js"></script>
 </head>
 <body>
     <div class="side-nav">
@@ -515,14 +515,6 @@
                     <span class="kd">const</span> <span class="nx">was</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_attributes</span><span class="p">[</span><span class="nx">attribute</span><span class="p">]</span>
                     <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="o">!==</span> <span class="nx">was</span><span class="p">)</span> <span class="p">{</span>
                         <span class="k">this</span><span class="p">.</span><span class="nx">_attributes</span><span class="p">[</span><span class="nx">attribute</span><span class="p">]</span> <span class="o">=</span> <span class="nx">value</span>
-                        <span class="c1">// Was causing recursion, not sure why it was there</span>
-                        <span class="c1">// if (typeof this[attribute] == 'function') {</span>
-                        <span class="c1">//     const funcWas = this[attribute]</span>
-                        <span class="c1">//     this._attributes[attribute] = function (...args) {</span>
-                        <span class="c1">//         funcWas.call(this, ...args)</span>
-                        <span class="c1">//         value.call(this, ...args)</span>
-                        <span class="c1">//     }</span>
-                        <span class="c1">// }</span>
                         <span class="k">this</span><span class="p">.</span><span class="nx">attributeChangedCallback</span><span class="p">(</span><span class="nx">attribute</span><span class="p">,</span> <span class="nx">was</span><span class="p">,</span> <span class="nx">value</span><span class="p">);</span>
                     <span class="p">}</span>
                 <span class="p">}</span>

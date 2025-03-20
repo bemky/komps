@@ -9,7 +9,7 @@
     <!-- Use the title from a page's frontmatter if it has one -->
     <title>Komps</title>
     <link href="/assets/site-22cf15a669101651d19ad04c4fce6e6d1fe3ae366248e3c72997637d43d5cfd5.css" rel="stylesheet" />
-    <script src="/assets/site-b5c3c55c116f287111be05ca61f4fde7d735b3f2c8d9464b54d0d1b90963f71c.js"></script>
+    <script src="/assets/site-d3a3a773475509c97afdc6e841118543fbd1a36726532e2d7f3d24359349b85f.js"></script>
 </head>
 <body>
     <div class="side-nav">
@@ -232,7 +232,8 @@
             <div class="text-white text-sm text-bold pad-h pad-v-1/4x">
                 SOURCE CODE
             </div>
-            <div class="highlight"><pre class=" javascript"><code><span class="k">import</span> <span class="nx">KompElement</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../element.js</span><span class="dl">'</span><span class="p">;</span>
+            <div class="highlight"><pre class=" javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">append</span><span class="p">,</span> <span class="nx">content</span><span class="p">,</span> <span class="nx">listenerElement</span><span class="p">,</span> <span class="nx">createElement</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">dolla</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">KompElement</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../element.js</span><span class="dl">'</span><span class="p">;</span>
 <span class="kd">class</span> <span class="nx">Notification</span> <span class="kd">extends</span> <span class="nx">KompElement</span> <span class="p">{</span>
     
     <span class="kd">static</span> <span class="nx">assignableAttributes</span> <span class="o">=</span> <span class="p">{</span>
