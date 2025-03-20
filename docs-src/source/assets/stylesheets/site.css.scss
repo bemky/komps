@@ -259,6 +259,15 @@ komp-spreadsheet {
     &.-left { --transform: translateX(-10px) }
     &.-right { --transform: translateX(10px) }
 }
+
+komp-table-row {
+    &:nth-child(2n) {
+        komp-spreadsheet-cell {
+            background: lighten(color('purple-10'), 8);
+        }
+    }
+}
+
 @keyframes fadein {
     from {
         opacity: 0;

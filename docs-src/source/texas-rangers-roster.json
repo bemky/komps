@@ -8,7 +8,8 @@
     "DOB": "1990-05-17",
     "CAPTAIN": true,
     "bats": [{
-      "weight": "100oz"
+      "weight": "100oz",
+      "type": "oak"
     }],
     "gloves": [{
       "position": "2B",
@@ -98,7 +99,8 @@
     "TEAM": "Texas Rangers",
     "POS": "RF",
     "bats": [{
-      "weight": "100oz"
+      "weight": "100oz",
+      "type": "oak"
     }],
     "GP": 148,
     "AB": 555,
