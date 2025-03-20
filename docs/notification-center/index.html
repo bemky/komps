@@ -9,7 +9,7 @@
     <!-- Use the title from a page's frontmatter if it has one -->
     <title>Komps</title>
     <link href="/assets/site-22cf15a669101651d19ad04c4fce6e6d1fe3ae366248e3c72997637d43d5cfd5.css" rel="stylesheet" />
-    <script src="/assets/site-8417798930e951f009030d84a30fccc9f16cf9a64c8e7f66099d5c12d192a044.js"></script>
+    <script src="/assets/site-b5c3c55c116f287111be05ca61f4fde7d735b3f2c8d9464b54d0d1b90963f71c.js"></script>
 </head>
 <body>
     <div class="side-nav">
@@ -442,11 +442,7 @@
 
 <span class="kd">class</span> <span class="nx">NotificationCenter</span> <span class="kd">extends</span> <span class="nx">KompElement</span> <span class="p">{</span>
     
-    <span class="kd">static</span> <span class="nx">assignableAttributes</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="na">timeout</span><span class="p">:</span> <span class="mi">5000</span><span class="p">,</span>
-        <span class="na">animation</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="na">dismissable</span><span class="p">:</span> <span class="kc">true</span>
-    <span class="p">}</span>
+    <span class="kd">static</span> <span class="nx">assignableAttributes</span> <span class="o">=</span> <span class="nx">Notification</span><span class="p">.</span><span class="nx">assignableAttributes</span>
     
     <span class="kd">constructor</span> <span class="p">(...</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">super</span><span class="p">(...</span><span class="nx">args</span><span class="p">)</span>
