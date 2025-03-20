@@ -1,7 +1,7 @@
 {
   "name": "komps",
   "type": "module",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "Komps is a library of style-less Web Components for building UIs. Komps is platform-agnostic, and each component is fully tree-shakeable by any bundler.",
   "main": "lib/komps.js",
   "scripts": {},
