@@ -1,0 +1,263 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
+    <!-- Use the title from a page's frontmatter if it has one -->
+    <title>Komps</title>
+    <link href="/assets/site-22cf15a669101651d19ad04c4fce6e6d1fe3ae366248e3c72997637d43d5cfd5.css" rel="stylesheet" />
+    <script src="/assets/site-8417798930e951f009030d84a30fccc9f16cf9a64c8e7f66099d5c12d192a044.js"></script>
+</head>
+<body>
+    <div class="side-nav">
+        <div class="pad-2x text-center">
+            <a href="/" class="reset">
+                <img class="width-3/4 height-auto inline-block" src="/assets/logo-7b1623d8d9db3b0d0d79dd30b2a5c2a0f0be2b945944f75d18e3be1e67177443.svg" />
+            </a>
+        </div>
+        <div class="uniformNav -vertical -gray flex-fill -active-green">
+    <a href="/" class="">
+        Usage
+    </a>
+    <a href="/element" class="">
+        Base Element
+    </a>
+    <div class="height-0 width-full">
+        <div class="border-green-80 border-opacity-30 border-bottom border-1px width-full"></div>
+    </div>
+        <a href="/auto-grid" class="">
+            AutoGrid
+        </a>
+        <a href="/content-area" class="">
+            ContentArea
+        </a>
+        <a href="/dropdown" class="">
+            Dropdown
+        </a>
+        <a href="/dropzone" class="">
+            Dropzone
+        </a>
+        <a href="/floater" class="">
+            Floater
+        </a>
+        <a href="/input" class="">
+            Input
+        </a>
+        <a href="/modal" class="">
+            Modal
+        </a>
+        <a href="/notification-center" class="">
+            NotificationCenter
+        </a>
+        <a href="/spreadsheet" class="">
+            Spreadsheet
+        </a>
+        <a href="/table" class="active">
+            Table
+        </a>
+            <div class="uniformNav -vertical pad-left-2x text-sm">
+                    <a href="/table/cell" class="">
+                        Cell
+                    </a>
+                    <a href="/table/column" class="">
+                        Column
+                    </a>
+                    <a href="/table/group" class="active">
+                        Group
+                    </a>
+                    <a href="/table/plugins/collapsible" class="">
+                        Collapsible
+                    </a>
+                    <a href="/table/plugins/reorderable" class="">
+                        Reorderable
+                    </a>
+                    <a href="/table/plugins/resizable" class="">
+                        Resizable
+                    </a>
+            </div>
+        <a href="/tooltip" class="">
+            Tooltip
+        </a>
+</div>
+    </div>
+    <div class="hide sm:show sticky top-0 bg-white">
+        <div class="mobile-nav flex flex-col align-center">
+            <div class="uniformNav -vertical -gray flex-fill -active-green">
+    <a href="/" class="">
+        Usage
+    </a>
+    <a href="/element" class="">
+        Base Element
+    </a>
+    <div class="height-0 width-full">
+        <div class="border-green-80 border-opacity-30 border-bottom border-1px width-full"></div>
+    </div>
+        <a href="/auto-grid" class="">
+            AutoGrid
+        </a>
+        <a href="/content-area" class="">
+            ContentArea
+        </a>
+        <a href="/dropdown" class="">
+            Dropdown
+        </a>
+        <a href="/dropzone" class="">
+            Dropzone
+        </a>
+        <a href="/floater" class="">
+            Floater
+        </a>
+        <a href="/input" class="">
+            Input
+        </a>
+        <a href="/modal" class="">
+            Modal
+        </a>
+        <a href="/notification-center" class="">
+            NotificationCenter
+        </a>
+        <a href="/spreadsheet" class="">
+            Spreadsheet
+        </a>
+        <a href="/table" class="active">
+            Table
+        </a>
+            <div class="uniformNav -vertical pad-left-2x text-sm">
+                    <a href="/table/cell" class="">
+                        Cell
+                    </a>
+                    <a href="/table/column" class="">
+                        Column
+                    </a>
+                    <a href="/table/group" class="active">
+                        Group
+                    </a>
+                    <a href="/table/plugins/collapsible" class="">
+                        Collapsible
+                    </a>
+                    <a href="/table/plugins/reorderable" class="">
+                        Reorderable
+                    </a>
+                    <a href="/table/plugins/resizable" class="">
+                        Resizable
+                    </a>
+            </div>
+        <a href="/tooltip" class="">
+            Tooltip
+        </a>
+</div>
+        </div>
+        <div class="flex align-stretch relative z-3">
+            <button type="button" class="reset width-50-px flex justify-content-center align-center" onClick="document.body.classList.toggle('active-mobile-nav')">
+                <img class="active:hide" src="/assets/menu-1412be30d711c8336d0757e5557b785242945a44db28cde24ba2b6f2afe30de4.svg" />
+                <img class="hide active:show" src="/assets/x-947e98617952bbdb89b1b18633e1a4f7ded1e3faa29fbd20cdd08ab0dc196dce.svg" />
+            </button>
+            <a href="/" class="reset flex-none pad-v-2x">
+                <img width="200" src="/assets/logo-7b1623d8d9db3b0d0d79dd30b2a5c2a0f0be2b945944f75d18e3be1e67177443.svg" />
+            </a>
+        </div>
+    </div>
+    <div class="main-content overflow-hidden">
+        <div class="section space-v-3x">
+    
+    <div class="">
+        <h1 class="text-2x">
+            TableGroup
+            <span class="text-light text-nowrap text-italic text-gray-50 text-xl">
+                (extends <a href="element" class="reset hover:text-underline">KompElement</a>)
+            </span>
+        </h1>
+    
+        <div class="text-light text-xl">
+            <p>A group of cells that <em>can</em> share rowCount. Useful for splitInto</p>
+
+        </div>
+    </div>
+    
+    
+    
+        <div class="">
+            <h2>Options</h2>
+                
+                <div class="overflow-auto">
+                    <table class="uniformTable border-gray-20 overflow-auto max-width-full">
+                        <tr>
+                            <th></th>
+                                <th>types</th>
+                                <th>description</th>
+                        </tr>
+                            <tr>
+                                <td>
+                                    <code>content</code>
+                                </td>
+                                    <td>
+                                            String, HTMLElement, Array, Object
+                                    </td>
+                                    <td>
+                                            <p>content to append to element. Passed to <a href="https://dollajs.com/#content">Dolla's <code>content</code></a></p>
+
+                                    </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <code>name</code>
+                                </td>
+                                    <td>
+                                            String
+                                    </td>
+                                    <td>
+                                            <p>identifier of the group</p>
+
+                                    </td>
+                            </tr>
+                    </table>
+                </div>
+        </div>
+    
+    <button class="js-toggle-source reset text-sm text-bold text-gray-30 hover:text-blue" rel="#source-for-table/group">
+        SHOW SOURCE
+    </button>
+    <div class="source hide" id="source-for-table/group">
+        <div class="border border-blue bg-blue rounded-xl overflow-hidden">
+            <div class="text-white text-sm text-bold pad-h pad-v-1/4x">
+                SOURCE CODE
+            </div>
+            <div class="highlight"><pre class=" javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">content</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">dolla</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">result</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../../support</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">KompElement</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../element.js</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nx">TableGroup</span> <span class="kd">extends</span> <span class="nx">KompElement</span> <span class="p">{</span>
+    <span class="kd">static</span> <span class="nx">tagName</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">komp-table-group</span><span class="dl">'</span>
+    
+    <span class="kd">get</span> <span class="nx">table</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">row</span><span class="p">?.</span><span class="nx">table</span> <span class="p">}</span>
+    <span class="kd">get</span> <span class="nx">row</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">parentElement</span> <span class="p">}</span>
+    <span class="kd">get</span> <span class="nx">rowIndex</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">row</span><span class="p">.</span><span class="nx">rowIndex</span> <span class="p">}</span>
+    
+    <span class="kd">get</span> <span class="nx">cells</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">Array</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">table</span><span class="p">.</span><span class="nx">cellSelector</span><span class="p">))}</span>
+    <span class="kd">get</span> <span class="nx">rowCount</span> <span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(...</span><span class="k">this</span><span class="p">.</span><span class="nx">cells</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">x</span> <span class="o">=&gt;</span> <span class="nx">x</span><span class="p">.</span><span class="nx">groupIndex</span><span class="p">))</span> <span class="p">}</span>
+    
+    <span class="nx">append</span> <span class="p">(...</span><span class="nx">els</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">super</span><span class="p">.</span><span class="nx">append</span><span class="p">(...</span><span class="nx">els</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nx">result</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">customElements</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="nx">TableGroup</span><span class="p">.</span><span class="nx">tagName</span><span class="p">,</span> <span class="nx">TableGroup</span><span class="p">);</span></code></pre></div>
+        </div>
+    </div>
+</div>
+    </div>
+    <div class="pad text-right md:text-lg flex justify-content-end divide-h align-center border-gray-30">
+        <div class="pad-h">
+            &copy; 2025
+            <a href="https://github.com/bemky/" class="reset">Ben Ehmke</a>
+        </div>
+        <a href="https://github.com/bemky/komps" class="reset pad-h inline-flex align-center gap-1/2x">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                Komps on GitHub
+        </a>
+    </div>
+</body>
+</html>

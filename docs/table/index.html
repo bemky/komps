@@ -1,0 +1,924 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
+    <!-- Use the title from a page's frontmatter if it has one -->
+    <title>Komps</title>
+    <link href="/assets/site-22cf15a669101651d19ad04c4fce6e6d1fe3ae366248e3c72997637d43d5cfd5.css" rel="stylesheet" />
+    <script src="/assets/site-8417798930e951f009030d84a30fccc9f16cf9a64c8e7f66099d5c12d192a044.js"></script>
+</head>
+<body>
+    <div class="side-nav">
+        <div class="pad-2x text-center">
+            <a href="/" class="reset">
+                <img class="width-3/4 height-auto inline-block" src="/assets/logo-7b1623d8d9db3b0d0d79dd30b2a5c2a0f0be2b945944f75d18e3be1e67177443.svg" />
+            </a>
+        </div>
+        <div class="uniformNav -vertical -gray flex-fill -active-green">
+    <a href="/" class="">
+        Usage
+    </a>
+    <a href="/element" class="">
+        Base Element
+    </a>
+    <div class="height-0 width-full">
+        <div class="border-green-80 border-opacity-30 border-bottom border-1px width-full"></div>
+    </div>
+        <a href="/auto-grid" class="">
+            AutoGrid
+        </a>
+        <a href="/content-area" class="">
+            ContentArea
+        </a>
+        <a href="/dropdown" class="">
+            Dropdown
+        </a>
+        <a href="/dropzone" class="">
+            Dropzone
+        </a>
+        <a href="/floater" class="">
+            Floater
+        </a>
+        <a href="/input" class="">
+            Input
+        </a>
+        <a href="/modal" class="">
+            Modal
+        </a>
+        <a href="/notification-center" class="">
+            NotificationCenter
+        </a>
+        <a href="/spreadsheet" class="">
+            Spreadsheet
+        </a>
+        <a href="/table" class="active">
+            Table
+        </a>
+            <div class="uniformNav -vertical pad-left-2x text-sm">
+                    <a href="/table/cell" class="">
+                        Cell
+                    </a>
+                    <a href="/table/column" class="">
+                        Column
+                    </a>
+                    <a href="/table/group" class="">
+                        Group
+                    </a>
+                    <a href="/table/plugins/collapsible" class="">
+                        Collapsible
+                    </a>
+                    <a href="/table/plugins/reorderable" class="">
+                        Reorderable
+                    </a>
+                    <a href="/table/plugins/resizable" class="">
+                        Resizable
+                    </a>
+            </div>
+        <a href="/tooltip" class="">
+            Tooltip
+        </a>
+</div>
+    </div>
+    <div class="hide sm:show sticky top-0 bg-white">
+        <div class="mobile-nav flex flex-col align-center">
+            <div class="uniformNav -vertical -gray flex-fill -active-green">
+    <a href="/" class="">
+        Usage
+    </a>
+    <a href="/element" class="">
+        Base Element
+    </a>
+    <div class="height-0 width-full">
+        <div class="border-green-80 border-opacity-30 border-bottom border-1px width-full"></div>
+    </div>
+        <a href="/auto-grid" class="">
+            AutoGrid
+        </a>
+        <a href="/content-area" class="">
+            ContentArea
+        </a>
+        <a href="/dropdown" class="">
+            Dropdown
+        </a>
+        <a href="/dropzone" class="">
+            Dropzone
+        </a>
+        <a href="/floater" class="">
+            Floater
+        </a>
+        <a href="/input" class="">
+            Input
+        </a>
+        <a href="/modal" class="">
+            Modal
+        </a>
+        <a href="/notification-center" class="">
+            NotificationCenter
+        </a>
+        <a href="/spreadsheet" class="">
+            Spreadsheet
+        </a>
+        <a href="/table" class="active">
+            Table
+        </a>
+            <div class="uniformNav -vertical pad-left-2x text-sm">
+                    <a href="/table/cell" class="">
+                        Cell
+                    </a>
+                    <a href="/table/column" class="">
+                        Column
+                    </a>
+                    <a href="/table/group" class="">
+                        Group
+                    </a>
+                    <a href="/table/plugins/collapsible" class="">
+                        Collapsible
+                    </a>
+                    <a href="/table/plugins/reorderable" class="">
+                        Reorderable
+                    </a>
+                    <a href="/table/plugins/resizable" class="">
+                        Resizable
+                    </a>
+            </div>
+        <a href="/tooltip" class="">
+            Tooltip
+        </a>
+</div>
+        </div>
+        <div class="flex align-stretch relative z-3">
+            <button type="button" class="reset width-50-px flex justify-content-center align-center" onClick="document.body.classList.toggle('active-mobile-nav')">
+                <img class="active:hide" src="/assets/menu-1412be30d711c8336d0757e5557b785242945a44db28cde24ba2b6f2afe30de4.svg" />
+                <img class="hide active:show" src="/assets/x-947e98617952bbdb89b1b18633e1a4f7ded1e3faa29fbd20cdd08ab0dc196dce.svg" />
+            </button>
+            <a href="/" class="reset flex-none pad-v-2x">
+                <img width="200" src="/assets/logo-7b1623d8d9db3b0d0d79dd30b2a5c2a0f0be2b945944f75d18e3be1e67177443.svg" />
+            </a>
+        </div>
+    </div>
+    <div class="main-content overflow-hidden">
+        <div class="section space-v-3x">
+    
+    <div class="">
+        <h1 class="text-2x">
+            Table
+            <span class="text-light text-nowrap text-italic text-gray-50 text-xl">
+                (extends <a href="element" class="reset hover:text-underline">KompElement</a>)
+            </span>
+        </h1>
+    
+        <div class="text-light text-xl">
+            <p>Render a table of records by configured columns using <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout">CSS Grid</a></p>
+
+        </div>
+    </div>
+    
+    <div class="">
+        <h2>Example</h2>
+        <script>
+            function resizeIframe(obj) {
+                obj.style.minHeight = obj.contentWindow.document.documentElement.scrollHeight + 'px';
+            }
+        </script>
+        <iframe class="overflow-hidden rounded-lg" width="100%" height="10px" src="/table/example/index.html" frameborder="0" scrolling="no" onload="setTimeout(function () {resizeIframe(this)}.bind(this), 50)"></iframe>
+    </div>
+    
+    <div class="">
+        <h2>Syntax</h2>
+        <div class="highlight"><pre class=" javascript"><code><span class="k">new</span> <span class="nx">Table</span><span class="p">({</span>
+    <span class="na">data</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Corey Seager</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">team</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Texas Rangers</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">ops</span><span class="p">:</span> <span class="mf">1.023</span><span class="p">,</span>
+        <span class="na">avg</span><span class="p">:</span> <span class="mf">0.311</span><span class="p">,</span>
+        <span class="na">positions</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">SS</span><span class="dl">"</span><span class="p">]</span>
+    <span class="p">},</span> <span class="p">{</span>
+        <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Marcus Semien</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">team</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Texas Rangers</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">ops</span><span class="p">:</span> <span class="mf">0.823</span><span class="p">,</span>
+        <span class="na">avg</span><span class="p">:</span> <span class="mf">0.283</span><span class="p">,</span>
+        <span class="na">positions</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">2B</span><span class="dl">"</span><span class="p">]</span>
+    <span class="p">}],</span>
+    <span class="na">columns</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="na">render</span><span class="p">:</span> <span class="nx">r</span> <span class="o">=&gt;</span> <span class="nx">r</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span>
+        <span class="na">header</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Name</span><span class="dl">'</span>
+    <span class="p">},</span> <span class="p">{</span>
+        <span class="na">render</span><span class="p">:</span> <span class="nx">r</span> <span class="o">=&gt;</span> <span class="nx">r</span><span class="p">.</span><span class="nx">team</span><span class="p">,</span>
+        <span class="na">header</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Team</span><span class="dl">'</span><span class="p">,</span>
+    <span class="p">},</span> <span class="p">{</span>
+        <span class="na">render</span><span class="p">:</span> <span class="nx">r</span> <span class="o">=&gt;</span> <span class="nx">r</span> <span class="o">=&gt;</span> <span class="nx">r</span><span class="p">.</span><span class="nx">ops</span><span class="p">.</span><span class="nx">toLocaleString</span><span class="p">().</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/^0/</span><span class="p">,</span> <span class="dl">''</span><span class="p">),</span>
+        <span class="na">header</span><span class="p">:</span> <span class="dl">'</span><span class="s1">OPS</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">width</span><span class="p">:</span> <span class="dl">'</span><span class="s1">10%</span><span class="dl">'</span>
+    <span class="p">}]</span>
+<span class="p">})</span>
+</code></pre></div>
+
+    </div>
+    
+        <div class="">
+            <h2>Options</h2>
+                
+                <div class="overflow-auto">
+                    <table class="uniformTable border-gray-20 overflow-auto max-width-full">
+                        <tr>
+                            <th></th>
+                                <th>types</th>
+                                <th>description</th>
+                        </tr>
+                            <tr>
+                                <td>
+                                    <code>content</code>
+                                </td>
+                                    <td>
+                                            String, HTMLElement, Array, Object
+                                    </td>
+                                    <td>
+                                            <p>content to append to element. Passed to <a href="https://dollajs.com/#content">Dolla's <code>content</code></a></p>
+
+                                    </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <code>data</code>
+                                </td>
+                                    <td>
+                                            Array
+                                    </td>
+                                    <td>
+                                            <p>Each record of the array generates a row by passing the record to each render method of the defined columns. Uses calls <code>forEach</code> on object, so can use with any Enumerable-ish object.</p>
+
+                                    </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <code>columns</code>
+                                </td>
+                                    <td>
+                                            Array
+                                    </td>
+                                    <td>
+                                            <p>Array of objects that initialize <a href="/table/column">Columns</a> that manage the rendering of <a href="/table/cell">Cells</a></p>
+
+                                    </td>
+                            </tr>
+                    </table>
+                </div>
+        </div>
+        <div class="">
+            <h2>Events</h2>
+                
+                <div class="overflow-auto">
+                    <table class="uniformTable border-gray-20 overflow-auto max-width-full">
+                        <tr>
+                            <th></th>
+                                <th>arguments</th>
+                                <th>description</th>
+                        </tr>
+                            <tr>
+                                <td>
+                                    <code>beforeRemove</code>
+                                </td>
+                                    <td>
+                                            []
+                                    </td>
+                                    <td>
+                                            <p>called before element is removed</p>
+
+                                    </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <code>afterRemove</code>
+                                </td>
+                                    <td>
+                                            []
+                                    </td>
+                                    <td>
+                                            <p>called after element is removed</p>
+
+                                    </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <code>beforeConnect</code>
+                                </td>
+                                    <td>
+                                            []
+                                    </td>
+                                    <td>
+                                            <p>called before element is connected</p>
+
+                                    </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <code>afterConnect</code>
+                                </td>
+                                    <td>
+                                            []
+                                    </td>
+                                    <td>
+                                            <p>called before element is connected</p>
+
+                                    </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <code>beforeDisconnect</code>
+                                </td>
+                                    <td>
+                                            []
+                                    </td>
+                                    <td>
+                                            <p>called before element is disconnected</p>
+
+                                    </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <code>afterDisconnect</code>
+                                </td>
+                                    <td>
+                                            []
+                                    </td>
+                                    <td>
+                                            <p>called before element is disconnected</p>
+
+                                    </td>
+                            </tr>
+                    </table>
+                </div>
+        </div>
+    
+    <button class="js-toggle-source reset text-sm text-bold text-gray-30 hover:text-blue" rel="#source-for-table">
+        SHOW SOURCE
+    </button>
+    <div class="source hide" id="source-for-table">
+        <div class="border border-blue bg-blue rounded-xl overflow-hidden">
+            <div class="text-white text-sm text-bold pad-h pad-v-1/4x">
+                SOURCE CODE
+            </div>
+            <div class="highlight"><pre class=" javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">createElement</span><span class="p">,</span> <span class="nx">listenerElement</span><span class="p">,</span> <span class="nx">remove</span><span class="p">,</span> <span class="nx">append</span><span class="p">,</span> <span class="nx">content</span><span class="p">,</span> <span class="nx">insertBefore</span><span class="p">,</span> <span class="nx">insertAfter</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">dolla</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="k">import</span> <span class="p">{</span> <span class="nx">isFunction</span><span class="p">,</span> <span class="nx">result</span><span class="p">,</span> <span class="nx">except</span><span class="p">,</span> <span class="nx">uniq</span><span class="p">,</span> <span class="nx">findClosest</span><span class="p">,</span> <span class="nx">isBetween</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../support.js</span><span class="dl">'</span>
+<span class="k">import</span> <span class="nx">TableColumn</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./table/column.js</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">TableRow</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./table/row.js</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">TableHeader</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./table/header.js</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">KompElement</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./element.js</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nx">Table</span> <span class="kd">extends</span> <span class="nx">KompElement</span> <span class="p">{</span>
+    
+    <span class="kd">static</span> <span class="nx">assignableAttributes</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="na">data</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="na">columns</span><span class="p">:</span> <span class="p">[]</span>
+    <span class="p">}</span>
+    
+    <span class="kd">static</span> <span class="nx">tagName</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">komp-table</span><span class="dl">'</span>
+    <span class="kd">static</span> <span class="nx">columnTypeRegistry</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="na">default</span><span class="p">:</span> <span class="nx">TableColumn</span>
+    <span class="p">}</span>
+    <span class="kd">static</span> <span class="nx">Row</span> <span class="o">=</span> <span class="nx">TableRow</span><span class="p">;</span>
+    <span class="kd">static</span> <span class="nx">Header</span> <span class="o">=</span> <span class="nx">TableHeader</span><span class="p">;</span>
+    <span class="kd">static</span> <span class="nx">events</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="dl">'</span><span class="s1">headerChanged</span><span class="dl">'</span><span class="p">,</span>
+        <span class="dl">'</span><span class="s1">columnRemoved</span><span class="dl">'</span><span class="p">,</span>
+        <span class="dl">'</span><span class="s1">columnsChanged</span><span class="dl">'</span>
+    <span class="p">]</span>
+    
+    <span class="nx">frozenLeft</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    
+    <span class="kd">constructor</span> <span class="p">(...</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">super</span><span class="p">(...</span><span class="nx">args</span><span class="p">)</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">rowSelector</span> <span class="o">=</span> <span class="s2">`</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="kd">constructor</span><span class="p">.</span><span class="nx">Row</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">, </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="kd">constructor</span><span class="p">.</span><span class="nx">Header</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">`</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">cellSelector</span> <span class="o">=</span> <span class="nx">uniq</span><span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">values</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="kd">constructor</span><span class="p">.</span><span class="nx">columnTypeRegistry</span><span class="p">).</span><span class="nx">map</span><span class="p">(</span><span class="nx">Column</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="p">[</span>
+                <span class="nx">Column</span><span class="p">.</span><span class="nx">Cell</span><span class="p">.</span><span class="nx">tagName</span><span class="p">,</span>
+                <span class="nx">Column</span><span class="p">.</span><span class="nx">HeaderCell</span><span class="p">.</span><span class="nx">tagName</span>
+            <span class="p">]</span>
+        <span class="p">}).</span><span class="nx">flat</span><span class="p">()).</span><span class="nx">map</span><span class="p">(</span><span class="nx">x</span> <span class="o">=&gt;</span> <span class="nx">x</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">:not([disabled])</span><span class="dl">"</span><span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="dl">'</span><span class="s1">, </span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="k">async</span> <span class="nx">initialize</span> <span class="p">(...</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">super</span><span class="p">.</span><span class="nx">initialize</span><span class="p">(...</span><span class="nx">args</span><span class="p">)</span>
+        <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">initializeColumns</span><span class="p">()</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">setTemplateColumns</span><span class="p">()</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">rendering</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">render</span><span class="p">()</span>
+        <span class="k">return</span> <span class="nx">result</span>
+    <span class="p">}</span>
+    
+    <span class="nx">remove</span> <span class="p">(...</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">resizeObserver</span><span class="p">)</span> <span class="k">this</span><span class="p">.</span><span class="nx">resizeObserver</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">()</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">frozenColumnResizeObserver</span><span class="p">)</span> <span class="k">this</span><span class="p">.</span><span class="nx">frozenColumnResizeObserver</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">()</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">interersectionObserver</span><span class="p">)</span> <span class="k">this</span><span class="p">.</span><span class="nx">interersectionObserver</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">()</span>
+        <span class="k">super</span><span class="p">.</span><span class="nx">remove</span><span class="p">(...</span><span class="nx">args</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="k">async</span> <span class="nx">initializeColumns</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">columns</span> <span class="o">=</span> <span class="k">await</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span><span class="k">await</span> <span class="p">(</span><span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">columns</span><span class="p">).</span><span class="nx">map</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">initializeColumn</span><span class="p">,</span> <span class="k">this</span><span class="p">))</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">columns</span>
+    <span class="p">}</span>
+    
+    <span class="k">async</span> <span class="nx">initializeColumn</span> <span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">options</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">options</span>
+        <span class="kd">const</span> <span class="nx">type</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">type</span> <span class="o">||</span> <span class="dl">"</span><span class="s2">default</span><span class="dl">"</span>
+        <span class="kd">const</span> <span class="nx">columnClass</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="kd">constructor</span><span class="p">.</span><span class="nx">columnTypeRegistry</span><span class="p">[</span><span class="nx">type</span><span class="p">]</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="kd">constructor</span><span class="p">.</span><span class="nx">columnTypeRegistry</span><span class="p">.</span><span class="k">default</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">columnClass</span><span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">({</span>
+            <span class="na">table</span><span class="p">:</span> <span class="k">this</span><span class="p">,</span>
+            <span class="na">index</span><span class="p">:</span> <span class="nx">index</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="p">},</span> <span class="nx">options</span><span class="p">))</span>
+    <span class="p">}</span>
+    
+    <span class="nx">observeResize</span> <span class="p">(</span><span class="nx">cell</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">frozenColumnResizeObserver</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">frozenColumnResizeObserver</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ResizeObserver</span><span class="p">(</span><span class="nx">entries</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">frozenLeft</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">header</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">:scope &gt; .frozen</span><span class="dl">'</span><span class="p">).</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">cell</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                    <span class="kd">const</span> <span class="nx">left</span> <span class="o">=</span> <span class="nx">cell</span><span class="p">.</span><span class="nx">offsetLeft</span> <span class="o">-</span> <span class="k">this</span><span class="p">.</span><span class="nx">scrollLeft</span>
+                    <span class="k">this</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">setProperty</span><span class="p">(</span><span class="s2">`--frozen-position-</span><span class="p">${</span><span class="nx">cell</span><span class="p">.</span><span class="nx">cellIndex</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span> <span class="nx">left</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">px</span><span class="dl">"</span><span class="p">)</span>
+                    <span class="k">this</span><span class="p">.</span><span class="nx">frozenLeft</span> <span class="o">=</span> <span class="nx">left</span> <span class="o">+</span> <span class="nx">cell</span><span class="p">.</span><span class="nx">offsetWidth</span>
+                <span class="p">})</span>
+            <span class="p">})</span>
+        <span class="p">}</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">frozenColumnResizeObserver</span><span class="p">.</span><span class="nx">observe</span><span class="p">(</span><span class="nx">cell</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="nx">unobserveResize</span><span class="p">(</span><span class="nx">cell</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">frozenColumnResizeObserver</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">frozenColumnResizeObserver</span><span class="p">.</span><span class="nx">unobserve</span><span class="p">(</span><span class="nx">cell</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="nx">observeIntersection</span><span class="p">(</span><span class="nx">el</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">interersectionObserver</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">setInterersectionObserver</span><span class="p">()</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">interersectionObserverTargets</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">interersectionObserverTargets</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Set</span><span class="p">()</span>
+        <span class="p">}</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">interersectionObserver</span><span class="p">.</span><span class="nx">observe</span><span class="p">(</span><span class="nx">el</span><span class="p">)</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">interersectionObserverTargets</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">el</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nx">el</span>
+    <span class="p">}</span>
+    
+    <span class="nx">setInterersectionObserver</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">root</span> <span class="o">=</span> <span class="nx">findClosest</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">el</span> <span class="o">=&gt;</span> <span class="nx">el</span><span class="p">.</span><span class="nx">scrollHeight</span> <span class="o">&gt;</span> <span class="nx">el</span><span class="p">.</span><span class="nx">clientHeight</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">root</span> <span class="o">==</span> <span class="k">this</span><span class="p">.</span><span class="nx">getRootNode</span><span class="p">().</span><span class="nx">documentElement</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">root</span> <span class="o">=</span> <span class="kc">null</span>
+        <span class="p">}</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">interersectionObserver</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">IntersectionObserver</span><span class="p">(</span><span class="nx">entries</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">entries</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">entry</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="nx">entry</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">target</span><span class="p">)?.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">toggle</span><span class="p">(</span><span class="dl">'</span><span class="s1">show</span><span class="dl">'</span><span class="p">,</span> <span class="nx">entry</span><span class="p">.</span><span class="nx">intersectionRatio</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="p">})</span>
+        <span class="p">},</span> <span class="p">{</span> <span class="nx">root</span> <span class="p">})</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">resizeObserver</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">resizeObserver</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ResizeObserver</span><span class="p">(</span><span class="nx">entries</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="nx">entries</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">entry</span> <span class="o">=&gt;</span> <span class="nx">entry</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">resetInterersectionObserver</span><span class="p">())</span>
+            <span class="p">})</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">resizeObserver</span><span class="p">.</span><span class="nx">observe</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="nx">resetInterersectionObserver</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">interersectionObserver</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">interersectionObserver</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">()</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">setInterersectionObserver</span><span class="p">()</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">interersectionObserverTargets</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">target</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">interersectionObserver</span><span class="p">.</span><span class="nx">observe</span><span class="p">(</span><span class="nx">target</span><span class="p">)</span>
+            <span class="p">})</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="k">async</span> <span class="nx">render</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="dl">''</span><span class="p">;</span>
+        <span class="nx">append</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">renderHeader</span><span class="p">())</span>
+        <span class="k">await</span> <span class="nx">append</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">renderRows</span><span class="p">())</span>
+        
+        <span class="kd">const</span> <span class="nx">frozenColumns</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">columns</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">c</span> <span class="o">=&gt;</span> <span class="nx">c</span><span class="p">.</span><span class="nx">frozen</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">frozenColumns</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">append</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">observeIntersection</span><span class="p">(</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">localName</span><span class="p">}</span><span class="s2">-frozen-indicator`</span><span class="p">,</span> <span class="p">{</span>
+                <span class="na">class</span><span class="p">:</span> <span class="dl">'</span><span class="s1">column</span><span class="dl">'</span><span class="p">,</span>
+                <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="na">target</span><span class="p">:</span> <span class="s2">`</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">localName</span><span class="p">}</span><span class="s2">-frozen-divider.column`</span>
+                <span class="p">}</span>
+            <span class="p">})))</span>
+            <span class="nx">append</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">createElement</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">localName</span><span class="p">}</span><span class="s2">-frozen-divider`</span><span class="p">,</span> <span class="p">{</span>
+                <span class="na">class</span><span class="p">:</span> <span class="dl">'</span><span class="s1">column</span><span class="dl">'</span><span class="p">,</span>
+                <span class="na">style</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="dl">'</span><span class="s1">grid-column</span><span class="dl">'</span><span class="p">:</span> <span class="s2">`1 / </span><span class="p">${</span><span class="nx">frozenColumns</span><span class="p">.</span><span class="nx">length</span> <span class="o">+</span> <span class="mi">1</span><span class="p">}</span><span class="s2">`</span>
+                <span class="p">}</span>
+            <span class="p">}))</span>
+        <span class="p">}</span>
+        
+        <span class="k">this</span><span class="p">.</span><span class="nx">setTemplateRows</span><span class="p">()</span>
+    <span class="p">}</span>
+    
+    <span class="nx">setTemplateColumns</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">gridTemplateColumns</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">columns</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">column</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">column</span><span class="p">.</span><span class="nx">width</span> <span class="o">||</span> <span class="dl">"</span><span class="s2">var(--column-size)</span><span class="dl">"</span>
+        <span class="p">}).</span><span class="nx">join</span><span class="p">(</span><span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="nx">setTemplateRows</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">gridTemplateRows</span> <span class="o">=</span> <span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">header</span><span class="p">.</span><span class="nx">height</span> <span class="o">||</span> <span class="dl">"</span><span class="s2">var(--row-size)</span><span class="dl">"</span><span class="p">].</span><span class="nx">concat</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">rows</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">row</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">row</span><span class="p">.</span><span class="nx">height</span> <span class="o">||</span> <span class="dl">"</span><span class="s2">var(--row-size)</span><span class="dl">"</span>
+        <span class="p">}),</span> <span class="dl">'</span><span class="s1">1fr</span><span class="dl">'</span><span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="nx">renderHeader</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">header</span> <span class="o">=</span> <span class="k">new</span> <span class="k">this</span><span class="p">.</span><span class="kd">constructor</span><span class="p">.</span><span class="nx">Header</span><span class="p">({</span>
+            <span class="na">rowIndex</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="na">table</span><span class="p">:</span> <span class="k">this</span><span class="p">,</span>
+            <span class="na">content</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">columns</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">renderColumnHeader</span><span class="p">,</span> <span class="k">this</span><span class="p">)</span>
+        <span class="p">})</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">observeIntersection</span><span class="p">(</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">localName</span><span class="p">}</span><span class="s2">-frozen-indicator`</span><span class="p">,</span> <span class="p">{</span>
+            <span class="na">class</span><span class="p">:</span> <span class="dl">'</span><span class="s1">row</span><span class="dl">'</span><span class="p">,</span>
+            <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+                <span class="na">target</span><span class="p">:</span> <span class="s2">`</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">localName</span><span class="p">}</span><span class="s2">-frozen-divider.row`</span>
+            <span class="p">}</span>
+        <span class="p">})))</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">localName</span><span class="p">}</span><span class="s2">-frozen-divider`</span><span class="p">,</span> <span class="p">{</span>
+            <span class="na">class</span><span class="p">:</span> <span class="dl">'</span><span class="s1">row</span><span class="dl">'</span><span class="p">,</span>
+            <span class="na">style</span><span class="p">:</span> <span class="p">{</span>
+                <span class="dl">'</span><span class="s1">grid-row</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">1</span><span class="dl">'</span>
+            <span class="p">}</span>
+        <span class="p">}))</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">header</span>
+    <span class="p">}</span>
+    <span class="nx">renderColumnHeader</span> <span class="p">(</span><span class="nx">column</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">column</span><span class="p">.</span><span class="nx">renderHeader</span><span class="p">()</span>
+    <span class="p">}</span>
+    
+    <span class="k">async</span> <span class="nx">renderRows</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span><span class="k">await</span> <span class="p">(</span><span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">data</span><span class="p">).</span><span class="nx">map</span><span class="p">((</span><span class="nx">record</span><span class="p">,</span> <span class="nx">rowIndex</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">renderRow</span><span class="p">(</span><span class="nx">record</span><span class="p">,</span> <span class="nx">rowIndex</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)))</span>
+    <span class="p">}</span>
+    
+    <span class="k">async</span> <span class="nx">renderRow</span> <span class="p">(</span><span class="nx">record</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">row</span> <span class="o">=</span> <span class="k">new</span> <span class="k">this</span><span class="p">.</span><span class="kd">constructor</span><span class="p">.</span><span class="nx">Row</span><span class="p">({</span>
+            <span class="na">record</span><span class="p">:</span> <span class="nx">record</span><span class="p">,</span>
+            <span class="na">rowIndex</span><span class="p">:</span> <span class="nx">index</span><span class="p">,</span>
+            <span class="na">table</span><span class="p">:</span> <span class="k">this</span>
+        <span class="p">})</span>
+        
+        <span class="k">this</span><span class="p">.</span><span class="nx">columns</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="k">async</span> <span class="nx">column</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">row</span><span class="p">.</span><span class="nx">renderColumn</span><span class="p">(</span><span class="nx">column</span><span class="p">,</span> <span class="nx">record</span><span class="p">)</span>
+        <span class="p">})</span>
+        
+        <span class="k">return</span> <span class="nx">row</span>
+    <span class="p">}</span>
+    
+    <span class="nx">appendRow</span> <span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="p">...</span><span class="nx">newRecords</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="err">#</span><span class="nx">spliceRow</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">newRecords</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="nx">removeRow</span> <span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="nx">toDeleteCount</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="err">#</span><span class="nx">spliceRow</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="nx">toDeleteCount</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="k">async</span> <span class="err">#</span><span class="nx">spliceRow</span> <span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="nx">countToDelete</span><span class="p">,</span> <span class="nx">newRecords</span><span class="o">=</span><span class="p">[],</span> <span class="nx">mutate</span><span class="o">=</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">initiateSplice</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nb">Promise</span> <span class="p">(</span><span class="k">async</span> <span class="nx">done</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="kd">const</span> <span class="nx">newRows</span> <span class="o">=</span> <span class="k">await</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span><span class="nx">newRecords</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="k">async</span> <span class="p">(</span><span class="nx">record</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="nx">record</span> <span class="k">instanceof</span> <span class="k">this</span><span class="p">.</span><span class="kd">constructor</span><span class="p">.</span><span class="nx">Row</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="k">return</span> <span class="nx">record</span>
+                    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">renderRow</span><span class="p">(</span><span class="nx">record</span><span class="p">,</span> <span class="nx">index</span> <span class="o">+</span> <span class="nx">i</span><span class="p">)</span>
+                    <span class="p">}</span>
+                <span class="p">}))</span>
+                <span class="kd">let</span> <span class="nx">removedRows</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">rows</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="nx">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="nx">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="nx">countToDelete</span><span class="p">)</span>
+                <span class="nx">removedRows</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">row</span> <span class="o">=&gt;</span> <span class="nx">row</span><span class="p">.</span><span class="nx">remove</span><span class="p">())</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">newRows</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="kd">let</span> <span class="nx">anchor</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">rows</span><span class="p">[</span><span class="nx">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="nx">anchor</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="k">await</span> <span class="nx">insertBefore</span><span class="p">(</span><span class="nx">anchor</span><span class="p">,</span> <span class="nx">newRows</span><span class="p">)</span>
+                    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                        <span class="k">await</span> <span class="nx">insertAfter</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">rows</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">rows</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="nx">newRows</span><span class="p">)</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">rows</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">row</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">row</span><span class="p">.</span><span class="nx">rowIndex</span> <span class="o">=</span> <span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">setTemplateRows</span><span class="p">()</span>
+
+                <span class="nx">done</span><span class="p">(</span><span class="nx">newRows</span><span class="p">)</span>
+            <span class="p">})</span>
+        <span class="p">}</span>
+        
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">rendering</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">rendering</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">rendering</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">initiateSplice</span><span class="p">)</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">rendering</span> <span class="o">=</span> <span class="nx">initiateSplice</span><span class="p">()</span>
+        <span class="p">}</span>
+            
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">rendering</span>
+    <span class="p">}</span>
+    
+    <span class="nx">sortRows</span> <span class="p">(</span><span class="nx">compareFn</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">Array</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="kd">constructor</span><span class="p">.</span><span class="nx">Row</span><span class="p">.</span><span class="nx">tagName</span><span class="p">)).</span><span class="nx">sort</span><span class="p">(</span><span class="nx">compareFn</span><span class="p">).</span><span class="nx">map</span><span class="p">((</span><span class="nx">row</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">row</span><span class="p">)</span>
+            <span class="nx">row</span><span class="p">.</span><span class="nx">rowIndex</span> <span class="o">=</span> <span class="nx">i</span> <span class="o">+</span> <span class="mi">2</span>
+        <span class="p">})</span>
+    <span class="p">}</span>
+    
+    <span class="kd">get</span> <span class="nx">rows</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">Array</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">rowSelector</span><span class="p">))</span>
+    <span class="p">}</span>
+    <span class="kd">get</span> <span class="nx">cells</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">Array</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">cellSelector</span><span class="p">))</span>
+    <span class="p">}</span>
+    
+    <span class="k">async</span> <span class="err">#</span><span class="nx">spliceColumns</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="nx">countToDelete</span><span class="p">,</span> <span class="nx">newColumns</span><span class="o">=</span><span class="p">[],</span> <span class="nx">mutate</span><span class="o">=</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">newColumns</span> <span class="o">=</span> <span class="k">await</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span><span class="nx">newColumns</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="k">async</span> <span class="p">(</span><span class="nx">column</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">column</span> <span class="k">instanceof</span> <span class="nx">TableColumn</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="nx">column</span>
+            <span class="p">}</span>
+            <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">initializeColumn</span><span class="p">(</span><span class="nx">column</span><span class="p">,</span> <span class="nx">index</span> <span class="o">+</span> <span class="nx">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="p">}))</span>
+        
+        <span class="kd">let</span> <span class="nx">removedColumns</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">mutate</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">removedColumns</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">columns</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nx">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">countToDelete</span><span class="p">,</span> <span class="p">...</span><span class="nx">newColumns</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">removedColumns</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">columns</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="nx">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">index</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">+</span> <span class="nx">countToDelete</span><span class="p">);</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">columns</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">columns</span><span class="p">.</span><span class="nx">toSpliced</span><span class="p">(</span><span class="nx">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">countToDelete</span><span class="p">,</span> <span class="p">...</span><span class="nx">newColumns</span><span class="p">);</span>
+        <span class="p">}</span>
+        
+        <span class="k">this</span><span class="p">.</span><span class="nx">columns</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">c</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">c</span><span class="p">.</span><span class="nx">index</span> <span class="o">=</span> <span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="p">})</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">setTemplateColumns</span><span class="p">();</span>
+
+        <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">rendering</span>
+        
+        <span class="nx">removedColumns</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">c</span> <span class="o">=&gt;</span> <span class="nx">c</span><span class="p">.</span><span class="nx">remove</span><span class="p">());</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">newColumns</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kd">const</span> <span class="nx">newHeaderCells</span> <span class="o">=</span> <span class="nx">newColumns</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">c</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="nx">c</span><span class="p">.</span><span class="nx">headerCell</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">renderColumnHeader</span><span class="p">(</span><span class="nx">c</span><span class="p">)</span>
+            <span class="p">})</span>
+            <span class="kd">const</span> <span class="nx">anchor</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">header</span><span class="p">.</span><span class="nx">children</span><span class="p">.</span><span class="nx">item</span><span class="p">(</span><span class="nx">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">anchor</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">insertBefore</span><span class="p">(</span><span class="nx">anchor</span><span class="p">,</span> <span class="nx">newHeaderCells</span><span class="p">)</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nx">insertAfter</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">header</span><span class="p">.</span><span class="nx">children</span><span class="p">,</span> <span class="nx">newHeaderCells</span><span class="p">)</span>
+            <span class="p">}</span>
+            
+            <span class="k">await</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span><span class="k">await</span> <span class="p">(</span><span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">data</span><span class="p">).</span><span class="nx">map</span><span class="p">(</span><span class="k">async</span> <span class="p">(</span><span class="nx">record</span><span class="p">,</span> <span class="nx">rowIndex</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="kd">const</span> <span class="nx">row</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">rows</span><span class="p">[</span><span class="nx">rowIndex</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+                <span class="k">return</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span><span class="nx">newColumns</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="k">async</span> <span class="nx">column</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                    <span class="kd">let</span> <span class="nx">cells</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="nx">column</span><span class="p">.</span><span class="nx">cells</span><span class="p">).</span><span class="nx">filter</span><span class="p">(</span><span class="nx">c</span> <span class="o">=&gt;</span> <span class="nx">c</span><span class="p">.</span><span class="nx">rowIndex</span> <span class="o">==</span> <span class="nx">row</span><span class="p">.</span><span class="nx">rowIndex</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="nx">cells</span><span class="p">.</span><span class="nx">length</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="k">return</span> <span class="nx">row</span><span class="p">.</span><span class="nx">renderColumn</span><span class="p">(</span><span class="nx">column</span><span class="p">,</span> <span class="nx">record</span><span class="p">)</span>
+                    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                        <span class="k">return</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span><span class="nx">cells</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="k">async</span> <span class="nx">cell</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                            <span class="kd">let</span> <span class="nx">container</span> <span class="o">=</span> <span class="nx">row</span>
+                            <span class="k">if</span> <span class="p">(</span><span class="nx">column</span><span class="p">.</span><span class="nx">splitInto</span><span class="p">)</span> <span class="p">{</span>
+                                <span class="nx">container</span> <span class="o">=</span> <span class="nx">cell</span><span class="p">.</span><span class="nx">parentElement</span>
+                            <span class="p">}</span>
+                            <span class="kd">let</span> <span class="nx">anchor</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="nx">container</span><span class="p">.</span><span class="nx">children</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="nx">c</span> <span class="o">=&gt;</span> <span class="nx">c</span><span class="p">.</span><span class="nx">cellIndex</span> <span class="o">&amp;&amp;</span> <span class="nx">index</span> <span class="o">&lt;</span> <span class="nx">c</span><span class="p">.</span><span class="nx">cellIndex</span><span class="p">)</span>
+                            <span class="k">if</span> <span class="p">(</span><span class="nx">anchor</span><span class="p">)</span> <span class="p">{</span>
+                                <span class="k">await</span> <span class="nx">insertBefore</span><span class="p">(</span><span class="nx">anchor</span><span class="p">,</span> <span class="nx">cell</span><span class="p">)</span>
+                            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                                <span class="k">await</span> <span class="nx">append</span><span class="p">(</span><span class="nx">container</span><span class="p">,</span> <span class="nx">cell</span><span class="p">)</span>
+                            <span class="p">}</span>
+                        <span class="p">}))</span>
+                    <span class="p">}</span>
+                <span class="p">}))</span>
+            <span class="p">}))</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="nx">newColumns</span>
+    <span class="p">}</span>
+    
+    <span class="nx">spliceColumns</span> <span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="nx">toDelete</span><span class="p">,</span> <span class="p">...</span><span class="nx">newColumns</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="err">#</span><span class="nx">spliceColumns</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="nx">toDelete</span><span class="p">,</span> <span class="p">...</span><span class="nx">newColumns</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="c1">// Mutating Change to Columns</span>
+    <span class="nx">insertColumns</span> <span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="p">...</span><span class="nx">newColumns</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="err">#</span><span class="nx">spliceColumns</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">newColumns</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="nx">addColumns</span> <span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="p">...</span><span class="nx">newColumns</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="err">#</span><span class="nx">spliceColumns</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">newColumns</span><span class="p">,</span> <span class="kc">false</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="c1">// Mutating Change to Columns</span>
+    <span class="nx">deleteColumn</span> <span class="p">(</span><span class="nx">column</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="err">#</span><span class="nx">spliceColumns</span><span class="p">(</span><span class="nx">column</span><span class="p">.</span><span class="nx">index</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="nx">removeColumn</span> <span class="p">(</span><span class="nx">column</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="err">#</span><span class="nx">spliceColumns</span><span class="p">(</span><span class="nx">column</span><span class="p">.</span><span class="nx">index</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">[],</span> <span class="kc">false</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="nx">replaceColumn</span> <span class="p">(</span><span class="nx">oldColumn</span><span class="p">,</span> <span class="p">...</span><span class="nx">newColumns</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="err">#</span><span class="nx">spliceColumns</span><span class="p">(</span><span class="nx">oldColumn</span><span class="p">.</span><span class="nx">index</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">newColumns</span><span class="p">,</span> <span class="kc">false</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="c1">// supports -n from end</span>
+    <span class="nx">at</span> <span class="p">(</span><span class="nx">column</span><span class="p">,</span> <span class="nx">row</span><span class="p">,</span> <span class="nx">groupIndex</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">cells</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">cells</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">column</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">column</span> <span class="o">+=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(...</span><span class="nx">cells</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">c</span> <span class="o">=&gt;</span> <span class="nx">c</span><span class="p">.</span><span class="nx">cellIndex</span><span class="p">))</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">row</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">row</span> <span class="o">+=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(...</span><span class="nx">cells</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">c</span> <span class="o">=&gt;</span> <span class="nx">c</span><span class="p">.</span><span class="nx">rowIndex</span><span class="p">))</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nx">cells</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">c</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">cellIndex</span> <span class="o">==</span> <span class="nx">column</span> <span class="o">&amp;&amp;</span> <span class="nx">c</span><span class="p">.</span><span class="nx">rowIndex</span> <span class="o">==</span> <span class="nx">row</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">groupIndex</span> <span class="o">&amp;&amp;</span> <span class="nx">groupIndex</span><span class="p">)</span> <span class="p">{</span>
+                    
+                    <span class="k">return</span> <span class="nx">c</span><span class="p">.</span><span class="nx">groupIndex</span> <span class="o">==</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">min</span><span class="p">(</span><span class="nx">groupIndex</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="p">?</span> <span class="nx">c</span><span class="p">.</span><span class="nx">parentElement</span><span class="p">.</span><span class="nx">rowCount</span> <span class="o">+</span> <span class="nx">groupIndex</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">:</span> <span class="nx">groupIndex</span><span class="p">,</span> <span class="nx">c</span><span class="p">.</span><span class="nx">parentElement</span><span class="p">.</span><span class="nx">rowCount</span><span class="p">)</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="k">return</span> <span class="kc">true</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">})</span>
+    <span class="p">}</span>
+    
+    <span class="nx">slice</span> <span class="p">(</span><span class="nx">fromCell</span><span class="p">,</span> <span class="nx">toCell</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">groupName</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">fromCell</span><span class="p">.</span><span class="nx">groupIndex</span> <span class="o">&amp;&amp;</span> <span class="nx">toCell</span><span class="p">.</span><span class="nx">groupIndex</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">fromCell</span><span class="p">.</span><span class="nx">parentElement</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">name</span> <span class="o">==</span> <span class="nx">toCell</span><span class="p">.</span><span class="nx">parentElement</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">groupName</span> <span class="o">=</span> <span class="nx">fromCell</span><span class="p">.</span><span class="nx">parentElement</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">name</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        
+        <span class="kd">const</span> <span class="p">[</span><span class="nx">minRow</span><span class="p">,</span> <span class="nx">maxRow</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nx">fromCell</span><span class="p">.</span><span class="nx">rowIndex</span><span class="p">,</span> <span class="nx">toCell</span><span class="p">.</span><span class="nx">rowIndex</span><span class="p">].</span><span class="nx">sort</span><span class="p">((</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">a</span> <span class="o">-</span> <span class="nx">b</span><span class="p">)</span>
+        <span class="kd">const</span> <span class="p">[</span><span class="nx">minCol</span><span class="p">,</span> <span class="nx">maxCol</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nx">fromCell</span><span class="p">.</span><span class="nx">cellIndex</span><span class="p">,</span> <span class="nx">toCell</span><span class="p">.</span><span class="nx">cellIndex</span><span class="p">].</span><span class="nx">sort</span><span class="p">((</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">a</span> <span class="o">-</span> <span class="nx">b</span><span class="p">)</span>
+        <span class="kd">let</span> <span class="p">[</span><span class="nx">minGroup</span><span class="p">,</span> <span class="nx">maxGroup</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nx">fromCell</span><span class="p">.</span><span class="nx">groupIndex</span><span class="p">,</span> <span class="nx">toCell</span><span class="p">.</span><span class="nx">groupIndex</span><span class="p">].</span><span class="nx">sort</span><span class="p">((</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">a</span> <span class="o">-</span> <span class="nx">b</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">fromCell</span><span class="p">.</span><span class="nx">rowIndex</span> <span class="o">&lt;</span> <span class="nx">toCell</span><span class="p">.</span><span class="nx">rowIndex</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">minGroup</span> <span class="o">=</span> <span class="nx">fromCell</span><span class="p">.</span><span class="nx">groupIndex</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">toCell</span><span class="p">.</span><span class="nx">rowIndex</span> <span class="o">&lt;</span> <span class="nx">fromCell</span><span class="p">.</span><span class="nx">rowIndex</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">minGroup</span> <span class="o">=</span> <span class="nx">toCell</span><span class="p">.</span><span class="nx">groupIndex</span>
+        <span class="p">}</span>
+        
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">rows</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">row</span><span class="p">,</span> <span class="nx">index</span><span class="p">,</span> <span class="nx">rows</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">isBetween</span><span class="p">(</span><span class="nx">row</span><span class="p">.</span><span class="nx">rowIndex</span><span class="p">,</span> <span class="nx">minRow</span><span class="p">,</span> <span class="nx">maxRow</span><span class="p">))</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="nx">row</span><span class="p">.</span><span class="nx">cells</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">cell</span><span class="p">,</span> <span class="nx">index</span><span class="p">,</span> <span class="nx">cells</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="nx">isBetween</span><span class="p">(</span><span class="nx">cell</span><span class="p">.</span><span class="nx">cellIndex</span><span class="p">,</span> <span class="nx">minCol</span><span class="p">,</span> <span class="nx">maxCol</span><span class="p">))</span> <span class="p">{</span>
+                        <span class="k">if</span> <span class="p">(</span><span class="nx">cell</span><span class="p">.</span><span class="nx">groupIndex</span> <span class="o">&amp;&amp;</span> <span class="nx">cell</span><span class="p">.</span><span class="nx">parentElement</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">name</span> <span class="o">==</span> <span class="nx">groupName</span><span class="p">)</span> <span class="p">{</span>
+                            <span class="k">if</span> <span class="p">(</span><span class="nx">cell</span><span class="p">.</span><span class="nx">rowIndex</span> <span class="o">==</span> <span class="nx">minRow</span> <span class="o">&amp;&amp;</span> <span class="nx">cell</span><span class="p">.</span><span class="nx">rowIndex</span> <span class="o">==</span> <span class="nx">maxRow</span><span class="p">)</span> <span class="p">{</span>
+                                <span class="k">return</span> <span class="nx">isBetween</span><span class="p">(</span><span class="nx">cell</span><span class="p">.</span><span class="nx">groupIndex</span><span class="p">,</span> <span class="nx">minGroup</span><span class="p">,</span> <span class="nx">maxGroup</span><span class="p">)</span> <span class="p">?</span> <span class="nx">cell</span> <span class="p">:</span> <span class="kc">null</span>
+                            <span class="p">}</span>
+                            <span class="k">if</span> <span class="p">(</span><span class="nx">cell</span><span class="p">.</span><span class="nx">rowIndex</span> <span class="o">==</span> <span class="nx">minRow</span><span class="p">)</span> <span class="p">{</span>
+                                <span class="k">return</span> <span class="nx">minGroup</span> <span class="o">&lt;=</span> <span class="nx">cell</span><span class="p">.</span><span class="nx">groupIndex</span> <span class="p">?</span> <span class="nx">cell</span> <span class="p">:</span> <span class="kc">null</span>
+                            <span class="p">}</span>
+                            <span class="k">if</span> <span class="p">(</span><span class="nx">cell</span><span class="p">.</span><span class="nx">rowIndex</span> <span class="o">==</span> <span class="nx">maxRow</span><span class="p">){</span>
+                                <span class="k">return</span> <span class="nx">cell</span><span class="p">.</span><span class="nx">groupIndex</span> <span class="o">&lt;=</span> <span class="nx">maxGroup</span> <span class="p">?</span> <span class="nx">cell</span> <span class="p">:</span> <span class="kc">null</span>
+                            <span class="p">}</span>
+                            <span class="k">return</span> <span class="nx">cell</span>
+                        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                            <span class="k">return</span> <span class="nx">cell</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                        <span class="k">return</span> <span class="kc">null</span>
+                    <span class="p">}</span>
+                <span class="p">}).</span><span class="nx">filter</span><span class="p">(</span><span class="nx">x</span> <span class="o">=&gt;</span> <span class="nx">x</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">).</span><span class="nx">flat</span><span class="p">()</span>
+            <span class="p">}</span>
+        <span class="p">}).</span><span class="nx">filter</span><span class="p">(</span><span class="nx">x</span> <span class="o">=&gt;</span> <span class="nx">x</span> <span class="o">!=</span> <span class="kc">undefined</span><span class="p">).</span><span class="nx">flat</span><span class="p">()</span>
+    <span class="p">}</span>
+    
+    <span class="nx">queryCell</span> <span class="p">(</span><span class="nx">selector</span><span class="o">=</span><span class="dl">''</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">cellSelector</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2">, </span><span class="dl">"</span><span class="p">).</span><span class="nx">map</span><span class="p">(</span><span class="nx">x</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">selector</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">'</span><span class="s1">, </span><span class="dl">'</span><span class="p">).</span><span class="nx">map</span><span class="p">(</span><span class="nx">selector</span> <span class="o">=&gt;</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">selector</span><span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="dl">'</span><span class="s1">, </span><span class="dl">'</span><span class="p">)</span>
+        <span class="p">}).</span><span class="nx">join</span><span class="p">(</span><span class="dl">"</span><span class="s2">, </span><span class="dl">"</span><span class="p">))</span>
+    <span class="p">}</span>
+    <span class="nx">queryCells</span> <span class="p">(</span><span class="nx">selector</span><span class="o">=</span><span class="dl">''</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">cellSelector</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2">, </span><span class="dl">"</span><span class="p">).</span><span class="nx">map</span><span class="p">(</span><span class="nx">x</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">selector</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">'</span><span class="s1">, </span><span class="dl">'</span><span class="p">).</span><span class="nx">map</span><span class="p">(</span><span class="nx">selector</span> <span class="o">=&gt;</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">selector</span><span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="dl">'</span><span class="s1">, </span><span class="dl">'</span><span class="p">)</span>
+        <span class="p">}).</span><span class="nx">join</span><span class="p">(</span><span class="dl">"</span><span class="s2">, </span><span class="dl">"</span><span class="p">))</span>
+    <span class="p">}</span>
+    
+    <span class="c1">// TODO replace hard coding cell and header tags</span>
+    <span class="c1">// TODO replace hard coding frozen numbers</span>
+    <span class="kd">static</span> <span class="nx">style</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="s2">`
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2"> {
+            --column-size: max-content;
+            --row-size: auto;
+            --split-row-size: auto;
+            display: inline-grid;
+            align-content: start;
+            position: relative;
+        }
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">-handles {
+            display: contents;
+        }
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">-header,
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">-row {
+            display: grid;
+            grid-template-columns: subgrid;
+            grid-column: 1 / -1;
+            grid-auto-flow: row dense;
+        }
+
+        komp-table-header {
+            position: sticky;
+            top: 0;
+            cursor: default;
+        }
+        
+        komp-table-group {
+            display: grid;
+            grid-column: 1 / -1;
+            grid-row: 1;
+            grid-template-columns: subgrid;
+            grid-auto-rows: var(--split-row-size, var(--row-size, auto));
+            pointer-events: none;
+        }
+        komp-table-group &gt; * {
+            pointer-events: auto;
+        }
+        
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">-frozen-indicator {
+            position: absolute;
+            inset-inline-start: 0;
+            inset-block-start: 0;
+            block-size: 100%;
+            inline-size: 1px;
+            background: none;
+            pointer-events: none;
+        }
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">-frozen-indicator.row {
+            writing-mode: vertical-lr;
+            grid-area: 1 / 1 / 1 / -1;
+        }
+        
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">-frozen-divider {
+            pointer-events: none;
+            grid-row: 1 / -2;
+            grid-column: 1;
+            position: sticky;
+            inset-inline-start: 0;
+        }
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">-frozen-divider.show:after {
+            opacity: 0.1;
+            inline-size: 10px;
+        }
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">-frozen-divider:after {
+            content: '';
+            position: absolute;
+            inset-inline-start: 100%;
+            inset-block-start: 0;
+            block-size: 100%;
+            inline-size: 0;
+            background: linear-gradient(90deg, rgba(0,0,0,1), rgba(0,0,0,0));
+            opacity: 0;
+            transition: opacity 150ms, width 150ms;
+        }
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">-frozen-divider.row {
+            writing-mode: vertical-lr;
+            grid-column: 1 / -1;
+            grid-row: 1;
+        }
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">-frozen-divider.row:after {
+            background: linear-gradient(rgba(0,0,0,1), rgba(0,0,0,0))
+        }
+
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">-cell,
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">-header-cell {
+            grid-row: 1;
+        }
+        
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">-header-cell.frozen,
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">-cell.frozen {
+            position: sticky;
+        }
+        
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2"> .frozen-1 {
+            left: var(--frozen-position-1, 0);
+        }
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2"> .frozen-2 {
+            left: var(--frozen-position-2, 0);
+        }
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2"> .frozen-3 {
+            left: var(--frozen-position-3, 0);
+        }
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2"> .frozen-4 {
+            left: var(--frozen-position-4, 0);
+        }
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2"> .frozen-5 {
+            left: var(--frozen-position-5, 0);
+        }
+
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">-cell               { z-index: 1; }
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">-cell.frozen        { z-index: 100; }
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">-header             { z-index: 110; }
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">-header-cell.frozen { z-index: 115; }
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">-frozen-divider     { z-index: 120; }
+    `</span><span class="p">}</span>
+<span class="p">}</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">customElements</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="nx">Table</span><span class="p">.</span><span class="nx">tagName</span><span class="p">,</span> <span class="nx">Table</span><span class="p">);</span></code></pre></div>
+        </div>
+    </div>
+</div>
+    </div>
+    <div class="pad text-right md:text-lg flex justify-content-end divide-h align-center border-gray-30">
+        <div class="pad-h">
+            &copy; 2025
+            <a href="https://github.com/bemky/" class="reset">Ben Ehmke</a>
+        </div>
+        <a href="https://github.com/bemky/komps" class="reset pad-h inline-flex align-center gap-1/2x">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                Komps on GitHub
+        </a>
+    </div>
+</body>
+</html>

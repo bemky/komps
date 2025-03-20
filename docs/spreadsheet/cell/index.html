@@ -1,0 +1,513 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
+    <!-- Use the title from a page's frontmatter if it has one -->
+    <title>Komps</title>
+    <link href="/assets/site-22cf15a669101651d19ad04c4fce6e6d1fe3ae366248e3c72997637d43d5cfd5.css" rel="stylesheet" />
+    <script src="/assets/site-8417798930e951f009030d84a30fccc9f16cf9a64c8e7f66099d5c12d192a044.js"></script>
+</head>
+<body>
+    <div class="side-nav">
+        <div class="pad-2x text-center">
+            <a href="/" class="reset">
+                <img class="width-3/4 height-auto inline-block" src="/assets/logo-7b1623d8d9db3b0d0d79dd30b2a5c2a0f0be2b945944f75d18e3be1e67177443.svg" />
+            </a>
+        </div>
+        <div class="uniformNav -vertical -gray flex-fill -active-green">
+    <a href="/" class="">
+        Usage
+    </a>
+    <a href="/element" class="">
+        Base Element
+    </a>
+    <div class="height-0 width-full">
+        <div class="border-green-80 border-opacity-30 border-bottom border-1px width-full"></div>
+    </div>
+        <a href="/auto-grid" class="">
+            AutoGrid
+        </a>
+        <a href="/content-area" class="">
+            ContentArea
+        </a>
+        <a href="/dropdown" class="">
+            Dropdown
+        </a>
+        <a href="/dropzone" class="">
+            Dropzone
+        </a>
+        <a href="/floater" class="">
+            Floater
+        </a>
+        <a href="/input" class="">
+            Input
+        </a>
+        <a href="/modal" class="">
+            Modal
+        </a>
+        <a href="/notification-center" class="">
+            NotificationCenter
+        </a>
+        <a href="/spreadsheet" class="active">
+            Spreadsheet
+        </a>
+            <div class="uniformNav -vertical pad-left-2x text-sm">
+                    <a href="/spreadsheet/cell" class="active">
+                        Cell
+                    </a>
+                    <a href="/spreadsheet/column" class="">
+                        Column
+                    </a>
+            </div>
+        <a href="/table" class="">
+            Table
+        </a>
+        <a href="/tooltip" class="">
+            Tooltip
+        </a>
+</div>
+    </div>
+    <div class="hide sm:show sticky top-0 bg-white">
+        <div class="mobile-nav flex flex-col align-center">
+            <div class="uniformNav -vertical -gray flex-fill -active-green">
+    <a href="/" class="">
+        Usage
+    </a>
+    <a href="/element" class="">
+        Base Element
+    </a>
+    <div class="height-0 width-full">
+        <div class="border-green-80 border-opacity-30 border-bottom border-1px width-full"></div>
+    </div>
+        <a href="/auto-grid" class="">
+            AutoGrid
+        </a>
+        <a href="/content-area" class="">
+            ContentArea
+        </a>
+        <a href="/dropdown" class="">
+            Dropdown
+        </a>
+        <a href="/dropzone" class="">
+            Dropzone
+        </a>
+        <a href="/floater" class="">
+            Floater
+        </a>
+        <a href="/input" class="">
+            Input
+        </a>
+        <a href="/modal" class="">
+            Modal
+        </a>
+        <a href="/notification-center" class="">
+            NotificationCenter
+        </a>
+        <a href="/spreadsheet" class="active">
+            Spreadsheet
+        </a>
+            <div class="uniformNav -vertical pad-left-2x text-sm">
+                    <a href="/spreadsheet/cell" class="active">
+                        Cell
+                    </a>
+                    <a href="/spreadsheet/column" class="">
+                        Column
+                    </a>
+            </div>
+        <a href="/table" class="">
+            Table
+        </a>
+        <a href="/tooltip" class="">
+            Tooltip
+        </a>
+</div>
+        </div>
+        <div class="flex align-stretch relative z-3">
+            <button type="button" class="reset width-50-px flex justify-content-center align-center" onClick="document.body.classList.toggle('active-mobile-nav')">
+                <img class="active:hide" src="/assets/menu-1412be30d711c8336d0757e5557b785242945a44db28cde24ba2b6f2afe30de4.svg" />
+                <img class="hide active:show" src="/assets/x-947e98617952bbdb89b1b18633e1a4f7ded1e3faa29fbd20cdd08ab0dc196dce.svg" />
+            </button>
+            <a href="/" class="reset flex-none pad-v-2x">
+                <img width="200" src="/assets/logo-7b1623d8d9db3b0d0d79dd30b2a5c2a0f0be2b945944f75d18e3be1e67177443.svg" />
+            </a>
+        </div>
+    </div>
+    <div class="main-content overflow-hidden">
+        <div class="section space-v-3x">
+    
+    <div class="">
+        <h1 class="text-2x">
+            SpreadsheetCell
+            <span class="text-light text-nowrap text-italic text-gray-50 text-xl">
+                (extends <a href="table/cell" class="reset hover:text-underline">TableCell</a>)
+            </span>
+        </h1>
+    
+        <div class="text-light text-xl">
+            <p>The cell for <a href="/spreadsheet">Spreadsheet</a></p>
+
+        </div>
+    </div>
+    
+    
+    <div class="">
+        <h2>Syntax</h2>
+        <div class="highlight"><pre class=" javascript"><code><span class="k">new</span> <span class="nx">Cell</span><span class="p">({</span>
+    <span class="na">record</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Corey Seager</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">position</span><span class="p">:</span> <span class="dl">'</span><span class="s1">SS</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">bats</span><span class="p">:</span> <span class="dl">'</span><span class="s1">L</span><span class="dl">'</span>
+    <span class="p">},</span>
+    <span class="na">column</span><span class="p">:</span> <span class="k">new</span> <span class="nx">Column</span><span class="p">({</span>
+        <span class="na">render</span><span class="p">:</span> <span class="nx">record</span> <span class="o">=&gt;</span> <span class="nx">record</span><span class="p">.</span><span class="nx">name</span>
+    <span class="p">})</span>
+<span class="p">})</span>
+</code></pre></div>
+
+    </div>
+    
+        <div class="">
+            <h2>Options</h2>
+                
+                <div class="overflow-auto">
+                    <table class="uniformTable border-gray-20 overflow-auto max-width-full">
+                        <tr>
+                            <th></th>
+                                <th>types</th>
+                                <th>description</th>
+                                <th>arguments</th>
+                                <th>default</th>
+                        </tr>
+                            <tr>
+                                <td>
+                                    <code>content</code>
+                                </td>
+                                    <td>
+                                            String, HTMLElement, Array, Object
+                                    </td>
+                                    <td>
+                                            <p>content to append to element. Passed to <a href="https://dollajs.com/#content">Dolla's <code>content</code></a></p>
+
+                                    </td>
+                                    <td>
+                                            
+                                    </td>
+                                    <td>
+                                            
+                                    </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <code>record</code>
+                                </td>
+                                    <td>
+                                            Object, Function
+                                    </td>
+                                    <td>
+                                            <p>Instance of a record or function that returns a record</p>
+
+                                    </td>
+                                    <td>
+                                            record:Object
+                                    </td>
+                                    <td>
+                                            
+                                    </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <code>column</code>
+                                </td>
+                                    <td>
+                                            Object
+                                    </td>
+                                    <td>
+                                            <p>Instance of a KompColumn</p>
+
+                                    </td>
+                                    <td>
+                                            
+                                    </td>
+                                    <td>
+                                            
+                                    </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <code>readonly</code>
+                                </td>
+                                    <td>
+                                            Boolean
+                                    </td>
+                                    <td>
+                                            <p>make the cell present, but inactive (won't generate input)</p>
+
+                                    </td>
+                                    <td>
+                                            
+                                    </td>
+                                    <td>
+                                            false
+                                    </td>
+                            </tr>
+                    </table>
+                </div>
+        </div>
+    
+    <button class="js-toggle-source reset text-sm text-bold text-gray-30 hover:text-blue" rel="#source-for-spreadsheet/cell">
+        SHOW SOURCE
+    </button>
+    <div class="source hide" id="source-for-spreadsheet/cell">
+        <div class="border border-blue bg-blue rounded-xl overflow-hidden">
+            <div class="text-white text-sm text-bold pad-h pad-v-1/4x">
+                SOURCE CODE
+            </div>
+            <div class="highlight"><pre class=" javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">createElement</span><span class="p">,</span> <span class="nx">insertAfter</span><span class="p">,</span> <span class="nx">css</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">dolla</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">placeCaretAtEnd</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../../support</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">Input</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../input.js</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">TableCell</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../table/cell.js</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nx">SpreadsheetCell</span> <span class="kd">extends</span> <span class="nx">TableCell</span> <span class="p">{</span>
+    <span class="kd">static</span> <span class="nx">tagName</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">komp-spreadsheet-cell</span><span class="dl">'</span><span class="p">;</span>
+    
+    <span class="kd">static</span> <span class="nx">assignableAttributes</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="na">readonly</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">}</span>
+    
+    <span class="kd">constructor</span> <span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="p">...</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">super</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="p">...</span><span class="nx">args</span><span class="p">)</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">tabIndex</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">focusin</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">onFocusIn</span><span class="p">)</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">focusout</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">onFocusOut</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">options</span><span class="p">.</span><span class="nx">disabled</span> <span class="o">!=</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">toggleAttribute</span><span class="p">(</span><span class="dl">'</span><span class="s1">disabled</span><span class="dl">'</span><span class="p">,</span> <span class="nx">options</span><span class="p">.</span><span class="nx">disabled</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="nx">onFocusIn</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">focusCell</span> <span class="o">=</span> <span class="nx">createElement</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">table</span><span class="p">.</span><span class="nx">tagName</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">-focus</span><span class="dl">"</span><span class="p">)</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">focusCell</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">toggle</span><span class="p">(</span><span class="dl">'</span><span class="s1">frozen</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">contains</span><span class="p">(</span><span class="dl">'</span><span class="s1">frozen</span><span class="dl">'</span><span class="p">))</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">focusCell</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">toggle</span><span class="p">(</span><span class="dl">'</span><span class="s1">readonly</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">readonly</span><span class="p">)</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">focusCell</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">setProperty</span><span class="p">(</span><span class="dl">'</span><span class="s1">grid-column</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">cellIndex</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">groupIndex</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">focusCell</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">setProperty</span><span class="p">(</span><span class="dl">'</span><span class="s1">grid-row</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">groupIndex</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">parentElement</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">focusCell</span><span class="p">)</span>
+        <span class="kd">const</span> <span class="nx">outlineWidth</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">css</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">focusCell</span><span class="p">,</span> <span class="dl">'</span><span class="s1">outline-width</span><span class="dl">'</span><span class="p">))</span>
+        <span class="kd">const</span> <span class="nx">viewBox</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="na">left</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">table</span><span class="p">.</span><span class="nx">scrollLeft</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">table</span><span class="p">.</span><span class="nx">frozenLeft</span><span class="p">,</span>
+            <span class="na">top</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">table</span><span class="p">.</span><span class="nx">scrollTop</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">table</span><span class="p">.</span><span class="nx">header</span><span class="p">.</span><span class="nx">offsetHeight</span><span class="p">,</span>
+            <span class="na">right</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">table</span><span class="p">.</span><span class="nx">scrollLeft</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">table</span><span class="p">.</span><span class="nx">clientWidth</span><span class="p">,</span>
+            <span class="na">bottom</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">table</span><span class="p">.</span><span class="nx">scrollTop</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">table</span><span class="p">.</span><span class="nx">clientHeight</span>
+        <span class="p">}</span>
+        <span class="kd">const</span> <span class="nx">cellBox</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="na">left</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">focusCell</span><span class="p">.</span><span class="nx">offsetLeft</span> <span class="o">-</span> <span class="nx">outlineWidth</span><span class="p">,</span>
+            <span class="na">top</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">focusCell</span><span class="p">.</span><span class="nx">offsetTop</span> <span class="o">-</span> <span class="nx">outlineWidth</span><span class="p">,</span>
+            <span class="na">right</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">focusCell</span><span class="p">.</span><span class="nx">offsetLeft</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">focusCell</span><span class="p">.</span><span class="nx">offsetWidth</span> <span class="o">+</span> <span class="nx">outlineWidth</span><span class="p">,</span>
+            <span class="na">bottom</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">focusCell</span><span class="p">.</span><span class="nx">offsetTop</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">focusCell</span><span class="p">.</span><span class="nx">offsetHeight</span> <span class="o">+</span> <span class="nx">outlineWidth</span>
+        <span class="p">}</span>
+        
+        <span class="kd">const</span> <span class="nx">scrollDelta</span> <span class="o">=</span> <span class="p">{</span> <span class="na">left</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="na">top</span><span class="p">:</span> <span class="mi">0</span> <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">cellBox</span><span class="p">.</span><span class="nx">left</span> <span class="o">&lt;</span> <span class="nx">viewBox</span><span class="p">.</span><span class="nx">left</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">scrollDelta</span><span class="p">.</span><span class="nx">left</span> <span class="o">=</span> <span class="nx">cellBox</span><span class="p">.</span><span class="nx">left</span> <span class="o">-</span> <span class="nx">viewBox</span><span class="p">.</span><span class="nx">left</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">cellBox</span><span class="p">.</span><span class="nx">right</span> <span class="o">&gt;</span> <span class="nx">viewBox</span><span class="p">.</span><span class="nx">right</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">scrollDelta</span><span class="p">.</span><span class="nx">left</span> <span class="o">=</span> <span class="nx">cellBox</span><span class="p">.</span><span class="nx">right</span> <span class="o">-</span> <span class="nx">viewBox</span><span class="p">.</span><span class="nx">right</span>
+        <span class="p">}</span>
+        
+        <span class="k">if</span> <span class="p">(</span><span class="nx">cellBox</span><span class="p">.</span><span class="nx">top</span> <span class="o">&lt;</span> <span class="nx">viewBox</span><span class="p">.</span><span class="nx">top</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">scrollDelta</span><span class="p">.</span><span class="nx">top</span> <span class="o">=</span> <span class="nx">cellBox</span><span class="p">.</span><span class="nx">top</span> <span class="o">-</span> <span class="nx">viewBox</span><span class="p">.</span><span class="nx">top</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">cellBox</span><span class="p">.</span><span class="nx">bottom</span> <span class="o">&gt;</span> <span class="nx">viewBox</span><span class="p">.</span><span class="nx">bottom</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">scrollDelta</span><span class="p">.</span><span class="nx">top</span> <span class="o">=</span> <span class="nx">cellBox</span><span class="p">.</span><span class="nx">bottom</span> <span class="o">-</span> <span class="nx">viewBox</span><span class="p">.</span><span class="nx">bottom</span>
+        <span class="p">}</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">table</span><span class="p">.</span><span class="nx">scrollBy</span><span class="p">(</span><span class="nx">scrollDelta</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="nx">onFocusOut</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">focusCell</span><span class="p">.</span><span class="nx">remove</span><span class="p">()</span>
+        <span class="k">delete</span> <span class="k">this</span><span class="p">.</span><span class="nx">focusCell</span>
+    <span class="p">}</span>
+    
+    <span class="nx">focusAdjacentCell</span> <span class="p">(</span><span class="nx">direction</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">columnIndex</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">cellIndex</span>
+        <span class="kd">let</span> <span class="nx">rowIndex</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">rowIndex</span>
+        <span class="kd">let</span> <span class="nx">groupIndex</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">groupIndex</span>
+        
+        <span class="k">if</span> <span class="p">(</span><span class="nx">direction</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">up</span><span class="dl">"</span> <span class="o">||</span> <span class="nx">direction</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">down</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">rowIndex</span> <span class="o">+=</span> <span class="nx">direction</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">up</span><span class="dl">"</span> <span class="p">?</span> <span class="o">-</span><span class="mi">1</span> <span class="p">:</span> <span class="mi">1</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">columnIndex</span> <span class="o">+=</span> <span class="nx">direction</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">left</span><span class="dl">"</span> <span class="p">?</span> <span class="o">-</span><span class="mi">1</span> <span class="p">:</span> <span class="mi">1</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">groupIndex</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">direction</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">up</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">groupIndex</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">groupIndex</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="nx">groupIndex</span><span class="o">--</span>
+                    <span class="nx">rowIndex</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">rowIndex</span>
+                <span class="p">}</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">direction</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">down</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">groupIndex</span> <span class="o">==</span> <span class="k">this</span><span class="p">.</span><span class="nx">parentElement</span><span class="p">.</span><span class="nx">rowCount</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">groupIndex</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="nx">groupIndex</span><span class="o">++</span>
+                    <span class="nx">rowIndex</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">rowIndex</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        
+        <span class="kd">let</span> <span class="nx">target</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">table</span><span class="p">.</span><span class="nx">at</span><span class="p">(</span><span class="nx">columnIndex</span><span class="p">,</span> <span class="nx">rowIndex</span><span class="p">,</span> <span class="nx">groupIndex</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="p">(</span><span class="nx">target</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">table</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">setProperty</span><span class="p">(</span><span class="dl">'</span><span class="s1">scroll-snap-type</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">unset</span><span class="dl">'</span><span class="p">)</span>
+            <span class="kd">const</span> <span class="nx">bb</span> <span class="o">=</span> <span class="nx">target</span><span class="p">.</span><span class="nx">getBoundingClientRect</span><span class="p">()</span>
+            <span class="kd">const</span> <span class="nx">tableBB</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">table</span><span class="p">.</span><span class="nx">getBoundingClientRect</span><span class="p">()</span>
+            <span class="kd">const</span> <span class="nx">point</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">left</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">up</span><span class="dl">'</span><span class="p">].</span><span class="nx">includes</span><span class="p">(</span><span class="nx">direction</span><span class="p">)</span> <span class="p">?</span> <span class="p">[</span><span class="nx">bb</span><span class="p">.</span><span class="nx">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">bb</span><span class="p">.</span><span class="nx">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="p">:</span> <span class="p">[</span><span class="nx">bb</span><span class="p">.</span><span class="nx">x</span> <span class="o">+</span> <span class="nx">bb</span><span class="p">.</span><span class="nx">width</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">bb</span><span class="p">.</span><span class="nx">y</span> <span class="o">+</span> <span class="nx">bb</span><span class="p">.</span><span class="nx">height</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="kd">const</span> <span class="nx">topEl</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">elementFromPoint</span><span class="p">(...</span><span class="nx">point</span><span class="p">)</span>
+            <span class="nx">target</span><span class="p">.</span><span class="nx">focus</span><span class="p">({</span><span class="na">preventScroll</span><span class="p">:</span> <span class="kc">true</span><span class="p">})</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">table</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">removeProperty</span><span class="p">(</span><span class="dl">'</span><span class="s1">scroll-snap-type</span><span class="dl">'</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nx">target</span>
+    <span class="p">}</span>
+    
+    <span class="k">async</span> <span class="nx">activate</span> <span class="p">(</span><span class="nx">options</span><span class="o">=</span><span class="p">{})</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">readonly</span><span class="p">)</span> <span class="k">return</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">spawnInput</span> <span class="o">===</span> <span class="kc">undefined</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">spawnInput</span> <span class="o">===</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+        <span class="kd">const</span> <span class="nx">inputCell</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">spawnInput</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">table</span><span class="p">.</span><span class="nx">inputCell</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">table</span><span class="p">.</span><span class="nx">inputCell</span><span class="p">.</span><span class="nx">beforeRemove</span><span class="p">()</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">table</span><span class="p">.</span><span class="nx">inputCell</span><span class="p">.</span><span class="nx">remove</span><span class="p">()</span>
+            <span class="k">delete</span> <span class="k">this</span><span class="p">.</span><span class="nx">table</span><span class="p">.</span><span class="nx">inputCell</span>
+        <span class="p">}</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">table</span><span class="p">.</span><span class="nx">inputCell</span> <span class="o">=</span> <span class="nx">inputCell</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">inputCell</span> <span class="o">===</span> <span class="kc">undefined</span> <span class="o">||</span> <span class="nx">inputCell</span> <span class="o">===</span> <span class="kc">null</span> <span class="o">||</span> <span class="nx">inputCell</span> <span class="o">===</span> <span class="kc">false</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+        <span class="nx">inputCell</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">setProperty</span><span class="p">(</span><span class="dl">'</span><span class="s1">--remaining-width</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">table</span><span class="p">.</span><span class="nx">offsetWidth</span> <span class="o">-</span> <span class="k">this</span><span class="p">.</span><span class="nx">offsetLeft</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">px</span><span class="dl">"</span><span class="p">)</span>
+        <span class="nx">inputCell</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">setProperty</span><span class="p">(</span><span class="dl">'</span><span class="s1">--remaining-height</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">table</span><span class="p">.</span><span class="nx">offsetHeight</span> <span class="o">-</span> <span class="k">this</span><span class="p">.</span><span class="nx">offsetTop</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">px</span><span class="dl">"</span><span class="p">)</span>
+        <span class="nx">insertAfter</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">inputCell</span><span class="p">)</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">tabIndex</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="nx">inputCell</span><span class="p">.</span><span class="nx">beforeRemove</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">tabIndex</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">render</span><span class="p">()</span>
+        <span class="p">}</span>
+        
+        <span class="kd">let</span> <span class="nx">focusTarget</span> <span class="o">=</span> <span class="nx">inputCell</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">[autofocus]</span><span class="dl">'</span><span class="p">);</span>
+        <span class="nx">focusTarget</span> <span class="o">=</span> <span class="nx">focusTarget</span> <span class="o">||</span> <span class="nx">inputCell</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">input, textarea, select, [contenteditable]</span><span class="dl">'</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">focusTarget</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kd">const</span> <span class="nx">setFocus</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="nx">focusTarget</span><span class="p">.</span><span class="nx">focus</span><span class="p">()</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">focusTarget</span><span class="p">.</span><span class="nx">showPicker</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">focusTarget</span><span class="p">.</span><span class="nx">showPicker</span><span class="p">()</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        
+            <span class="k">if</span> <span class="p">(</span><span class="nx">focusTarget</span><span class="p">.</span><span class="nx">_loading</span> <span class="o">&amp;&amp;</span> <span class="nx">focusTarget</span><span class="p">.</span><span class="nx">_loading</span> <span class="k">instanceof</span> <span class="nb">Promise</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">focusTarget</span><span class="p">.</span><span class="nx">_loading</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">setFocus</span><span class="p">)</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nx">setFocus</span><span class="p">()</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        
+        <span class="nx">inputCell</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">keyup</span><span class="dl">'</span><span class="p">,</span> <span class="nx">e</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">key</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">Escape</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">inputCell</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">'</span><span class="s1">preventChange</span><span class="dl">'</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">focus</span><span class="p">()</span>
+                <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">()</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">table</span><span class="p">.</span><span class="nx">_enterDown</span> <span class="o">&amp;&amp;</span> <span class="nx">e</span><span class="p">.</span><span class="nx">key</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">Enter</span><span class="dl">"</span> <span class="o">&amp;&amp;</span> <span class="p">[</span><span class="nx">e</span><span class="p">.</span><span class="nx">metaKey</span><span class="p">,</span><span class="nx">e</span><span class="p">.</span><span class="nx">ctrlKey</span><span class="p">,</span><span class="nx">e</span><span class="p">.</span><span class="nx">altKey</span><span class="p">,</span><span class="nx">e</span><span class="p">.</span><span class="nx">shiftKey</span><span class="p">].</span><span class="nx">every</span><span class="p">(</span><span class="nx">x</span> <span class="o">=&gt;</span> <span class="nx">x</span> <span class="o">==</span> <span class="kc">false</span><span class="p">))</span> <span class="p">{</span>
+                <span class="kd">const</span> <span class="nx">newCell</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">focusAdjacentCell</span><span class="p">(</span><span class="dl">'</span><span class="s1">down</span><span class="dl">'</span><span class="p">)</span>
+                <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">newCell</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">this</span><span class="p">.</span><span class="nx">focus</span><span class="p">()</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">})</span>
+        <span class="nx">inputCell</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">mousedown</span><span class="dl">'</span><span class="p">,</span> <span class="nx">e</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">inputCell</span><span class="p">.</span><span class="nx">contains</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">))</span> <span class="p">{</span>
+                <span class="nx">inputCell</span><span class="p">.</span><span class="nx">clickedInside</span> <span class="o">=</span> <span class="kc">true</span>
+                <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">mouseup</span><span class="dl">'</span><span class="p">,</span> <span class="nx">e</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                    <span class="k">delete</span> <span class="nx">inputCell</span><span class="p">.</span><span class="nx">clickedInside</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">inputCell</span><span class="p">.</span><span class="nx">contains</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">))</span> <span class="p">{</span>
+                        <span class="k">this</span><span class="p">.</span><span class="nx">focus</span><span class="p">()</span>
+                    <span class="p">}</span>
+                <span class="p">},</span> <span class="p">{</span><span class="na">once</span><span class="p">:</span> <span class="kc">true</span><span class="p">})</span>
+            <span class="p">}</span>
+        <span class="p">})</span>
+        <span class="nx">inputCell</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">focusout</span><span class="dl">'</span><span class="p">,</span> <span class="nx">e</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">inputCell</span><span class="p">.</span><span class="nx">contains</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">relatedTarget</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">inputCell</span><span class="p">.</span><span class="nx">clickedInside</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">inputCell</span><span class="p">.</span><span class="nx">beforeRemove</span><span class="p">()</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">inputCell</span><span class="p">.</span><span class="nx">checkValidity</span> <span class="o">===</span> <span class="kc">undefined</span> <span class="o">||</span> <span class="nx">inputCell</span><span class="p">.</span><span class="nx">checkValidity</span><span class="p">())</span> <span class="p">{</span>
+                    <span class="nx">inputCell</span><span class="p">.</span><span class="nx">remove</span><span class="p">()</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">})</span>
+        <span class="k">return</span> <span class="nx">inputCell</span>
+    <span class="p">}</span>
+    
+    <span class="nx">createInput</span> <span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">column</span><span class="p">.</span><span class="nx">input</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">record</span><span class="p">,</span> <span class="k">this</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="k">async</span> <span class="nx">spawnInput</span> <span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">inputContent</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">createInput</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">inputContent</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">createElement</span><span class="p">(</span><span class="s2">`komp-spreadsheet-input`</span><span class="p">,</span> <span class="p">{</span>
+                <span class="na">class</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">column</span><span class="p">.</span><span class="nx">frozen</span> <span class="p">?</span> <span class="dl">"</span><span class="s2">frozen</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">""</span><span class="p">,</span>
+                <span class="na">style</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="dl">'</span><span class="s1">grid-column</span><span class="dl">'</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">cellIndex</span><span class="p">,</span>
+                    <span class="dl">'</span><span class="s1">grid-row</span><span class="dl">'</span><span class="p">:</span> <span class="nx">css</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="dl">'</span><span class="s1">grid-row</span><span class="dl">'</span><span class="p">)</span>
+                <span class="p">},</span>
+                <span class="na">content</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="na">tag</span><span class="p">:</span> <span class="dl">'</span><span class="s1">label</span><span class="dl">'</span><span class="p">,</span>
+                    <span class="na">content</span><span class="p">:</span> <span class="nx">inputContent</span><span class="p">,</span>
+                    <span class="na">class</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">column</span><span class="p">.</span><span class="kd">class</span><span class="p">,</span>
+                    <span class="na">style</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="dl">'</span><span class="s1">--padding</span><span class="dl">'</span><span class="p">:</span> <span class="nx">css</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="dl">'</span><span class="s1">padding</span><span class="dl">'</span><span class="p">)</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">})</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">inputContent</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="nx">canCopy</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="o">!!</span><span class="k">this</span><span class="p">.</span><span class="nx">column</span><span class="p">.</span><span class="nx">copy</span>
+    <span class="p">}</span>
+    <span class="nx">copy</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">column</span><span class="p">.</span><span class="nx">copy</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="nx">canPaste</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="o">!!</span><span class="k">this</span><span class="p">.</span><span class="nx">column</span><span class="p">.</span><span class="nx">paste</span>
+    <span class="p">}</span>
+    <span class="nx">paste</span> <span class="p">(</span><span class="nx">v</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">column</span><span class="p">.</span><span class="nx">paste</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="nx">clear</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">column</span><span class="p">.</span><span class="nx">clear</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">render</span><span class="p">()</span>
+    <span class="p">}</span>
+    
+    <span class="nx">contextMenu</span> <span class="p">(</span><span class="nx">menu</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">column</span><span class="p">?.</span><span class="nx">contextMenu</span><span class="p">(</span><span class="nx">menu</span><span class="p">,</span> <span class="k">this</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">column</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">customElements</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="nx">SpreadsheetCell</span><span class="p">.</span><span class="nx">tagName</span><span class="p">,</span> <span class="nx">SpreadsheetCell</span><span class="p">);</span></code></pre></div>
+        </div>
+    </div>
+</div>
+    </div>
+    <div class="pad text-right md:text-lg flex justify-content-end divide-h align-center border-gray-30">
+        <div class="pad-h">
+            &copy; 2025
+            <a href="https://github.com/bemky/" class="reset">Ben Ehmke</a>
+        </div>
+        <a href="https://github.com/bemky/komps" class="reset pad-h inline-flex align-center gap-1/2x">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                Komps on GitHub
+        </a>
+    </div>
+</body>
+</html>

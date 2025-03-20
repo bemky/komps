@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
+    <!-- Use the title from a page's frontmatter if it has one -->
+    <title>Komps</title>
+    <link href="/assets/site-22cf15a669101651d19ad04c4fce6e6d1fe3ae366248e3c72997637d43d5cfd5.css" rel="stylesheet" />
+    <script src="/assets/site-8417798930e951f009030d84a30fccc9f16cf9a64c8e7f66099d5c12d192a044.js"></script>
+</head>
+<body class="bg-purple-10 min-height-100-vh bg-graph">
+    <div class="flex pad-2x width-100-vw overflow-hidden">
+    <div class="spreadsheet-container width-full"></div>
+</div>
+<script type="application/json" src="/texas-rangers-roster.json" id="texas-rangers-roster"></script>
+<script>
+    Spreadsheet.include(window.plugins.collapsible)
+    document.addEventListener('DOMContentLoaded', () => {
+        fetch("/texas-rangers-roster.json").then(response => {
+            response.json().then(data => {
+                document.querySelector('.spreadsheet-container').append(new Spreadsheet({
+                    class: 'height-full width-full',
+                    data: data,
+                    collapseTo: '100px',
+                    columns: [{
+                            attribute: 'Name',
+                            resize: false,
+                            reorder: false,
+                            frozen: true
+                        }, {
+                            attribute: 'TEAM',
+                            frozen: true
+                        }, {
+                            attribute: 'Team MVP',
+                            type: 'radio',
+                            frozen: true
+                        }, {
+                            attribute: 'CAPTAIN',
+                            type: 'checkbox'
+                        }, {
+                            header: "Bat Weight",
+                            attribute: "weight",
+                            splitInto: "bats"
+                        }, {
+                            header: "Bat Type",
+                            attribute: "type",
+                            splitInto: "bats"
+                        }, {
+                            attribute: 'POS',
+                            type: 'select',
+                            options: [
+                                'C', '1B', '2B', '3B', 'SS', 'LF', 'RF', 'CF', 'P',
+                            ]
+                        }, {
+                            header: "Glove BRAND",
+                            attribute: "brand",
+                            splitInto: "gloves"
+                        }, {
+                            header: "Glove POS",
+                            attribute: "position",
+                            splitInto: "gloves"
+                        }, {
+                            attribute: "BIO",
+                            width: "350px"
+                        }, {
+                            attribute: "CAREER",
+                            width: "350px"
+                        }
+                    ]
+                }))
+            })
+        })
+        
+    });
+</script>
+
+
+</body>
+</html>

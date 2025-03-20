@@ -1,0 +1,557 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
+    <!-- Use the title from a page's frontmatter if it has one -->
+    <title>Komps</title>
+    <link href="/assets/site-22cf15a669101651d19ad04c4fce6e6d1fe3ae366248e3c72997637d43d5cfd5.css" rel="stylesheet" />
+    <script src="/assets/site-8417798930e951f009030d84a30fccc9f16cf9a64c8e7f66099d5c12d192a044.js"></script>
+</head>
+<body>
+    <div class="side-nav">
+        <div class="pad-2x text-center">
+            <a href="/" class="reset">
+                <img class="width-3/4 height-auto inline-block" src="/assets/logo-7b1623d8d9db3b0d0d79dd30b2a5c2a0f0be2b945944f75d18e3be1e67177443.svg" />
+            </a>
+        </div>
+        <div class="uniformNav -vertical -gray flex-fill -active-green">
+    <a href="/" class="">
+        Usage
+    </a>
+    <a href="/element" class="">
+        Base Element
+    </a>
+    <div class="height-0 width-full">
+        <div class="border-green-80 border-opacity-30 border-bottom border-1px width-full"></div>
+    </div>
+        <a href="/auto-grid" class="">
+            AutoGrid
+        </a>
+        <a href="/content-area" class="">
+            ContentArea
+        </a>
+        <a href="/dropdown" class="">
+            Dropdown
+        </a>
+        <a href="/dropzone" class="">
+            Dropzone
+        </a>
+        <a href="/floater" class="">
+            Floater
+        </a>
+        <a href="/input" class="">
+            Input
+        </a>
+        <a href="/modal" class="">
+            Modal
+        </a>
+        <a href="/notification-center" class="">
+            NotificationCenter
+        </a>
+        <a href="/spreadsheet" class="">
+            Spreadsheet
+        </a>
+        <a href="/table" class="active">
+            Table
+        </a>
+            <div class="uniformNav -vertical pad-left-2x text-sm">
+                    <a href="/table/cell" class="">
+                        Cell
+                    </a>
+                    <a href="/table/column" class="">
+                        Column
+                    </a>
+                    <a href="/table/group" class="">
+                        Group
+                    </a>
+                    <a href="/table/plugins/collapsible" class="">
+                        Collapsible
+                    </a>
+                    <a href="/table/plugins/reorderable" class="">
+                        Reorderable
+                    </a>
+                    <a href="/table/plugins/resizable" class="active">
+                        Resizable
+                    </a>
+            </div>
+        <a href="/tooltip" class="">
+            Tooltip
+        </a>
+</div>
+    </div>
+    <div class="hide sm:show sticky top-0 bg-white">
+        <div class="mobile-nav flex flex-col align-center">
+            <div class="uniformNav -vertical -gray flex-fill -active-green">
+    <a href="/" class="">
+        Usage
+    </a>
+    <a href="/element" class="">
+        Base Element
+    </a>
+    <div class="height-0 width-full">
+        <div class="border-green-80 border-opacity-30 border-bottom border-1px width-full"></div>
+    </div>
+        <a href="/auto-grid" class="">
+            AutoGrid
+        </a>
+        <a href="/content-area" class="">
+            ContentArea
+        </a>
+        <a href="/dropdown" class="">
+            Dropdown
+        </a>
+        <a href="/dropzone" class="">
+            Dropzone
+        </a>
+        <a href="/floater" class="">
+            Floater
+        </a>
+        <a href="/input" class="">
+            Input
+        </a>
+        <a href="/modal" class="">
+            Modal
+        </a>
+        <a href="/notification-center" class="">
+            NotificationCenter
+        </a>
+        <a href="/spreadsheet" class="">
+            Spreadsheet
+        </a>
+        <a href="/table" class="active">
+            Table
+        </a>
+            <div class="uniformNav -vertical pad-left-2x text-sm">
+                    <a href="/table/cell" class="">
+                        Cell
+                    </a>
+                    <a href="/table/column" class="">
+                        Column
+                    </a>
+                    <a href="/table/group" class="">
+                        Group
+                    </a>
+                    <a href="/table/plugins/collapsible" class="">
+                        Collapsible
+                    </a>
+                    <a href="/table/plugins/reorderable" class="">
+                        Reorderable
+                    </a>
+                    <a href="/table/plugins/resizable" class="active">
+                        Resizable
+                    </a>
+            </div>
+        <a href="/tooltip" class="">
+            Tooltip
+        </a>
+</div>
+        </div>
+        <div class="flex align-stretch relative z-3">
+            <button type="button" class="reset width-50-px flex justify-content-center align-center" onClick="document.body.classList.toggle('active-mobile-nav')">
+                <img class="active:hide" src="/assets/menu-1412be30d711c8336d0757e5557b785242945a44db28cde24ba2b6f2afe30de4.svg" />
+                <img class="hide active:show" src="/assets/x-947e98617952bbdb89b1b18633e1a4f7ded1e3faa29fbd20cdd08ab0dc196dce.svg" />
+            </button>
+            <a href="/" class="reset flex-none pad-v-2x">
+                <img width="200" src="/assets/logo-7b1623d8d9db3b0d0d79dd30b2a5c2a0f0be2b945944f75d18e3be1e67177443.svg" />
+            </a>
+        </div>
+    </div>
+    <div class="main-content overflow-hidden">
+        <div class="section space-v-3x">
+    
+    <div class="">
+        <h1 class="text-2x">
+            Table::Plugins::Resizable
+        </h1>
+    
+        <div class="text-light text-xl">
+            <p>A plugin to make <a href="/table">Table's</a> columns and rows resizable</p>
+
+        </div>
+    </div>
+    
+    <div class="">
+        <h2>Example</h2>
+        <script>
+            function resizeIframe(obj) {
+                obj.style.minHeight = obj.contentWindow.document.documentElement.scrollHeight + 'px';
+            }
+        </script>
+        <iframe class="overflow-hidden rounded-lg" width="100%" height="10px" src="/table/plugins/resizable/example/index.html" frameborder="0" scrolling="no" onload="setTimeout(function () {resizeIframe(this)}.bind(this), 50)"></iframe>
+    </div>
+    
+    <div class="">
+        <h2>Syntax</h2>
+        <div class="highlight"><pre class=" javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">resizable</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">komps/plugins</span><span class="dl">'</span>
+<span class="nx">Table</span><span class="p">.</span><span class="nx">include</span><span class="p">(</span><span class="nx">resizable</span><span class="p">)</span>
+<span class="k">new</span> <span class="nx">Table</span><span class="p">({</span>
+    <span class="na">resize</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">columns</span><span class="dl">'</span><span class="p">],</span>
+    <span class="na">data</span><span class="p">:</span> <span class="p">[...],</span>
+    <span class="na">columns</span><span class="p">:</span> <span class="p">[...]</span>
+<span class="p">})</span>
+</code></pre></div>
+
+    </div>
+    
+        <div class="">
+            <h2>Options</h2>
+                
+                <div class="overflow-auto">
+                    <table class="uniformTable border-gray-20 overflow-auto max-width-full">
+                        <tr>
+                            <th></th>
+                                <th>types</th>
+                                <th>description</th>
+                                <th>default</th>
+                        </tr>
+                            <tr>
+                                <td>
+                                    <code>resize</code>
+                                </td>
+                                    <td>
+                                            Boolean, String
+                                    </td>
+                                    <td>
+                                            <p>Enable ability to resize rows and columns. Pass &quot;rows&quot; or &quot;columns&quot; to reorder just one axis.</p>
+
+                                    </td>
+                                    <td>
+                                            true
+                                    </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <code>resizeMin</code>
+                                </td>
+                                    <td>
+                                            Number
+                                    </td>
+                                    <td>
+                                            <p>minimum number of pixels for a column</p>
+
+                                    </td>
+                                    <td>
+                                            5
+                                    </td>
+                            </tr>
+                    </table>
+                </div>
+        </div>
+        <div class="">
+            <h2>Events</h2>
+                
+                <div class="overflow-auto">
+                    <table class="uniformTable border-gray-20 overflow-auto max-width-full">
+                        <tr>
+                            <th></th>
+                                <th>description</th>
+                                <th>arguments</th>
+                        </tr>
+                            <tr>
+                                <td>
+                                    <code>ColumnResize</code>
+                                </td>
+                                    <td>
+                                            <p>After a resize finishes</p>
+
+                                    </td>
+                                    <td>
+                                            changes:Array
+                                    </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <code>RowResize</code>
+                                </td>
+                                    <td>
+                                            <p>After a resize finishes</p>
+
+                                    </td>
+                                    <td>
+                                            changes:Array
+                                    </td>
+                            </tr>
+                    </table>
+                </div>
+        </div>
+    
+    <button class="js-toggle-source reset text-sm text-bold text-gray-30 hover:text-blue" rel="#source-for-table/plugins/resizable">
+        SHOW SOURCE
+    </button>
+    <div class="source hide" id="source-for-table/plugins/resizable">
+        <div class="border border-blue bg-blue rounded-xl overflow-hidden">
+            <div class="text-white text-sm text-bold pad-h pad-v-1/4x">
+                SOURCE CODE
+            </div>
+            <div class="highlight"><pre class=" javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">createElement</span><span class="p">,</span> <span class="nx">listenerElement</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">dolla</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">uniq</span><span class="p">,</span> <span class="nx">isFunction</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../../../support.js</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">cellsDimensions</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./cellsDimensions.js</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="p">(</span><span class="nx">proto</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">include</span><span class="p">(</span><span class="nx">cellsDimensions</span><span class="p">)</span>
+    
+    <span class="k">this</span><span class="p">.</span><span class="nx">events</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="dl">'</span><span class="s1">columnResize</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">rowResize</span><span class="dl">'</span><span class="p">)</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">assignableAttributes</span><span class="p">.</span><span class="nx">resize</span> <span class="o">=</span> <span class="kc">true</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">assignableAttributes</span><span class="p">.</span><span class="nx">resizeMin</span> <span class="o">=</span> <span class="mi">5</span>
+    
+    
+    <span class="kd">const</span> <span class="nx">initializeWas</span> <span class="o">=</span> <span class="nx">proto</span><span class="p">.</span><span class="nx">initialize</span>
+    <span class="nx">proto</span><span class="p">.</span><span class="nx">initialize</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(...</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">resize</span> <span class="o">===</span> <span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">resize</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">columns</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">rows</span><span class="dl">'</span><span class="p">]</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">resize</span> <span class="o">===</span> <span class="kc">false</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">resize</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="k">this</span><span class="p">.</span><span class="nx">resize</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">resize</span> <span class="o">=</span> <span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">resize</span><span class="p">]</span>
+        <span class="p">}</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">addEventListenerFor</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">cellSelector</span><span class="p">,</span> <span class="dl">'</span><span class="s1">mouseover</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">clearResizeHandles</span><span class="p">()</span>
+        <span class="p">})</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">mouseleave</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">clearResizeHandles</span><span class="p">()</span>
+        <span class="p">})</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">addEventListenerFor</span><span class="p">(</span><span class="dl">'</span><span class="s1">.resizable</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">mouseover</span><span class="dl">'</span><span class="p">,</span> <span class="nx">e</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">showResizeHandleFor</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">delegateTarget</span><span class="p">)</span>
+        <span class="p">});</span>
+        <span class="k">return</span> <span class="nx">initializeWas</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="p">...</span><span class="nx">args</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="k">this</span><span class="p">.</span><span class="nx">columnTypeRegistry</span><span class="p">.</span><span class="k">default</span><span class="p">.</span><span class="nx">assignableAttributes</span><span class="p">.</span><span class="nx">resize</span> <span class="o">=</span> <span class="kc">true</span>
+    
+    <span class="kd">const</span> <span class="nx">renderColumnHeaderWas</span> <span class="o">=</span> <span class="nx">proto</span><span class="p">.</span><span class="nx">renderColumnHeader</span>
+    <span class="nx">proto</span><span class="p">.</span><span class="nx">renderColumnHeader</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">column</span><span class="p">,</span> <span class="p">...</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">cell</span> <span class="o">=</span> <span class="nx">renderColumnHeaderWas</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">column</span><span class="p">,</span> <span class="p">...</span><span class="nx">args</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">resize</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="dl">'</span><span class="s1">columns</span><span class="dl">'</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nx">column</span><span class="p">.</span><span class="nx">resize</span> <span class="o">!=</span> <span class="kc">false</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">cell</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">resizable</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">resizable-column</span><span class="dl">'</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nx">cell</span>
+    <span class="p">}</span>
+    
+    <span class="nx">proto</span><span class="p">.</span><span class="nx">clearResizeHandles</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">resizing</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">-resize-handle`</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">x</span> <span class="o">=&gt;</span> <span class="nx">x</span><span class="p">.</span><span class="nx">remove</span><span class="p">())</span>
+    <span class="p">}</span>
+    
+    <span class="nx">proto</span><span class="p">.</span><span class="nx">showResizeHandleFor</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">cell</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">resizing</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">clearResizeHandles</span><span class="p">()</span>
+
+        <span class="kd">const</span> <span class="nx">axises</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">column</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">row</span><span class="dl">'</span><span class="p">]</span>
+        <span class="nx">axises</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">axis</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">cell</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">contains</span><span class="p">(</span><span class="s2">`resizable-</span><span class="p">${</span><span class="nx">axis</span><span class="p">}</span><span class="s2">`</span><span class="p">))</span> <span class="p">{</span>
+                <span class="kd">const</span> <span class="nx">handle</span> <span class="o">=</span> <span class="nx">listenerElement</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">-resize-handle`</span><span class="p">,</span> <span class="p">{</span>
+                    <span class="na">class</span><span class="p">:</span> <span class="s2">`resizable-</span><span class="p">${</span><span class="nx">axis</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span>
+                    <span class="na">content</span><span class="p">:</span> <span class="p">[{</span> <span class="na">tag</span><span class="p">:</span> <span class="dl">'</span><span class="s1">handle-start</span><span class="dl">'</span> <span class="p">},</span> <span class="p">{</span> <span class="na">tag</span><span class="p">:</span> <span class="dl">'</span><span class="s1">handle-end</span><span class="dl">'</span> <span class="p">}],</span>
+                    <span class="na">style</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="dl">'</span><span class="s1">grid-column</span><span class="dl">'</span><span class="p">:</span> <span class="nx">cell</span><span class="p">.</span><span class="nx">cellIndex</span><span class="p">,</span>
+                        <span class="dl">'</span><span class="s1">grid-row</span><span class="dl">'</span><span class="p">:</span> <span class="nx">cell</span><span class="p">.</span><span class="nx">rowIndex</span>
+                    <span class="p">}</span>
+                <span class="p">},</span> <span class="dl">'</span><span class="s1">pointerdown</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">activateAxisResize</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">))</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">cell</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">contains</span><span class="p">(</span><span class="dl">'</span><span class="s1">frozen</span><span class="dl">'</span><span class="p">))</span> <span class="p">{</span>
+                    <span class="nx">handle</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s2">`frozen`</span><span class="p">,</span> <span class="s2">`frozen-</span><span class="p">${</span><span class="nx">cell</span><span class="p">.</span><span class="nx">cellIndex</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+                <span class="p">}</span>
+                <span class="kd">const</span> <span class="nx">axisTarget</span> <span class="o">=</span> <span class="nx">axis</span> <span class="o">==</span> <span class="dl">'</span><span class="s1">column</span><span class="dl">'</span> <span class="p">?</span> <span class="nx">cell</span> <span class="p">:</span> <span class="nx">cell</span><span class="p">.</span><span class="nx">row</span><span class="p">;</span>
+                <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">axisTarget</span><span class="p">.</span><span class="nx">previousElementSibling</span> <span class="o">||</span> <span class="o">!</span><span class="nx">axisTarget</span><span class="p">.</span><span class="nx">previousElementSibling</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">contains</span><span class="p">(</span><span class="s2">`resizable-</span><span class="p">${</span><span class="nx">axis</span><span class="p">}</span><span class="s2">`</span><span class="p">))</span> <span class="p">{</span>
+                    <span class="nx">handle</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">handle-start</span><span class="dl">'</span><span class="p">).</span><span class="nx">remove</span><span class="p">()</span>
+                <span class="p">}</span>
+                <span class="nx">handle</span><span class="p">.</span><span class="nx">cell</span> <span class="o">=</span> <span class="nx">cell</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">handle</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">})</span>
+    <span class="p">}</span>
+    
+    <span class="nx">proto</span><span class="p">.</span><span class="nx">activateAxisResize</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">setPointerCapture</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">pointerId</span><span class="p">)</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">resizing</span> <span class="o">=</span> <span class="kc">true</span>
+        <span class="kd">const</span> <span class="nx">handle</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">parentElement</span>
+        <span class="kd">const</span> <span class="nx">bb</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getBoundingClientRect</span><span class="p">()</span>
+        
+        <span class="kd">let</span> <span class="nx">target</span> <span class="o">=</span> <span class="nx">handle</span><span class="p">.</span><span class="nx">cell</span>
+        
+        <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">localName</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">handle-start</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">handle</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">contains</span><span class="p">(</span><span class="dl">'</span><span class="s1">resizable-row</span><span class="dl">'</span><span class="p">))</span> <span class="p">{</span>
+                <span class="nx">target</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">at</span><span class="p">(</span><span class="nx">target</span><span class="p">.</span><span class="nx">cellIndex</span><span class="p">,</span> <span class="nx">target</span><span class="p">.</span><span class="nx">rowIndex</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nx">target</span> <span class="o">=</span> <span class="nx">target</span><span class="p">.</span><span class="nx">previousElementSibling</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="kd">let</span> <span class="p">{</span> <span class="nx">direction</span><span class="p">,</span> <span class="nx">axis</span><span class="p">,</span> <span class="nx">axisMin</span><span class="p">,</span> <span class="nx">axisMax</span><span class="p">,</span> <span class="nx">offset</span><span class="p">,</span> <span class="nx">slice</span><span class="p">,</span> <span class="nx">start</span><span class="p">,</span> <span class="nx">blockDimension</span><span class="p">,</span> <span class="nx">inlineDimension</span><span class="p">,</span> <span class="nx">inlinePosition</span><span class="p">,</span> <span class="nx">index</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">handle</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">contains</span><span class="p">(</span><span class="dl">'</span><span class="s1">resizable-row</span><span class="dl">'</span><span class="p">)</span> <span class="p">?</span> <span class="p">{</span>
+            <span class="na">direction</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Row</span><span class="dl">'</span><span class="p">,</span>
+            <span class="na">axis</span><span class="p">:</span> <span class="dl">'</span><span class="s1">y</span><span class="dl">'</span><span class="p">,</span>
+            <span class="na">axisMin</span><span class="p">:</span> <span class="nx">target</span><span class="p">.</span><span class="nx">offsetTop</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">resizeMin</span><span class="p">,</span>
+            <span class="na">axisMax</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">scrollHeight</span><span class="p">,</span>
+            <span class="na">offset</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">scrollTop</span> <span class="o">-</span> <span class="nx">bb</span><span class="p">.</span><span class="nx">top</span><span class="p">,</span>
+            <span class="na">slice</span><span class="p">:</span> <span class="nx">target</span><span class="p">.</span><span class="nx">row</span><span class="p">,</span>
+            <span class="na">start</span><span class="p">:</span> <span class="nx">e</span><span class="p">.</span><span class="nx">y</span> <span class="o">-</span> <span class="nx">target</span><span class="p">.</span><span class="nx">offsetHeight</span><span class="p">,</span>
+            <span class="na">blockDimension</span><span class="p">:</span> <span class="dl">'</span><span class="s1">width</span><span class="dl">'</span><span class="p">,</span>
+            <span class="na">inlineDimension</span><span class="p">:</span> <span class="dl">'</span><span class="s1">height</span><span class="dl">'</span><span class="p">,</span>
+            <span class="na">inlinePosition</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Top</span><span class="dl">'</span><span class="p">,</span>
+            <span class="na">index</span><span class="p">:</span> <span class="dl">'</span><span class="s1">rowIndex</span><span class="dl">'</span>
+        <span class="p">}</span> <span class="p">:</span> <span class="p">{</span>
+            <span class="na">direction</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Column</span><span class="dl">'</span><span class="p">,</span>
+            <span class="na">axis</span><span class="p">:</span> <span class="dl">'</span><span class="s1">x</span><span class="dl">'</span><span class="p">,</span>
+            <span class="na">axisMin</span><span class="p">:</span> <span class="nx">target</span><span class="p">.</span><span class="nx">offsetLeft</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">resizeMin</span><span class="p">,</span>
+            <span class="na">axisMax</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">scrollWidth</span><span class="p">,</span>
+            <span class="na">offset</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">scrollLeft</span> <span class="o">-</span> <span class="nx">bb</span><span class="p">.</span><span class="nx">left</span><span class="p">,</span>
+            <span class="na">slice</span><span class="p">:</span> <span class="nx">target</span><span class="p">.</span><span class="nx">column</span><span class="p">,</span>
+            <span class="na">start</span><span class="p">:</span> <span class="nx">e</span><span class="p">.</span><span class="nx">x</span> <span class="o">-</span> <span class="nx">target</span><span class="p">.</span><span class="nx">offsetWidth</span><span class="p">,</span>
+            <span class="na">blockDimension</span><span class="p">:</span> <span class="dl">'</span><span class="s1">height</span><span class="dl">'</span><span class="p">,</span>
+            <span class="na">inlineDimension</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Width</span><span class="dl">'</span><span class="p">,</span>
+            <span class="na">inlinePosition</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Left</span><span class="dl">'</span><span class="p">,</span>
+            <span class="na">index</span><span class="p">:</span> <span class="dl">'</span><span class="s1">cellIndex</span><span class="dl">'</span>
+        <span class="p">}</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">resizing-</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">direction</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">())</span>
+        
+        
+        <span class="kd">const</span> <span class="nx">selectedCells</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="kd">constructor</span><span class="p">.</span><span class="nx">Header</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2"> &gt; .selected`</span><span class="p">))</span>
+        <span class="kd">let</span> <span class="nx">slices</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">selectedCells</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="nx">target</span><span class="p">))</span> <span class="p">{</span>
+            <span class="nx">slices</span> <span class="o">=</span> <span class="nx">uniq</span><span class="p">(</span><span class="nx">selectedCells</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">cell</span> <span class="o">=&gt;</span> <span class="nx">direction</span> <span class="o">==</span> <span class="dl">'</span><span class="s1">Column</span><span class="dl">'</span> <span class="p">?</span> <span class="nx">cell</span><span class="p">.</span><span class="nx">column</span> <span class="p">:</span> <span class="nx">cell</span><span class="p">.</span><span class="nx">row</span><span class="p">))</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">clearSelectedCells</span><span class="p">)</span> <span class="k">this</span><span class="p">.</span><span class="nx">clearSelectedCells</span><span class="p">()</span>
+            <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">selectCells</span><span class="p">)</span> <span class="k">this</span><span class="p">.</span><span class="nx">selectCells</span><span class="p">(</span><span class="nx">target</span><span class="p">)</span>
+            <span class="nx">slices</span> <span class="o">=</span> <span class="p">[</span><span class="nx">slice</span><span class="p">]</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">clearOutlines</span><span class="p">)</span> <span class="k">this</span><span class="p">.</span><span class="nx">clearOutlines</span><span class="p">()</span>
+        
+        <span class="kd">const</span> <span class="nx">dragIndicator</span> <span class="o">=</span> <span class="nx">createElement</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="kd">constructor</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">-drag-indicator`</span><span class="p">,</span> <span class="p">{</span>
+            <span class="na">class</span><span class="p">:</span> <span class="nx">direction</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">(),</span>
+            <span class="na">style</span><span class="p">:</span> <span class="p">{</span>
+                <span class="dl">'</span><span class="s1">inset-inline-start</span><span class="dl">'</span><span class="p">:</span> <span class="nx">e</span><span class="p">[</span><span class="nx">axis</span><span class="p">]</span> <span class="o">+</span> <span class="nx">offset</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">px</span><span class="dl">"</span><span class="p">,</span>
+                <span class="dl">'</span><span class="s1">block-size</span><span class="dl">'</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">cellsDimensions</span><span class="p">(</span><span class="nx">blockDimension</span><span class="p">)</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">px</span><span class="dl">"</span>
+            <span class="p">}</span>
+        <span class="p">})</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">dragIndicator</span><span class="p">)</span>
+        
+        <span class="kd">function</span> <span class="nx">mouseMove</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kd">let</span> <span class="nx">target</span> <span class="o">=</span> <span class="nx">e</span><span class="p">[</span><span class="nx">axis</span><span class="p">]</span> <span class="o">+</span> <span class="nx">offset</span>
+            <span class="nx">target</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">axisMin</span><span class="p">)</span>
+            <span class="nx">target</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">min</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">axisMax</span><span class="p">)</span>
+            <span class="nx">dragIndicator</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">insetInlineStart</span> <span class="o">=</span> <span class="nx">target</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">px</span><span class="dl">"</span>
+        <span class="p">}</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">pointermove</span><span class="dl">'</span><span class="p">,</span> <span class="nx">mouseMove</span><span class="p">)</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">pointerup</span><span class="dl">'</span><span class="p">,</span> <span class="nx">e</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="kd">let</span> <span class="nx">delta</span> <span class="o">=</span> <span class="nx">e</span><span class="p">[</span><span class="nx">axis</span><span class="p">]</span> <span class="o">-</span> <span class="nx">start</span><span class="p">;</span>
+            <span class="nx">delta</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(</span><span class="nx">delta</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">resizeMin</span><span class="p">)</span>
+            <span class="nx">slices</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">slice</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="nx">slice</span><span class="p">[</span><span class="nx">inlineDimension</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">()]</span> <span class="o">=</span> <span class="nx">delta</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">px</span><span class="dl">"</span>
+            <span class="p">})</span>
+            
+            <span class="k">this</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">direction</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">()}</span><span class="s2">Resize`</span><span class="p">,</span> <span class="p">{</span>
+                <span class="na">detail</span><span class="p">:</span> <span class="p">{[</span><span class="nx">direction</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">()</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">s</span><span class="dl">"</span><span class="p">]:</span> <span class="nx">slices</span><span class="p">}</span>
+            <span class="p">})</span>
+            
+            <span class="nx">dragIndicator</span><span class="p">.</span><span class="nx">remove</span><span class="p">()</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">pointermove</span><span class="dl">'</span><span class="p">,</span> <span class="nx">mouseMove</span><span class="p">)</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">resizing</span> <span class="o">=</span> <span class="kc">false</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="dl">'</span><span class="s1">resizing-</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">direction</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">())</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">releasePointerCapture</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">pointerId</span><span class="p">)</span>
+        <span class="p">},</span> <span class="p">{</span><span class="na">once</span><span class="p">:</span> <span class="kc">true</span><span class="p">})</span>
+    <span class="p">}</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">style</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">style</span> <span class="o">=</span> <span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">style</span><span class="p">]</span>
+    <span class="p">}</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">push</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="s2">`
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2"> {
+            --select-color: #1a73e8;
+            --handle-size: 10px;
+        }
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">.resizing-column,
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">.resizing-row {
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">.resizing-column {
+            cursor: col-resize !important;
+        }
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">.resizing-row {
+            cursor: row-resize !important;
+        }
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">.resizing-row komp-spreadsheet-header-cell,
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">.resizing-row komp-spreadsheet-cell {
+            cursor: row-resize !important;
+        }
+        
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">-header,
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">-cell {
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">-resize-handle {
+            pointer-events: none;
+            position: sticky;
+            inset-block-start: 0;
+            pointer-events: none;
+            display: grid;
+            grid-template-columns: auto auto;
+            justify-content: space-between;
+            align-items: center;
+            cursor: col-resize;
+        }
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">-resize-handle.resizable-row {
+            writing-mode: vertical-lr;
+            cursor: row-resize;
+        }
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">-resize-handle handle-start,
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">-resize-handle handle-end {
+            pointer-events: auto;
+            display: block;
+            pointer-events: auto;
+            block-size: 50%;
+            max-block-size: 2em;
+            inline-size: 11px;
+            border: 3px none currentColor;
+            border-inline-style: solid;
+            opacity: 0.2;
+            position: relative;
+        }
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">-resize-handle handle-start {
+            grid-column: 1;
+            inset-inline-start: -6px;
+        }
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">-resize-handle handle-end {
+            grid-column: 2;
+            inset-inline-end: -6px;
+        }
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">-resize-handle handle-start:hover,
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">-resize-handle handle-end:hover {
+            opacity: 1;
+            border-color: var(--select-color);
+        }
+
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">-drag-indicator {
+            pointer-events: none;
+            position: absolute;
+            block-size: 100%;
+            inline-size: 3px;
+            inset-block-start: 0;
+            background: var(--select-color);
+        }
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">-drag-indicator.row {
+            writing-mode: vertical-lr;
+        }
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">-resize-handle      { z-index: 200; }
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">-drag-indicator     { z-index: 200; }
+    `</span><span class="p">)</span>
+<span class="p">}</span></code></pre></div>
+        </div>
+    </div>
+</div>
+    </div>
+    <div class="pad text-right md:text-lg flex justify-content-end divide-h align-center border-gray-30">
+        <div class="pad-h">
+            &copy; 2025
+            <a href="https://github.com/bemky/" class="reset">Ben Ehmke</a>
+        </div>
+        <a href="https://github.com/bemky/komps" class="reset pad-h inline-flex align-center gap-1/2x">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                Komps on GitHub
+        </a>
+    </div>
+</body>
+</html>

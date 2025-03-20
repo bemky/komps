@@ -5,12 +5,12 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport"
     content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
     <!-- Use the title from a page's frontmatter if it has one -->
     <title>Komps</title>
-    <link href="/assets/site-7e5997b47b485e9d2a83bdd41d72eadee443458d44657f7944c3ef720f0ffdb0.css" rel="stylesheet" />
-    <script src="/assets/site-e9712547542067c3972cb36cbbf19eaeb5af16b9287e53923a2b22ef9f6bb327.js"></script>
+    <link href="/assets/site-22cf15a669101651d19ad04c4fce6e6d1fe3ae366248e3c72997637d43d5cfd5.css" rel="stylesheet" />
+    <script src="/assets/site-8417798930e951f009030d84a30fccc9f16cf9a64c8e7f66099d5c12d192a044.js"></script>
 </head>
 <body class="bg-purple-10 min-height-100-vh bg-graph">
     <div class="flex border-purple-20 width-full justify-content-between">
@@ -131,13 +131,12 @@
         document.querySelectorAll('input, select, textarea, button').forEach(input => {
             let type = input.type
             if (input.tagName == "SELECT") { type = "select" }
-            input.replaceWith(new Input({
+            input.replaceWith(Input.create(type, {
                 record: player,
                 attribute: input.name.includes('[') ? input.name.replace(/\]$/, '').split(/\]?\[/) : input.name,
-                type: type,
                 name: input.name,
                 options: Array.from(input.querySelectorAll('option')).map(x => x.value ? [x.value, x.innerText] : x.innerText),
-                value: input.value,
+                value: input.value == '' ? undefined : input.value,
                 multiple: input.multiple,
                 includeBlank: input.dataset.blank,
                 class: input.getAttribute('class'),
