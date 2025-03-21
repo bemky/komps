@@ -5,6 +5,21 @@
     "TEAM": "Texas Rangers",
     "POS": "2B",
     "GP": 162,
+    "DOB": "1990-05-17",
+    "CAPTAIN": true,
+    "bats": [{
+      "weight": "100oz",
+      "type": "oak"
+    }],
+    "gloves": [{
+      "position": "2B",
+      "brand": "Wilson",
+      "model": "A2000"
+    },{
+      "brand": "Nike",
+      "model": "Sha",
+      "position": "SS"
+    }],
     "AB": 670,
     "R": 122,
     "H": 185,
@@ -20,13 +35,44 @@
     "OBP": 0.348,
     "SLG": 0.478,
     "OPS": 0.826,
-    "WAR": 7.4
+    "WAR": 7.4,
+    "CAREER": "he White Sox drafted Semien in the sixth round, with the 201st overall selection of the 2011 Major League Baseball draft. He started his professional career that year with the Single–A Kannapolis Intimidators, finishing the season hitting .253 in 229 at-bats with, 15 doubles, two triples, three home runs, 26 runs batted in (RBIs) and three stolen bases. Semien was moved up to High–A Winston-Salem Dash for the 2012 season. There, he hit .273 in 418 at-bats with 31 doubles, five triples, 14 home runs, 59 RBI,s and 11 stolen bases. For the 2013 season, Semien was ranked the White Sox #8 prospect.[3]",
+    "BIO": "Marcus Andrew Semien (born September 17, 1990) is an American professional baseball shortstop and second baseman for the Texas Rangers of Major League Baseball (MLB). He previously played in MLB for the Chicago White Sox, Oakland Athletics and Toronto Blue Jays. Semien was an All-Star in 2021 with the Blue Jays, when he also won the Gold Glove Award and Silver Slugger Award. Semien signed a seven-year, $175 million contract with the Rangers following the 2021 season and won the World Series with the team in 2023. "
   },
   {
     "Name": "Nathaniel Lowe",
     "URL": "https://www.espn.com/mlb/player/_/id/40538",
     "TEAM": "Texas Rangers",
     "POS": "1B",
+    "bats": [{
+      "weight": "120oz",
+      "type": "oak"
+    }, {
+      "weight": "110oz",
+      "type": "maple"
+    }, {
+      "weight": "90oz",
+      "type": "birch"
+    }, {
+      "weight": "95oz",
+      "type": "oak"
+    }, {
+      "weight": "85oz",
+      "type": "birch"
+    }],
+    "gloves": [{
+      "position": "1B",
+      "brand": "Wilson",
+      "model": "A2000"
+    },{
+      "brand": "Nike",
+      "model": "Sha",
+      "position": "LF"
+    },{
+      "brand": "Mizuno",
+      "model": "5",
+      "position": "2B"
+    }],
     "GP": 161,
     "AB": 623,
     "R": 89,
@@ -43,13 +89,19 @@
     "OBP": 0.36,
     "SLG": 0.414,
     "OPS": 0.775,
-    "WAR": 2.6
+    "WAR": 2.6,
+    "CAREER": "The Tampa Bay Rays selected Lowe in the 13th round, with the 390th overall selection, of the 2016 Major League Baseball draft.[2] He signed and made his professional debut with the Hudson Valley Renegades of the Low–A New York-Penn League, batting .300/.382/.437 with four home runs and 40 runs batted in (RBI) in 67 games.[4] He played for both the Bowling Green Hot Rods of the Single–A Midwest League and the Charlotte Stone Crabs of the High–A Florida State League in 2017,[5] hitting .274 with seven home runs and 59 RBI in 115 games between both teams.",
+    "BIO": "David Nathaniel Lowe Jr. (/loʊ/ LOH;[1] born July 7, 1995) is an American professional baseball first baseman for the Washington Nationals of Major League Baseball (MLB). He has previously played in MLB for the Tampa Bay Rays and Texas Rangers. He made his MLB debut in 2019 with the Rays. "
   },
   {
     "Name": "Adolis Garcia",
     "URL": "https://www.espn.com/mlb/player/_/id/35537",
     "TEAM": "Texas Rangers",
     "POS": "RF",
+    "bats": [{
+      "weight": "100oz",
+      "type": "oak"
+    }],
     "GP": 148,
     "AB": 555,
     "R": 108,
@@ -66,7 +118,9 @@
     "OBP": 0.328,
     "SLG": 0.508,
     "OPS": 0.836,
-    "WAR": 4.2
+    "WAR": 4.2,
+    "CAREER": "García played for Tigres de Ciego de Ávila of the Cuban National Series from 2011 into 2016.",
+    "BIO": "José Adolis García Arrieta, nicknamed El Bombi, (born March 2, 1993) is a Cuban-born professional baseball outfielder for the Texas Rangers of Major League Baseball (MLB). He previously played in MLB for the St. Louis Cardinals, in Nippon Professional Baseball (NPB) for the Yomiuri Giants, and in the Cuban National Series for Tigres de Ciego de Ávila. García was an MLB All-Star in 2021 and 2023. García won the 2023 World Series with the Rangers, winning ALCS MVP and setting the single post-season record by recording 22 RBI throughout their championship run. "
   },
   {
     "Name": "Leody Taveras",
@@ -89,7 +143,9 @@
     "OBP": 0.312,
     "SLG": 0.421,
     "OPS": 0.733,
-    "WAR": 2.7
+    "WAR": 2.7,
+    "CAREER": "Taveras signed with the Texas Rangers as an international free agent in July 2015 for a bonus of $2.6 million.[1] He made his professional debut in 2016 with the Dominican Summer League Rangers and was later promoted to the Arizona League Rangers and Spokane Indians that season.[2][3] In 73 total games between the three teams, he batted .271 with one home run, 33 RBIs and 18 stole bases. Prior to the 2017 season, Baseball America ranked him as the best prospect in the Rangers system.",
+    "BIO": "Leody Taveras Salazar (born September 8, 1998) is a Dominican professional baseball outfielder for the Texas Rangers of Major League Baseball (MLB). The Rangers signed him as an international free agent in 2015, and he made his MLB debut in 2020. He won the 2023 World Series with the Rangers. "
   },
   {
     "Name": "Josh Jung",
@@ -119,6 +175,8 @@
     "URL": "https://www.espn.com/mlb/player/_/id/32691",
     "TEAM": "Texas Rangers",
     "POS": "SS",
+    "CAPTAIN": true,
+    "Team MVP": true,
     "GP": 119,
     "AB": 477,
     "R": 88,
@@ -457,6 +515,17 @@
     "OBP": 0.25,
     "SLG": 0.143,
     "OPS": 0.393,
-    "WAR": 0
+    "WAR": 0,
+    "bats": [{
+      "weight": "120oz"
+    }, {
+      "weight": "110oz"
+    }, {
+      "weight": "90oz"
+    }, {
+      "weight": "95oz"
+    }, {
+      "weight": "85oz"
+    }]
   }
 ]

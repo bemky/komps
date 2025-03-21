@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no">
-    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
     <!-- Use the title from a page's frontmatter if it has one -->
     <title>Komps</title>
-    <link href="/assets/site-7e5997b47b485e9d2a83bdd41d72eadee443458d44657f7944c3ef720f0ffdb0.css" rel="stylesheet" />
-    <script src="/assets/site-e9712547542067c3972cb36cbbf19eaeb5af16b9287e53923a2b22ef9f6bb327.js"></script>
+    <link href="/assets/site-22cf15a669101651d19ad04c4fce6e6d1fe3ae366248e3c72997637d43d5cfd5.css" rel="stylesheet" />
+    <script src="/assets/site-d3a3a773475509c97afdc6e841118543fbd1a36726532e2d7f3d24359349b85f.js"></script>
 </head>
 <body>
     <div class="side-nav">
@@ -34,9 +34,6 @@
         <a href="/content-area" class="">
             ContentArea
         </a>
-        <a href="/data-table" class="">
-            DataTable
-        </a>
         <a href="/dropdown" class="">
             Dropdown
         </a>
@@ -57,6 +54,9 @@
         </a>
         <a href="/spreadsheet" class="">
             Spreadsheet
+        </a>
+        <a href="/table" class="">
+            Table
         </a>
         <a href="/tooltip" class="">
             Tooltip
@@ -81,9 +81,6 @@
         <a href="/content-area" class="">
             ContentArea
         </a>
-        <a href="/data-table" class="">
-            DataTable
-        </a>
         <a href="/dropdown" class="">
             Dropdown
         </a>
@@ -104,6 +101,9 @@
         </a>
         <a href="/spreadsheet" class="">
             Spreadsheet
+        </a>
+        <a href="/table" class="">
+            Table
         </a>
         <a href="/tooltip" class="">
             Tooltip
@@ -126,13 +126,13 @@
     <div class="">
         <h1 class="text-2x">
             Input
-            <span class="text-light text-nowrap text-italic text-gray-50 text-xl">
-                (extends <a href="element" class="reset hover:text-underline">KompElement</a>)
-            </span>
         </h1>
     
         <div class="text-light text-xl">
-            <p>A wrapper for an input element that binds the value of the input to an object</p>
+            <p>A <strong>generator</strong> for an input element that binds the value of the input to an object.
+This is <strong>not</strong> an element, but a generator that adds listeners to an input element.
+If one day, <a href="https://bugs.webkit.org/show_bug.cgi?id=182671">Safari adds support for extending built in elements</a>,
+this can be converted.</p>
 
         </div>
     </div>
@@ -149,9 +149,10 @@
     
     <div class="">
         <h2>Syntax</h2>
-        <div class="highlight"><pre class=" javascript"><code><span class="k">new</span> <span class="nx">Input</span><span class="p">({</span>
-
-<span class="p">})</span>
+        <div class="highlight"><pre class=" javascript"><code><span class="nx">Input</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="dl">'</span><span class="s1">number</span><span class="dl">'</span><span class="p">,</span> <span class="p">{})</span>
+<span class="c1">// &lt;input ...&gt;</span>
+<span class="nx">Input</span><span class="p">.</span><span class="k">new</span><span class="p">(</span><span class="dl">'</span><span class="s1">number</span><span class="dl">'</span><span class="p">,</span> <span class="p">{})</span>
+<span class="c1">// Input()</span>
 </code></pre></div>
 
     </div>
@@ -167,21 +168,6 @@
                                 <th>description</th>
                                 <th>arguments</th>
                         </tr>
-                            <tr>
-                                <td>
-                                    <code>content</code>
-                                </td>
-                                    <td>
-                                            String, HTMLElement, Array, Object
-                                    </td>
-                                    <td>
-                                            <p>content to append to element. Passed to <a href="https://dollajs.com/#content">Dolla's <code>content</code></a></p>
-
-                                    </td>
-                                    <td>
-                                            
-                                    </td>
-                            </tr>
                             <tr>
                                 <td>
                                     <code>record</code>
@@ -245,103 +231,6 @@
                     </table>
                 </div>
         </div>
-        <div class="">
-            <h2>Events</h2>
-                
-                <div class="overflow-auto">
-                    <table class="uniformTable border-gray-20 overflow-auto max-width-full">
-                        <tr>
-                            <th></th>
-                                <th>arguments</th>
-                                <th>description</th>
-                        </tr>
-                            <tr>
-                                <td>
-                                    <code>beforeRemove</code>
-                                </td>
-                                    <td>
-                                            []
-                                    </td>
-                                    <td>
-                                            <p>called before element is removed</p>
-
-                                    </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <code>afterRemove</code>
-                                </td>
-                                    <td>
-                                            []
-                                    </td>
-                                    <td>
-                                            <p>called after element is removed</p>
-
-                                    </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <code>beforeConnect</code>
-                                </td>
-                                    <td>
-                                            []
-                                    </td>
-                                    <td>
-                                            <p>called before element is connected</p>
-
-                                    </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <code>afterConnect</code>
-                                </td>
-                                    <td>
-                                            []
-                                    </td>
-                                    <td>
-                                            <p>called before element is connected</p>
-
-                                    </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <code>beforeDisconnect</code>
-                                </td>
-                                    <td>
-                                            []
-                                    </td>
-                                    <td>
-                                            <p>called before element is disconnected</p>
-
-                                    </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <code>afterDisconnect</code>
-                                </td>
-                                    <td>
-                                            []
-                                    </td>
-                                    <td>
-                                            <p>called before element is disconnected</p>
-
-                                    </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <code>change</code>
-                                </td>
-                                    <td>
-                                            newValue, oldValue
-                                    </td>
-                                    <td>
-                                            <p>fired on focusout when value has changed</p>
-
-                                    </td>
-                            </tr>
-                    </table>
-                </div>
-        </div>
     
     <button class="js-toggle-source reset text-sm text-bold text-gray-30 hover:text-blue" rel="#source-for-input">
         SHOW SOURCE
@@ -352,11 +241,11 @@
                 SOURCE CODE
             </div>
             <div class="highlight"><pre class=" javascript"><code><span class="k">import</span> <span class="nx">KompElement</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./element.js</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">ContentArea</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./content-area.js</span><span class="dl">'</span><span class="p">;</span>
 <span class="k">import</span> <span class="p">{</span> <span class="nx">except</span><span class="p">,</span> <span class="nx">dig</span><span class="p">,</span> <span class="nx">bury</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../support.js</span><span class="dl">'</span><span class="p">;</span>
 <span class="k">import</span> <span class="p">{</span> <span class="nx">createElement</span><span class="p">,</span> <span class="nx">HTML_ATTRIBUTES</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">dolla</span><span class="dl">'</span><span class="p">;</span>
 
-<span class="kd">class</span> <span class="nx">Input</span> <span class="kd">extends</span> <span class="nx">KompElement</span> <span class="p">{</span>
-    <span class="kd">static</span> <span class="nx">tagName</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">komp-input</span><span class="dl">"</span>
+<span class="kd">class</span> <span class="nx">Input</span> <span class="p">{</span>
     
     <span class="kd">static</span> <span class="nx">assignableAttributes</span> <span class="o">=</span> <span class="p">{</span>
         <span class="na">record</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
@@ -365,33 +254,46 @@
         <span class="na">load</span><span class="p">:</span> <span class="p">(</span><span class="nx">v</span><span class="p">,</span> <span class="nx">record</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">v</span>
     <span class="p">}</span>
     
+    <span class="kd">static</span> <span class="nx">create</span><span class="p">(</span><span class="nx">type</span><span class="p">,</span> <span class="nx">options</span><span class="o">=</span><span class="p">{})</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="k">new</span><span class="p">(</span><span class="nx">type</span><span class="p">,</span> <span class="nx">options</span><span class="p">).</span><span class="nx">input</span>
+    <span class="p">}</span>
+    
+    <span class="kd">static</span> <span class="k">new</span> <span class="p">(</span><span class="nx">type</span><span class="p">,</span> <span class="nx">options</span><span class="o">=</span><span class="p">{})</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">klass</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="na">button</span><span class="p">:</span> <span class="nx">ButtonInput</span><span class="p">,</span>
+            <span class="na">checkbox</span><span class="p">:</span> <span class="nx">BinaryInput</span><span class="p">,</span>
+            <span class="na">radio</span><span class="p">:</span> <span class="nx">BinaryInput</span><span class="p">,</span>
+            <span class="na">select</span><span class="p">:</span> <span class="nx">SelectInput</span><span class="p">,</span>
+            <span class="na">date</span><span class="p">:</span> <span class="nx">DateInput</span><span class="p">,</span>
+            <span class="na">textarea</span><span class="p">:</span> <span class="nx">TextareaInput</span><span class="p">,</span>
+            <span class="dl">'</span><span class="s1">datetime-local</span><span class="dl">'</span><span class="p">:</span> <span class="nx">DateTimeInput</span><span class="p">,</span>
+            <span class="na">contentarea</span><span class="p">:</span> <span class="nx">ContentAreaInput</span><span class="p">,</span>
+        <span class="p">}[</span><span class="nx">type</span><span class="p">]</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">klass</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nx">klass</span><span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">({</span>
+                <span class="na">type</span><span class="p">:</span> <span class="nx">type</span>
+            <span class="p">},</span> <span class="nx">options</span><span class="p">))</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="k">this</span><span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">({</span>
+                <span class="na">type</span><span class="p">:</span> <span class="nx">type</span>
+            <span class="p">},</span> <span class="nx">options</span><span class="p">))</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
     <span class="kd">constructor</span> <span class="p">(</span><span class="nx">options</span><span class="o">=</span><span class="p">{})</span> <span class="p">{</span>
-        <span class="kd">const</span> <span class="nx">optionsWas</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">({},</span> <span class="nx">options</span><span class="p">)</span>
-        <span class="kd">const</span> <span class="nx">prototype</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="na">button</span><span class="p">:</span> <span class="nx">ButtonInput</span><span class="p">.</span><span class="nx">prototype</span><span class="p">,</span>
-            <span class="na">checkbox</span><span class="p">:</span> <span class="nx">BinaryInput</span><span class="p">.</span><span class="nx">prototype</span><span class="p">,</span>
-            <span class="na">radio</span><span class="p">:</span> <span class="nx">BinaryInput</span><span class="p">.</span><span class="nx">prototype</span><span class="p">,</span>
-            <span class="na">select</span><span class="p">:</span> <span class="nx">SelectInput</span><span class="p">.</span><span class="nx">prototype</span><span class="p">,</span>
-            <span class="na">date</span><span class="p">:</span> <span class="nx">DateInput</span><span class="p">.</span><span class="nx">prototype</span><span class="p">,</span>
-            <span class="na">textarea</span><span class="p">:</span> <span class="nx">TextareaInput</span><span class="p">.</span><span class="nx">prototype</span><span class="p">,</span>
-            <span class="dl">'</span><span class="s1">datetime-local</span><span class="dl">'</span><span class="p">:</span> <span class="nx">DateTimeInput</span><span class="p">.</span><span class="nx">prototype</span>
-        <span class="p">}[</span><span class="nx">options</span><span class="p">.</span><span class="nx">type</span><span class="p">]</span>
-        
-        <span class="k">super</span><span class="p">(</span><span class="nx">except</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="p">...</span><span class="nx">HTML_ATTRIBUTES</span><span class="p">));</span>
+        <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="kd">constructor</span><span class="p">.</span><span class="nx">assignableAttributes</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">k</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">options</span><span class="p">[</span><span class="nx">k</span><span class="p">]</span> <span class="o">!=</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">this</span><span class="p">[</span><span class="nx">k</span><span class="p">]</span> <span class="o">=</span> <span class="nx">options</span><span class="p">[</span><span class="nx">k</span><span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">})</span>
         <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="k">this</span><span class="p">.</span><span class="nx">dump</span> <span class="o">!=</span> <span class="dl">"</span><span class="s2">function</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">this</span><span class="p">.</span><span class="nx">dump</span> <span class="o">=</span> <span class="nx">v</span> <span class="o">=&gt;</span> <span class="nx">v</span>
         <span class="p">}</span>
         <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="k">this</span><span class="p">.</span><span class="nx">load</span> <span class="o">!=</span> <span class="dl">"</span><span class="s2">function</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">this</span><span class="p">.</span><span class="nx">load</span> <span class="o">=</span> <span class="nx">v</span> <span class="o">=&gt;</span> <span class="nx">v</span>
         <span class="p">}</span>
-        
-        <span class="k">if</span> <span class="p">(</span><span class="nx">prototype</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">this</span><span class="p">.</span><span class="nx">__proto__</span> <span class="o">=</span> <span class="nx">prototype</span>
-        <span class="p">}</span>
-        
-        <span class="k">this</span><span class="p">.</span><span class="nx">input</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">createInput</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">_load</span><span class="p">();</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">input</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">createInput</span><span class="p">(</span><span class="nx">except</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="dl">'</span><span class="s1">load</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">dump</span><span class="dl">'</span><span class="p">));</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">_loading</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_load</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">options</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">setupInputListener</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">inputChange</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">setupRecordListener</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">recordChange</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
     <span class="p">}</span>
@@ -404,44 +306,55 @@
         <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">v</span>
     <span class="p">}</span>
     
-    <span class="nx">createInput</span> <span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">createInput</span> <span class="p">(</span><span class="nx">options</span><span class="o">=</span><span class="p">{})</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">input</span><span class="dl">'</span><span class="p">,</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">({</span>
-            <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">text</span><span class="dl">'</span>
+            <span class="na">type</span><span class="p">:</span> <span class="nx">options</span><span class="p">.</span><span class="nx">type</span>
         <span class="p">},</span> <span class="nx">options</span><span class="p">))</span>
     <span class="p">}</span>
     
     <span class="nx">setupInputListener</span> <span class="p">(</span><span class="nx">listener</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">change</span><span class="dl">'</span><span class="p">,</span> <span class="nx">listener</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">change</span><span class="dl">'</span><span class="p">,</span> <span class="nx">listener</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">blur</span><span class="dl">'</span><span class="p">,</span> <span class="nx">listener</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
     <span class="p">}</span>
     
     <span class="nx">setupRecordListener</span> <span class="p">(</span><span class="nx">listener</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">record</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">record</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="p">.</span><span class="nx">record</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">this</span><span class="p">.</span><span class="nx">record</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">change</span><span class="dl">'</span><span class="p">,</span> <span class="nx">listener</span><span class="p">);</span>
         <span class="p">}</span>
-        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">record</span><span class="p">.</span><span class="nx">addListener</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">record</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="p">.</span><span class="nx">record</span><span class="p">.</span><span class="nx">addListener</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">this</span><span class="p">.</span><span class="nx">record</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="nx">listener</span><span class="p">)</span>
         <span class="p">}</span>
     <span class="p">}</span>
     
-    <span class="nx">inputChange</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="kd">const</span> <span class="nx">valueWas</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_loadValue</span><span class="p">())</span>
-        <span class="kd">const</span> <span class="nx">value</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_dump</span><span class="p">()</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="dl">'</span><span class="s1">change</span><span class="dl">'</span><span class="p">,</span> <span class="nx">value</span><span class="p">,</span> <span class="nx">valueWas</span><span class="p">)</span>
+    <span class="nx">inputChange</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// for 50ms cancel calls to inputChange, for quick events of change and blur</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">_dumping</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">closest</span><span class="p">(</span><span class="dl">'</span><span class="s1">[preventChange]</span><span class="dl">'</span><span class="p">))</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">false</span> <span class="p">}</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">_dump</span><span class="p">();</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">_dumping</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">(</span><span class="nx">done</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                    <span class="k">delete</span> <span class="k">this</span><span class="p">.</span><span class="nx">_dumping</span>
+                    <span class="nx">done</span><span class="p">()</span>
+                <span class="p">},</span> <span class="mi">50</span><span class="p">)</span>
+            <span class="p">})</span>
+        <span class="p">}</span>
     <span class="p">}</span>
     
     <span class="nx">recordChange</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">_load</span><span class="p">()</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">_loading</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_load</span><span class="p">()</span>
     <span class="p">}</span>
     
     <span class="nx">_load</span> <span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kd">const</span> <span class="nx">value</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="nx">v</span> <span class="p">?</span> <span class="nx">v</span> <span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">_loadValue</span><span class="p">())</span>
+        <span class="kd">const</span> <span class="nx">value</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="nx">v</span> <span class="p">?</span> <span class="nx">v</span> <span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">_loadValue</span><span class="p">(),</span> <span class="k">this</span><span class="p">.</span><span class="nx">record</span><span class="p">,</span> <span class="p">{</span><span class="na">explicitValue</span><span class="p">:</span> <span class="nx">v</span><span class="p">})</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="o">!==</span> <span class="kc">undefined</span> <span class="o">&amp;&amp;</span> <span class="nx">value</span> <span class="o">!==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">value</span>
         <span class="p">}</span>
     <span class="p">}</span>
     
     <span class="nx">_loadValue</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nx">dig</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">record</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">attribute</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">record</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">dig</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">record</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">attribute</span><span class="p">)</span>
+        <span class="p">}</span>
     <span class="p">}</span>
     
     <span class="nx">_dump</span> <span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span> <span class="p">{</span>
@@ -455,18 +368,17 @@
         <span class="nx">bury</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">record</span><span class="p">,</span> <span class="p">...</span><span class="nx">attributes</span><span class="p">)</span>
         <span class="k">return</span> <span class="nx">v</span>
     <span class="p">}</span>
-    
-    <span class="kd">static</span> <span class="nx">style</span> <span class="o">=</span> <span class="s2">`
-        komp-input {
-            display: contents;
-        }
-    `</span>
 <span class="p">}</span>
-<span class="nb">window</span><span class="p">.</span><span class="nx">customElements</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="nx">Input</span><span class="p">.</span><span class="nx">tagName</span><span class="p">,</span> <span class="nx">Input</span><span class="p">);</span>
+
+<span class="kd">class</span> <span class="nx">ContentAreaInput</span> <span class="kd">extends</span> <span class="nx">Input</span> <span class="p">{</span>
+    <span class="nx">createInput</span> <span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">ContentArea</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
 <span class="kd">class</span> <span class="nx">BinaryInput</span> <span class="kd">extends</span> <span class="nx">Input</span> <span class="p">{</span>
-    <span class="nx">_load</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="kd">const</span> <span class="nx">value</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_loadValue</span><span class="p">())</span>
+    <span class="k">async</span> <span class="nx">_load</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">value</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">_loadValue</span><span class="p">())</span>
         <span class="kd">const</span> <span class="nx">inputValue</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">value</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">on</span><span class="dl">"</span> <span class="p">?</span> <span class="kc">true</span> <span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">value</span>
         <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">multiple</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">checked</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">?</span> <span class="nx">value</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="nx">inputValue</span><span class="p">)</span> <span class="p">:</span> <span class="kc">false</span>
@@ -495,15 +407,19 @@
         <span class="p">}</span>
         <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_dumpValue</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span>
     <span class="p">}</span>
+    
+    <span class="nx">setupInputListener</span> <span class="p">(</span><span class="nx">listener</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">change</span><span class="dl">'</span><span class="p">,</span> <span class="nx">listener</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
+    <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="kd">class</span> <span class="nx">DateInput</span> <span class="kd">extends</span> <span class="nx">Input</span> <span class="p">{</span>
     <span class="nx">setupInputListener</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">blur</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">_dump</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">blur</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">inputChange</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
     <span class="p">}</span>
     
-    <span class="nx">_load</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kd">let</span> <span class="nx">value</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_loadValue</span><span class="p">()</span>
+    <span class="k">async</span> <span class="nx">_load</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">value</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">_loadValue</span><span class="p">()</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="k">instanceof</span> <span class="nb">Date</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">value</span> <span class="o">=</span> <span class="p">[</span>
                 <span class="nx">value</span><span class="p">.</span><span class="nx">getUTCFullYear</span><span class="p">(),</span>
@@ -511,7 +427,7 @@
                 <span class="nx">value</span><span class="p">.</span><span class="nx">getDate</span><span class="p">().</span><span class="nx">toString</span><span class="p">().</span><span class="nx">padStart</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">)</span>
             <span class="p">].</span><span class="nx">join</span><span class="p">(</span><span class="dl">"</span><span class="s2">-</span><span class="dl">"</span><span class="p">)</span>
         <span class="p">}</span>
-        <span class="k">super</span><span class="p">.</span><span class="nx">_load</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span>
+        <span class="k">return</span> <span class="k">super</span><span class="p">.</span><span class="nx">_load</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span>
     <span class="p">}</span>
     
     <span class="nx">_dump</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
@@ -522,8 +438,8 @@
 <span class="p">}</span>
 
 <span class="kd">class</span> <span class="nx">DateTimeInput</span> <span class="kd">extends</span> <span class="nx">Input</span> <span class="p">{</span>
-    <span class="nx">_load</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kd">let</span> <span class="nx">value</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_loadValue</span><span class="p">()</span>
+    <span class="k">async</span> <span class="nx">_load</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">value</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">_loadValue</span><span class="p">()</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="k">instanceof</span> <span class="nb">Date</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">value</span> <span class="o">=</span> <span class="p">[</span>
                 <span class="p">[</span>
@@ -559,7 +475,7 @@
 <span class="p">}</span>
 
 <span class="kd">class</span> <span class="nx">SelectInput</span> <span class="kd">extends</span> <span class="nx">Input</span> <span class="p">{</span>
-    <span class="nx">createInput</span> <span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">createInput</span> <span class="p">(</span><span class="nx">options</span><span class="o">=</span><span class="p">{})</span> <span class="p">{</span>
         <span class="kd">const</span> <span class="nx">input</span> <span class="o">=</span> <span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">select</span><span class="dl">'</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">options</span><span class="p">.</span><span class="nx">includeBlank</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">input</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">option</span><span class="dl">'</span><span class="p">,</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">({</span>
@@ -567,17 +483,20 @@
                 <span class="na">value</span><span class="p">:</span> <span class="kc">null</span>
             <span class="p">},</span> <span class="nx">options</span><span class="p">.</span><span class="nx">includeBlank</span><span class="p">)))</span>
         <span class="p">}</span>
-        <span class="nx">options</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">option</span> <span class="o">=&gt;</span> <span class="p">{</span>
-            <span class="nx">input</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">option</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
-                <span class="na">content</span><span class="p">:</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="nx">option</span><span class="p">)</span> <span class="p">?</span> <span class="nx">option</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">:</span> <span class="nx">option</span><span class="p">,</span>
-                <span class="na">value</span><span class="p">:</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="nx">option</span><span class="p">)</span> <span class="p">?</span> <span class="nx">option</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">:</span> <span class="nx">option</span>
-            <span class="p">}))</span>
-        <span class="p">})</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">options</span><span class="p">.</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">options</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">option</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="nx">input</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">option</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+                    <span class="na">content</span><span class="p">:</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="nx">option</span><span class="p">)</span> <span class="p">?</span> <span class="nx">option</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">:</span> <span class="nx">option</span><span class="p">,</span>
+                    <span class="na">value</span><span class="p">:</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="nx">option</span><span class="p">)</span> <span class="p">?</span> <span class="nx">option</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">:</span> <span class="nx">option</span>
+                <span class="p">}))</span>
+            <span class="p">})</span>
+        <span class="p">}</span>
+        
         <span class="k">return</span> <span class="nx">input</span>
     <span class="p">}</span>
-    <span class="nx">_load</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">async</span> <span class="nx">_load</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">multiple</span><span class="p">)</span> <span class="p">{</span>
-            <span class="kd">const</span> <span class="nx">values</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_loadValue</span><span class="p">());</span>
+            <span class="kd">const</span> <span class="nx">values</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">_loadValue</span><span class="p">());</span>
             <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">option</span><span class="dl">'</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">option</span> <span class="o">=&gt;</span> <span class="p">{</span>
                 <span class="k">if</span> <span class="p">(</span><span class="nx">values</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="nx">option</span><span class="p">.</span><span class="nx">value</span><span class="p">))</span> <span class="p">{</span>
                     <span class="nx">option</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">'</span><span class="s1">selected</span><span class="dl">'</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
@@ -609,7 +528,7 @@
     </div>
     <div class="pad text-right md:text-lg flex justify-content-end divide-h align-center border-gray-30">
         <div class="pad-h">
-            &copy; 2024
+            &copy; 2025
             <a href="https://github.com/bemky/" class="reset">Ben Ehmke</a>
         </div>
         <a href="https://github.com/bemky/komps" class="reset pad-h inline-flex align-center gap-1/2x">

@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
+    <!-- Use the title from a page's frontmatter if it has one -->
+    <title>Komps</title>
+    <link href="/assets/site-22cf15a669101651d19ad04c4fce6e6d1fe3ae366248e3c72997637d43d5cfd5.css" rel="stylesheet" />
+    <script src="/assets/site-d3a3a773475509c97afdc6e841118543fbd1a36726532e2d7f3d24359349b85f.js"></script>
+</head>
+<body class="bg-purple-10 min-height-100-vh bg-graph">
+    <div class="pad-2x"></div>
+<script>
+    Table.include(window.plugins.resizable)
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelector('div').append(new Table({
+            class: 'rounded overflow-hidden',
+            resize: true,
+            data: [{
+                name: "Corey Seager",
+                team: "Texas Rangers",
+                ops: 1.023,
+                avg: 0.311,
+                positions: ["SS"]
+            }, {
+                name: "Marcus Semien",
+                team: "Texas Rangers",
+                ops: 0.823,
+                avg: 0.283,
+                positions: ["2B"]
+            }],
+            columns: [{
+                render: r => r.name,
+                header: 'Name'
+            }, {
+                render: r => r.team,
+                header: 'Team',
+            }, {
+                render: r => r.ops.toLocaleString().replace(/^0/, ''),
+                header: 'OPS'
+            }]
+        }))
+    });
+</script>
+
+
+</body>
+</html>

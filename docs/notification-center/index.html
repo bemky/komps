@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no">
-    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
     <!-- Use the title from a page's frontmatter if it has one -->
     <title>Komps</title>
-    <link href="/assets/site-7e5997b47b485e9d2a83bdd41d72eadee443458d44657f7944c3ef720f0ffdb0.css" rel="stylesheet" />
-    <script src="/assets/site-e9712547542067c3972cb36cbbf19eaeb5af16b9287e53923a2b22ef9f6bb327.js"></script>
+    <link href="/assets/site-22cf15a669101651d19ad04c4fce6e6d1fe3ae366248e3c72997637d43d5cfd5.css" rel="stylesheet" />
+    <script src="/assets/site-d3a3a773475509c97afdc6e841118543fbd1a36726532e2d7f3d24359349b85f.js"></script>
 </head>
 <body>
     <div class="side-nav">
@@ -34,9 +34,6 @@
         <a href="/content-area" class="">
             ContentArea
         </a>
-        <a href="/data-table" class="">
-            DataTable
-        </a>
         <a href="/dropdown" class="">
             Dropdown
         </a>
@@ -55,8 +52,16 @@
         <a href="/notification-center" class="active">
             NotificationCenter
         </a>
+            <div class="uniformNav -vertical pad-left-2x text-sm">
+                    <a href="/notification-center/notification" class="">
+                        Notification
+                    </a>
+            </div>
         <a href="/spreadsheet" class="">
             Spreadsheet
+        </a>
+        <a href="/table" class="">
+            Table
         </a>
         <a href="/tooltip" class="">
             Tooltip
@@ -81,9 +86,6 @@
         <a href="/content-area" class="">
             ContentArea
         </a>
-        <a href="/data-table" class="">
-            DataTable
-        </a>
         <a href="/dropdown" class="">
             Dropdown
         </a>
@@ -102,8 +104,16 @@
         <a href="/notification-center" class="active">
             NotificationCenter
         </a>
+            <div class="uniformNav -vertical pad-left-2x text-sm">
+                    <a href="/notification-center/notification" class="">
+                        Notification
+                    </a>
+            </div>
         <a href="/spreadsheet" class="">
             Spreadsheet
+        </a>
+        <a href="/table" class="">
+            Table
         </a>
         <a href="/tooltip" class="">
             Tooltip
@@ -212,6 +222,21 @@
                         </tr>
                             <tr>
                                 <td>
+                                    <code>intialize</code>
+                                </td>
+                                    <td>
+                                            []
+                                    </td>
+                                    <td>
+                                            <p>method called once for each instantiation, but only after element is connected (required for accessing some properties)</p>
+
+                                    </td>
+                                    <td>
+                                            
+                                    </td>
+                            </tr>
+                            <tr>
+                                <td>
                                     <code>trigger</code>
                                 </td>
                                     <td>
@@ -278,41 +303,11 @@
                                             content:DollaContent, options:Object
                                     </td>
                                     <td>
-                                            <p>content to add to notification center, uses <a href="https://dollajs.com/#content">Dolla's <code>content</code></a></p>
+                                            <p>content to add to notification center, uses <a href="https://dollajs.com/#content">Dolla's <code>content</code></a>. Options are <a href="/notification-center/notification">Notification</a> options</p>
 
                                     </td>
                                     <td>
-                                            NotificationElement
-                                    </td>
-                            </tr>
-                    </table>
-                </div>
-        </div>
-        <div class="">
-            <h2>Notification Options</h2>
-                <p>animation</p>
-
-                <div class="overflow-auto">
-                    <table class="uniformTable border-gray-20 overflow-auto max-width-full">
-                        <tr>
-                            <th></th>
-                                <th>default</th>
-                                <th>types</th>
-                                <th>description</th>
-                        </tr>
-                            <tr>
-                                <td>
-                                    <code>timeout</code>
-                                </td>
-                                    <td>
-                                            5000
-                                    </td>
-                                    <td>
-                                            Boolean or Object
-                                    </td>
-                                    <td>
-                                            <p>true/false to animate or not, pass object to animate with options for <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/animate"><code>animate</code></a></p>
-
+                                            Notification
                                     </td>
                             </tr>
                     </table>
@@ -443,12 +438,11 @@
             </div>
             <div class="highlight"><pre class=" javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">append</span><span class="p">,</span> <span class="nx">content</span><span class="p">,</span> <span class="nx">css</span><span class="p">,</span> <span class="nx">listenerElement</span><span class="p">,</span> <span class="nx">createElement</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">dolla</span><span class="dl">'</span><span class="p">;</span>
 <span class="k">import</span> <span class="nx">KompElement</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./element.js</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">Notification</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./notification-center/notification</span><span class="dl">'</span><span class="p">;</span>
+
 <span class="kd">class</span> <span class="nx">NotificationCenter</span> <span class="kd">extends</span> <span class="nx">KompElement</span> <span class="p">{</span>
     
-    <span class="kd">static</span> <span class="nx">assignableAttributes</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="na">timeout</span><span class="p">:</span> <span class="mi">5000</span><span class="p">,</span>
-        <span class="na">animation</span><span class="p">:</span> <span class="kc">true</span>
-    <span class="p">}</span>
+    <span class="kd">static</span> <span class="nx">assignableAttributes</span> <span class="o">=</span> <span class="nx">Notification</span><span class="p">.</span><span class="nx">assignableAttributes</span>
     
     <span class="kd">constructor</span> <span class="p">(...</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">super</span><span class="p">(...</span><span class="nx">args</span><span class="p">)</span>
@@ -509,87 +503,14 @@
         }
     `</span>
 <span class="p">}</span>
-<span class="nb">window</span><span class="p">.</span><span class="nx">customElements</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="dl">'</span><span class="s1">komp-notification-center</span><span class="dl">'</span><span class="p">,</span> <span class="nx">NotificationCenter</span><span class="p">);</span>
-
-<span class="kd">class</span> <span class="nx">Notification</span> <span class="kd">extends</span> <span class="nx">KompElement</span> <span class="p">{</span>
-    
-    <span class="kd">static</span> <span class="nx">assignableAttributes</span> <span class="o">=</span> <span class="nx">NotificationCenter</span><span class="p">.</span><span class="nx">assignableAttributes</span>
-    
-    <span class="kd">constructor</span> <span class="p">(</span><span class="nx">thisContent</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">super</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span>
-        <span class="nx">content</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">createElement</span><span class="p">({</span>
-            <span class="na">class</span><span class="p">:</span> <span class="dl">'</span><span class="s1">komp-notification-body</span><span class="dl">'</span><span class="p">,</span>
-            <span class="na">content</span><span class="p">:</span> <span class="nx">thisContent</span>
-        <span class="p">}))</span>
-        <span class="nx">append</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">listenerElement</span><span class="p">({</span>
-            <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">button</span><span class="dl">'</span><span class="p">,</span>
-            <span class="na">class</span><span class="p">:</span> <span class="dl">'</span><span class="s1">dismiss-button</span><span class="dl">'</span><span class="p">,</span>
-            <span class="na">content</span><span class="p">:</span> <span class="s2">`
-                &lt;svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"&gt;
-                &lt;circle cx="12.5" cy="12.5" r="11" stroke-dasharray="0% 300%" /&gt;
-                &lt;line x1="16" y1="8" x2="8" y2="16"&gt;&lt;/line&gt;&lt;line x1="8" y1="8" x2="16" y2="16"&gt;&lt;/line&gt;
-                &lt;/svg&gt;`</span>
-        <span class="p">},</span> <span class="nx">e</span> <span class="o">=&gt;</span> <span class="p">{</span>
-            <span class="k">this</span><span class="p">.</span><span class="nx">remove</span><span class="p">()</span>
-        <span class="p">}))</span>
-    <span class="p">}</span>
-    
-    <span class="nx">connected</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">mouseenter</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">clearTimeout</span><span class="p">);</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">mouseleave</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">restartTimeout</span><span class="p">);</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">timer</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">.dismiss-button circle</span><span class="dl">'</span><span class="p">).</span><span class="nx">animate</span><span class="p">([</span>
-            <span class="p">{</span><span class="na">strokeDasharray</span><span class="p">:</span> <span class="dl">"</span><span class="s2">300% 300%</span><span class="dl">"</span><span class="p">},</span>
-            <span class="p">{</span><span class="na">strokeDasharray</span><span class="p">:</span> <span class="dl">"</span><span class="s2">0% 300%</span><span class="dl">"</span><span class="p">}</span>
-        <span class="p">],{</span>
-            <span class="na">duration</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">timeout</span><span class="p">,</span>
-            <span class="na">iterations</span><span class="p">:</span> <span class="mi">1</span>
-        <span class="p">})</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">timer</span><span class="p">.</span><span class="nx">finished</span><span class="p">.</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">remove</span><span class="p">())</span>
-        
-        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">animation</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">this</span><span class="p">.</span><span class="nx">animate</span><span class="p">([</span>
-                <span class="p">{</span> <span class="na">opacity</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="na">easing</span><span class="p">:</span> <span class="dl">'</span><span class="s1">ease-out</span><span class="dl">'</span><span class="p">,</span> <span class="na">marginBottom</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">offsetHeight</span> <span class="o">*</span> <span class="o">-</span><span class="mi">1</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">px</span><span class="dl">"</span><span class="p">},</span>
-                <span class="p">{</span> <span class="na">opaicty</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="na">marginBottom</span><span class="p">:</span> <span class="dl">"</span><span class="s2">0px</span><span class="dl">"</span><span class="p">}</span>
-            <span class="p">],</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">({</span>
-                <span class="na">duration</span><span class="p">:</span> <span class="mi">150</span><span class="p">,</span>
-                <span class="na">iterations</span><span class="p">:</span> <span class="mi">1</span>
-            <span class="p">},</span> <span class="k">this</span><span class="p">.</span><span class="nx">animation</span><span class="p">))</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-    
-    <span class="nx">remove</span> <span class="p">(...</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">animation</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">animate</span><span class="p">([</span>
-                <span class="p">{</span> <span class="na">opaicty</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="na">marginBottom</span><span class="p">:</span> <span class="dl">"</span><span class="s2">0px</span><span class="dl">"</span><span class="p">,</span> <span class="na">easing</span><span class="p">:</span> <span class="dl">'</span><span class="s1">ease-in</span><span class="dl">'</span><span class="p">},</span>
-                <span class="p">{</span> <span class="na">opacity</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="na">marginBottom</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">offsetHeight</span> <span class="o">*</span> <span class="o">-</span><span class="mi">1</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">px</span><span class="dl">"</span><span class="p">}</span>
-            <span class="p">],</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">({</span>
-                <span class="na">duration</span><span class="p">:</span> <span class="mi">150</span><span class="p">,</span>
-                <span class="na">iterations</span><span class="p">:</span> <span class="mi">1</span>
-            <span class="p">},</span> <span class="k">this</span><span class="p">.</span><span class="nx">animation</span><span class="p">)).</span><span class="nx">finished</span><span class="p">.</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-                <span class="k">super</span><span class="p">.</span><span class="nx">remove</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="p">...</span><span class="nx">args</span><span class="p">)</span>
-            <span class="p">})</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="k">super</span><span class="p">.</span><span class="nx">remove</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="p">...</span><span class="nx">args</span><span class="p">)</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-    
-    <span class="nx">clearTimeout</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">timer</span><span class="p">.</span><span class="nx">pause</span><span class="p">()</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">timer</span><span class="p">.</span><span class="nx">currentTime</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="p">}</span>
-    
-    <span class="nx">restartTimeout</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">timer</span><span class="p">.</span><span class="nx">play</span><span class="p">()</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="nb">window</span><span class="p">.</span><span class="nx">customElements</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="dl">'</span><span class="s1">komp-notification</span><span class="dl">'</span><span class="p">,</span> <span class="nx">Notification</span><span class="p">);</span></code></pre></div>
+<span class="nb">window</span><span class="p">.</span><span class="nx">customElements</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="dl">'</span><span class="s1">komp-notification-center</span><span class="dl">'</span><span class="p">,</span> <span class="nx">NotificationCenter</span><span class="p">);</span></code></pre></div>
         </div>
     </div>
 </div>
     </div>
     <div class="pad text-right md:text-lg flex justify-content-end divide-h align-center border-gray-30">
         <div class="pad-h">
-            &copy; 2024
+            &copy; 2025
             <a href="https://github.com/bemky/" class="reset">Ben Ehmke</a>
         </div>
         <a href="https://github.com/bemky/komps" class="reset pad-h inline-flex align-center gap-1/2x">

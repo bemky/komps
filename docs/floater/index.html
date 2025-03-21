@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no">
-    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
     <!-- Use the title from a page's frontmatter if it has one -->
     <title>Komps</title>
-    <link href="/assets/site-7e5997b47b485e9d2a83bdd41d72eadee443458d44657f7944c3ef720f0ffdb0.css" rel="stylesheet" />
-    <script src="/assets/site-e9712547542067c3972cb36cbbf19eaeb5af16b9287e53923a2b22ef9f6bb327.js"></script>
+    <link href="/assets/site-22cf15a669101651d19ad04c4fce6e6d1fe3ae366248e3c72997637d43d5cfd5.css" rel="stylesheet" />
+    <script src="/assets/site-d3a3a773475509c97afdc6e841118543fbd1a36726532e2d7f3d24359349b85f.js"></script>
 </head>
 <body>
     <div class="side-nav">
@@ -34,9 +34,6 @@
         <a href="/content-area" class="">
             ContentArea
         </a>
-        <a href="/data-table" class="">
-            DataTable
-        </a>
         <a href="/dropdown" class="">
             Dropdown
         </a>
@@ -57,6 +54,9 @@
         </a>
         <a href="/spreadsheet" class="">
             Spreadsheet
+        </a>
+        <a href="/table" class="">
+            Table
         </a>
         <a href="/tooltip" class="">
             Tooltip
@@ -81,9 +81,6 @@
         <a href="/content-area" class="">
             ContentArea
         </a>
-        <a href="/data-table" class="">
-            DataTable
-        </a>
         <a href="/dropdown" class="">
             Dropdown
         </a>
@@ -104,6 +101,9 @@
         </a>
         <a href="/spreadsheet" class="">
             Spreadsheet
+        </a>
+        <a href="/table" class="">
+            Table
         </a>
         <a href="/tooltip" class="">
             Tooltip
@@ -406,7 +406,7 @@
                                             
                                     </td>
                                     <td>
-                                            fase
+                                            false
                                     </td>
                             </tr>
                             <tr>
@@ -425,6 +425,24 @@
                                     </td>
                                     <td>
                                             0
+                                    </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <code>onHide</code>
+                                </td>
+                                    <td>
+                                            Function
+                                    </td>
+                                    <td>
+                                            <p>called after hidden</p>
+
+                                    </td>
+                                    <td>
+                                            
+                                    </td>
+                                    <td>
+                                            
                                     </td>
                             </tr>
                     </table>
@@ -543,11 +561,6 @@
             <h2>Transition Animation</h2>
                 <p>The floater will follow the transition effects set by CSS, and adds classes <code>-out</code>, <code>-out-start</code>, <code>-in</code> and <code>-in-start</code> when hiding and showing.</p>
 <p>Additionally, the floater adds classes for placement <code>-left</code>, <code>-right</code>, <code>-top</code>, <code>-bottom</code></p>
-<p>// TODO convert to Popover and use <a href="https://developer.mozilla.org/en-US/docs/Web/API/Popover_API">Popover API</a>
-// TODO convert to use <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_anchor_positioning">CSS anchor positioning</a>
-Example Transition Effect</p>
-<div class="highlight"><pre class=" scss"><code><span class="nt">TODO</span>
-</code></pre></div>
 
         </div>
     
@@ -581,15 +594,32 @@ Example Transition Effect</p>
         <span class="na">autoUpdate</span><span class="p">:</span> <span class="p">{},</span>
         <span class="na">removeOnBlur</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
         <span class="na">container</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-        <span class="na">timeout</span><span class="p">:</span> <span class="mi">0</span>
+        <span class="na">timeout</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="na">onHide</span><span class="p">:</span> <span class="kc">null</span>
     <span class="p">}</span>
     
     <span class="kd">static</span> <span class="nx">bindMethods</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">show</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">hide</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">checkFocus</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">checkEscape</span><span class="dl">'</span><span class="p">]</span>
     
-    <span class="nx">instantiate</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="k">super</span><span class="p">.</span><span class="nx">instantiate</span><span class="p">()</span>
+    <span class="nx">initialize</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">super</span><span class="p">.</span><span class="nx">initialize</span><span class="p">()</span>
         <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="k">this</span><span class="p">.</span><span class="nx">anchor</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">this</span><span class="p">.</span><span class="nx">anchor</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getRootNode</span><span class="p">().</span><span class="nx">querySelector</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">anchor</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">anchor</span> <span class="k">instanceof</span> <span class="nx">Element</span><span class="p">))</span> <span class="p">{</span>
+            <span class="kd">const</span> <span class="nx">coords</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">anchor</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">anchor</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="nx">getBoundingClientRect</span><span class="p">()</span> <span class="p">{</span>
+                    <span class="k">return</span> <span class="p">{</span>
+                        <span class="na">width</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                        <span class="na">height</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                        <span class="na">x</span><span class="p">:</span> <span class="nx">coords</span><span class="p">.</span><span class="nx">x</span><span class="p">,</span>
+                        <span class="na">y</span><span class="p">:</span> <span class="nx">coords</span><span class="p">.</span><span class="nx">y</span><span class="p">,</span>
+                        <span class="na">left</span><span class="p">:</span> <span class="nx">coords</span><span class="p">.</span><span class="nx">x</span><span class="p">,</span>
+                        <span class="na">right</span><span class="p">:</span> <span class="nx">coords</span><span class="p">.</span><span class="nx">x</span><span class="p">,</span>
+                        <span class="na">top</span><span class="p">:</span> <span class="nx">coords</span><span class="p">.</span><span class="nx">y</span><span class="p">,</span>
+                        <span class="na">bottom</span><span class="p">:</span> <span class="nx">coords</span><span class="p">.</span><span class="nx">y</span>
+                    <span class="p">};</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
 
@@ -615,6 +645,12 @@ Example Transition Effect</p>
                     <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">offset</span><span class="p">)</span> <span class="p">{</span>
                         <span class="k">this</span><span class="p">.</span><span class="nx">offset</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">arrow</span> <span class="o">===</span> <span class="kc">true</span> <span class="p">?</span> <span class="mi">10</span> <span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">arrow</span>
                     <span class="p">}</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="nx">css</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="dl">'</span><span class="s1">box-shadow</span><span class="dl">'</span><span class="p">)</span> <span class="o">!=</span> <span class="dl">"</span><span class="s2">none</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="k">this</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">filter</span> <span class="o">=</span> <span class="nx">css</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="dl">'</span><span class="s1">box-shadow</span><span class="dl">'</span><span class="p">).</span><span class="nx">split</span><span class="p">(</span><span class="sr">/</span><span class="se">(?&lt;</span><span class="sr">!</span><span class="se">\([^\)]</span><span class="sr">*</span><span class="se">)</span><span class="sr">,/</span><span class="p">).</span><span class="nx">map</span><span class="p">(</span><span class="nx">shadow</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                            <span class="k">return</span> <span class="s2">`drop-shadow(</span><span class="p">${</span><span class="nx">shadow</span><span class="p">.</span><span class="nx">trim</span><span class="p">().</span><span class="nx">split</span><span class="p">(</span><span class="sr">/</span><span class="se">(?&lt;</span><span class="sr">!</span><span class="se">\([^\)]</span><span class="sr">*</span><span class="se">)\s</span><span class="sr">/</span><span class="p">).</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">)}</span><span class="s2">)`</span>
+                        <span class="p">}).</span><span class="nx">join</span><span class="p">(</span><span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">)</span>
+                        <span class="k">this</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">boxShadow</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">none</span><span class="dl">'</span>
+                    <span class="p">}</span>
                 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
                     <span class="nx">middleware</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">middlewares</span><span class="p">[</span><span class="nx">key</span><span class="p">](</span><span class="k">this</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">===</span> <span class="kc">true</span> <span class="p">?</span> <span class="p">{}</span> <span class="p">:</span> <span class="k">this</span><span class="p">[</span><span class="nx">key</span><span class="p">]))</span>
                 <span class="p">}</span>
@@ -636,8 +672,14 @@ Example Transition Effect</p>
             
                     <span class="k">if</span> <span class="p">(</span><span class="nx">middlewareData</span><span class="p">.</span><span class="nx">arrow</span><span class="p">)</span> <span class="p">{</span>
                         <span class="kd">const</span> <span class="p">{</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">}</span> <span class="o">=</span> <span class="nx">middlewareData</span><span class="p">.</span><span class="nx">arrow</span><span class="p">;</span>
-                        <span class="k">if</span> <span class="p">(</span><span class="nx">x</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">setProperty</span><span class="p">(</span><span class="dl">'</span><span class="s1">--arrow-left</span><span class="dl">'</span><span class="p">,</span> <span class="s2">`</span><span class="p">${</span><span class="nx">x</span><span class="p">}</span><span class="s2">px`</span><span class="p">)</span> <span class="p">}</span>
-                        <span class="k">if</span> <span class="p">(</span><span class="nx">y</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">setProperty</span><span class="p">(</span><span class="dl">'</span><span class="s1">--arrow-top</span><span class="dl">'</span><span class="p">,</span> <span class="s2">`</span><span class="p">${</span><span class="nx">y</span><span class="p">}</span><span class="s2">px`</span><span class="p">)</span> <span class="p">}</span>
+                        <span class="k">if</span> <span class="p">(</span><span class="nx">x</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+                            <span class="k">this</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">setProperty</span><span class="p">(</span><span class="dl">'</span><span class="s1">--arrow-left</span><span class="dl">'</span><span class="p">,</span> <span class="s2">`</span><span class="p">${</span><span class="nx">x</span><span class="p">}</span><span class="s2">px`</span><span class="p">)</span>
+                            <span class="k">this</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">komp-floater-arrow-locator</span><span class="dl">'</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">setProperty</span><span class="p">(</span><span class="dl">'</span><span class="s1">left</span><span class="dl">'</span><span class="p">,</span> <span class="s2">`</span><span class="p">${</span><span class="nx">x</span><span class="p">}</span><span class="s2">px`</span><span class="p">)</span>
+                        <span class="p">}</span>
+                        <span class="k">if</span> <span class="p">(</span><span class="nx">y</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+                            <span class="k">this</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">setProperty</span><span class="p">(</span><span class="dl">'</span><span class="s1">--arrow-top</span><span class="dl">'</span><span class="p">,</span> <span class="s2">`</span><span class="p">${</span><span class="nx">y</span><span class="p">}</span><span class="s2">px`</span><span class="p">)</span>
+                            <span class="k">this</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">komp-floater-arrow-locator</span><span class="dl">'</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">setProperty</span><span class="p">(</span><span class="dl">'</span><span class="s1">top</span><span class="dl">'</span><span class="p">,</span> <span class="s2">`</span><span class="p">${</span><span class="nx">x</span><span class="p">}</span><span class="s2">px`</span><span class="p">)</span>
+                        <span class="p">}</span>
                     <span class="p">}</span>
                 <span class="p">})</span>
             <span class="p">},</span>
@@ -650,9 +692,9 @@ Example Transition Effect</p>
         <span class="p">},</span> <span class="p">{</span><span class="na">once</span><span class="p">:</span> <span class="kc">true</span><span class="p">})</span>
         
         <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">removeOnBlur</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">this</span><span class="p">.</span><span class="nx">manageEventListenerFor</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">getRootNode</span><span class="p">().</span><span class="nx">body</span><span class="p">,</span> <span class="dl">'</span><span class="s1">focusin</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">checkFocus</span><span class="p">)</span>
-            <span class="k">this</span><span class="p">.</span><span class="nx">manageEventListenerFor</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">getRootNode</span><span class="p">().</span><span class="nx">body</span><span class="p">,</span> <span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">checkFocus</span><span class="p">)</span>
-            <span class="k">this</span><span class="p">.</span><span class="nx">manageEventListenerFor</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">getRootNode</span><span class="p">().</span><span class="nx">body</span><span class="p">,</span> <span class="dl">'</span><span class="s1">keyup</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">checkEscape</span><span class="p">)</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">cleanupEventListenerFor</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">getRootNode</span><span class="p">().</span><span class="nx">body</span><span class="p">,</span> <span class="dl">'</span><span class="s1">focusin</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">checkFocus</span><span class="p">)</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">cleanupEventListenerFor</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">getRootNode</span><span class="p">().</span><span class="nx">body</span><span class="p">,</span> <span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">checkFocus</span><span class="p">)</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">cleanupEventListenerFor</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">getRootNode</span><span class="p">().</span><span class="nx">body</span><span class="p">,</span> <span class="dl">'</span><span class="s1">keyup</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">checkEscape</span><span class="p">)</span>
         <span class="p">}</span>
     <span class="p">}</span>
     
@@ -661,7 +703,7 @@ Example Transition Effect</p>
         <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span> <span class="o">==</span> <span class="k">this</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span> <span class="o">==</span> <span class="k">this</span><span class="p">.</span><span class="nx">anchor</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
         <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">contains</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">))</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
-        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">anchor</span><span class="p">.</span><span class="nx">contains</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">))</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">anchor</span><span class="p">.</span><span class="nx">contains</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="p">.</span><span class="nx">anchor</span><span class="p">.</span><span class="nx">contains</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">))</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">hide</span><span class="p">()</span>
     <span class="p">}</span>
     
@@ -695,7 +737,7 @@ Example Transition Effect</p>
             <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_removing</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">show</span><span class="p">)</span>
         <span class="p">}</span>
         <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="k">this</span><span class="p">.</span><span class="nx">container</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">this</span><span class="p">.</span><span class="nx">container</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">closest</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">container</span><span class="p">)</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">anchor</span><span class="p">.</span><span class="nx">closest</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">container</span><span class="p">)</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">container</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">closest</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">container</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">anchor</span><span class="p">.</span><span class="nx">closest</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="p">.</span><span class="nx">anchor</span><span class="p">.</span><span class="nx">closest</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">container</span><span class="p">))</span>
         <span class="p">}</span>
         <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">container</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">this</span><span class="p">.</span><span class="nx">container</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">parentElement</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">anchor</span><span class="p">.</span><span class="nx">parentElement</span><span class="p">;</span>
@@ -712,15 +754,18 @@ Example Transition Effect</p>
     <span class="nx">hide</span> <span class="p">()</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_hideTimeout</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
         <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_hiding</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">_hideTimeout</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-            <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">parentElement</span><span class="p">)</span> <span class="p">{</span>
-                <span class="k">this</span><span class="p">.</span><span class="nx">_removing</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">remove</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-                    <span class="k">this</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="dl">'</span><span class="s1">hidden</span><span class="dl">'</span><span class="p">)</span>
-                    <span class="k">delete</span> <span class="k">this</span><span class="p">.</span><span class="nx">_hideTimeout</span><span class="p">;</span>
-                    <span class="k">delete</span> <span class="k">this</span><span class="p">.</span><span class="nx">_removing</span><span class="p">;</span>
-                <span class="p">})</span>
-            <span class="p">}</span>
-        <span class="p">},</span> <span class="k">this</span><span class="p">.</span><span class="nx">timeout</span><span class="p">)</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">_hideTimeout</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">hideAfterTimeout</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">),</span> <span class="k">this</span><span class="p">.</span><span class="nx">timeout</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="nx">hideAfterTimeout</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">parentElement</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_removing</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">remove</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="dl">'</span><span class="s1">hidden</span><span class="dl">'</span><span class="p">)</span>
+                <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">onHide</span><span class="p">)</span> <span class="k">this</span><span class="p">.</span><span class="nx">onHide</span><span class="p">()</span>
+                <span class="k">delete</span> <span class="k">this</span><span class="p">.</span><span class="nx">_hideTimeout</span><span class="p">;</span>
+                <span class="k">delete</span> <span class="k">this</span><span class="p">.</span><span class="nx">_removing</span><span class="p">;</span>
+            <span class="p">})</span>
+        <span class="p">}</span>
         <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
     <span class="p">}</span>
     
@@ -780,8 +825,8 @@ Example Transition Effect</p>
             position: absolute;
             left: 0;
             top: 0;
-            width: 1px;
-            height 1px;
+            width: var(--arrow-size, 1px);
+            height: var(--arrow-size, 1px);
         }
     `</span>
 <span class="p">}</span>
@@ -801,7 +846,7 @@ Example Transition Effect</p>
     </div>
     <div class="pad text-right md:text-lg flex justify-content-end divide-h align-center border-gray-30">
         <div class="pad-h">
-            &copy; 2024
+            &copy; 2025
             <a href="https://github.com/bemky/" class="reset">Ben Ehmke</a>
         </div>
         <a href="https://github.com/bemky/komps" class="reset pad-h inline-flex align-center gap-1/2x">

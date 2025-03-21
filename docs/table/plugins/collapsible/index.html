@@ -1,0 +1,444 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
+    <!-- Use the title from a page's frontmatter if it has one -->
+    <title>Komps</title>
+    <link href="/assets/site-22cf15a669101651d19ad04c4fce6e6d1fe3ae366248e3c72997637d43d5cfd5.css" rel="stylesheet" />
+    <script src="/assets/site-d3a3a773475509c97afdc6e841118543fbd1a36726532e2d7f3d24359349b85f.js"></script>
+</head>
+<body>
+    <div class="side-nav">
+        <div class="pad-2x text-center">
+            <a href="/" class="reset">
+                <img class="width-3/4 height-auto inline-block" src="/assets/logo-7b1623d8d9db3b0d0d79dd30b2a5c2a0f0be2b945944f75d18e3be1e67177443.svg" />
+            </a>
+        </div>
+        <div class="uniformNav -vertical -gray flex-fill -active-green">
+    <a href="/" class="">
+        Usage
+    </a>
+    <a href="/element" class="">
+        Base Element
+    </a>
+    <div class="height-0 width-full">
+        <div class="border-green-80 border-opacity-30 border-bottom border-1px width-full"></div>
+    </div>
+        <a href="/auto-grid" class="">
+            AutoGrid
+        </a>
+        <a href="/content-area" class="">
+            ContentArea
+        </a>
+        <a href="/dropdown" class="">
+            Dropdown
+        </a>
+        <a href="/dropzone" class="">
+            Dropzone
+        </a>
+        <a href="/floater" class="">
+            Floater
+        </a>
+        <a href="/input" class="">
+            Input
+        </a>
+        <a href="/modal" class="">
+            Modal
+        </a>
+        <a href="/notification-center" class="">
+            NotificationCenter
+        </a>
+        <a href="/spreadsheet" class="">
+            Spreadsheet
+        </a>
+        <a href="/table" class="active">
+            Table
+        </a>
+            <div class="uniformNav -vertical pad-left-2x text-sm">
+                    <a href="/table/cell" class="">
+                        Cell
+                    </a>
+                    <a href="/table/column" class="">
+                        Column
+                    </a>
+                    <a href="/table/group" class="">
+                        Group
+                    </a>
+                    <a href="/table/plugins/collapsible" class="active">
+                        Collapsible
+                    </a>
+                    <a href="/table/plugins/reorderable" class="">
+                        Reorderable
+                    </a>
+                    <a href="/table/plugins/resizable" class="">
+                        Resizable
+                    </a>
+            </div>
+        <a href="/tooltip" class="">
+            Tooltip
+        </a>
+</div>
+    </div>
+    <div class="hide sm:show sticky top-0 bg-white">
+        <div class="mobile-nav flex flex-col align-center">
+            <div class="uniformNav -vertical -gray flex-fill -active-green">
+    <a href="/" class="">
+        Usage
+    </a>
+    <a href="/element" class="">
+        Base Element
+    </a>
+    <div class="height-0 width-full">
+        <div class="border-green-80 border-opacity-30 border-bottom border-1px width-full"></div>
+    </div>
+        <a href="/auto-grid" class="">
+            AutoGrid
+        </a>
+        <a href="/content-area" class="">
+            ContentArea
+        </a>
+        <a href="/dropdown" class="">
+            Dropdown
+        </a>
+        <a href="/dropzone" class="">
+            Dropzone
+        </a>
+        <a href="/floater" class="">
+            Floater
+        </a>
+        <a href="/input" class="">
+            Input
+        </a>
+        <a href="/modal" class="">
+            Modal
+        </a>
+        <a href="/notification-center" class="">
+            NotificationCenter
+        </a>
+        <a href="/spreadsheet" class="">
+            Spreadsheet
+        </a>
+        <a href="/table" class="active">
+            Table
+        </a>
+            <div class="uniformNav -vertical pad-left-2x text-sm">
+                    <a href="/table/cell" class="">
+                        Cell
+                    </a>
+                    <a href="/table/column" class="">
+                        Column
+                    </a>
+                    <a href="/table/group" class="">
+                        Group
+                    </a>
+                    <a href="/table/plugins/collapsible" class="active">
+                        Collapsible
+                    </a>
+                    <a href="/table/plugins/reorderable" class="">
+                        Reorderable
+                    </a>
+                    <a href="/table/plugins/resizable" class="">
+                        Resizable
+                    </a>
+            </div>
+        <a href="/tooltip" class="">
+            Tooltip
+        </a>
+</div>
+        </div>
+        <div class="flex align-stretch relative z-3">
+            <button type="button" class="reset width-50-px flex justify-content-center align-center" onClick="document.body.classList.toggle('active-mobile-nav')">
+                <img class="active:hide" src="/assets/menu-1412be30d711c8336d0757e5557b785242945a44db28cde24ba2b6f2afe30de4.svg" />
+                <img class="hide active:show" src="/assets/x-947e98617952bbdb89b1b18633e1a4f7ded1e3faa29fbd20cdd08ab0dc196dce.svg" />
+            </button>
+            <a href="/" class="reset flex-none pad-v-2x">
+                <img width="200" src="/assets/logo-7b1623d8d9db3b0d0d79dd30b2a5c2a0f0be2b945944f75d18e3be1e67177443.svg" />
+            </a>
+        </div>
+    </div>
+    <div class="main-content overflow-hidden">
+        <div class="section space-v-3x">
+    
+    <div class="">
+        <h1 class="text-2x">
+            Table::Plugins::Collapsible
+        </h1>
+    
+        <div class="text-light text-xl">
+            <p>A plugin to make <a href="/table">Table's</a> rows collapsible</p>
+
+        </div>
+    </div>
+    
+    <div class="">
+        <h2>Example</h2>
+        <script>
+            function resizeIframe(obj) {
+                obj.style.minHeight = obj.contentWindow.document.documentElement.scrollHeight + 'px';
+            }
+        </script>
+        <iframe class="overflow-hidden rounded-lg" width="100%" height="10px" src="/table/plugins/collapsible/example/index.html" frameborder="0" scrolling="no" onload="setTimeout(function () {resizeIframe(this)}.bind(this), 50)"></iframe>
+    </div>
+    
+    <div class="">
+        <h2>Syntax</h2>
+        <div class="highlight"><pre class=" javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">collapsible</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">komps/plugins</span><span class="dl">'</span>
+<span class="nx">Table</span><span class="p">.</span><span class="nx">include</span><span class="p">(</span><span class="nx">collapsible</span><span class="p">)</span>
+<span class="k">new</span> <span class="nx">Table</span><span class="p">({</span>
+    <span class="na">collapseTo</span><span class="p">:</span> <span class="dl">"</span><span class="s2">50px</span><span class="dl">"</span>
+    <span class="na">data</span><span class="p">:</span> <span class="p">[...],</span>
+    <span class="na">columns</span><span class="p">:</span> <span class="p">[...]</span>
+<span class="p">})</span>
+</code></pre></div>
+
+    </div>
+    
+        <div class="">
+            <h2>Options</h2>
+                
+                <div class="overflow-auto">
+                    <table class="uniformTable border-gray-20 overflow-auto max-width-full">
+                        <tr>
+                            <th></th>
+                                <th>types</th>
+                                <th>description</th>
+                                <th>default</th>
+                        </tr>
+                            <tr>
+                                <td>
+                                    <code>collapseTo</code>
+                                </td>
+                                    <td>
+                                            String
+                                    </td>
+                                    <td>
+                                            <p>Valid CSS Size for height</p>
+
+                                    </td>
+                                    <td>
+                                            
+                                    </td>
+                            </tr>
+                    </table>
+                </div>
+        </div>
+    
+    <button class="js-toggle-source reset text-sm text-bold text-gray-30 hover:text-blue" rel="#source-for-table/plugins/collapsible">
+        SHOW SOURCE
+    </button>
+    <div class="source hide" id="source-for-table/plugins/collapsible">
+        <div class="border border-blue bg-blue rounded-xl overflow-hidden">
+            <div class="text-white text-sm text-bold pad-h pad-v-1/4x">
+                SOURCE CODE
+            </div>
+            <div class="highlight"><pre class=" javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">listenerElement</span><span class="p">,</span> <span class="nx">createElement</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">dolla</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">isFunction</span><span class="p">,</span> <span class="nx">uniq</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../../../support.js</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">Group</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../group</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">Element</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../../element</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nx">TableToggle</span> <span class="kd">extends</span> <span class="nx">Element</span> <span class="p">{</span>
+    <span class="kd">static</span> <span class="nx">tagName</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">komp-table-toggle</span><span class="dl">'</span>
+    <span class="kd">static</span> <span class="nx">assignableAttributes</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">column</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">cellIndex</span><span class="dl">'</span><span class="p">]</span>
+    <span class="nx">cellIndexChanged</span> <span class="p">(</span><span class="nx">was</span><span class="p">,</span> <span class="nx">now</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">gridColumn</span> <span class="o">=</span> <span class="nx">now</span>
+    <span class="p">}</span>
+    <span class="nx">connected</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">column</span><span class="p">.</span><span class="nx">toggles</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="nx">disconected</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">column</span><span class="p">.</span><span class="nx">toggles</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">customElements</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="nx">TableToggle</span><span class="p">.</span><span class="nx">tagName</span><span class="p">,</span> <span class="nx">TableToggle</span><span class="p">);</span>
+
+<span class="kd">function</span> <span class="p">(</span><span class="nx">proto</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">assignableAttributes</span><span class="p">.</span><span class="nx">collapseTo</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">auto</span><span class="dl">'</span>
+
+    <span class="kd">const</span> <span class="nx">_initialize</span> <span class="o">=</span> <span class="nx">proto</span><span class="p">.</span><span class="nx">initialize</span><span class="p">;</span>
+    <span class="nx">proto</span><span class="p">.</span><span class="nx">initialize</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(...</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">collapseObserver</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ResizeObserver</span><span class="p">(</span><span class="nx">entries</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">entries</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">entry</span> <span class="o">=&gt;</span> <span class="nx">entry</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">resize</span><span class="p">())</span>
+        <span class="p">})</span>
+        <span class="k">return</span> <span class="nx">_initialize</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="p">...</span><span class="nx">args</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="nx">proto</span><span class="p">.</span><span class="nx">collapseToChanged</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">was</span><span class="p">,</span> <span class="nx">now</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">setProperty</span><span class="p">(</span><span class="dl">'</span><span class="s1">--collapseTo</span><span class="dl">'</span><span class="p">,</span> <span class="nx">now</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="kd">const</span> <span class="nx">_remove</span> <span class="o">=</span> <span class="nx">proto</span><span class="p">.</span><span class="nx">remove</span>
+    <span class="nx">proto</span><span class="p">.</span><span class="nx">remove</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(...</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">proto</span><span class="p">.</span><span class="nx">collapseObserver</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">()</span>
+        <span class="k">return</span> <span class="nx">_remove</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="p">...</span><span class="nx">args</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="kd">const</span> <span class="nx">_rowInitialize</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">Row</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">initialize</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">Row</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">initialize</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(...</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">_rowInitialize</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="p">...</span><span class="nx">args</span><span class="p">)</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">expandedTarget</span> <span class="o">=</span> <span class="kc">null</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">expandedTargets</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Set</span><span class="p">()</span>
+    <span class="p">}</span>
+    
+    <span class="kd">const</span> <span class="nx">_rowConnected</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">Row</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">connected</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">Row</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">connected</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(...</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">_rowConnected</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="p">...</span><span class="nx">args</span><span class="p">)</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">table</span><span class="p">.</span><span class="nx">collapseObserver</span><span class="p">.</span><span class="nx">observe</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="kd">const</span> <span class="nx">_rowDisconnected</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">Row</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">disconected</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">Row</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">disconected</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(...</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">_rowDisconnected</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="p">...</span><span class="nx">args</span><span class="p">)</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">table</span><span class="p">.</span><span class="nx">collapseObserver</span><span class="p">.</span><span class="nx">unobserve</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    
+    <span class="k">this</span><span class="p">.</span><span class="nx">Row</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">resetExpand</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">removeProperty</span><span class="p">(</span><span class="dl">'</span><span class="s1">--expandTo</span><span class="dl">'</span><span class="p">)</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">expandedTarget</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">expandedTargets</span><span class="p">.</span><span class="nx">values</span><span class="p">()).</span><span class="nx">sort</span><span class="p">((</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">b</span><span class="p">.</span><span class="nx">scrollHeight</span> <span class="o">-</span> <span class="nx">a</span><span class="p">.</span><span class="nx">scrollHeight</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">expandedTarget</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">expandedTarget</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">setProperty</span><span class="p">(</span><span class="dl">'</span><span class="s1">max-height</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">unset</span><span class="dl">'</span><span class="p">)</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">setProperty</span><span class="p">(</span><span class="dl">'</span><span class="s1">--expandTo</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">expandedTarget</span><span class="p">.</span><span class="nx">scrollHeight</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">px</span><span class="dl">"</span><span class="p">)</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">expandedTarget</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">removeProperty</span><span class="p">(</span><span class="dl">'</span><span class="s1">max-height</span><span class="dl">'</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="k">this</span><span class="p">.</span><span class="nx">Row</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">resize</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">wasCollapsed</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">hasAttribute</span><span class="p">(</span><span class="dl">'</span><span class="s1">collapsed</span><span class="dl">'</span><span class="p">)</span>
+        <span class="kd">const</span> <span class="nx">nowCollapsed</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">toggleAttribute</span><span class="p">(</span><span class="dl">'</span><span class="s1">collapsed</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">scrollHeight</span> <span class="o">&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">clientHeight</span><span class="p">)</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">komp-table-toggle</span><span class="dl">'</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">el</span> <span class="o">=&gt;</span> <span class="nx">el</span><span class="p">.</span><span class="nx">remove</span><span class="p">())</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">[collapse-toggle]</span><span class="dl">'</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">el</span> <span class="o">=&gt;</span> <span class="nx">el</span><span class="p">.</span><span class="nx">removeAttribute</span><span class="p">(</span><span class="dl">'</span><span class="s1">collapse-toggle</span><span class="dl">'</span><span class="p">))</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">nowCollapsed</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kd">const</span> <span class="nx">targets</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">cells</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="nb">Array</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="nx">Group</span><span class="p">.</span><span class="nx">tagName</span><span class="p">)))</span>
+            <span class="kd">const</span> <span class="nx">overflowingTargets</span> <span class="o">=</span> <span class="nx">targets</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">c</span> <span class="o">=&gt;</span> <span class="nx">c</span><span class="p">.</span><span class="nx">scrollHeight</span> <span class="o">&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">clientHeight</span><span class="p">)</span>
+            <span class="nx">overflowingTargets</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">target</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">renderTargetToggles</span><span class="p">(</span><span class="nx">target</span><span class="p">)</span>
+            <span class="p">})</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">expandedTarget</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">renderTargetToggles</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">expandedTarget</span><span class="p">,</span> <span class="kc">false</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="k">this</span><span class="p">.</span><span class="nx">Row</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">renderTargetToggles</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">expanded</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">target</span> <span class="k">instanceof</span> <span class="nx">Group</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">uniq</span><span class="p">(</span><span class="nx">target</span><span class="p">.</span><span class="nx">cells</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">c</span> <span class="o">=&gt;</span> <span class="nx">c</span><span class="p">.</span><span class="nx">column</span><span class="p">)).</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">column</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">renderToggle</span><span class="p">(</span><span class="nx">column</span><span class="p">,</span> <span class="nx">target</span><span class="p">,</span> <span class="nx">expanded</span><span class="p">)</span>
+            <span class="p">})</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">renderToggle</span><span class="p">(</span><span class="nx">target</span><span class="p">.</span><span class="nx">column</span><span class="p">,</span> <span class="nx">target</span><span class="p">,</span> <span class="nx">expanded</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="k">this</span><span class="p">.</span><span class="nx">Row</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">renderToggle</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">column</span><span class="p">,</span> <span class="nx">target</span><span class="p">,</span> <span class="nx">expand</span><span class="o">=</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">target</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">'</span><span class="s1">collapse-toggle</span><span class="dl">'</span><span class="p">,</span> <span class="nx">expand</span> <span class="p">?</span> <span class="dl">"</span><span class="s2">expand</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">collapse</span><span class="dl">"</span><span class="p">)</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">prepend</span><span class="p">(</span><span class="k">new</span> <span class="nx">TableToggle</span><span class="p">({</span>
+            <span class="na">class</span><span class="p">:</span> <span class="nx">target</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">contains</span><span class="p">(</span><span class="dl">'</span><span class="s1">frozen</span><span class="dl">'</span><span class="p">)</span> <span class="p">?</span> <span class="dl">'</span><span class="s1"> frozen</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">''</span><span class="p">,</span>
+            <span class="na">column</span><span class="p">:</span> <span class="nx">column</span><span class="p">,</span>
+            <span class="na">cellIndex</span><span class="p">:</span> <span class="nx">column</span><span class="p">.</span><span class="nx">index</span><span class="p">,</span>
+            <span class="na">content</span><span class="p">:</span> <span class="nx">listenerElement</span><span class="p">({</span>
+                <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">button</span><span class="dl">'</span><span class="p">,</span>
+                <span class="na">content</span><span class="p">:</span> <span class="s2">`&lt;svg xmlns="http://www.w3.org/2000/svg" width="14" height="8" viewBox="0 0 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="</span><span class="p">${</span><span class="nx">expand</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">expand</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">collapse</span><span class="dl">'</span><span class="p">}</span><span class="s2">"&gt;&lt;polyline points="1 1 7 7 13 1"&gt;&lt;/polyline&gt;&lt;/svg&gt;`</span>
+            <span class="p">},</span> <span class="nx">e</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">expand</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">this</span><span class="p">.</span><span class="nx">expandedTargets</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">target</span><span class="p">)</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="k">this</span><span class="p">.</span><span class="nx">expandedTargets</span><span class="p">.</span><span class="nx">clear</span><span class="p">()</span>
+                <span class="p">}</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">resetExpand</span><span class="p">()</span>
+            <span class="p">})</span>
+        <span class="p">}))</span>
+    <span class="p">}</span>
+    
+    <span class="kd">const</span> <span class="nx">_indexChanged</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">columnTypeRegistry</span><span class="p">.</span><span class="k">default</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">indexChanged</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">columnTypeRegistry</span><span class="p">.</span><span class="k">default</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">indexChanged</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">was</span><span class="p">,</span> <span class="nx">now</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">_indexChanged</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">was</span><span class="p">,</span> <span class="nx">now</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">toggles</span><span class="p">)</span> <span class="k">this</span><span class="p">.</span><span class="nx">toggles</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">t</span> <span class="o">=&gt;</span> <span class="nx">t</span><span class="p">.</span><span class="nx">cellIndex</span> <span class="o">=</span> <span class="nx">now</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">style</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">style</span> <span class="o">=</span> <span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">style</span><span class="p">]</span>
+    <span class="p">}</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">push</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="s2">`
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2"> {
+            --collapseTo: auto;
+        }
+        komp-table-row,
+        komp-table-toggle,
+        komp-table-group,
+        komp-table-row &gt; komp-table-cell,
+        komp-table-row &gt; komp-spreadsheet-cell {
+            max-height: var(--expandTo, var(--collapseTo));
+        }
+        komp-table-group[collapse-toggle],
+        komp-table-cell[collapse-toggle],
+        komp-spreadsheet-cell[collapse-toggle] {
+            padding-bottom: 16px;
+        }
+        komp-table-row {
+            overflow: clip;
+        }
+        komp-table-toggle {
+            display: flex;
+            flex-direction: column;
+            justify-content: end;
+            text-align: center;
+            z-index: 2;
+            grid-row: 1 / -1;
+            pointer-events: none;
+        }
+        komp-table-toggle:hover {
+            color: var(--select-color);
+        }
+        komp-table-toggle:hover svg {
+            opacity: 1;
+        }
+        komp-table-toggle.frozen { z-index: 101}
+        komp-table-toggle button {
+            outline: none;
+            appearance: none;
+            border: none;
+            padding: 0;
+            margin: 0;
+            text-decoration: none;
+            color: inherit;
+            pointer-events: auto;
+            
+            background: linear-gradient(rgba(255,255,255, 0), rgba(255,255,255, 0.7) 30%, white);
+            cursor: pointer;
+            font-size: 0.8em;
+            
+            padding: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        komp-table-toggle svg {
+            display: inline-block;
+            opacity: 0.5;
+        }
+        komp-table-toggle svg.collapse {
+            transform: rotate(180deg)
+        }
+    `</span><span class="p">)</span>
+<span class="p">}</span></code></pre></div>
+        </div>
+    </div>
+</div>
+    </div>
+    <div class="pad text-right md:text-lg flex justify-content-end divide-h align-center border-gray-30">
+        <div class="pad-h">
+            &copy; 2025
+            <a href="https://github.com/bemky/" class="reset">Ben Ehmke</a>
+        </div>
+        <a href="https://github.com/bemky/komps" class="reset pad-h inline-flex align-center gap-1/2x">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                Komps on GitHub
+        </a>
+    </div>
+</body>
+</html>

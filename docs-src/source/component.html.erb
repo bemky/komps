@@ -36,7 +36,7 @@
     </div>
     <% end %>
     
-    <% component.except(:name, :extends, :file_name, :params, :source, :example_url, "Description", "Example", "Syntax").each do |header, content| %>
+    <% component.except(:name, :extends, :file_name, :params, :source, :example_url, "Description", "Example", "Syntax", "TODO").each do |header, content| %>
         <div class="">
             <h2><%= header %></h2>
             <% if content[:body].include?("<") %>

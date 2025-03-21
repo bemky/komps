@@ -5,13 +5,16 @@ module SourceHelpers
   end
     
   def files
-    Dir.glob("*.js", base: base)
+    Dir.glob("**/*.js", base: base)
   end
   
   def component_names
     files.map do |file|
-      file.gsub(/\.js$/, '')
-    end.reject{|x| x == "support"}
+      body = File.read(File.join(base, file))
+      if body.include?("Description\n----")
+        file.gsub(/\.js$/, '')
+      end
+    end.compact
   end
   
   def component(name)
@@ -31,10 +34,10 @@ module SourceHelpers
       file_name: file_name,
       name: file_name.gsub('-', '_').camelize
     }
-    
-    if extended_class = source.match(/class\s+\w+\s+extends\s+(\w+)/).try(:[], 1)
+
+    if extended_class = source.match(/export\sdefault\sclass\s+\w+\s+extends\s+(\w+)/).try(:[], 1)
       if extended_class_path = source.match(/import[\s\{]+#{extended_class}[\s\}]+from\s+[\'\"]([\w\.\/\-]+)/).try(:[], 1)
-        component_details[:extends] = extended_class_path.match(/(\w+).js$/).try(:[], 1)
+        component_details[:extends] = extended_class_path.match(/[\.\.\/]+([\w\/]+).js$/).try(:[], 1)
         extended_component = component(component_details[:extends])
       else
         component_details[:extends] = extended_class

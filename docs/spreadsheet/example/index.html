@@ -5,54 +5,98 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport"
     content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
     <!-- Use the title from a page's frontmatter if it has one -->
     <title>Komps</title>
-    <link href="/assets/site-7e5997b47b485e9d2a83bdd41d72eadee443458d44657f7944c3ef720f0ffdb0.css" rel="stylesheet" />
-    <script src="/assets/site-e9712547542067c3972cb36cbbf19eaeb5af16b9287e53923a2b22ef9f6bb327.js"></script>
+    <link href="/assets/site-22cf15a669101651d19ad04c4fce6e6d1fe3ae366248e3c72997637d43d5cfd5.css" rel="stylesheet" />
+    <script src="/assets/site-d3a3a773475509c97afdc6e841118543fbd1a36726532e2d7f3d24359349b85f.js"></script>
 </head>
 <body class="bg-purple-10 min-height-100-vh bg-graph">
-    <div class="pad-2x min-height-500-px"></div>
+    <div class="flex pad-2x width-100-vw height-500-px overflow-hidden">
+    <div class="spreadsheet-container width-full"></div>
+</div>
 <script type="application/json" src="/texas-rangers-roster.json" id="texas-rangers-roster"></script>
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        
         fetch("/texas-rangers-roster.json").then(response => {
             response.json().then(data => {
-                document.querySelector('div').append(new Spreadsheet({
-                    defaultRowSize: 'calc(1lh + 1em)',
-                    class: 'height-90-vh',
+                document.querySelector('.spreadsheet-container').append(new Spreadsheet({
+                    class: 'height-full width-full',
                     data: data,
-                    columns: {
-                        "Name": {
+                    columns: [{
+                            attribute: 'Name',
+                            resize: false,
+                            reorder: false,
                             frozen: true,
-                            render: r => {
-                                const el = document.createElement("a")
-                                el.append(r.Name);
-                                el.setAttribute('href', r.URL)
-                                return el
-                            }
-                        },
-                        "TEAM": {},
-                        "POS": {},
-                        "GP": {},
-                        "RBI": {},
-                        "AVG": {
-                            class: 'text-right',
-                            header: {
-                                class: 'text-right'
-                            }
-                        },
-                        "OPS": {},
-                        "WAR": {},
-                        "TB": {},
-                        "BB": {},
-                        "SO": {},
-                        "SB": {},
-                        "OBP": {},
-                        "SLG": {}
-                    }
+                            type: 'readonly'
+                        }, {
+                            attribute: 'TEAM',
+                            frozen: true
+                        }, {
+                            attribute: 'Team MVP',
+                            type: 'radio',
+                            frozen: true
+                        }, {
+                            attribute: 'CAPTAIN',
+                            type: 'checkbox'
+                        }, {
+                            attribute: 'POS',
+                            type: 'select',
+                            options: [
+                                'C', '1B', '2B', '3B', 'SS', 'LF', 'RF', 'CF', 'P',
+                            ]
+                        }, {
+                            header: "Bat Weight",
+                            attribute: "weight",
+                            splitInto: "bats"
+                        }, {
+                            header: "Bat Type",
+                            attribute: "type",
+                            splitInto:"bats"
+                        },{
+                            attribute: "RBI",
+                            type: 'number',
+                        },{
+                            attribute: "AVG",
+                            type: 'number',
+                        },{
+                            attribute: "DOB",
+                            type: 'date',
+                        }, {
+                            header: "Glove POS",
+                            attribute: "position",
+                            splitInto: "gloves"
+                        }, {
+                            header: "Glove Brand",
+                            attribute: "brand",
+                            splitInto: "gloves"
+                        },{
+                            attribute: "OPS",
+                            type: 'number',
+                        },{
+                            attribute: "WAR",
+                            type: 'number',
+                        },{
+                            attribute: "TB",
+                            type: 'number',
+                        },{
+                            attribute: "BB",
+                            type: 'number',
+                        },{
+                            attribute: "SO",
+                            type: 'number',
+                        },{
+                            attribute: "SB",
+                            type: 'number',
+                        },{
+                            attribute: "OBP",
+                            type: 'number',
+                        },{
+                            attribute: "SLG",
+                            type: 'number',
+                        }
+                    ]
                 }))
             })
         })

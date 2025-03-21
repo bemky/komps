@@ -183,25 +183,35 @@ pre {
     }
 }
 
-komp-data-table,
+komp-table,
 komp-spreadsheet {
-    --cell-padding: 0.5em 1em;
     gap: 1px;
     border-radius: 0.35em;
-    komp-data-table-cell,
+    
+    komp-table-header-cell,
+    komp-table-cell,
     komp-spreadsheet-cell,
+    komp-spreadsheet-header-cell,
     komp-spreadsheet-inputcell {
         background: white;
-        &.header {
-            font-weight: bold;
-            text-transform: uppercase;
-            background: rgb(248,248,251);
-        }
     }
 
-    komp-data-table-cell,
+    komp-table-header-cell,
+    komp-table-cell,
+    komp-spreadsheet-header-cell,
     komp-spreadsheet-cell {
-        box-shadow: 0 0 0 1px color('purple-10');
+        padding: 0.5em 1em;
+        outline: 1px solid color('purple-10');
+    }
+    komp-table-row {
+        outline: 1px solid color('purple-10');
+    }
+
+    komp-table-header-cell,
+    komp-spreadsheet-header-cell {
+      background: rgb(248,248,251);
+      font-weight: bold;
+      text-transform: uppercase;
     }
 }
 
@@ -252,6 +262,15 @@ komp-spreadsheet {
     &.-left { --transform: translateX(-10px) }
     &.-right { --transform: translateX(10px) }
 }
+
+komp-table-row {
+    &:nth-child(2n) {
+        komp-spreadsheet-cell {
+            background: lighten(color('purple-10'), 8);
+        }
+    }
+}
+
 @keyframes fadein {
     from {
         opacity: 0;
