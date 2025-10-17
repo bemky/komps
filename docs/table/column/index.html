@@ -8,8 +8,8 @@
     <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
     <!-- Use the title from a page's frontmatter if it has one -->
     <title>Komps</title>
-    <link href="/assets/site-22cf15a669101651d19ad04c4fce6e6d1fe3ae366248e3c72997637d43d5cfd5.css" rel="stylesheet" />
-    <script src="/assets/site-d3a3a773475509c97afdc6e841118543fbd1a36726532e2d7f3d24359349b85f.js"></script>
+    <link href="/assets/site-28372462abc6e473c3e2c57d0b8b9b256265844b7ec5d43998efb56b502ed57b.css" rel="stylesheet" />
+    <script src="/assets/site-82b0b5cf840f801729c203a2b7f33ffcc0b7bcb526237ad7f0abaac5a6d433e3.js"></script>
 </head>
 <body>
     <div class="side-nav">
@@ -42,6 +42,9 @@
         </a>
         <a href="/floater" class="">
             Floater
+        </a>
+        <a href="/form" class="">
+            Form
         </a>
         <a href="/input" class="">
             Input
@@ -109,6 +112,9 @@
         </a>
         <a href="/floater" class="">
             Floater
+        </a>
+        <a href="/form" class="">
+            Form
         </a>
         <a href="/input" class="">
             Input
@@ -332,9 +338,15 @@
 
     <span class="kd">static</span> <span class="nx">Cell</span> <span class="o">=</span> <span class="nx">TableCell</span><span class="p">;</span>
     <span class="kd">static</span> <span class="nx">HeaderCell</span> <span class="o">=</span> <span class="nx">HeaderCell</span><span class="p">;</span>
-    <span class="kd">static</span> <span class="nx">assignableAttributes</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="dl">'</span><span class="s1">index</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">table</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">width</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">frozen</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">header</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">class</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">splitInto</span><span class="dl">'</span>
-    <span class="p">]</span>
+    <span class="kd">static</span> <span class="nx">assignableAttributes</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="na">index</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="na">table</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="na">width</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="na">frozen</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="na">header</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="na">class</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="na">splitInto</span><span class="p">:</span> <span class="kc">null</span>
+    <span class="p">}</span>
     <span class="kd">static</span> <span class="nx">assignableMethods</span> <span class="o">=</span> <span class="p">[</span>
         <span class="dl">'</span><span class="s1">record</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">headerChanged</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">indexChanged</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">widthChanged</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">render</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">initialize</span><span class="dl">'</span>
     <span class="p">]</span>
@@ -412,6 +424,9 @@
                 <span class="k">this</span><span class="p">.</span><span class="nx">headerCell</span><span class="p">.</span><span class="nx">cellIndex</span> <span class="o">=</span> <span class="nx">v</span>
             <span class="p">}</span>
             <span class="k">this</span><span class="p">.</span><span class="nx">cells</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">cell</span> <span class="o">=&gt;</span> <span class="nx">cell</span><span class="p">.</span><span class="nx">cellIndex</span> <span class="o">=</span> <span class="nx">v</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">frozen</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">table</span><span class="p">.</span><span class="nx">renderFrozenDivider</span><span class="p">()</span>
+            <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
     
@@ -475,12 +490,15 @@
         <span class="k">return</span> <span class="nx">cell</span>
     <span class="p">}</span>
     
-    <span class="nx">remove</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">remove</span> <span class="p">(</span><span class="nx">options</span><span class="o">=</span><span class="p">{})</span> <span class="p">{</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">headerCell</span><span class="p">.</span><span class="nx">remove</span><span class="p">()</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">cells</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">cell</span> <span class="o">=&gt;</span> <span class="nx">cell</span><span class="p">.</span><span class="nx">remove</span><span class="p">())</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">table</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="dl">'</span><span class="s1">columnRemoved</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
-            <span class="na">detail</span><span class="p">:</span> <span class="k">this</span>
-        <span class="p">})</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">cells</span><span class="p">.</span><span class="nx">clear</span><span class="p">()</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">options</span><span class="p">.</span><span class="nx">silent</span> <span class="o">!=</span> <span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">table</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="dl">'</span><span class="s1">columnRemoved</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+                <span class="na">detail</span><span class="p">:</span> <span class="k">this</span>
+            <span class="p">})</span>
+        <span class="p">}</span>
     <span class="p">}</span>
     
     <span class="kd">get</span> <span class="nx">offsetWidth</span> <span class="p">()</span> <span class="p">{</span>

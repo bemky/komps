@@ -8,8 +8,8 @@
     <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
     <!-- Use the title from a page's frontmatter if it has one -->
     <title>Komps</title>
-    <link href="/assets/site-22cf15a669101651d19ad04c4fce6e6d1fe3ae366248e3c72997637d43d5cfd5.css" rel="stylesheet" />
-    <script src="/assets/site-d3a3a773475509c97afdc6e841118543fbd1a36726532e2d7f3d24359349b85f.js"></script>
+    <link href="/assets/site-28372462abc6e473c3e2c57d0b8b9b256265844b7ec5d43998efb56b502ed57b.css" rel="stylesheet" />
+    <script src="/assets/site-82b0b5cf840f801729c203a2b7f33ffcc0b7bcb526237ad7f0abaac5a6d433e3.js"></script>
 </head>
 <body>
     <div class="side-nav">
@@ -42,6 +42,9 @@
         </a>
         <a href="/floater" class="">
             Floater
+        </a>
+        <a href="/form" class="">
+            Form
         </a>
         <a href="/input" class="">
             Input
@@ -89,6 +92,9 @@
         </a>
         <a href="/floater" class="">
             Floater
+        </a>
+        <a href="/form" class="">
+            Form
         </a>
         <a href="/input" class="">
             Input
@@ -173,6 +179,7 @@
                                 <th>description</th>
                                 <th>required</th>
                                 <th>default</th>
+                                <th>type</th>
                         </tr>
                             <tr>
                                 <td>
@@ -184,6 +191,9 @@
                                     <td>
                                             <p>content for the floater, uses <a href="https://dollajs.com/#content">Dolla's <code>content</code></a></p>
 
+                                    </td>
+                                    <td>
+                                            
                                     </td>
                                     <td>
                                             
@@ -209,6 +219,9 @@
                                     <td>
                                             null/anchor.parentElement
                                     </td>
+                                    <td>
+                                            
+                                    </td>
                             </tr>
                             <tr>
                                 <td>
@@ -226,6 +239,9 @@
                                     </td>
                                     <td>
                                             bottom
+                                    </td>
+                                    <td>
+                                            
                                     </td>
                             </tr>
                             <tr>
@@ -245,6 +261,9 @@
                                     <td>
                                             absolute
                                     </td>
+                                    <td>
+                                            
+                                    </td>
                             </tr>
                             <tr>
                                 <td>
@@ -262,6 +281,9 @@
                                     </td>
                                     <td>
                                             false
+                                    </td>
+                                    <td>
+                                            
                                     </td>
                             </tr>
                             <tr>
@@ -281,6 +303,9 @@
                                     <td>
                                             false
                                     </td>
+                                    <td>
+                                            
+                                    </td>
                             </tr>
                             <tr>
                                 <td>
@@ -298,6 +323,9 @@
                                     </td>
                                     <td>
                                             true
+                                    </td>
+                                    <td>
+                                            
                                     </td>
                             </tr>
                             <tr>
@@ -317,6 +345,9 @@
                                     <td>
                                             false
                                     </td>
+                                    <td>
+                                            
+                                    </td>
                             </tr>
                             <tr>
                                 <td>
@@ -334,6 +365,9 @@
                                     </td>
                                     <td>
                                             false
+                                    </td>
+                                    <td>
+                                            
                                     </td>
                             </tr>
                             <tr>
@@ -353,6 +387,9 @@
                                     <td>
                                             true
                                     </td>
+                                    <td>
+                                            
+                                    </td>
                             </tr>
                             <tr>
                                 <td>
@@ -370,6 +407,9 @@
                                     </td>
                                     <td>
                                             false
+                                    </td>
+                                    <td>
+                                            
                                     </td>
                             </tr>
                             <tr>
@@ -389,6 +429,9 @@
                                     <td>
                                             true
                                     </td>
+                                    <td>
+                                            
+                                    </td>
                             </tr>
                             <tr>
                                 <td>
@@ -406,6 +449,9 @@
                                     </td>
                                     <td>
                                             false
+                                    </td>
+                                    <td>
+                                            
                                     </td>
                             </tr>
                             <tr>
@@ -425,6 +471,9 @@
                                     <td>
                                             300
                                     </td>
+                                    <td>
+                                            
+                                    </td>
                             </tr>
                             <tr>
                                 <td>
@@ -443,6 +492,72 @@
                                     <td>
                                             
                                     </td>
+                                    <td>
+                                            
+                                    </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <code>onShow</code>
+                                </td>
+                                    <td>
+                                            Function
+                                    </td>
+                                    <td>
+                                            <p>called before showing</p>
+
+                                    </td>
+                                    <td>
+                                            
+                                    </td>
+                                    <td>
+                                            
+                                    </td>
+                                    <td>
+                                            
+                                    </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <code>scope</code>
+                                </td>
+                                    <td>
+                                            
+                                    </td>
+                                    <td>
+                                            <p>showing a tooltip will hide all other tooltips of same scope</p>
+
+                                    </td>
+                                    <td>
+                                            
+                                    </td>
+                                    <td>
+                                            general
+                                    </td>
+                                    <td>
+                                            String
+                                    </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <code>enabled</code>
+                                </td>
+                                    <td>
+                                            
+                                    </td>
+                                    <td>
+                                            <p>set starting state</p>
+
+                                    </td>
+                                    <td>
+                                            
+                                    </td>
+                                    <td>
+                                            true
+                                    </td>
+                                    <td>
+                                            boolean
+                                    </td>
                             </tr>
                     </table>
                 </div>
@@ -460,7 +575,7 @@
 <span class="k">import</span> <span class="nx">Floater</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./floater.js</span><span class="dl">'</span><span class="p">;</span> 
 
 <span class="kd">class</span> <span class="nx">Tooltip</span> <span class="kd">extends</span> <span class="nx">Floater</span> <span class="p">{</span>
-
+    <span class="kd">static</span> <span class="nx">tagName</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">komp-tooltip</span><span class="dl">'</span>
     <span class="kd">static</span> <span class="nx">watch</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">anchor</span><span class="dl">'</span><span class="p">]</span>
     
     <span class="kd">static</span> <span class="nx">assignableAttributes</span> <span class="o">=</span> <span class="p">{</span>
@@ -470,10 +585,9 @@
         <span class="na">strategy</span><span class="p">:</span> <span class="dl">'</span><span class="s1">absolute</span><span class="dl">'</span><span class="p">,</span>
         <span class="na">placement</span><span class="p">:</span> <span class="dl">'</span><span class="s1">top</span><span class="dl">'</span><span class="p">,</span>
         <span class="na">arrow</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="na">timeout</span><span class="p">:</span> <span class="mi">300</span>
+        <span class="na">timeout</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span>
+        <span class="na">scope</span><span class="p">:</span> <span class="dl">'</span><span class="s1">general</span><span class="dl">'</span>
     <span class="p">}</span>
-    
-    <span class="nx">_showing</span> <span class="o">=</span> <span class="kc">false</span>
     
     <span class="kd">constructor</span> <span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="p">...</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">super</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="p">...</span><span class="nx">args</span><span class="p">)</span>
@@ -481,14 +595,29 @@
         <span class="k">if</span> <span class="p">(</span><span class="nx">options</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">this</span><span class="p">.</span><span class="nx">needsFirstRemoval</span> <span class="o">=</span> <span class="kc">true</span>
         <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">options</span><span class="p">.</span><span class="nx">enabled</span> <span class="o">!=</span> <span class="kc">false</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">enable</span><span class="p">()</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="nx">enable</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">anchor</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">mouseenter</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">show</span><span class="p">)</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">anchor</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">mouseleave</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">hide</span><span class="p">)</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">mouseenter</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">show</span><span class="p">)</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">mouseleave</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">hide</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="nx">disable</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">anchor</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">mouseenter</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">show</span><span class="p">)</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">anchor</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">mouseleave</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">hide</span><span class="p">)</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">mouseenter</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">show</span><span class="p">)</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">mouseleave</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">hide</span><span class="p">)</span>
     <span class="p">}</span>
     
     <span class="nx">connected</span> <span class="p">()</span> <span class="p">{</span>
         <span class="k">super</span><span class="p">.</span><span class="nx">connected</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">getRootNode</span><span class="p">()</span> <span class="o">==</span> <span class="k">this</span><span class="p">.</span><span class="nx">anchor</span><span class="p">.</span><span class="nx">getRootNode</span><span class="p">())</span> <span class="p">{</span>
-            <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_showing</span> <span class="o">==</span> <span class="kc">false</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">showing</span> <span class="o">==</span> <span class="kc">false</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">remove</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
                 <span class="k">return</span> <span class="kc">false</span>
             <span class="p">}</span>
@@ -506,18 +635,10 @@
         <span class="p">}</span>
     <span class="p">}</span>
     
-    <span class="nx">show</span> <span class="p">(...</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">super</span><span class="p">.</span><span class="nx">show</span><span class="p">()</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">activeTooltip</span> <span class="o">&amp;&amp;</span> <span class="nb">window</span><span class="p">.</span><span class="nx">activeTooltip</span> <span class="o">!=</span> <span class="k">this</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nb">window</span><span class="p">.</span><span class="nx">activeTooltip</span><span class="p">.</span><span class="nx">hide</span><span class="p">()</span>
-        <span class="p">}</span>
-        <span class="nb">window</span><span class="p">.</span><span class="nx">activeTooltip</span> <span class="o">=</span> <span class="k">this</span>
-    <span class="p">}</span>
-    
     <span class="k">async</span> <span class="nx">remove</span> <span class="p">()</span> <span class="p">{</span>
         <span class="k">await</span> <span class="k">super</span><span class="p">.</span><span class="nx">remove</span><span class="p">()</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">activeTooltip</span> <span class="o">==</span> <span class="k">this</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">delete</span> <span class="nb">window</span><span class="p">.</span><span class="nx">activeTooltip</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">activeTooltips</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">scope</span><span class="p">]</span> <span class="o">==</span> <span class="k">this</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">delete</span> <span class="nb">window</span><span class="p">.</span><span class="nx">activeTooltips</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">scope</span><span class="p">]</span>
         <span class="p">}</span>
     <span class="p">}</span>
 

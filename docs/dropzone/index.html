@@ -8,8 +8,8 @@
     <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
     <!-- Use the title from a page's frontmatter if it has one -->
     <title>Komps</title>
-    <link href="/assets/site-22cf15a669101651d19ad04c4fce6e6d1fe3ae366248e3c72997637d43d5cfd5.css" rel="stylesheet" />
-    <script src="/assets/site-d3a3a773475509c97afdc6e841118543fbd1a36726532e2d7f3d24359349b85f.js"></script>
+    <link href="/assets/site-28372462abc6e473c3e2c57d0b8b9b256265844b7ec5d43998efb56b502ed57b.css" rel="stylesheet" />
+    <script src="/assets/site-82b0b5cf840f801729c203a2b7f33ffcc0b7bcb526237ad7f0abaac5a6d433e3.js"></script>
 </head>
 <body>
     <div class="side-nav">
@@ -42,6 +42,9 @@
         </a>
         <a href="/floater" class="">
             Floater
+        </a>
+        <a href="/form" class="">
+            Form
         </a>
         <a href="/input" class="">
             Input
@@ -89,6 +92,9 @@
         </a>
         <a href="/floater" class="">
             Floater
+        </a>
+        <a href="/form" class="">
+            Form
         </a>
         <a href="/input" class="">
             Input
@@ -434,18 +440,32 @@
     <span class="kd">static</span> <span class="nx">assignableAttributes</span> <span class="o">=</span> <span class="p">{</span>
         <span class="na">enabled</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
         <span class="na">onFileDrop</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-        <span class="na">overlay</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">dragHereOverlay</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">class</span><span class="p">:</span> <span class="dl">'</span><span class="s1">drag-here</span><span class="dl">'</span><span class="p">,</span>
             <span class="na">content</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Drag Here</span><span class="dl">'</span>
+        <span class="p">},</span>
+        <span class="na">dragOverOverlay</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">class</span><span class="p">:</span> <span class="dl">'</span><span class="s1">drag-over</span><span class="dl">'</span><span class="p">,</span>
+            <span class="na">content</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Drop Here</span><span class="dl">'</span>
         <span class="p">}</span>
     <span class="p">}</span>
     
     <span class="kd">static</span> <span class="nx">bindMethods</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">windowDragEnter</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">windowDragLeave</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">windowDrop</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">drop</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">dragOver</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">dragEnter</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">dragLeave</span><span class="dl">'</span><span class="p">]</span>
     
-    <span class="kd">constructor</span> <span class="p">(...</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">super</span><span class="p">(...</span><span class="nx">args</span><span class="p">)</span>
-
-        <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="k">this</span><span class="p">.</span><span class="nx">overlay</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">object</span><span class="dl">"</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">overlay</span> <span class="k">instanceof</span> <span class="nx">HTMLElement</span><span class="p">))</span> <span class="p">{</span>
-            <span class="k">this</span><span class="p">.</span><span class="nx">overlay</span> <span class="o">=</span> <span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">komp-dropzone-overlay</span><span class="dl">'</span><span class="p">,</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">({},</span> <span class="k">this</span><span class="p">.</span><span class="kd">constructor</span><span class="p">.</span><span class="nx">assignableAttributes</span><span class="p">.</span><span class="nx">overlay</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">overlay</span><span class="p">))</span>
+    <span class="kd">constructor</span> <span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="p">...</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">super</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="p">...</span><span class="nx">args</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="p">(</span><span class="nx">options</span><span class="p">.</span><span class="nx">overlay</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="dl">"</span><span class="s2">Dropzone.overlay option is deprecated use dragHereOverlay and/or dragOverOverlay</span><span class="dl">"</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">options</span><span class="p">.</span><span class="nx">dragHereOverlay</span><span class="p">)</span> <span class="k">this</span><span class="p">.</span><span class="nx">dragHereOverlay</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">overlay</span>
+            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">options</span><span class="p">.</span><span class="nx">dragOverOverlay</span><span class="p">)</span> <span class="k">this</span><span class="p">.</span><span class="nx">dragOverOverlay</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">overlay</span>
+        <span class="p">}</span>
+        
+        <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="k">this</span><span class="p">.</span><span class="nx">dragHereOverlay</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">object</span><span class="dl">"</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">dragHereOverlay</span> <span class="k">instanceof</span> <span class="nx">HTMLElement</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">dragHereOverlay</span> <span class="o">=</span> <span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">komp-dropzone-overlay</span><span class="dl">'</span><span class="p">,</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">({},</span> <span class="k">this</span><span class="p">.</span><span class="kd">constructor</span><span class="p">.</span><span class="nx">assignableAttributes</span><span class="p">.</span><span class="nx">dragHereOverlay</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">dragHereOverlay</span><span class="p">))</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="k">this</span><span class="p">.</span><span class="nx">dragOverOverlay</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">object</span><span class="dl">"</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">dragOverOverlay</span> <span class="k">instanceof</span> <span class="nx">HTMLElement</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">dragOverOverlay</span> <span class="o">=</span> <span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">komp-dropzone-overlay</span><span class="dl">'</span><span class="p">,</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">({},</span> <span class="k">this</span><span class="p">.</span><span class="kd">constructor</span><span class="p">.</span><span class="nx">assignableAttributes</span><span class="p">.</span><span class="nx">dragOverOverlay</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">dragOverOverlay</span><span class="p">))</span>
         <span class="p">}</span>
     <span class="p">}</span>
     
@@ -516,13 +536,15 @@
     
     <span class="nx">dragEnter</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">()</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">overlay</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">active</span><span class="dl">'</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">dragHereOverlay</span><span class="p">.</span><span class="nx">remove</span><span class="p">()</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">dragOverOverlay</span><span class="p">);</span>
     <span class="p">}</span>
     
     <span class="nx">dragLeave</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">()</span>
         <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">contains</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">relatedTarget</span><span class="p">))</span> <span class="p">{</span>
-            <span class="k">this</span><span class="p">.</span><span class="nx">overlay</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="dl">'</span><span class="s1">active</span><span class="dl">'</span><span class="p">);</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">dragOverOverlay</span><span class="p">.</span><span class="nx">remove</span><span class="p">()</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">dragHereOverlay</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
     
@@ -537,21 +559,23 @@
     <span class="nx">windowDragEnter</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">e</span><span class="p">.</span><span class="nx">relatedTarget</span> <span class="o">||</span> <span class="nx">e</span><span class="p">.</span><span class="nx">relatedTarget</span><span class="p">.</span><span class="nx">getRootNode</span><span class="p">()</span> <span class="o">!=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getRootNode</span><span class="p">())</span> <span class="p">{</span>
-            <span class="k">this</span><span class="p">.</span><span class="nx">overlay</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="dl">'</span><span class="s1">active</span><span class="dl">'</span><span class="p">);</span>
-            <span class="k">this</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">overlay</span><span class="p">);</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">dragOverOverlay</span><span class="p">.</span><span class="nx">remove</span><span class="p">()</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">dragHereOverlay</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
     
     <span class="nx">windowDragLeave</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">e</span><span class="p">.</span><span class="nx">relatedTarget</span> <span class="o">||</span> <span class="nx">e</span><span class="p">.</span><span class="nx">relatedTarget</span><span class="p">.</span><span class="nx">getRootNode</span><span class="p">()</span> <span class="o">!=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getRootNode</span><span class="p">())</span> <span class="p">{</span>
-            <span class="k">this</span><span class="p">.</span><span class="nx">overlay</span><span class="p">.</span><span class="nx">remove</span><span class="p">()</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">dragOverOverlay</span><span class="p">.</span><span class="nx">remove</span><span class="p">()</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">dragHereOverlay</span><span class="p">.</span><span class="nx">remove</span><span class="p">()</span>
         <span class="p">}</span>
     <span class="p">}</span>
     
     <span class="nx">windowDrop</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">overlay</span><span class="p">.</span><span class="nx">remove</span><span class="p">()</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">dragOverOverlay</span><span class="p">.</span><span class="nx">remove</span><span class="p">()</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">dragHereOverlay</span><span class="p">.</span><span class="nx">remove</span><span class="p">()</span>
     <span class="p">}</span>
     
     <span class="kd">static</span> <span class="nx">style</span> <span class="o">=</span> <span class="s2">`
@@ -573,7 +597,7 @@
             justify-content: center;
             pointer-events: none;
         }
-        komp-dropzone-overlay.active {
+        komp-dropzone-overlay.drag-over {
             background: rgba(0,0,0, 0.3);
             color: black;
         }

@@ -8,8 +8,8 @@
     <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
     <!-- Use the title from a page's frontmatter if it has one -->
     <title>Komps</title>
-    <link href="/assets/site-22cf15a669101651d19ad04c4fce6e6d1fe3ae366248e3c72997637d43d5cfd5.css" rel="stylesheet" />
-    <script src="/assets/site-d3a3a773475509c97afdc6e841118543fbd1a36726532e2d7f3d24359349b85f.js"></script>
+    <link href="/assets/site-28372462abc6e473c3e2c57d0b8b9b256265844b7ec5d43998efb56b502ed57b.css" rel="stylesheet" />
+    <script src="/assets/site-82b0b5cf840f801729c203a2b7f33ffcc0b7bcb526237ad7f0abaac5a6d433e3.js"></script>
 </head>
 <body>
     <div class="side-nav">
@@ -42,6 +42,9 @@
         </a>
         <a href="/floater" class="">
             Floater
+        </a>
+        <a href="/form" class="">
+            Form
         </a>
         <a href="/input" class="active">
             Input
@@ -89,6 +92,9 @@
         </a>
         <a href="/floater" class="">
             Floater
+        </a>
+        <a href="/form" class="">
+            Form
         </a>
         <a href="/input" class="active">
             Input
@@ -170,13 +176,28 @@ this can be converted.</p>
                         </tr>
                             <tr>
                                 <td>
-                                    <code>record</code>
+                                    <code>target</code>
                                 </td>
                                     <td>
                                             Object
                                     </td>
                                     <td>
                                             <p>Object to bind to</p>
+
+                                    </td>
+                                    <td>
+                                            
+                                    </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <code>record</code>
+                                </td>
+                                    <td>
+                                            Object
+                                    </td>
+                                    <td>
+                                            <p>Deprecated; use <code>target</code> instead</p>
 
                                     </td>
                                     <td>
@@ -248,10 +269,10 @@ this can be converted.</p>
 <span class="kd">class</span> <span class="nx">Input</span> <span class="p">{</span>
     
     <span class="kd">static</span> <span class="nx">assignableAttributes</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="na">record</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="na">target</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
         <span class="na">attribute</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-        <span class="na">dump</span><span class="p">:</span> <span class="p">(</span><span class="nx">v</span><span class="p">,</span> <span class="nx">record</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">v</span><span class="p">,</span>
-        <span class="na">load</span><span class="p">:</span> <span class="p">(</span><span class="nx">v</span><span class="p">,</span> <span class="nx">record</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">v</span>
+        <span class="na">dump</span><span class="p">:</span> <span class="p">(</span><span class="nx">v</span><span class="p">,</span> <span class="nx">target</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">v</span><span class="p">,</span>
+        <span class="na">load</span><span class="p">:</span> <span class="p">(</span><span class="nx">v</span><span class="p">,</span> <span class="nx">target</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">v</span>
     <span class="p">}</span>
     
     <span class="kd">static</span> <span class="nx">create</span><span class="p">(</span><span class="nx">type</span><span class="p">,</span> <span class="nx">options</span><span class="o">=</span><span class="p">{})</span> <span class="p">{</span>
@@ -281,6 +302,12 @@ this can be converted.</p>
     <span class="p">}</span>
     
     <span class="kd">constructor</span> <span class="p">(</span><span class="nx">options</span><span class="o">=</span><span class="p">{})</span> <span class="p">{</span>
+        <span class="c1">// Backward-compat: map deprecated `record` to `target`</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">options</span> <span class="o">&amp;&amp;</span> <span class="nx">options</span><span class="p">.</span><span class="nx">record</span> <span class="o">!==</span> <span class="kc">undefined</span> <span class="o">&amp;&amp;</span> <span class="nx">options</span><span class="p">.</span><span class="nx">target</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">options</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">({},</span> <span class="nx">options</span><span class="p">,</span> <span class="p">{</span> <span class="na">target</span><span class="p">:</span> <span class="nx">options</span><span class="p">.</span><span class="nx">record</span> <span class="p">})</span>
+            <span class="c1">// eslint-disable-next-line no-console</span>
+            <span class="k">try</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="dl">'</span><span class="s1">[Komps Input] option "record" is deprecated; use "target" instead.</span><span class="dl">'</span><span class="p">)</span> <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{}</span>
+        <span class="p">}</span>
         <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="kd">constructor</span><span class="p">.</span><span class="nx">assignableAttributes</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">k</span> <span class="o">=&gt;</span> <span class="p">{</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">options</span><span class="p">[</span><span class="nx">k</span><span class="p">]</span> <span class="o">!=</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
                 <span class="k">this</span><span class="p">[</span><span class="nx">k</span><span class="p">]</span> <span class="o">=</span> <span class="nx">options</span><span class="p">[</span><span class="nx">k</span><span class="p">]</span>
@@ -295,7 +322,7 @@ this can be converted.</p>
         <span class="k">this</span><span class="p">.</span><span class="nx">input</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">createInput</span><span class="p">(</span><span class="nx">except</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="dl">'</span><span class="s1">load</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">dump</span><span class="dl">'</span><span class="p">));</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">_loading</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_load</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">options</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">setupInputListener</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">inputChange</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">setupRecordListener</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">recordChange</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">setupTargetListener</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">targetChange</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
     <span class="p">}</span>
     
     <span class="kd">get</span> <span class="nx">value</span> <span class="p">()</span> <span class="p">{</span>
@@ -317,12 +344,18 @@ this can be converted.</p>
         <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">blur</span><span class="dl">'</span><span class="p">,</span> <span class="nx">listener</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
     <span class="p">}</span>
     
-    <span class="nx">setupRecordListener</span> <span class="p">(</span><span class="nx">listener</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">record</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="p">.</span><span class="nx">record</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">this</span><span class="p">.</span><span class="nx">record</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">change</span><span class="dl">'</span><span class="p">,</span> <span class="nx">listener</span><span class="p">);</span>
+    <span class="nx">setupRecordListener</span> <span class="p">(</span><span class="nx">listener</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// deprecated alias</span>
+        <span class="c1">// eslint-disable-next-line no-console</span>
+        <span class="k">try</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="dl">'</span><span class="s1">[Komps Input] setupRecordListener is deprecated; use setupTargetListener instead.</span><span class="dl">'</span><span class="p">)</span> <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{}</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">setupTargetListener</span><span class="p">(</span><span class="nx">listener</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="nx">setupTargetListener</span> <span class="p">(</span><span class="nx">listener</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">target</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">change</span><span class="dl">'</span><span class="p">,</span> <span class="nx">listener</span><span class="p">);</span>
         <span class="p">}</span>
-        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">record</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="p">.</span><span class="nx">record</span><span class="p">.</span><span class="nx">addListener</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">this</span><span class="p">.</span><span class="nx">record</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="nx">listener</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">target</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">addListener</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="nx">listener</span><span class="p">)</span>
         <span class="p">}</span>
     <span class="p">}</span>
     
@@ -340,32 +373,38 @@ this can be converted.</p>
         <span class="p">}</span>
     <span class="p">}</span>
     
-    <span class="nx">recordChange</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">recordChange</span> <span class="p">()</span> <span class="p">{</span> <span class="c1">// deprecated alias</span>
+        <span class="c1">// eslint-disable-next-line no-console</span>
+        <span class="k">try</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="dl">'</span><span class="s1">[Komps Input] recordChange is deprecated; use targetChange instead.</span><span class="dl">'</span><span class="p">)</span> <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{}</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">targetChange</span><span class="p">()</span>
+    <span class="p">}</span>
+    
+    <span class="nx">targetChange</span> <span class="p">()</span> <span class="p">{</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">_loading</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_load</span><span class="p">()</span>
     <span class="p">}</span>
     
     <span class="nx">_load</span> <span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kd">const</span> <span class="nx">value</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="nx">v</span> <span class="p">?</span> <span class="nx">v</span> <span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">_loadValue</span><span class="p">(),</span> <span class="k">this</span><span class="p">.</span><span class="nx">record</span><span class="p">,</span> <span class="p">{</span><span class="na">explicitValue</span><span class="p">:</span> <span class="nx">v</span><span class="p">})</span>
+        <span class="kd">const</span> <span class="nx">value</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="nx">v</span> <span class="p">?</span> <span class="nx">v</span> <span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">_loadValue</span><span class="p">(),</span> <span class="k">this</span><span class="p">.</span><span class="nx">target</span><span class="p">,</span> <span class="p">{</span><span class="na">explicitValue</span><span class="p">:</span> <span class="nx">v</span><span class="p">})</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="o">!==</span> <span class="kc">undefined</span> <span class="o">&amp;&amp;</span> <span class="nx">value</span> <span class="o">!==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">value</span>
         <span class="p">}</span>
     <span class="p">}</span>
     
     <span class="nx">_loadValue</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">record</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="nx">dig</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">record</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">attribute</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">target</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">dig</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">target</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">attribute</span><span class="p">)</span>
         <span class="p">}</span>
     <span class="p">}</span>
     
     <span class="nx">_dump</span> <span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kd">const</span> <span class="nx">value</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">dump</span><span class="p">(</span><span class="nx">v</span> <span class="p">?</span> <span class="nx">v</span> <span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">record</span><span class="p">)</span>
+        <span class="kd">const</span> <span class="nx">value</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">dump</span><span class="p">(</span><span class="nx">v</span> <span class="p">?</span> <span class="nx">v</span> <span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">target</span><span class="p">)</span>
         <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_dumpValue</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span>
     <span class="p">}</span>
     
     <span class="nx">_dumpValue</span><span class="p">(</span><span class="nx">v</span><span class="p">)</span> <span class="p">{</span>
         <span class="kd">let</span> <span class="nx">attributes</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">attribute</span><span class="p">)</span> <span class="p">?</span> <span class="k">this</span><span class="p">.</span><span class="nx">attribute</span> <span class="p">:</span> <span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">attribute</span><span class="p">]</span>
         <span class="nx">attributes</span> <span class="o">=</span> <span class="nx">attributes</span><span class="p">.</span><span class="nx">concat</span><span class="p">([</span><span class="nx">v</span><span class="p">])</span>
-        <span class="nx">bury</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">record</span><span class="p">,</span> <span class="p">...</span><span class="nx">attributes</span><span class="p">)</span>
+        <span class="nx">bury</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">target</span><span class="p">,</span> <span class="p">...</span><span class="nx">attributes</span><span class="p">)</span>
         <span class="k">return</span> <span class="nx">v</span>
     <span class="p">}</span>
 <span class="p">}</span>

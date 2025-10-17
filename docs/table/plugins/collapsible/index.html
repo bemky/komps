@@ -8,8 +8,8 @@
     <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
     <!-- Use the title from a page's frontmatter if it has one -->
     <title>Komps</title>
-    <link href="/assets/site-22cf15a669101651d19ad04c4fce6e6d1fe3ae366248e3c72997637d43d5cfd5.css" rel="stylesheet" />
-    <script src="/assets/site-d3a3a773475509c97afdc6e841118543fbd1a36726532e2d7f3d24359349b85f.js"></script>
+    <link href="/assets/site-28372462abc6e473c3e2c57d0b8b9b256265844b7ec5d43998efb56b502ed57b.css" rel="stylesheet" />
+    <script src="/assets/site-82b0b5cf840f801729c203a2b7f33ffcc0b7bcb526237ad7f0abaac5a6d433e3.js"></script>
 </head>
 <body>
     <div class="side-nav">
@@ -42,6 +42,9 @@
         </a>
         <a href="/floater" class="">
             Floater
+        </a>
+        <a href="/form" class="">
+            Form
         </a>
         <a href="/input" class="">
             Input
@@ -109,6 +112,9 @@
         </a>
         <a href="/floater" class="">
             Floater
+        </a>
+        <a href="/form" class="">
+            Form
         </a>
         <a href="/input" class="">
             Input
@@ -272,7 +278,7 @@
     
     <span class="kd">const</span> <span class="nx">_remove</span> <span class="o">=</span> <span class="nx">proto</span><span class="p">.</span><span class="nx">remove</span>
     <span class="nx">proto</span><span class="p">.</span><span class="nx">remove</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(...</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">proto</span><span class="p">.</span><span class="nx">collapseObserver</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">()</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">collapseObserver</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">()</span>
         <span class="k">return</span> <span class="nx">_remove</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="p">...</span><span class="nx">args</span><span class="p">)</span>
     <span class="p">}</span>
     
@@ -308,12 +314,12 @@
     
     <span class="k">this</span><span class="p">.</span><span class="nx">Row</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">resize</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
         <span class="kd">const</span> <span class="nx">wasCollapsed</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">hasAttribute</span><span class="p">(</span><span class="dl">'</span><span class="s1">collapsed</span><span class="dl">'</span><span class="p">)</span>
-        <span class="kd">const</span> <span class="nx">nowCollapsed</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">toggleAttribute</span><span class="p">(</span><span class="dl">'</span><span class="s1">collapsed</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">scrollHeight</span> <span class="o">&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">clientHeight</span><span class="p">)</span>
+        <span class="kd">const</span> <span class="nx">nowCollapsed</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">toggleAttribute</span><span class="p">(</span><span class="dl">'</span><span class="s1">collapsed</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">scrollHeight</span> <span class="o">&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">offsetHeight</span><span class="p">)</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">komp-table-toggle</span><span class="dl">'</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">el</span> <span class="o">=&gt;</span> <span class="nx">el</span><span class="p">.</span><span class="nx">remove</span><span class="p">())</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">[collapse-toggle]</span><span class="dl">'</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">el</span> <span class="o">=&gt;</span> <span class="nx">el</span><span class="p">.</span><span class="nx">removeAttribute</span><span class="p">(</span><span class="dl">'</span><span class="s1">collapse-toggle</span><span class="dl">'</span><span class="p">))</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">nowCollapsed</span><span class="p">)</span> <span class="p">{</span>
             <span class="kd">const</span> <span class="nx">targets</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">cells</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="nb">Array</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="nx">Group</span><span class="p">.</span><span class="nx">tagName</span><span class="p">)))</span>
-            <span class="kd">const</span> <span class="nx">overflowingTargets</span> <span class="o">=</span> <span class="nx">targets</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">c</span> <span class="o">=&gt;</span> <span class="nx">c</span><span class="p">.</span><span class="nx">scrollHeight</span> <span class="o">&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">clientHeight</span><span class="p">)</span>
+            <span class="kd">const</span> <span class="nx">overflowingTargets</span> <span class="o">=</span> <span class="nx">targets</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">c</span> <span class="o">=&gt;</span> <span class="nx">c</span><span class="p">.</span><span class="nx">scrollHeight</span> <span class="o">&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">offsetHeight</span><span class="p">)</span>
             <span class="nx">overflowingTargets</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">target</span> <span class="o">=&gt;</span> <span class="p">{</span>
                 <span class="k">this</span><span class="p">.</span><span class="nx">renderTargetToggles</span><span class="p">(</span><span class="nx">target</span><span class="p">)</span>
             <span class="p">})</span>
@@ -387,7 +393,7 @@
             flex-direction: column;
             justify-content: end;
             text-align: center;
-            z-index: 2;
+            z-index: 3;
             grid-row: 1 / -1;
             pointer-events: none;
         }

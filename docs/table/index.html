@@ -8,8 +8,8 @@
     <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
     <!-- Use the title from a page's frontmatter if it has one -->
     <title>Komps</title>
-    <link href="/assets/site-22cf15a669101651d19ad04c4fce6e6d1fe3ae366248e3c72997637d43d5cfd5.css" rel="stylesheet" />
-    <script src="/assets/site-d3a3a773475509c97afdc6e841118543fbd1a36726532e2d7f3d24359349b85f.js"></script>
+    <link href="/assets/site-28372462abc6e473c3e2c57d0b8b9b256265844b7ec5d43998efb56b502ed57b.css" rel="stylesheet" />
+    <script src="/assets/site-82b0b5cf840f801729c203a2b7f33ffcc0b7bcb526237ad7f0abaac5a6d433e3.js"></script>
 </head>
 <body>
     <div class="side-nav">
@@ -42,6 +42,9 @@
         </a>
         <a href="/floater" class="">
             Floater
+        </a>
+        <a href="/form" class="">
+            Form
         </a>
         <a href="/input" class="">
             Input
@@ -109,6 +112,9 @@
         </a>
         <a href="/floater" class="">
             Floater
+        </a>
+        <a href="/form" class="">
+            Form
         </a>
         <a href="/input" class="">
             Input
@@ -350,6 +356,18 @@
 
                                     </td>
                             </tr>
+                            <tr>
+                                <td>
+                                    <code>afterRender</code>
+                                </td>
+                                    <td>
+                                            []
+                                    </td>
+                                    <td>
+                                            <p>After render finishes</p>
+
+                                    </td>
+                            </tr>
                     </table>
                 </div>
         </div>
@@ -386,7 +404,8 @@
     <span class="kd">static</span> <span class="nx">events</span> <span class="o">=</span> <span class="p">[</span>
         <span class="dl">'</span><span class="s1">headerChanged</span><span class="dl">'</span><span class="p">,</span>
         <span class="dl">'</span><span class="s1">columnRemoved</span><span class="dl">'</span><span class="p">,</span>
-        <span class="dl">'</span><span class="s1">columnsChanged</span><span class="dl">'</span>
+        <span class="dl">'</span><span class="s1">columnsChanged</span><span class="dl">'</span><span class="p">,</span>
+        <span class="dl">'</span><span class="s1">afterRender</span><span class="dl">'</span>
     <span class="p">]</span>
     
     <span class="nx">frozenLeft</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
@@ -403,10 +422,11 @@
     <span class="p">}</span>
     
     <span class="k">async</span> <span class="nx">initialize</span> <span class="p">(...</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">super</span><span class="p">.</span><span class="nx">initialize</span><span class="p">(...</span><span class="nx">args</span><span class="p">)</span>
+        <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="k">super</span><span class="p">.</span><span class="nx">initialize</span><span class="p">(...</span><span class="nx">args</span><span class="p">)</span>
         <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">initializeColumns</span><span class="p">()</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">setTemplateColumns</span><span class="p">()</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">rendering</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">render</span><span class="p">()</span>
+        <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">rendering</span>
         <span class="k">return</span> <span class="nx">result</span>
     <span class="p">}</span>
     
@@ -496,24 +516,36 @@
         <span class="k">this</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="dl">''</span><span class="p">;</span>
         <span class="nx">append</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">renderHeader</span><span class="p">())</span>
         <span class="k">await</span> <span class="nx">append</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">renderRows</span><span class="p">())</span>
-        
+        <span class="k">this</span><span class="p">.</span><span class="nx">renderFrozenDivider</span><span class="p">()</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">setTemplateRows</span><span class="p">()</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="dl">'</span><span class="s1">afterRender</span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="nx">renderFrozenDivider</span> <span class="p">()</span> <span class="p">{</span>
         <span class="kd">const</span> <span class="nx">frozenColumns</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">columns</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">c</span> <span class="o">=&gt;</span> <span class="nx">c</span><span class="p">.</span><span class="nx">frozen</span><span class="p">)</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">frozenColumns</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">append</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">observeIntersection</span><span class="p">(</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">localName</span><span class="p">}</span><span class="s2">-frozen-indicator`</span><span class="p">,</span> <span class="p">{</span>
-                <span class="na">class</span><span class="p">:</span> <span class="dl">'</span><span class="s1">column</span><span class="dl">'</span><span class="p">,</span>
-                <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="na">target</span><span class="p">:</span> <span class="s2">`</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">localName</span><span class="p">}</span><span class="s2">-frozen-divider.column`</span>
-                <span class="p">}</span>
-            <span class="p">})))</span>
-            <span class="nx">append</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">createElement</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">localName</span><span class="p">}</span><span class="s2">-frozen-divider`</span><span class="p">,</span> <span class="p">{</span>
-                <span class="na">class</span><span class="p">:</span> <span class="dl">'</span><span class="s1">column</span><span class="dl">'</span><span class="p">,</span>
-                <span class="na">style</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="dl">'</span><span class="s1">grid-column</span><span class="dl">'</span><span class="p">:</span> <span class="s2">`1 / </span><span class="p">${</span><span class="nx">frozenColumns</span><span class="p">.</span><span class="nx">length</span> <span class="o">+</span> <span class="mi">1</span><span class="p">}</span><span class="s2">`</span>
-                <span class="p">}</span>
-            <span class="p">}))</span>
+            <span class="kd">let</span> <span class="nx">indicator</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">localName</span><span class="p">}</span><span class="s2">-frozen-indicator.column`</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">indicator</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">indicator</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">observeIntersection</span><span class="p">(</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">localName</span><span class="p">}</span><span class="s2">-frozen-indicator`</span><span class="p">,</span> <span class="p">{</span>
+                    <span class="na">class</span><span class="p">:</span> <span class="dl">'</span><span class="s1">column</span><span class="dl">'</span><span class="p">,</span>
+                    <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="na">target</span><span class="p">:</span> <span class="s2">`</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">localName</span><span class="p">}</span><span class="s2">-frozen-divider.column`</span>
+                    <span class="p">}</span>
+                <span class="p">}))</span>
+                <span class="nx">append</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">indicator</span><span class="p">)</span>
+            <span class="p">}</span>
+            <span class="kd">let</span> <span class="nx">divider</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">localName</span><span class="p">}</span><span class="s2">-frozen-divider.column`</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">divider</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">divider</span> <span class="o">=</span> <span class="nx">createElement</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">localName</span><span class="p">}</span><span class="s2">-frozen-divider`</span><span class="p">,</span> <span class="p">{</span>
+                    <span class="na">class</span><span class="p">:</span> <span class="dl">'</span><span class="s1">column</span><span class="dl">'</span>
+                <span class="p">})</span>
+                <span class="nx">append</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">divider</span><span class="p">)</span>
+            <span class="p">}</span>
+            <span class="nx">divider</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">setProperty</span><span class="p">(</span><span class="dl">'</span><span class="s1">grid-column</span><span class="dl">'</span><span class="p">,</span> <span class="s2">`1 / </span><span class="p">${</span><span class="nx">frozenColumns</span><span class="p">.</span><span class="nx">length</span> <span class="o">+</span> <span class="mi">1</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">localName</span><span class="p">}</span><span class="s2">-frozen-indicator.column`</span><span class="p">)?.</span><span class="nx">remove</span><span class="p">()</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">localName</span><span class="p">}</span><span class="s2">-frozen-divider.column`</span><span class="p">)?.</span><span class="nx">remove</span><span class="p">()</span>
         <span class="p">}</span>
-        
-        <span class="k">this</span><span class="p">.</span><span class="nx">setTemplateRows</span><span class="p">()</span>
     <span class="p">}</span>
     
     <span class="nx">setTemplateColumns</span> <span class="p">()</span> <span class="p">{</span>
@@ -523,9 +555,10 @@
     <span class="p">}</span>
     
     <span class="nx">setTemplateRows</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">gridTemplateRows</span> <span class="o">=</span> <span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">header</span><span class="p">.</span><span class="nx">height</span> <span class="o">||</span> <span class="dl">"</span><span class="s2">var(--row-size)</span><span class="dl">"</span><span class="p">].</span><span class="nx">concat</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">rows</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">row</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">rows</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="kd">constructor</span><span class="p">.</span><span class="nx">Row</span><span class="p">.</span><span class="nx">tagName</span><span class="p">))</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">gridTemplateRows</span> <span class="o">=</span> <span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">header</span><span class="p">.</span><span class="nx">height</span> <span class="o">||</span> <span class="dl">"</span><span class="s2">var(--row-size)</span><span class="dl">"</span><span class="p">].</span><span class="nx">concat</span><span class="p">(</span><span class="nx">rows</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">row</span> <span class="o">=&gt;</span> <span class="p">{</span>
             <span class="k">return</span> <span class="nx">row</span><span class="p">.</span><span class="nx">height</span> <span class="o">||</span> <span class="dl">"</span><span class="s2">var(--row-size)</span><span class="dl">"</span>
-        <span class="p">}),</span> <span class="dl">'</span><span class="s1">1fr</span><span class="dl">'</span><span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">)</span>
+        <span class="p">}),</span> <span class="dl">'</span><span class="s1">auto</span><span class="dl">'</span><span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">)</span>
     <span class="p">}</span>
     
     <span class="nx">renderHeader</span> <span class="p">()</span> <span class="p">{</span>
@@ -651,7 +684,7 @@
 
         <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">rendering</span>
         
-        <span class="nx">removedColumns</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">c</span> <span class="o">=&gt;</span> <span class="nx">c</span><span class="p">.</span><span class="nx">remove</span><span class="p">());</span>
+        <span class="nx">removedColumns</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">c</span> <span class="o">=&gt;</span> <span class="nx">c</span><span class="p">.</span><span class="nx">remove</span><span class="p">({</span><span class="na">silent</span><span class="p">:</span> <span class="nx">mutate</span><span class="p">}));</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">newColumns</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
             <span class="kd">const</span> <span class="nx">newHeaderCells</span> <span class="o">=</span> <span class="nx">newColumns</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">c</span> <span class="o">=&gt;</span> <span class="p">{</span>
                 <span class="k">return</span> <span class="nx">c</span><span class="p">.</span><span class="nx">headerCell</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">renderColumnHeader</span><span class="p">(</span><span class="nx">c</span><span class="p">)</span>
@@ -700,12 +733,33 @@
     <span class="nx">addColumns</span> <span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="p">...</span><span class="nx">newColumns</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="err">#</span><span class="nx">spliceColumns</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">newColumns</span><span class="p">,</span> <span class="kc">false</span><span class="p">)</span>
     <span class="p">}</span>
+    
     <span class="c1">// Mutating Change to Columns</span>
     <span class="nx">deleteColumn</span> <span class="p">(</span><span class="nx">column</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="err">#</span><span class="nx">spliceColumns</span><span class="p">(</span><span class="nx">column</span><span class="p">.</span><span class="nx">index</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">deleteColumns</span><span class="p">([</span><span class="nx">column</span><span class="p">])</span>
     <span class="p">}</span>
+    <span class="k">async</span> <span class="nx">deleteColumns</span> <span class="p">(</span><span class="nx">columns</span><span class="p">,</span> <span class="nx">mutate</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">last</span> <span class="o">=</span> <span class="p">[</span><span class="nx">columns</span><span class="p">.</span><span class="nx">shift</span><span class="p">()]</span>
+        <span class="kd">const</span> <span class="nx">groups</span> <span class="o">=</span> <span class="p">[</span><span class="nx">last</span><span class="p">]</span>
+        <span class="nx">columns</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">c</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">last</span><span class="p">[</span><span class="nx">last</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">].</span><span class="nx">index</span> <span class="o">==</span> <span class="nx">c</span><span class="p">.</span><span class="nx">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">last</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">c</span><span class="p">)</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nx">last</span> <span class="o">=</span> <span class="p">[</span><span class="nx">c</span><span class="p">]</span>
+                <span class="nx">groups</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">last</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">})</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">group</span> <span class="k">of</span> <span class="nx">groups</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">spliceColumns</span><span class="p">(</span><span class="nx">group</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">index</span><span class="p">,</span> <span class="nx">group</span><span class="p">.</span><span class="nx">length</span><span class="p">,</span> <span class="p">[],</span> <span class="nx">mutate</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nx">columns</span>
+    <span class="p">}</span>
+    
     <span class="nx">removeColumn</span> <span class="p">(</span><span class="nx">column</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="err">#</span><span class="nx">spliceColumns</span><span class="p">(</span><span class="nx">column</span><span class="p">.</span><span class="nx">index</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">[],</span> <span class="kc">false</span><span class="p">)</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">deleteColumns</span><span class="p">([</span><span class="nx">column</span><span class="p">],</span> <span class="kc">false</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="nx">removeColumns</span> <span class="p">(</span><span class="nx">columns</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">deleteColumns</span><span class="p">(</span><span class="nx">columns</span><span class="p">,</span> <span class="kc">false</span><span class="p">)</span>
     <span class="p">}</span>
     <span class="nx">replaceColumn</span> <span class="p">(</span><span class="nx">oldColumn</span><span class="p">,</span> <span class="p">...</span><span class="nx">newColumns</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="err">#</span><span class="nx">spliceColumns</span><span class="p">(</span><span class="nx">oldColumn</span><span class="p">.</span><span class="nx">index</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">newColumns</span><span class="p">,</span> <span class="kc">false</span><span class="p">)</span>
@@ -898,7 +952,8 @@
             left: var(--frozen-position-5, 0);
         }
 
-        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">-cell               { z-index: 1; }
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">-cell[disabled]     { z-index: 1; }
+        </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">-cell               { z-index: 2; }
         </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">-cell.frozen        { z-index: 100; }
         </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">-header             { z-index: 110; }
         </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tagName</span><span class="p">}</span><span class="s2">-header-cell.frozen { z-index: 115; }

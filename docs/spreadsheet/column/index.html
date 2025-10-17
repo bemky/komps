@@ -8,8 +8,8 @@
     <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
     <!-- Use the title from a page's frontmatter if it has one -->
     <title>Komps</title>
-    <link href="/assets/site-22cf15a669101651d19ad04c4fce6e6d1fe3ae366248e3c72997637d43d5cfd5.css" rel="stylesheet" />
-    <script src="/assets/site-d3a3a773475509c97afdc6e841118543fbd1a36726532e2d7f3d24359349b85f.js"></script>
+    <link href="/assets/site-28372462abc6e473c3e2c57d0b8b9b256265844b7ec5d43998efb56b502ed57b.css" rel="stylesheet" />
+    <script src="/assets/site-82b0b5cf840f801729c203a2b7f33ffcc0b7bcb526237ad7f0abaac5a6d433e3.js"></script>
 </head>
 <body>
     <div class="side-nav">
@@ -42,6 +42,9 @@
         </a>
         <a href="/floater" class="">
             Floater
+        </a>
+        <a href="/form" class="">
+            Form
         </a>
         <a href="/input" class="">
             Input
@@ -97,6 +100,9 @@
         </a>
         <a href="/floater" class="">
             Floater
+        </a>
+        <a href="/form" class="">
+            Form
         </a>
         <a href="/input" class="">
             Input
@@ -358,6 +364,12 @@
     <span class="nx">initialize</span> <span class="p">(</span><span class="nx">configs</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">configuredContextMenu</span> <span class="o">=</span> <span class="nx">configs</span><span class="p">.</span><span class="nx">contextMenu</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">inputOptions</span> <span class="o">=</span> <span class="nx">configs</span><span class="p">.</span><span class="nx">input</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">configs</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="dl">'</span><span class="s1">copy</span><span class="dl">'</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">configs</span><span class="p">.</span><span class="nx">copy</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">copy</span> <span class="o">=</span> <span class="kc">undefined</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">configs</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="dl">'</span><span class="s1">paste</span><span class="dl">'</span><span class="p">)</span> <span class="o">&amp;&amp;!</span><span class="nx">configs</span><span class="p">.</span><span class="nx">paste</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">paste</span> <span class="o">=</span> <span class="kc">undefined</span>
+        <span class="p">}</span>
     <span class="p">}</span>
 
     <span class="nx">headerFallback</span> <span class="p">()</span> <span class="p">{</span>
@@ -388,7 +400,8 @@
     <span class="nx">input</span> <span class="p">(</span><span class="nx">record</span><span class="p">,</span> <span class="nx">cell</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">Input</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">type</span> <span class="o">||</span> <span class="dl">'</span><span class="s1">contentarea</span><span class="dl">'</span><span class="p">,</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">({</span>
             <span class="na">record</span><span class="p">:</span> <span class="nx">record</span><span class="p">,</span>
-            <span class="na">attribute</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">attribute</span>
+            <span class="na">attribute</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">attribute</span><span class="p">,</span>
+            <span class="na">autofocus</span><span class="p">:</span> <span class="kc">true</span>
         <span class="p">},</span> <span class="k">this</span><span class="p">.</span><span class="nx">inputOptions</span><span class="p">,</span> <span class="nx">options</span><span class="p">))</span>
     <span class="p">}</span>
     <span class="nx">contextMenu</span> <span class="p">(</span><span class="nx">menu</span><span class="p">,</span> <span class="p">...</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
@@ -398,6 +411,8 @@
             <span class="k">return</span> <span class="nx">menu</span>
         <span class="p">}</span>
     <span class="p">}</span>
+    
+    <span class="nx">onEnter</span> <span class="p">()</span> <span class="p">{}</span>
 <span class="p">}</span></code></pre></div>
         </div>
     </div>

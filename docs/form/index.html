@@ -1,0 +1,338 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
+    <!-- Use the title from a page's frontmatter if it has one -->
+    <title>Komps</title>
+    <link href="/assets/site-28372462abc6e473c3e2c57d0b8b9b256265844b7ec5d43998efb56b502ed57b.css" rel="stylesheet" />
+    <script src="/assets/site-82b0b5cf840f801729c203a2b7f33ffcc0b7bcb526237ad7f0abaac5a6d433e3.js"></script>
+</head>
+<body>
+    <div class="side-nav">
+        <div class="pad-2x text-center">
+            <a href="/" class="reset">
+                <img class="width-3/4 height-auto inline-block" src="/assets/logo-7b1623d8d9db3b0d0d79dd30b2a5c2a0f0be2b945944f75d18e3be1e67177443.svg" />
+            </a>
+        </div>
+        <div class="uniformNav -vertical -gray flex-fill -active-green">
+    <a href="/" class="">
+        Usage
+    </a>
+    <a href="/element" class="">
+        Base Element
+    </a>
+    <div class="height-0 width-full">
+        <div class="border-green-80 border-opacity-30 border-bottom border-1px width-full"></div>
+    </div>
+        <a href="/auto-grid" class="">
+            AutoGrid
+        </a>
+        <a href="/content-area" class="">
+            ContentArea
+        </a>
+        <a href="/dropdown" class="">
+            Dropdown
+        </a>
+        <a href="/dropzone" class="">
+            Dropzone
+        </a>
+        <a href="/floater" class="">
+            Floater
+        </a>
+        <a href="/form" class="active">
+            Form
+        </a>
+        <a href="/input" class="">
+            Input
+        </a>
+        <a href="/modal" class="">
+            Modal
+        </a>
+        <a href="/notification-center" class="">
+            NotificationCenter
+        </a>
+        <a href="/spreadsheet" class="">
+            Spreadsheet
+        </a>
+        <a href="/table" class="">
+            Table
+        </a>
+        <a href="/tooltip" class="">
+            Tooltip
+        </a>
+</div>
+    </div>
+    <div class="hide sm:show sticky top-0 bg-white">
+        <div class="mobile-nav flex flex-col align-center">
+            <div class="uniformNav -vertical -gray flex-fill -active-green">
+    <a href="/" class="">
+        Usage
+    </a>
+    <a href="/element" class="">
+        Base Element
+    </a>
+    <div class="height-0 width-full">
+        <div class="border-green-80 border-opacity-30 border-bottom border-1px width-full"></div>
+    </div>
+        <a href="/auto-grid" class="">
+            AutoGrid
+        </a>
+        <a href="/content-area" class="">
+            ContentArea
+        </a>
+        <a href="/dropdown" class="">
+            Dropdown
+        </a>
+        <a href="/dropzone" class="">
+            Dropzone
+        </a>
+        <a href="/floater" class="">
+            Floater
+        </a>
+        <a href="/form" class="active">
+            Form
+        </a>
+        <a href="/input" class="">
+            Input
+        </a>
+        <a href="/modal" class="">
+            Modal
+        </a>
+        <a href="/notification-center" class="">
+            NotificationCenter
+        </a>
+        <a href="/spreadsheet" class="">
+            Spreadsheet
+        </a>
+        <a href="/table" class="">
+            Table
+        </a>
+        <a href="/tooltip" class="">
+            Tooltip
+        </a>
+</div>
+        </div>
+        <div class="flex align-stretch relative z-3">
+            <button type="button" class="reset width-50-px flex justify-content-center align-center" onClick="document.body.classList.toggle('active-mobile-nav')">
+                <img class="active:hide" src="/assets/menu-1412be30d711c8336d0757e5557b785242945a44db28cde24ba2b6f2afe30de4.svg" />
+                <img class="hide active:show" src="/assets/x-947e98617952bbdb89b1b18633e1a4f7ded1e3faa29fbd20cdd08ab0dc196dce.svg" />
+            </button>
+            <a href="/" class="reset flex-none pad-v-2x">
+                <img width="200" src="/assets/logo-7b1623d8d9db3b0d0d79dd30b2a5c2a0f0be2b945944f75d18e3be1e67177443.svg" />
+            </a>
+        </div>
+    </div>
+    <div class="main-content overflow-hidden">
+        <div class="section space-v-3x">
+    
+    <div class="">
+        <h1 class="text-2x">
+            Form
+        </h1>
+    
+        <div class="text-light text-xl">
+            <p>A plain Form helper (not a custom element) that builds a native <code>&lt;form&gt;</code>
+and binds inputs to a target object, providing before/after submit hooks.</p>
+
+        </div>
+    </div>
+    
+    <div class="">
+        <h2>Example</h2>
+        <script>
+            function resizeIframe(obj) {
+                obj.style.minHeight = obj.contentWindow.document.documentElement.scrollHeight + 'px';
+            }
+        </script>
+        <iframe class="overflow-hidden rounded-lg" width="100%" height="10px" src="/form/example/index.html" frameborder="0" scrolling="no" onload="setTimeout(function () {resizeIframe(this)}.bind(this), 50)"></iframe>
+    </div>
+    
+    
+        <div class="">
+            <h2>Usage</h2>
+                <div class="highlight"><pre class=" javascript"><code><span class="kd">const</span> <span class="nx">el</span> <span class="o">=</span> <span class="nx">Form</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">player</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">content</span><span class="p">:</span> <span class="nx">f</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="nx">f</span><span class="p">.</span><span class="nx">label</span><span class="p">(</span><span class="dl">'</span><span class="s1">name</span><span class="dl">'</span><span class="p">),</span>
+        <span class="nx">f</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="dl">'</span><span class="s1">name</span><span class="dl">'</span><span class="p">),</span>
+        <span class="nx">f</span><span class="p">.</span><span class="nx">submit</span><span class="p">(</span><span class="dl">'</span><span class="s1">Save</span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">],</span>
+    <span class="na">afterSubmit</span><span class="p">:</span> <span class="nx">rec</span> <span class="o">=&gt;</span> <span class="nx">doSomething</span><span class="p">(</span><span class="nx">rec</span><span class="p">)</span>
+<span class="p">})</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">el</span><span class="p">)</span>
+</code></pre></div>
+
+        </div>
+    
+    <button class="js-toggle-source reset text-sm text-bold text-gray-30 hover:text-blue" rel="#source-for-form">
+        SHOW SOURCE
+    </button>
+    <div class="source hide" id="source-for-form">
+        <div class="border border-blue bg-blue rounded-xl overflow-hidden">
+            <div class="text-white text-sm text-bold pad-h pad-v-1/4x">
+                SOURCE CODE
+            </div>
+            <div class="highlight"><pre class=" javascript"><code><span class="k">import</span> <span class="nx">Input</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./input.js</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">createElement</span><span class="p">,</span> <span class="nx">content</span> <span class="k">as</span> <span class="nx">setContent</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">dolla</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">titleize</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../support.js</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nx">Form</span> <span class="p">{</span>
+    <span class="kd">static</span> <span class="nx">inputTypes</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="dl">'</span><span class="s1">text</span><span class="dl">'</span><span class="p">,</span>
+        <span class="dl">'</span><span class="s1">tel</span><span class="dl">'</span><span class="p">,</span>
+        <span class="dl">'</span><span class="s1">password</span><span class="dl">'</span><span class="p">,</span>
+        <span class="dl">'</span><span class="s1">radio</span><span class="dl">'</span><span class="p">,</span>
+        <span class="dl">'</span><span class="s1">checkbox</span><span class="dl">'</span><span class="p">,</span>
+        <span class="dl">'</span><span class="s1">textarea</span><span class="dl">'</span><span class="p">,</span>
+        <span class="dl">'</span><span class="s1">select</span><span class="dl">'</span><span class="p">,</span>
+        <span class="dl">'</span><span class="s1">date</span><span class="dl">'</span><span class="p">,</span>
+        <span class="dl">'</span><span class="s1">datetime-local</span><span class="dl">'</span><span class="p">,</span>
+        <span class="dl">'</span><span class="s1">button</span><span class="dl">'</span><span class="p">,</span>
+        <span class="dl">'</span><span class="s1">number</span><span class="dl">'</span><span class="p">,</span>
+        <span class="dl">'</span><span class="s1">range</span><span class="dl">'</span>
+    <span class="p">]</span>
+
+    <span class="kd">static</span> <span class="nx">create</span> <span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{})</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="k">new</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">options</span><span class="p">).</span><span class="nx">el</span>
+    <span class="p">}</span>
+
+    <span class="kd">static</span> <span class="k">new</span> <span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{})</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="k">this</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="kd">constructor</span> <span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{})</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">target</span> <span class="o">=</span> <span class="nx">target</span>
+        <span class="kd">const</span> <span class="p">{</span> <span class="nx">content</span><span class="p">,</span> <span class="nx">beforeSubmit</span><span class="p">,</span> <span class="nx">afterSubmit</span><span class="p">,</span> <span class="p">...</span><span class="nx">attrs</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">options</span> <span class="o">||</span> <span class="p">{}</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">beforeSubmit</span> <span class="o">=</span> <span class="nx">beforeSubmit</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">afterSubmit</span> <span class="o">=</span> <span class="nx">afterSubmit</span>
+
+        <span class="c1">// build native form element</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">el</span> <span class="o">=</span> <span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">form</span><span class="dl">'</span><span class="p">,</span> <span class="nx">attrs</span><span class="p">)</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">el</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">submit</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">onSubmit</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">))</span>
+
+        <span class="c1">// attach type helpers</span>
+        <span class="k">this</span><span class="p">.</span><span class="kd">constructor</span><span class="p">.</span><span class="nx">inputTypes</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">type</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">[</span><span class="nx">type</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="nx">attr</span><span class="p">,</span> <span class="nx">o</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">(</span><span class="nx">attr</span><span class="p">,</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">({},</span> <span class="nx">o</span><span class="p">,</span> <span class="p">{</span> <span class="nx">type</span> <span class="p">}))</span>
+        <span class="p">})</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">content</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">function</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">setContent</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">el</span><span class="p">,</span> <span class="nx">content</span><span class="p">(</span><span class="k">this</span><span class="p">))</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="nx">id</span> <span class="p">(</span><span class="nx">attribute</span><span class="p">,</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{})</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">_uid</span><span class="p">)</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">_uid</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">().</span><span class="nx">toString</span><span class="p">(</span><span class="mi">36</span><span class="p">).</span><span class="nx">slice</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="p">}</span>
+        <span class="kd">const</span> <span class="nx">parts</span> <span class="o">=</span> <span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">_uid</span><span class="p">,</span> <span class="nx">attribute</span><span class="p">,</span> <span class="nx">options</span> <span class="o">&amp;&amp;</span> <span class="nx">options</span><span class="p">.</span><span class="nx">value</span><span class="p">]</span>
+        <span class="k">return</span> <span class="nx">parts</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nb">Boolean</span><span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="dl">'</span><span class="s1">-</span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Helper to generate bound inputs using komps Input</span>
+    <span class="nx">input</span> <span class="p">(</span><span class="nx">attribute</span><span class="p">,</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{})</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="p">{</span> <span class="nx">type</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">text</span><span class="dl">'</span><span class="p">,</span> <span class="p">...</span><span class="nx">rest</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">options</span>
+        <span class="kd">const</span> <span class="nx">id</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">(</span><span class="nx">attribute</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span>
+        <span class="kd">const</span> <span class="nx">input</span> <span class="o">=</span> <span class="nx">Input</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">type</span><span class="p">,</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">({</span>
+            <span class="na">target</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">target</span><span class="p">,</span>
+            <span class="na">attribute</span><span class="p">:</span> <span class="nx">attribute</span><span class="p">,</span>
+            <span class="na">id</span><span class="p">:</span> <span class="nx">id</span><span class="p">,</span>
+        <span class="p">},</span> <span class="nx">rest</span><span class="p">))</span>
+        <span class="k">return</span> <span class="nx">input</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Helper to build a label linked to generated id</span>
+    <span class="nx">label</span> <span class="p">(</span><span class="nx">attribute</span><span class="p">,</span> <span class="nx">contentOrOptions</span><span class="p">,</span> <span class="nx">maybeOptions</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">content</span> <span class="o">=</span> <span class="nx">contentOrOptions</span>
+        <span class="kd">let</span> <span class="nx">options</span> <span class="o">=</span> <span class="nx">maybeOptions</span> <span class="o">||</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">content</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">object</span><span class="dl">'</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="p">(</span><span class="nx">content</span> <span class="k">instanceof</span> <span class="nx">Node</span><span class="p">))</span> <span class="p">{</span>
+            <span class="nx">options</span> <span class="o">=</span> <span class="nx">content</span> <span class="o">||</span> <span class="p">{}</span>
+            <span class="nx">content</span> <span class="o">=</span> <span class="kc">undefined</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">content</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span> <span class="nx">content</span> <span class="o">=</span> <span class="nx">titleize</span><span class="p">(</span><span class="nx">attribute</span><span class="p">)</span> <span class="p">}</span>
+        <span class="k">return</span> <span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">label</span><span class="dl">'</span><span class="p">,</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">({</span>
+            <span class="na">for</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">(</span><span class="nx">attribute</span><span class="p">,</span> <span class="nx">options</span><span class="p">),</span>
+            <span class="na">content</span><span class="p">:</span> <span class="nx">content</span>
+        <span class="p">},</span> <span class="nx">options</span><span class="p">))</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Create a submit button helper</span>
+    <span class="nx">submit</span><span class="p">(</span><span class="nx">labelOrOptions</span><span class="p">,</span> <span class="nx">maybeOptions</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">content</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Save</span><span class="dl">'</span>
+        <span class="kd">let</span> <span class="nx">options</span> <span class="o">=</span> <span class="nx">maybeOptions</span> <span class="o">||</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">labelOrOptions</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">object</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">options</span> <span class="o">=</span> <span class="nx">labelOrOptions</span> <span class="o">||</span> <span class="p">{}</span>
+            <span class="nx">content</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">content</span> <span class="o">||</span> <span class="nx">content</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">labelOrOptions</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">content</span> <span class="o">=</span> <span class="nx">labelOrOptions</span>
+        <span class="p">}</span>
+        <span class="kd">const</span> <span class="nx">attrs</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">({},</span> <span class="nx">options</span><span class="p">.</span><span class="nx">attrs</span> <span class="o">||</span> <span class="p">{},</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">submit</span><span class="dl">'</span> <span class="p">})</span>
+        <span class="kd">const</span> <span class="nx">rest</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">({},</span> <span class="nx">options</span><span class="p">)</span>
+        <span class="k">delete</span> <span class="nx">rest</span><span class="p">.</span><span class="nx">attrs</span>
+        <span class="k">delete</span> <span class="nx">rest</span><span class="p">.</span><span class="nx">content</span>
+        <span class="k">return</span> <span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">button</span><span class="dl">'</span><span class="p">,</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">({</span> <span class="nx">content</span> <span class="p">},</span> <span class="nx">rest</span><span class="p">,</span> <span class="p">{</span> <span class="nx">attrs</span> <span class="p">}))</span>
+    <span class="p">}</span>
+
+    <span class="k">async</span> <span class="nx">onSubmit</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">()</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">disbableButtons</span><span class="p">()</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">el</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">button</span><span class="dl">'</span><span class="p">)?.</span><span class="nx">focus</span><span class="p">()</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">el</span><span class="p">.</span><span class="nx">dispatchEvent</span><span class="p">(</span><span class="k">new</span> <span class="nx">CustomEvent</span><span class="p">(</span><span class="dl">'</span><span class="s1">beforeSubmit</span><span class="dl">'</span><span class="p">))</span>
+
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="k">this</span><span class="p">.</span><span class="nx">beforeSubmit</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">function</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+                <span class="kd">const</span> <span class="nx">cont</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">beforeSubmit</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">target</span><span class="p">)</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">cont</span> <span class="o">===</span> <span class="kc">false</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+            <span class="p">}</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">target</span> <span class="o">&amp;&amp;</span> <span class="k">typeof</span> <span class="k">this</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">save</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">function</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+                <span class="kd">const</span> <span class="nx">saved</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">save</span><span class="p">()</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">saved</span> <span class="o">===</span> <span class="kc">false</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+            <span class="p">}</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="k">this</span><span class="p">.</span><span class="nx">afterSubmit</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">function</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">afterSubmit</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">target</span><span class="p">)</span>
+            <span class="p">}</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">el</span><span class="p">.</span><span class="nx">dispatchEvent</span><span class="p">(</span><span class="k">new</span> <span class="nx">CustomEvent</span><span class="p">(</span><span class="dl">'</span><span class="s1">afterSubmit</span><span class="dl">'</span><span class="p">))</span>
+        <span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">enableButtons</span><span class="p">()</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="nx">disbableButtons</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">submitButtons</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">el</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">button</span><span class="dl">'</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">button</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="kd">const</span> <span class="nx">type</span> <span class="o">=</span> <span class="nx">button</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="dl">'</span><span class="s1">type</span><span class="dl">'</span><span class="p">)</span> <span class="o">||</span> <span class="dl">'</span><span class="s1">submit</span><span class="dl">'</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">type</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">submit</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">button</span><span class="p">.</span><span class="nx">disabled</span> <span class="o">=</span> <span class="kc">true</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">submitButtons</span><span class="p">.</span><span class="nx">push</span><span class="p">([</span><span class="nx">button</span><span class="p">,</span> <span class="nx">button</span><span class="p">.</span><span class="nx">innerHTML</span><span class="p">])</span>
+                <span class="nx">button</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">&amp;#8729;&amp;#8729;&amp;#8729;</span><span class="dl">'</span>
+            <span class="p">}</span>
+        <span class="p">})</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">submitButtons</span>
+    <span class="p">}</span>
+
+    <span class="nx">enableButtons</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">submitButtons</span><span class="p">)</span> <span class="k">return</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">submitButtons</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(([</span><span class="nx">button</span><span class="p">,</span> <span class="nx">html</span><span class="p">])</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">button</span><span class="p">.</span><span class="nx">disabled</span> <span class="o">=</span> <span class="kc">false</span>
+            <span class="nx">button</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">html</span>
+        <span class="p">})</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+        </div>
+    </div>
+</div>
+    </div>
+    <div class="pad text-right md:text-lg flex justify-content-end divide-h align-center border-gray-30">
+        <div class="pad-h">
+            &copy; 2025
+            <a href="https://github.com/bemky/" class="reset">Ben Ehmke</a>
+        </div>
+        <a href="https://github.com/bemky/komps" class="reset pad-h inline-flex align-center gap-1/2x">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                Komps on GitHub
+        </a>
+    </div>
+</body>
+</html>
