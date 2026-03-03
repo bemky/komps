@@ -108,12 +108,29 @@ h2 {
     }
     .uniformNav {
         a {
+            padding: 0;
             padding-left: 1em;
             border-left-width: 0.5em;
             color: color('dusk-60');
-        }
-        .active {
-            background-color: rgba(var(--active-color), 0.15);
+            span {
+                padding: 0.5em;
+                padding-left: 1em;
+            }
+            svg {
+                stroke-width: 1;
+                color: color('dusk-40');
+            }
+            &:hover {
+                svg {
+                    color: rgba(var(--hover-color), 1);
+                }
+            }
+            &.active {
+                background-color: rgba(var(--active-color), 0.15);
+                svg {
+                    color: rgba(var(--active-color), 1);
+                }
+            }
         }
     }
 }

@@ -3,13 +3,18 @@
 <div class="section space-v-3x">
     
     <div class="">
-        <h1 class="text-2x">
-            <%= component[:name] %>
-            <% if extended_component %>
-            <span class="text-light text-nowrap text-italic text-gray-50 text-xl">
-                (extends <%= link_to extended_component[:name], extended_component[:file_name], class: 'reset hover:text-underline' %>)
+        <h1 class="text-2x flex align-center gap">
+            <span class="text-green">
+                <%= svg("assets/images/icons/#{component[:file_name]}.svg", height: 64, width: 64, "stroke-width": 1.2) %>
             </span>
-            <% end %>
+            <div>
+                <%= component[:name] %>
+                <% if extended_component %>
+                <span class="text-light text-nowrap text-italic text-gray-50 text-xl">
+                    (extends <%= link_to extended_component[:name], extended_component[:file_name], class: 'reset hover:text-underline' %>)
+                </span>
+                <% end %>
+            </div>
         </h1>
     
         <div class="text-light text-xl">

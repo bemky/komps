@@ -68,6 +68,26 @@ helpers do
   #   path
   # end
   
+  def svg(path, **attributes)
+    full_path = File.join(app.source_dir, path)
+    return unless File.exist?(full_path)
+    svg = File.read(full_path)
+    if attributes.any?
+      svg = svg.sub(/<svg[^>]*>/) do |tag|
+        attributes.each do |key, value|
+          attr_name = key.to_s.gsub('_', '-')
+          tag = if tag =~ /\b#{Regexp.escape(attr_name)}="[^"]*"/
+            tag.sub(/\b#{Regexp.escape(attr_name)}="[^"]*"/, %(#{attr_name}="#{value}"))
+          else
+            tag.sub(/>$/, %( #{attr_name}="#{value}">))
+          end
+        end
+        tag
+      end
+    end
+    svg
+  end
+
   def code(language=nil, content=nil, options={}, &block)
     unless content
       from_block = true

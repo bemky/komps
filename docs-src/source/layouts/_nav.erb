@@ -1,9 +1,11 @@
 <div class="uniformNav -vertical -gray flex-fill -active-green">
     <a href="/" class="<%= "active" if current_path == "index.html" %>">
-        Usage
+        <%= svg("assets/images/icons/usage.svg") %>
+        <span>Usage</span>
     </a>
     <a href="/element" class="<%= "active" if current_path =~ /^element/ %>">
-        Base Element
+        <%= svg("assets/images/icons/element.svg") %>
+        <span>Base Element</span>
     </a>
     <div class="height-0 width-full">
         <div class="border-green-80 border-opacity-30 border-bottom border-1px width-full"></div>
@@ -26,16 +28,19 @@
     end %>
     <% links.each do |path, link| %>
         <a href="/<%= link[:path] %>" class="<%= "active" if current_path =~ /^#{link[:path]}/ %>">
-            <%= link[:title] %>
+            <%= svg("assets/images/icons/#{link[:path]}.svg") %>
+            <span><%= link[:title] %></span>
         </a>
         <% if link[:children] && current_path =~ /^#{link[:path]}/ %>
-            <div class="uniformNav -vertical pad-left-2x text-sm">
-                <% link[:children].each do |link| %>
-                    <a href="/<%= link[:path] %>" class="<%= "active" if current_path =~ /^#{link[:path]}/ %>">
-                        <%= link[:title] %>
-                    </a>
-                <% end %>
-            </div>
+            <% link[:children].each do |link| %>
+                <a href="/<%= link[:path] %>" class="<%= "active" if current_path =~ /^#{link[:path]}/ %>">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 42" width="32" height="42" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="15" y1="0" x2="15" y2="42"/>
+                    </svg>
+ 
+                    <span><%= link[:title] %></span>
+                </a>
+            <% end %>
         <% end %>
     <% end %>
 </div>
