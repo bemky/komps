@@ -1,0 +1,63 @@
+/* Komps JSDoc Theme Overrides */
+
+:root {
+    --green: #00c964;
+    --orange: #ffad00;
+    --midnight: #415190;
+    --dusk: #677395;
+    --dusk-60: #8a96b3;
+    --dusk-80: #4e5f82;
+    --green-10: #e6faf0;
+}
+
+html, body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    line-height: 1.5;
+    font-size: 14px;
+    color: var(--dusk-60);
+}
+
+h1 {
+    color: var(--dusk-80);
+}
+
+h2 {
+    font-weight: 500;
+}
+
+/* Inline code */
+code {
+    border-radius: 0.25em;
+    color: var(--green);
+    background-color: rgba(0, 201, 100, 0.1);
+    padding: 0.15em 0.3em;
+    font-size: 0.9em;
+}
+
+pre code {
+    color: inherit;
+    background: none;
+    padding: initial;
+}
+
+/* Code blocks */
+pre {
+    border-radius: 0.5em;
+    background: #f0faf5;
+}
+
+/* Links */
+a {
+    color: var(--green);
+}
+
+a:hover {
+    color: var(--midnight);
+}
+
+/* Active nav state */
+nav a.active,
+nav a[aria-current] {
+    color: var(--green);
+    border-color: var(--green);
+}

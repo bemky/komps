@@ -4,7 +4,11 @@
   "version": "1.0.0",
   "description": "Komps is a library of style-less Web Components for building UIs. Komps is platform-agnostic, and each component is fully tree-shakeable by any bundler.",
   "main": "lib/komps.js",
-  "scripts": {},
+  "scripts": {
+    "docs": "jsdoc -c jsdoc.json",
+    "docs:watch": "npx nodemon --watch lib --watch docs-src --ext js,css,md --exec 'npm run docs'",
+    "docs:serve": "npx serve docs"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bemky/komps.git"
@@ -23,5 +27,11 @@
   "dependencies": {
     "@floating-ui/dom": "^1.5.2",
     "dolla": "github:bemky/dolla"
+  },
+  "devDependencies": {
+    "highlight.js": "^11.11.1",
+    "jsdoc": "^4.0.3",
+    "jsdoc-export-default-interop": "^0.3.1",
+    "jsdoc-press": "github:bemky/jsdoc-press"
   }
 }

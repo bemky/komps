@@ -1,0 +1,167 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="color-scheme" content="dark light"><title>KompElement</title><link rel="stylesheet" href="/stylesheets/jsdoc-press.css" /><link rel="stylesheet" href="stylesheets/komps-jsdoc.css" /></head><body><input type="checkbox" id="sm-nav-trigger" class="sm-nav-trigger" /><nav><a class="brand" href="./index.html"><img src="images/logo.svg"/></a><div class="nav-group"><div class="nav-kinds">Classes</div><ul class="nav-tree"><li><a class="nav-item " href="autogrid.html"><span class="icon-kind kind-class">C</span>
+        
+        AutoGrid
+    </a></li><li><a class="nav-item " href="checkboxcolumn.html"><span class="icon-kind kind-class">C</span>
+        
+        CheckboxColumn
+    </a></li><li><a class="nav-item " href="contentarea.html"><span class="icon-kind kind-class">C</span>
+        
+        ContentArea
+    </a></li><li><a class="nav-item " href="dropdown.html"><span class="icon-kind kind-class">C</span>
+        
+        Dropdown
+    </a></li><li><a class="nav-item " href="dropzone.html"><span class="icon-kind kind-class">C</span>
+        
+        Dropzone
+    </a></li><li><a class="nav-item " href="floater.html"><span class="icon-kind kind-class">C</span>
+        
+        Floater
+    </a></li><li><a class="nav-item " href="form.html"><span class="icon-kind kind-class">C</span>
+        
+        Form
+    </a></li><li><a class="nav-item " href="headercell.html"><span class="icon-kind kind-class">C</span>
+        
+        HeaderCell
+    </a></li><li><a class="nav-item " href="input.html"><span class="icon-kind kind-class">C</span>
+        
+        Input
+    </a></li><li><a class="nav-item active" href="kompelement.html"><span class="icon-kind kind-class">C</span>
+        
+        KompElement
+    </a></li><li><a class="nav-item " href="modal.html"><span class="icon-kind kind-class">C</span>
+        
+        Modal
+    </a></li><li><a class="nav-item " href="notification.html"><span class="icon-kind kind-class">C</span>
+        
+        Notification
+    </a></li><li><a class="nav-item " href="notificationcenter.html"><span class="icon-kind kind-class">C</span>
+        
+        NotificationCenter
+    </a></li><li><a class="nav-item " href="numbercolumn.html"><span class="icon-kind kind-class">C</span>
+        
+        NumberColumn
+    </a></li><li><a class="nav-item " href="readonlycolumn.html"><span class="icon-kind kind-class">C</span>
+        
+        ReadonlyColumn
+    </a></li><li><a class="nav-item " href="searchfield.html"><span class="icon-kind kind-class">C</span>
+        
+        SearchField
+    </a></li><li><a class="nav-item " href="selectcolumn.html"><span class="icon-kind kind-class">C</span>
+        
+        SelectColumn
+    </a></li><li><a class="nav-item " href="spreadsheet.html"><span class="icon-kind kind-class">C</span>
+        
+        Spreadsheet
+    </a></li><li><a class="nav-item " href="spreadsheetcell.html"><span class="icon-kind kind-class">C</span>
+        
+        SpreadsheetCell
+    </a></li><li><a class="nav-item " href="spreadsheetcolumn.html"><span class="icon-kind kind-class">C</span>
+        
+        SpreadsheetColumn
+    </a></li><li><a class="nav-item " href="spreadsheetheadercell.html"><span class="icon-kind kind-class">C</span>
+        
+        SpreadsheetHeaderCell
+    </a></li><li><a class="nav-item " href="table.html"><span class="icon-kind kind-class">C</span>
+        
+        Table
+    </a></li><li><a class="nav-item " href="tablecell.html"><span class="icon-kind kind-class">C</span>
+        
+        TableCell
+    </a></li><li><a class="nav-item " href="tablecolumn.html"><span class="icon-kind kind-class">C</span>
+        
+        TableColumn
+    </a></li><li><a class="nav-item " href="tablegroup.html"><span class="icon-kind kind-class">C</span>
+        
+        TableGroup
+    </a></li><li><a class="nav-item " href="tableheader.html"><span class="icon-kind kind-class">C</span>
+        
+        TableHeader
+    </a></li><li><a class="nav-item " href="tablerow.html"><span class="icon-kind kind-class">C</span>
+        
+        TableRow
+    </a></li><li><a class="nav-item " href="tooltip.html"><span class="icon-kind kind-class">C</span>
+        
+        Tooltip
+    </a></li></ul></div><div class="nav-group"><div class="nav-kinds">Mixins</div><ul class="nav-tree"><li><a class="nav-item " href="cellsdimensions.html"><span class="icon-kind kind-mixin">X</span>
+        
+        cellsDimensions
+    </a></li><li><a class="nav-item " href="collapsible.html"><span class="icon-kind kind-mixin">X</span>
+        
+        collapsible
+    </a></li><li><a class="nav-item " href="reorderable.html"><span class="icon-kind kind-mixin">X</span>
+        
+        reorderable
+    </a></li><li><a class="nav-item " href="resizable.html"><span class="icon-kind kind-mixin">X</span>
+        
+        resizable
+    </a></li></ul></div><div class='nav-fill'></div><footer class="footer">&copy; 2026 <a href='https://github.com/bemky/'>Ben Ehmke</a> | <a href='https://github.com/bemky/komps'>Komps on GitHub</a></footer></nav><main class="content"><article class="doc"><header><div class="kind kind-color kind-class"><span class="icon-kind icon-kind-class">C</span>
+            
+            class
+        </div><h1><span class="signature"><span class="signature-name">KompElement</span><span class="signature-extends">&nbsp;extends&nbsp;</span><span class="signature-augments">
+                HTMLElement
+                
+            </span></span></h1></header><section class="description"><p>Base Element for all Komps Components. It provides some syntax sugar for working with
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Components/Using_custom_elements">Custom Elements</a>,
+provides some built-in events, and adds some helpful methods.</p></section><section><h2>Constructor</h2><div class="symbol-title">
+            <code>
+<span class="signature"><span class="signature-prefix">new </span><span class="signature-name">KompElement</span><span class="signature-punctuation">(</span><span class="signature-param">options</span><span class="signature-punctuation">)</span></span>
+</code></div><div class="symbol-parameter">
+    <code>options</code>
+    :
+        <code class="clear">
+            
+                Object
+                
+            
+        </code><span class="tag-attr tag-optional">optional</span><div class="symbol-parameter-properties"><div class="symbol-parameter-property"><div class="symbol-parameter">
+    <code>content</code>
+    :
+        <code class="clear">
+            
+                string
+                |
+            
+                HTMLElement
+                |
+            
+                Array
+                |
+            
+                Object
+                
+            
+        </code><span class="tag-attr tag-optional">optional</span><div class="symbol-description"><p>content to append to element. Passed to {@link https://dollajs.com/#content Dolla's content}</p></div></div></div></div></div></section><section><h2>Examples</h2><pre class="overflow-container code-block"><code class="hljs language-gherkin"><span class="hljs-variable">&lt;caption&gt;</span>Extending<span class="hljs-variable">&lt;/caption&gt;</span>
+class DropzoneElement extends KompElement {}
+window.customElements.define(&#x27;komp-dropzone&#x27;, DropzoneElement);
+
+<span class="hljs-comment">## Extending</span>
+
+|<span class="hljs-string"> Property </span>|<span class="hljs-string"> Static </span>|<span class="hljs-string"> Type </span>|<span class="hljs-string"> Description </span>|
+|<span class="hljs-string">---</span>|<span class="hljs-string">---</span>|<span class="hljs-string">---</span>|<span class="hljs-string">---</span>|
+|<span class="hljs-string"> `style` </span>|<span class="hljs-string"> yes </span>|<span class="hljs-string"> `string` </span>|<span class="hljs-string"> Define style that is dynamically appended when component is used for the first time </span>|
+|<span class="hljs-string"> `defaults` </span>|<span class="hljs-string"> yes </span>|<span class="hljs-string"> `Object` </span>|<span class="hljs-string"> keys and values to set on initialization </span>|
+|<span class="hljs-string"> `watch` </span>|<span class="hljs-string"> yes </span>|<span class="hljs-string"> `Array` </span>|<span class="hljs-string"> array of attributes to watch for changes and call `changed(attribute, was, now)` also calls `this[${attribute}Changed](was, now)` </span>|
+|<span class="hljs-string"> `connected` </span>|<span class="hljs-string"> no </span>|<span class="hljs-string"> `function` </span>|<span class="hljs-string"> called when element is connected to a DOM element </span>|
+|<span class="hljs-string"> `disconnected` </span>|<span class="hljs-string"> no </span>|<span class="hljs-string"> `function` </span>|<span class="hljs-string"> called when element is disconnected from a DOM element </span>|
+|<span class="hljs-string"> `remove` </span>|<span class="hljs-string"> no </span>|<span class="hljs-string"> `function` </span>|<span class="hljs-string"> remove element, calls callback between event triggers beforeRemove and afterRemove </span>|
+
+<span class="hljs-comment">## Events</span>
+
+|<span class="hljs-string"> Event </span>|<span class="hljs-string"> Description </span>|
+|<span class="hljs-string">---</span>|<span class="hljs-string">---</span>|
+|<span class="hljs-string"> `beforeRemove` </span>|<span class="hljs-string"> called before element is removed </span>|
+|<span class="hljs-string"> `afterRemove` </span>|<span class="hljs-string"> called after element is removed </span>|
+|<span class="hljs-string"> `beforeConnect` </span>|<span class="hljs-string"> called before element is connected </span>|
+|<span class="hljs-string"> `afterConnect` </span>|<span class="hljs-string"> called after element is connected </span>|
+|<span class="hljs-string"> `beforeDisconnect` </span>|<span class="hljs-string"> called before element is disconnected </span>|
+|<span class="hljs-string"> `afterDisconnect` </span>|<span class="hljs-string"> called after element is disconnected </span>|
+
+<span class="hljs-comment">## Methods</span>
+
+|<span class="hljs-string"> Method </span>|<span class="hljs-string"> Arguments </span>|<span class="hljs-string"> Description </span>|
+|<span class="hljs-string">---</span>|<span class="hljs-string">---</span>|<span class="hljs-string">---</span>|
+|<span class="hljs-string"> `initialize` </span>|<span class="hljs-string"> none </span>|<span class="hljs-string"> method called once for each instantiation, but only after element is connected </span>|
+|<span class="hljs-string"> `trigger` </span>|<span class="hljs-string"> `eventName:string, ...args` </span>|<span class="hljs-string"> triggers an event on this element, passes args </span>|
+|<span class="hljs-string"> `addEventListenerFor` </span>|<span class="hljs-string"> `element:HTMLElement, eventType:string, ...args` </span>|<span class="hljs-string"> calls callback when eventType is triggered on element, enables component to tear down listener when disconnected </span>|
+|<span class="hljs-string"> `changed` </span>|<span class="hljs-string"> `attribute, was, now` </span>|<span class="hljs-string"> called every time an attribute of the element changes. Must include attribute in `static watch = [&#x27;foo&#x27;]` </span>|
+|<span class="hljs-string"> `[attribute]Changed` </span>|<span class="hljs-string"> `was, now` </span>|<span class="hljs-string"> called every time `attribute` of the element changes. Must include attribute in `static watch = [&#x27;foo&#x27;]` </span>|</code></pre></section></article></main><div class="sm-nav"><a href="index.html"><img src="images/logo.svg" height="24px"/></a><label for="sm-nav-trigger" class="sm-nav-toggle"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></label></div><script src="/javascripts/jsdoc-press.js"></script></body></html>

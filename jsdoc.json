@@ -1,0 +1,32 @@
+{
+  "sourceType": "module",
+  "recurseDepth": 10,
+  "source": {
+    "include": ["./lib/"],
+    "exclude": ["./node_modules/", "./lib/support.js", "./lib/komps.js", "./lib/komps/plugins.js", "./lib/komps/spreadsheet/index.js"],
+    "includePattern": ".+\\.js$",
+    "excludePattern": "(^|\\/|\\\\)_"
+  },
+  "opts": {
+    "destination": "./docs/",
+    "recurse": true,
+    "template": "node_modules/jsdoc-press"
+  },
+  "plugins": [
+    "node_modules/jsdoc-export-default-interop/dist/index",
+    "plugins/markdown"
+  ],
+  "templates": {
+    "logo": "images/logo.svg",
+    "footer": "&copy; 2026 <a href='https://github.com/bemky/'>Ben Ehmke</a> | <a href='https://github.com/bemky/komps'>Komps on GitHub</a>",
+    "staticFiles": "docs-src/",
+    "cleanOutput": true,
+    "nav": {
+      "order": ["class"],
+      "exclude": ["typedef", "module"]
+    },
+    "stylesheets": ["./docs-src/stylesheets/komps-jsdoc.css"],
+    "index": "./docs-src/index.md",
+    "highlight": true
+  }
+}
