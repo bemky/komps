@@ -2,6 +2,7 @@
 .tm_properties
 CLAUDE.md
 .claude
+.nova
 /tmp
 /node_modules
 /*/node_modules

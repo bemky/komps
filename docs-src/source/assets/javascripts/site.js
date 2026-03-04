@@ -4,6 +4,7 @@ import { resizable, reorderable, collapsible } from 'komps/plugins';
 import { addEventListenerFor } from 'dolla';
 
 Object.keys(Komps).forEach(funcName => {
+    if (funcName === 'Element') return;
     window[funcName] = Komps[funcName]
 })
 window.plugins = {
