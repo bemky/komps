@@ -66,6 +66,7 @@ describe('KompElement', function () {
         describe('number attributes', function () {
             it('serializes as HTML attribute', function () {
                 const el = new TestElement({ count: 42 })
+                assert.equal(el.count, 42)
                 assert.equal(el.getAttribute('count'), '42')
             })
 
