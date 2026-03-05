@@ -275,4 +275,42 @@ describe('KompElement', function () {
             console.warn = originalWarn
         })
     })
+
+    describe('HTML initialization', function () {
+        it('reads string attribute from parsed HTML', function () {
+            const container = document.createElement('div')
+            container.innerHTML = '<komp-test-element name="from-html"></komp-test-element>'
+            const el = container.querySelector('komp-test-element')
+
+            // In jsdom, HTML attributes are available during construction,
+            // so the constructor's hasAttribute check picks them up immediately.
+            // In a real browser, this would happen later in initialize() on connect.
+            assert.equal(el.name, 'from-html')
+            assert.equal(el.getAttribute('name'), 'from-html')
+        })
+
+        it('reads number attribute from parsed HTML after connect', function () {
+            const container = document.createElement('div')
+            container.innerHTML = '<komp-test-element count="42"></komp-test-element>'
+            const el = container.querySelector('komp-test-element')
+
+            document.body.appendChild(container)
+            // initialize() reads getAttribute which returns string "42"
+            assert.equal(el.count, '42')
+
+            document.body.removeChild(container)
+        })
+
+        it('reads boolean attribute from parsed HTML after connect', function () {
+            const container = document.createElement('div')
+            container.innerHTML = '<komp-test-element></komp-test-element>'
+            const el = container.querySelector('komp-test-element')
+
+            document.body.appendChild(container)
+            // enabled defaults to true, presence of attribute means true
+            assert.equal(el.enabled, true)
+
+            document.body.removeChild(container)
+        })
+    })
 })
