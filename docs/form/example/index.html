@@ -10,11 +10,14 @@
     <!-- Use the title from a page's frontmatter if it has one -->
     <title>Komps</title>
     <link href="/assets/site-7f2a035ecdfc731c412b7939e6adbe5615a23b958aa2495fe775363f93354e80.css" rel="stylesheet" />
-    <script src="/assets/site-824a835434eb22efd6cd94c7304215449b7a7bf1c7dd27a47fc3c4033af56844.js"></script>
+    <script src="/assets/site-219792e9fed0bd3186512318e33c72b32a17f2dc83ec45d3c8e36695d00a7a7e.js"></script>
 </head>
 <body class="bg-purple-10 min-height-100-vh bg-graph">
     <div class="flex border-purple-20 width-full justify-content-between">
-    <div class="width-1/2 pad-2x space-v form-container"></div>
+    <div class="width-1/2 pad-2x flex justify-content-center">
+        <div class="form-container flex-none uniformInputs bg-white rounded-xl border">
+        </div>
+    </div>
     <div class="data pad-2x bg-gray-90 text-green"></div>
 </div>
 <script>
@@ -39,12 +42,7 @@
         name: 'Corey Seager',
         born: new Date('1986-03-06'),
         bats: 'left', position: 'SS',
-        allStar: true,
-        preferences: { snacks: ['snickers','chips'] },
-        bio: 'Super badass dood.',
-        favoriteMoment: new Date('2023-11-04T04:12:00'),
-        captain: 'no'
-    })
+        position: 'SS'    })
 
     function renderAttributes () {
         document.querySelector('.data').innerHTML = JSON.stringify(player._attributes)
@@ -54,25 +52,66 @@
     player.addEventListener('change', renderAttributes)
 
     document.addEventListener('DOMContentLoaded', () => {
+        const notificationCenter = new NotificationCenter()
+        document.body.append(notificationCenter)
+        
         renderAttributes()
         const formEl = Form.create(player, {
-            class: 'space-v',
             content: f => [
-                f.label('name'),
-                f.text('name'),
-                f.label('born'),
-                f.date('born'),
-                f.label('bats'),
-                f.select('bats', { options: ['left','right'] }),
-                f.label('position'),
-                f.select('position', { options: ['1B','2B','3B','SS'] }),
-                f.label('bio'),
-                f.textarea('bio'),
-                f.label('captain'),
-                f.checkbox('captain', { value: 'yes' }),
-                f.submit('Save')
+                {
+                    class: 'flex flex-wrap gap-xl pad-2x',
+                    content: [{
+                        class: 'space-v',
+                        content: [
+                            {
+                                content: [
+                                    f.label('name'),
+                                    f.text('name')
+                                ]
+                            },
+                            {
+                                content: [
+                                    f.label('born'),
+                                    f.date('born')
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        class: 'space-v min-width-100-px',
+                        content: [
+                            {
+                                content: [
+                                    f.label('bats'),
+                                    f.select('bats', { options: ['left','right'] })
+                                ]
+                            },
+                            {
+                                content: [
+                                    f.label('position'),
+                                    f.select('position', { options: ['1B','2B','3B','SS'] })
+                                ]
+                            }
+                        ]
+                    }].map(fields => {
+                        fields.content.forEach(field => {
+                            field.content[0].classList.add("block", "text-bold", "margin-bottom-1/2x")
+                            field.content[1].classList.add('width-full')
+                            return field
+                        })
+                        return fields
+                    })
+                },
+                {
+                    class: 'border-top border-purple-10 pad-h-2x pad-v text-right',
+                    content: f.submit('Save', {class: 'uniformButton -green'})
+                }
             ],
-            afterSubmit: rec => console.log('submitted', rec)
+            afterSubmit: rec => {
+                notificationCenter.add('Saved!', {
+                    class: 'text-bold bg-green bg-opacity-80 rounded border-green-70 border text-white pad-h pad-v-1/2x bottom-0 right-0'
+                })
+            }
         })
         document.querySelector('.form-container').append(formEl)
     })

@@ -9,7 +9,7 @@
     <!-- Use the title from a page's frontmatter if it has one -->
     <title>Komps</title>
     <link href="/assets/site-7f2a035ecdfc731c412b7939e6adbe5615a23b958aa2495fe775363f93354e80.css" rel="stylesheet" />
-    <script src="/assets/site-824a835434eb22efd6cd94c7304215449b7a7bf1c7dd27a47fc3c4033af56844.js"></script>
+    <script src="/assets/site-219792e9fed0bd3186512318e33c72b32a17f2dc83ec45d3c8e36695d00a7a7e.js"></script>
 </head>
 <body>
     <div class="side-nav">
@@ -459,7 +459,10 @@
 
 <span class="kd">class</span> <span class="nx">TableToggle</span> <span class="kd">extends</span> <span class="nx">KompElement</span> <span class="p">{</span>
     <span class="kd">static</span> <span class="nx">tagName</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">komp-table-toggle</span><span class="dl">'</span>
-    <span class="kd">static</span> <span class="nx">assignableAttributes</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">column</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">cellIndex</span><span class="dl">'</span><span class="p">]</span>
+    <span class="kd">static</span> <span class="nx">assignableAttributes</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="na">column</span><span class="p">:</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">object</span><span class="dl">'</span><span class="p">,</span> <span class="na">default</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> <span class="na">null</span><span class="p">:</span> <span class="kc">true</span> <span class="p">},</span>
+        <span class="na">cellIndex</span><span class="p">:</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">number</span><span class="dl">'</span><span class="p">,</span> <span class="na">default</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> <span class="na">null</span><span class="p">:</span> <span class="kc">true</span> <span class="p">}</span>
+    <span class="p">}</span>
     <span class="nx">cellIndexChanged</span> <span class="p">(</span><span class="nx">was</span><span class="p">,</span> <span class="nx">now</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">gridColumn</span> <span class="o">=</span> <span class="nx">now</span>
     <span class="p">}</span>
@@ -473,7 +476,7 @@
 <span class="nb">window</span><span class="p">.</span><span class="nx">customElements</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="nx">TableToggle</span><span class="p">.</span><span class="nx">tagName</span><span class="p">,</span> <span class="nx">TableToggle</span><span class="p">);</span>
 
 <span class="kd">function</span> <span class="p">(</span><span class="nx">proto</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">assignableAttributes</span><span class="p">.</span><span class="nx">collapseTo</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">auto</span><span class="dl">'</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">assignableAttributes</span><span class="p">.</span><span class="nx">collapseTo</span> <span class="o">=</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">string</span><span class="dl">'</span><span class="p">,</span> <span class="na">default</span><span class="p">:</span> <span class="dl">'</span><span class="s1">auto</span><span class="dl">'</span><span class="p">,</span> <span class="na">null</span><span class="p">:</span> <span class="kc">false</span> <span class="p">}</span>
 
     <span class="kd">const</span> <span class="nx">_initialize</span> <span class="o">=</span> <span class="nx">proto</span><span class="p">.</span><span class="nx">initialize</span><span class="p">;</span>
     <span class="nx">proto</span><span class="p">.</span><span class="nx">initialize</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(...</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>

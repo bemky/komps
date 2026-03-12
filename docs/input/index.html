@@ -9,7 +9,7 @@
     <!-- Use the title from a page's frontmatter if it has one -->
     <title>Komps</title>
     <link href="/assets/site-7f2a035ecdfc731c412b7939e6adbe5615a23b958aa2495fe775363f93354e80.css" rel="stylesheet" />
-    <script src="/assets/site-824a835434eb22efd6cd94c7304215449b7a7bf1c7dd27a47fc3c4033af56844.js"></script>
+    <script src="/assets/site-219792e9fed0bd3186512318e33c72b32a17f2dc83ec45d3c8e36695d00a7a7e.js"></script>
 </head>
 <body>
     <div class="side-nav">
@@ -420,6 +420,11 @@ this can be converted.</p>
                     </table>
                 </div>
         </div>
+        <div class="">
+            <h2>Known Issues</h2>
+                <p>This class wraps/generates an input that can be appended. That input does not have the attributes or callbacks to manage the target. If that input is cloned, it will not retain it's reactive functionality</p>
+
+        </div>
     
     <button class="js-toggle-source reset text-sm text-bold text-gray-30 hover:text-blue" rel="#source-for-input">
         SHOW SOURCE
@@ -431,16 +436,16 @@ this can be converted.</p>
             </div>
             <div class="highlight"><pre class=" javascript"><code><span class="k">import</span> <span class="nx">KompElement</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./element.js</span><span class="dl">'</span><span class="p">;</span>
 <span class="k">import</span> <span class="nx">ContentArea</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./content-area.js</span><span class="dl">'</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">except</span><span class="p">,</span> <span class="nx">dig</span><span class="p">,</span> <span class="nx">bury</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../support.js</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">except</span><span class="p">,</span> <span class="nx">dig</span><span class="p">,</span> <span class="nx">bury</span><span class="p">,</span> <span class="nx">generateRefId</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../support.js</span><span class="dl">'</span><span class="p">;</span>
 <span class="k">import</span> <span class="p">{</span> <span class="nx">createElement</span><span class="p">,</span> <span class="nx">HTML_ATTRIBUTES</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">dolla</span><span class="dl">'</span><span class="p">;</span>
 
 <span class="kd">class</span> <span class="nx">Input</span> <span class="p">{</span>
     
     <span class="kd">static</span> <span class="nx">assignableAttributes</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="na">target</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-        <span class="na">attribute</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-        <span class="na">dump</span><span class="p">:</span> <span class="p">(</span><span class="nx">v</span><span class="p">,</span> <span class="nx">target</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">v</span><span class="p">,</span>
-        <span class="na">load</span><span class="p">:</span> <span class="p">(</span><span class="nx">v</span><span class="p">,</span> <span class="nx">target</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">v</span>
+        <span class="na">target</span><span class="p">:</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">object</span><span class="dl">'</span><span class="p">,</span> <span class="na">default</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> <span class="na">null</span><span class="p">:</span> <span class="kc">true</span> <span class="p">},</span>
+        <span class="na">attribute</span><span class="p">:</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">string</span><span class="dl">'</span><span class="p">,</span> <span class="na">default</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> <span class="na">null</span><span class="p">:</span> <span class="kc">true</span> <span class="p">},</span>
+        <span class="na">dump</span><span class="p">:</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">function</span><span class="dl">'</span><span class="p">,</span> <span class="na">default</span><span class="p">:</span> <span class="p">(</span><span class="nx">v</span><span class="p">,</span> <span class="nx">target</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">v</span><span class="p">,</span> <span class="na">null</span><span class="p">:</span> <span class="kc">false</span> <span class="p">},</span>
+        <span class="na">load</span><span class="p">:</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">function</span><span class="dl">'</span><span class="p">,</span> <span class="na">default</span><span class="p">:</span> <span class="p">(</span><span class="nx">v</span><span class="p">,</span> <span class="nx">target</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">v</span><span class="p">,</span> <span class="na">null</span><span class="p">:</span> <span class="kc">false</span> <span class="p">}</span>
     <span class="p">}</span>
     
     <span class="kd">static</span> <span class="nx">create</span><span class="p">(</span><span class="nx">type</span><span class="p">,</span> <span class="nx">options</span><span class="o">=</span><span class="p">{})</span> <span class="p">{</span>
@@ -476,18 +481,32 @@ this can be converted.</p>
             <span class="c1">// eslint-disable-next-line no-console</span>
             <span class="k">try</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="dl">'</span><span class="s1">[Komps Input] option "record" is deprecated; use "target" instead.</span><span class="dl">'</span><span class="p">)</span> <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{}</span>
         <span class="p">}</span>
-        <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="kd">constructor</span><span class="p">.</span><span class="nx">assignableAttributes</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">k</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        
+        <span class="kd">let</span> <span class="nx">assignableAttributes</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="kd">constructor</span><span class="p">.</span><span class="nx">assignableAttributes</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="kd">constructor</span><span class="p">.</span><span class="nx">assignableAttributes</span><span class="p">))</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="s2">`[Komps] assignableAttributes on </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="kd">constructor</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2"> uses deprecated array format. Convert to object schema: { attr: { type, default, null } }`</span><span class="p">)</span>
+            <span class="nx">assignableAttributes</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">this</span><span class="p">.</span><span class="kd">constructor</span><span class="p">.</span><span class="nx">assignableAttributes</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">attr</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="nx">assignableAttributes</span><span class="p">[</span><span class="nx">attr</span><span class="p">]</span> <span class="o">=</span> <span class="nx">assignableAttributes</span><span class="p">[</span><span class="nx">attr</span><span class="p">]</span> <span class="o">||</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">object</span><span class="dl">'</span><span class="p">,</span> <span class="na">default</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> <span class="na">null</span><span class="p">:</span> <span class="kc">true</span> <span class="p">}</span>
+            <span class="p">})</span>
+        <span class="p">}</span>
+        
+        <span class="kd">const</span> <span class="nx">htmlAttrs</span> <span class="o">=</span> <span class="nx">options</span>
+        <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">assignableAttributes</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">k</span> <span class="o">=&gt;</span> <span class="p">{</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">options</span><span class="p">[</span><span class="nx">k</span><span class="p">]</span> <span class="o">!=</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
-                <span class="k">this</span><span class="p">[</span><span class="nx">k</span><span class="p">]</span> <span class="o">=</span> <span class="nx">options</span><span class="p">[</span><span class="nx">k</span><span class="p">]</span>
+                <span class="k">this</span><span class="p">[</span><span class="nx">k</span><span class="p">]</span> <span class="o">=</span> <span class="nx">options</span><span class="p">[</span><span class="nx">k</span><span class="p">]</span> <span class="o">||</span> <span class="nx">assignableAttributes</span><span class="p">[</span><span class="nx">k</span><span class="p">].</span><span class="k">default</span>
             <span class="p">}</span>
+            <span class="k">delete</span> <span class="nx">htmlAttrs</span><span class="p">[</span><span class="nx">k</span><span class="p">]</span>
         <span class="p">})</span>
+        
         <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="k">this</span><span class="p">.</span><span class="nx">dump</span> <span class="o">!=</span> <span class="dl">"</span><span class="s2">function</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">this</span><span class="p">.</span><span class="nx">dump</span> <span class="o">=</span> <span class="nx">v</span> <span class="o">=&gt;</span> <span class="nx">v</span>
         <span class="p">}</span>
         <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="k">this</span><span class="p">.</span><span class="nx">load</span> <span class="o">!=</span> <span class="dl">"</span><span class="s2">function</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">this</span><span class="p">.</span><span class="nx">load</span> <span class="o">=</span> <span class="nx">v</span> <span class="o">=&gt;</span> <span class="nx">v</span>
         <span class="p">}</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">input</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">createInput</span><span class="p">(</span><span class="nx">except</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="dl">'</span><span class="s1">load</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">dump</span><span class="dl">'</span><span class="p">));</span>
+        
+        <span class="k">this</span><span class="p">.</span><span class="nx">input</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">createInput</span><span class="p">(</span><span class="nx">except</span><span class="p">(</span><span class="nx">htmlAttrs</span><span class="p">,</span> <span class="dl">'</span><span class="s1">load</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">dump</span><span class="dl">'</span><span class="p">));</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">_loading</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_load</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">options</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">setupInputListener</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">inputChange</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">setupTargetListener</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">targetChange</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>

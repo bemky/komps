@@ -9,7 +9,7 @@
     <!-- Use the title from a page's frontmatter if it has one -->
     <title>Komps</title>
     <link href="/assets/site-7f2a035ecdfc731c412b7939e6adbe5615a23b958aa2495fe775363f93354e80.css" rel="stylesheet" />
-    <script src="/assets/site-824a835434eb22efd6cd94c7304215449b7a7bf1c7dd27a47fc3c4033af56844.js"></script>
+    <script src="/assets/site-219792e9fed0bd3186512318e33c72b32a17f2dc83ec45d3c8e36695d00a7a7e.js"></script>
 </head>
 <body>
     <div class="side-nav">
@@ -485,7 +485,13 @@
 
 <span class="kd">class</span> <span class="nx">TableCell</span> <span class="kd">extends</span> <span class="nx">KompElement</span> <span class="p">{</span>
     <span class="kd">static</span> <span class="nx">tagName</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">komp-table-cell</span><span class="dl">'</span>
-    <span class="kd">static</span> <span class="nx">assignableAttributes</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">record</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">column</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">table</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">cellIndex</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">groupIndex</span><span class="dl">'</span><span class="p">]</span>
+    <span class="kd">static</span> <span class="nx">assignableAttributes</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="na">record</span><span class="p">:</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">object</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">function</span><span class="dl">'</span><span class="p">],</span> <span class="na">default</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> <span class="na">null</span><span class="p">:</span> <span class="kc">true</span> <span class="p">},</span>
+        <span class="na">column</span><span class="p">:</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">object</span><span class="dl">'</span><span class="p">,</span> <span class="na">default</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> <span class="na">null</span><span class="p">:</span> <span class="kc">true</span> <span class="p">},</span>
+        <span class="na">table</span><span class="p">:</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">object</span><span class="dl">'</span><span class="p">,</span> <span class="na">default</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> <span class="na">null</span><span class="p">:</span> <span class="kc">true</span> <span class="p">},</span>
+        <span class="na">cellIndex</span><span class="p">:</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">number</span><span class="dl">'</span><span class="p">,</span> <span class="na">default</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> <span class="na">null</span><span class="p">:</span> <span class="kc">true</span> <span class="p">},</span>
+        <span class="na">groupIndex</span><span class="p">:</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">number</span><span class="dl">'</span><span class="p">,</span> <span class="na">default</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> <span class="na">null</span><span class="p">:</span> <span class="kc">true</span> <span class="p">}</span>
+    <span class="p">}</span>
     
     <span class="kd">get</span> <span class="nx">row</span> <span class="p">()</span> <span class="p">{</span>
         <span class="kd">let</span> <span class="nx">row</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">parentElement</span>
