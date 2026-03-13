@@ -1,0 +1,21 @@
+<!--
+title: ContentArea
+-->
+<style>
+    komp-content-area {
+        border: 1px solid #ccc;
+        border-radius: 0.25em;
+        padding: 0.5em;
+        display: block;
+    }
+</style>
+
+<div id="container"></div>
+
+<script type="module">
+    import ContentArea from './lib/komps/content-area.js';
+
+    document.getElementById('container').append(new ContentArea({
+        value: "Click to edit this content..."
+    }));
+</script>

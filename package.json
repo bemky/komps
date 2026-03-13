@@ -6,8 +6,9 @@
   "main": "lib/komps.js",
   "scripts": {
     "docs": "jsdoc -c jsdoc.json",
-    "docs:watch": "npx nodemon --watch lib --watch docs-src --ext js,css,md --exec 'npm run docs'",
-    "docs:serve": "npx serve docs"
+    "docs:watch": "npx nodemon --watch lib --watch docs-src --ext js,css,md,html --exec 'npm run docs'",
+    "docs:serve": "npx serve docs",
+    "demo": "node docs-src/demo/build.js"
   },
   "repository": {
     "type": "git",

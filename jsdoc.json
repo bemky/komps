@@ -10,7 +10,8 @@
   "opts": {
     "destination": "./docs/",
     "recurse": true,
-    "template": "node_modules/jsdoc-press"
+    "template": "node_modules/jsdoc-press",
+    "tutorials": "./docs-src/tutorials"
   },
   "plugins": [
     "node_modules/jsdoc-export-default-interop/dist/index",
@@ -18,15 +19,20 @@
   ],
   "templates": {
     "logo": "images/logo.svg",
-    "footer": "&copy; 2026 <a href='https://github.com/bemky/'>Ben Ehmke</a> | <a href='https://github.com/bemky/komps'>Komps on GitHub</a>",
+    "footer": "&copy; 2026 <a href='https://github.com/bemky/'>Ben Ehmke</a> <br/> <a href='https://github.com/bemky/komps'>Komps on GitHub</a>",
     "staticFiles": "docs-src/",
     "cleanOutput": true,
     "nav": {
       "order": ["class"],
-      "exclude": ["typedef", "module"]
+      "exclude": ["typedef", "module", "event"]
+    },
+    "details": {
+      "order": ["description", "examples"]
     },
     "stylesheets": ["./docs-src/stylesheets/komps-jsdoc.css"],
     "index": "./docs-src/index.md",
-    "highlight": true
+    "highlight": true,
+    "templates": "./docs-src/templates",
+    "afterBuild": "node docs-src/demo/build.js"
   }
 }
