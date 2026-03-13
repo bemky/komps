@@ -1,0 +1,33 @@
+<?js if (doc.classdesc) { ?>
+    <section class="description"><?js= doc.classdesc ?></section>
+<?js } else if (doc.description) { ?>
+    <section class="description"><?js= doc.description ?></section>
+<?js } ?>
+
+<?js if (doc.kind == 'class') { ?>
+    <?js
+    var fs = this.fs;
+    var pathMod = this.pathModule;
+    var demoFile = '';
+    if (doc.meta && doc.meta.filename) {
+        var basename = doc.meta.filename.replace(/\.js$/, '');
+        var demoPath = pathMod.join(process.cwd(), 'docs-src', 'demo', 'pages', basename + '.html');
+        if (fs.existsSync(demoPath)) {
+            demoFile = basename + '.html';
+        }
+    }
+    ?>
+    <?js if (demoFile) { ?>
+        <section class="demo">
+            <iframe class="demo-frame" src="/demo/<?js= demoFile ?>"></iframe>
+            <script>
+                window.addEventListener('message', function(e) {
+                    if (e.data && e.data.type === 'demo-resize') {
+                        var frame = document.querySelector('.demo-frame');
+                        if (frame) frame.style.height = e.data.height + 5 + 'px';
+                    }
+                });
+            </script>
+        </section>
+    <?js } ?>
+<?js } ?>
