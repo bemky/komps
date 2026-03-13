@@ -1,0 +1,60 @@
+<?js
+// Merge inherited options properties from parent classes
+function mergeParams(self, doc) {
+    var params = (doc.params || []).map(function(p) {
+        return Object.assign({}, p, p.properties ? { properties: p.properties.slice() } : {});
+    });
+
+    if (doc.augments && doc.augments.length) {
+        doc.augments.forEach(function(parentName) {
+            var parent = self.find({ longname: parentName, kind: 'class' });
+            if (!parent || !parent.params) return;
+
+            // Recursively get parent's merged params (for grandparent inheritance)
+            var parentParams = mergeParams(self, parent);
+
+            parentParams.forEach(function(parentParam) {
+                // Find matching param in child by name (e.g. "options")
+                var childParam = params.find(function(p) { return p.name === parentParam.name; });
+
+                if (childParam && parentParam.properties && parentParam.properties.length) {
+                    // Merge properties: parent props that child doesn't override
+                    if (!childParam.properties) childParam.properties = [];
+                    var childPropNames = childParam.properties.map(function(p) { return p.name; });
+
+                    parentParam.properties.forEach(function(prop) {
+                        if (childPropNames.indexOf(prop.name) === -1) {
+                            childParam.properties.push(prop);
+                        }
+                    });
+                } else if (!childParam) {
+                    // Add entire param from parent
+                    params.push(parentParam);
+                }
+            });
+        });
+    }
+
+    return params;
+}
+
+var allParams = mergeParams(this, doc);
+?>
+<?js if (doc.kind == 'class') { ?>
+    <section>
+        <h2>Constructor</h2>
+        <div class="symbol-title">
+            <code><?js= this.partial('doc/signature.tmpl', { doc, arguments: true, compact: true }) ?></code>
+        </div>
+        <?js allParams.forEach(function(item) { ?>
+            <?js= this.partial('doc/parameter.tmpl', { p: item })?>
+        <?js }.bind(this)); ?>
+    </section>
+<?js } else if (doc.params && doc.params.length) { ?>
+    <section>
+        <h2>Parameters</h2>
+        <?js doc.params.forEach(function(p) { ?>
+            <?js= this.partial('doc/parameter.tmpl', { p })?>
+        <?js }.bind(this)); ?>
+    </section>
+<?js } ?>

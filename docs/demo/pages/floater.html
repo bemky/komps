@@ -1,0 +1,32 @@
+<!--
+title: Floater
+-->
+<style>
+    main {
+        min-height: 150px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #anchor {
+        border: 2px dashed #aaa;
+        display: inline-block;
+        padding: 0.75em 1.5em;
+        background: white;
+        border-radius: 0.25em;
+    }
+    komp-floater {
+        background: rgba(30, 30, 30, 0.85);
+        color: white;
+        padding: 0.5em 1em;
+        border-radius: 0.5em;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+</style>
+
+<div id="anchor">This is the anchor</div>
+<komp-floater anchor="#anchor">FLOATER</komp-floater>
+
+<script type="module">
+    import './lib/komps/floater.js';
+</script>

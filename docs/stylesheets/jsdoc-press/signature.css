@@ -1,0 +1,12 @@
+.signature {
+    .signature-param,
+    .signature-return,
+    .signature-type,
+    .signature-augments {
+        font-weight: normal;
+    }
+    
+    .signature-extends {
+        font-weight: lighter;
+    }
+}

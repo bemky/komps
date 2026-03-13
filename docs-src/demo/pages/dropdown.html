@@ -1,0 +1,59 @@
+<!--
+title: Dropdown
+-->
+<style>
+    main {
+        min-height: 250px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        padding-top: 1em;
+    }
+    #demo-trigger {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5em;
+        padding: 0.5em 1em;
+        font-size: 1em;
+        cursor: pointer;
+    }
+    komp-dropdown {
+        background: white;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        border-radius: 0 0 0.5em 0.5em;
+    }
+    komp-dropdown a {
+        display: block;
+        padding: 0.5em 1em;
+        text-decoration: none;
+        color: #333;
+    }
+    komp-dropdown a:hover {
+        background: #f0f0f0;
+    }
+</style>
+
+<button id="demo-trigger">
+    Click Me
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+</button>
+
+<script type="module">
+    import Dropdown from './lib/komps/dropdown.js';
+
+    const dropdown = new Dropdown({
+        anchor: '#demo-trigger',
+        content: `
+            <nav>
+                <a href="#">Home</a>
+                <a href="#">Players</a>
+                <a href="#">Teams</a>
+                <a href="#">Leagues</a>
+            </nav>
+        `
+    });
+    dropdown.addEventListener('afterConnect', () => {
+        dropdown.style.minWidth = dropdown.anchor.offsetWidth + "px";
+    });
+    document.body.append(dropdown);
+</script>

@@ -1,0 +1,122 @@
+<!--
+title: Input
+-->
+<style>
+    .demo-layout {
+        display: flex;
+        gap: 1em;
+    }
+    .input-container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75em;
+    }
+    .input-container label {
+        display: block;
+        font-weight: 600;
+        font-size: 0.9em;
+    }
+    .input-container input,
+    .input-container select,
+    .input-container textarea {
+        display: block;
+        width: 100%;
+        padding: 0.4em;
+        box-sizing: border-box;
+    }
+    .data-output {
+        flex: 1;
+        background: #1a1a2e;
+        color: #4ade80;
+        padding: 1em;
+        border-radius: 0.5em;
+        font-family: monospace;
+        font-size: 0.85em;
+        word-break: break-all;
+        white-space: pre-wrap;
+    }
+</style>
+
+<div class="demo-layout">
+    <div class="input-container">
+        <div>
+            <label>Name</label>
+            <input type="text" name="name" />
+        </div>
+        <div>
+            <label>Birthdate</label>
+            <input type="date" name="born" />
+        </div>
+        <div>
+            <label><input type="checkbox" name="allStar" /> All Star</label>
+        </div>
+        <div>
+            <label><input type="radio" name="bats" value="left" /> Bats Left</label>
+            <label><input type="radio" name="bats" value="right" /> Bats Right</label>
+        </div>
+        <div>
+            <label>Position</label>
+            <select name="position" data-blank="true">
+                <option>1B</option>
+                <option>2B</option>
+                <option>3B</option>
+                <option>SS</option>
+            </select>
+        </div>
+        <div>
+            <label>Bio</label>
+            <textarea name="bio"></textarea>
+        </div>
+    </div>
+    <div class="data-output" id="data-output"></div>
+</div>
+
+<script type="module">
+    import Input from './lib/komps/input.js';
+
+    class Player {
+        _attributes = {};
+        _listeners = [];
+        constructor(attrs) {
+            ['name', 'allStar', 'position', 'bats', 'born', 'bio'].forEach(k => {
+                Object.defineProperty(this, k, {
+                    get: () => this._attributes[k],
+                    set: (v) => { this._attributes[k] = v; this.dispatchEvent('change'); }
+                });
+            });
+            Object.keys(attrs).forEach(k => { this._attributes[k] = attrs[k]; });
+        }
+        addEventListener(type, listener) { this._listeners.push([type, listener]); }
+        dispatchEvent(type) { this._listeners.forEach(([t, l]) => { if (t === type) l[1]?.() || l(); }); }
+    }
+
+    const player = new Player({
+        name: 'Corey Seager',
+        born: new Date('1986-03-06'),
+        bats: 'left',
+        position: 'SS',
+        allStar: true,
+        bio: 'Super badass dood.'
+    });
+
+    function renderAttributes() {
+        document.getElementById('data-output').textContent = JSON.stringify(player._attributes, null, 2);
+    }
+    player.addEventListener('change', renderAttributes);
+    renderAttributes();
+
+    document.querySelectorAll('input, select, textarea').forEach(input => {
+        let type = input.type;
+        if (input.tagName === "SELECT") type = "select";
+        input.replaceWith(Input.create(type, {
+            record: player,
+            attribute: input.name,
+            name: input.name,
+            options: Array.from(input.querySelectorAll('option')).map(x => x.value ? [x.value, x.innerText] : x.innerText),
+            value: input.value === '' ? undefined : input.value,
+            multiple: input.multiple,
+            includeBlank: input.dataset.blank
+        }));
+    });
+</script>

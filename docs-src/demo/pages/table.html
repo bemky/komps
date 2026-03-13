@@ -1,0 +1,51 @@
+<!--
+title: Table
+-->
+<style>
+    komp-table {
+        border-radius: 0.5em;
+        overflow: hidden;
+    }
+</style>
+
+<div id="container"></div>
+
+<script type="module">
+    import Table from './lib/komps/table.js';
+
+    document.getElementById('container').append(new Table({
+        resize: true,
+        data: [{
+            name: "Corey Seager",
+            team: "Texas Rangers",
+            ops: 1.023,
+            avg: 0.311,
+            positions: ["SS"]
+        }, {
+            name: "Marcus Semien",
+            team: "Texas Rangers",
+            ops: 0.823,
+            avg: 0.283,
+            positions: ["2B"]
+        }, {
+            name: "Adolis Garcia",
+            team: "Texas Rangers",
+            ops: 0.789,
+            avg: 0.245,
+            positions: ["CF", "RF"]
+        }],
+        columns: [{
+            render: r => r.name,
+            header: 'Name'
+        }, {
+            render: r => r.team,
+            header: 'Team'
+        }, {
+            render: r => r.ops.toLocaleString().replace(/^0/, ''),
+            header: 'OPS'
+        }, {
+            render: r => r.avg.toLocaleString().replace(/^0/, ''),
+            header: 'AVG'
+        }]
+    }));
+</script>

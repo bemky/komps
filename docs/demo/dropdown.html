@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dropdown – Komps Demo</title>
+    <style>
+        html {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
+            padding: 2em;
+            color: #333;
+            background-color: rgba(233.55682, 204, 255, 1);
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23000'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            background-blend-mode: overlay;
+            line-height: 1.4;
+        }
+        
+        html, body{
+            margin: 0;
+            padding: 0;
+        }
+        html{
+            font-size: 14px;
+        }
+        body{
+            font-size: 1rem;
+        }
+        main {
+            padding: 2em;
+        }
+        *{
+            box-sizing: border-box;
+        }
+        a{
+            color: color('blue');
+            &:hover{
+                color: color('blue-60');
+            }
+        }
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        ul,
+        ol,
+        dl,
+        pre{
+            margin: 0;
+        }
+        
+        table{
+            background-color: transparent;
+            border-collapse: collapse;
+            td, th{
+                display: table-cell;
+                text-align: left;
+            }
+        }
+        
+        fieldset{
+            margin: 0;
+            padding: 0;
+            border: none;
+        }
+        
+        textarea{
+            resize: vertical;
+        }
+        
+        input,
+        select,
+        textarea,
+        button{
+            border-width: 1px;
+            margin: 0;
+            line-height: inherit;
+            font: inherit;
+            text-align: inherit;
+            text-transform: inherit;
+            letter-spacing: inherit;
+        }
+        
+        [hidden] {
+            display: none !important;
+        }
+        
+        a,
+        button{
+            cursor: pointer;
+        }
+        button{
+            font-family: map-get($uniform_configs, 'base-font');
+            font-size: 1em;
+        }
+        
+        img,
+        svg,
+        video,
+        canvas,
+        audio,
+        iframe,
+        embed,
+        object {
+          display: block;
+          vertical-align: middle;
+        }
+        
+        button {
+            padding: 0.5em 1em;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        
+        komp-table,
+        komp-spreadsheet {
+            gap: 1px;
+            border-radius: 0.35em;
+            font-size: 1rem;
+            
+            komp-table-header-cell,
+            komp-table-cell,
+            komp-spreadsheet-cell,
+            komp-spreadsheet-header-cell,
+            komp-spreadsheet-inputcell {
+                background: white;
+            }
+        
+            komp-table-header-cell,
+            komp-table-cell,
+            komp-spreadsheet-header-cell,
+            komp-spreadsheet-cell {
+                padding: 0.5em 1em;
+                outline: 1px solid color('purple-10');
+            }
+            komp-table-row {
+                outline: 1px solid color('purple-10');
+            }
+        
+            komp-table-header-cell,
+            komp-spreadsheet-header-cell {
+              background: rgb(248,248,251);
+              font-weight: bold;
+              text-transform: uppercase;
+            }
+        }
+        komp-table-row {
+            &:nth-child(2n) {
+                komp-spreadsheet-cell {
+                    background: lighten(color('purple-10'), 8);
+                }
+            }
+        }
+        @keyframes fadein {
+            from {
+                opacity: 0;
+                transform: var(--transform);
+            }
+        
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+        @keyframes fadeout {
+            from {
+                opacity: 1;
+                transform: none;
+            }
+        
+            to {
+                opacity: 0;
+                transform: var(--transform);
+            }
+        }
+    </style>
+    <script type="importmap">
+        {
+            "imports": {
+                "dolla": "./vendor/dolla/dolla.js",
+                "@floating-ui/dom": "./vendor/floating-ui-dom.mjs",
+                "@floating-ui/core": "./vendor/floating-ui-core.mjs",
+                "@floating-ui/utils": "./vendor/floating-ui-utils.mjs",
+                "@floating-ui/utils/dom": "./vendor/floating-ui-utils-dom.mjs"
+            }
+        }
+    </script>
+</head>
+<body>
+<main>
+    <style>
+    main {
+        min-height: 250px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        padding-top: 1em;
+    }
+    #demo-trigger {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5em;
+        padding: 0.5em 1em;
+        font-size: 1em;
+        cursor: pointer;
+    }
+    komp-dropdown {
+        background: white;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        border-radius: 0 0 0.5em 0.5em;
+    }
+    komp-dropdown a {
+        display: block;
+        padding: 0.5em 1em;
+        text-decoration: none;
+        color: #333;
+    }
+    komp-dropdown a:hover {
+        background: #f0f0f0;
+    }
+</style>
+
+<button id="demo-trigger">
+    Click Me
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+</button>
+
+<script type="module">
+    import Dropdown from './lib/komps/dropdown.js';
+
+    const dropdown = new Dropdown({
+        anchor: '#demo-trigger',
+        content: `
+            <nav>
+                <a href="#">Home</a>
+                <a href="#">Players</a>
+                <a href="#">Teams</a>
+                <a href="#">Leagues</a>
+            </nav>
+        `
+    });
+    dropdown.addEventListener('afterConnect', () => {
+        dropdown.style.minWidth = dropdown.anchor.offsetWidth + "px";
+    });
+    document.body.append(dropdown);
+</script>
+
+</main>
+<script>
+    (function() {
+        var lastHeight = 0;
+        new ResizeObserver(function() {
+            var h = document.body.firstElementChild.offsetHeight;
+            if (h !== lastHeight && window.parent !== window) {
+                lastHeight = h;
+                window.parent.postMessage({ type: 'demo-resize', height: document.body.scrollHeight }, '*');
+            }
+        }).observe(document.body.firstElementChild);
+    })();
+</script>
+</body>
+</html>
