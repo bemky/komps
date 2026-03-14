@@ -3,7 +3,7 @@ import Column from '../column.js';
 export default class NumberColumn extends Column {
 
     static assignableAttributes = {
-        type: 'number'
+        type: { type: 'string', default: 'number', null: false }
     }
     
     async paste (cell, value) {

@@ -72,15 +72,15 @@ export default class SearchField extends KompElement {
     static events = ['select', 'search', 'results']
     
     static assignableAttributes = {
-        placeholder: 'Search',
-        inline: false,
-        minLength: 3,
-        debounce: 300,
-        empty: 'Nothing Found',
-        input: (attrs) => createElement('input', attrs),
-        search: (query) => [],
-        select: (result, query) => null,
-        result: (result) => JSON.stringify(result)
+        placeholder: { type: 'string', default: 'Search', null: false },
+        inline: { type: 'boolean', default: false, null: false },
+        minLength: { type: 'number', default: 3, null: false },
+        debounce: { type: 'number', default: 300, null: false },
+        empty: { type: ['string', 'HTMLElement', 'function', 'boolean'], default: 'Nothing Found', null: false },
+        input: { type: ['function', 'HTMLInputElement'], default: (attrs) => createElement('input', attrs), null: false },
+        search: { type: 'function', default: (query) => [], null: false },
+        select: { type: 'function', default: (result, query) => null, null: false },
+        result: { type: 'function', default: (result) => JSON.stringify(result), null: false }
         // floater: {} read direct from options
     }
 

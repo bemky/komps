@@ -8,7 +8,8 @@
     "docs": "jsdoc -c jsdoc.json",
     "docs:watch": "npx nodemon --watch lib --watch docs-src --ext js,css,md,html --exec 'npm run docs'",
     "docs:serve": "npx serve docs",
-    "demo": "node docs-src/demo/build.js"
+    "demo": "node docs-src/demo/build.js",
+    "test": "node --import ./test/register.js node_modules/.bin/mocha --config ./.mocha.yml"
   },
   "repository": {
     "type": "git",
@@ -33,6 +34,9 @@
     "highlight.js": "^11.11.1",
     "jsdoc": "^4.0.3",
     "jsdoc-export-default-interop": "^0.3.1",
-    "jsdoc-press": "github:bemky/jsdoc-press"
+    "jsdoc-press": "github:bemky/jsdoc-press",
+    "jsdom": "^28.1.0",
+    "jsdom-global": "^3.0.2",
+    "mocha": "^11.7.5"
   }
 }

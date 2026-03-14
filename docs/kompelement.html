@@ -38,14 +38,52 @@ window.customElements.define(&#x27;komp-dropzone&#x27;, <span class="hljs-type">
     <a href="kompelement.html#symbol-kompelement-assignableattributes"><code>
 <span class="signature"><span class="signature-name">assignableAttributes</span><span class="signature-punctuation">: </span><span class="signature-type">
             
-                Array
-                |
-            
                 Object
                 
             
         </span></span>
-</code></a></div><section class="description"><p>Attributes settable via constructor options</p></section></div><div class="symbol-summary instance_members" id="symbol-kompelement-assignablemethods"><div class="symbol-summary-title"><span class="icon-kind kind-member">P</span>
+</code></a></div><section class="description"><p>Attributes settable via constructor options. Each key is the attribute
+name and the value is a schema object describing how to handle it.</p></section><section><h2>Example</h2><div class="example"><pre class="overflow-container code-block"><code class="hljs language-pgsql">static assignableAttributes = {
+    anchor: { <span class="hljs-keyword">type</span>: <span class="hljs-string">&#x27;HTMLElement&#x27;</span>, <span class="hljs-keyword">default</span>: <span class="hljs-keyword">null</span>, <span class="hljs-keyword">null</span>: <span class="hljs-keyword">true</span> },
+    placement: { <span class="hljs-keyword">type</span>: <span class="hljs-string">&#x27;string&#x27;</span>, <span class="hljs-keyword">default</span>: <span class="hljs-string">&#x27;bottom&#x27;</span>, <span class="hljs-keyword">null</span>: <span class="hljs-keyword">false</span> },
+    enabled: { <span class="hljs-keyword">type</span>: <span class="hljs-string">&#x27;boolean&#x27;</span>, <span class="hljs-keyword">default</span>: <span class="hljs-keyword">true</span>, <span class="hljs-keyword">null</span>: <span class="hljs-keyword">false</span> },
+    data: { <span class="hljs-keyword">type</span>: <span class="hljs-string">&#x27;array&#x27;</span>, <span class="hljs-keyword">default</span>: [], <span class="hljs-keyword">null</span>: <span class="hljs-keyword">false</span> }
+}</code></pre></div></section><section><h2>Properties</h2><div class="symbol-parameter">
+    <code>type</code>
+    :
+        <code class="clear">
+            
+                string
+                |
+            
+                Array.&lt;string>
+                
+            
+        </code><div class="symbol-description"><p>expected type(s): <code>'string'</code>, <code>'number'</code>, <code>'boolean'</code>, <code>'object'</code>, <code>'array'</code>, <code>'function'</code>, or a class/element name like <code>'HTMLElement'</code></p></div></div><div class="symbol-parameter">
+    <code>default</code>
+    :
+        <code class="clear">
+            
+                *
+                
+            
+        </code><div class="symbol-description"><p>default value when none is provided</p></div></div><div class="symbol-parameter">
+    <code>null</code>
+    :
+        <code class="clear">
+            
+                boolean
+                
+            
+        </code><div class="symbol-description"><p>whether <code>null</code> is an acceptable value</p></div></div><div class="symbol-parameter">
+    <code>load</code>
+    :
+        <code class="clear">
+            
+                function
+                
+            
+        </code><span class="tag-attr tag-optional">optional</span><div class="symbol-description"><p>optional transform applied when reading the attribute value</p></div></div></section></div><div class="symbol-summary instance_members" id="symbol-kompelement-assignablemethods"><div class="symbol-summary-title"><span class="icon-kind kind-member">P</span>
         &nbsp;
     
     <a href="kompelement.html#symbol-kompelement-assignablemethods"><code>

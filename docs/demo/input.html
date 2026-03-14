@@ -37,9 +37,9 @@
             box-sizing: border-box;
         }
         a{
-            color: color('blue');
+            color: #3b82f6;
             &:hover{
-                color: color('blue-60');
+                color: #2563eb;
             }
         }
         h1,
@@ -97,7 +97,7 @@
             cursor: pointer;
         }
         button{
-            font-family: map-get($uniform_configs, 'base-font');
+            font-family: inherit;
             font-size: 1em;
         }
         
@@ -138,10 +138,10 @@
             komp-spreadsheet-header-cell,
             komp-spreadsheet-cell {
                 padding: 0.5em 1em;
-                outline: 1px solid color('purple-10');
+                outline: 1px solid #ede8f5;
             }
             komp-table-row {
-                outline: 1px solid color('purple-10');
+                outline: 1px solid #ede8f5;
             }
         
             komp-table-header-cell,
@@ -154,10 +154,96 @@
         komp-table-row {
             &:nth-child(2n) {
                 komp-spreadsheet-cell {
-                    background: lighten(color('purple-10'), 8);
+                    background: #f5f2fa;
                 }
             }
         }
+        /* Uniform-style utility classes */
+        .flex { display: flex; }
+        .flex-col { flex-direction: column; }
+        .flex-wrap { flex-wrap: wrap; }
+        .flex-none { flex: 0 0 auto; }
+        .gap { gap: 0.5em; }
+        .gap-xl { gap: 1.5em; }
+        .gap-2x { gap: 2em; }
+        .block { display: block; }
+        .inline-block { display: inline-block; }
+
+        .justify-content-center { justify-content: center; }
+        .justify-content-between { justify-content: space-between; }
+        .align-center { align-items: center; }
+        .align-start { align-items: flex-start; }
+        .text-center { text-align: center; }
+        .text-right { text-align: right; }
+        .text-bold { font-weight: bold; }
+        .text-white { color: white; }
+        .text-green { color: #4ade80; }
+
+        .width-full { width: 100%; }
+        .width-1\/2 { width: 50%; }
+        .min-width-100-px { min-width: 100px; }
+
+        .pad-2x { padding: 2em; }
+        .pad-h { padding-inline: 0.75em; }
+        .pad-v { padding-block: 0.75em; }
+        .pad-h-2x { padding-inline: 2em; }
+        .pad-v-1\/2x { padding-block: 0.25em; }
+        .pad-h-1\/2x { padding-inline: 0.25em; }
+
+        .margin-bottom-1\/2x { margin-bottom: 0.5em; }
+
+        .space-v > * + * { margin-top: 0.75em; }
+
+        .bg-white { background: white; }
+        .bg-gray-90 { background: #1a1a2e; }
+        .bg-green { background: #22c55e; }
+        .bg-opacity-80 { --bg-opacity: 0.8; }
+        .bg-green.bg-opacity-80 { background: rgba(34, 197, 94, 0.8); }
+
+        .rounded { border-radius: 0.25em; }
+        .rounded-xl { border-radius: 0.75em; }
+        .border { border: 1px solid #e2e2ea; }
+        .border-top { border-top: 1px solid #e2e2ea; }
+        .border-purple-10 { border-color: #ede8f5; }
+        .border-purple-20 { border-color: #dbd1eb; }
+        .border-green-70 { border-color: #16a34a; }
+
+        .bottom-0 { bottom: 0; }
+        .right-0 { right: 0; }
+
+        .uniformButton {
+            display: inline-block;
+            padding: 0.5em 1.25em;
+            border: 1px solid #ccc;
+            border-radius: 0.25em;
+            background: #f5f5f5;
+            cursor: pointer;
+            font-size: 1em;
+            text-decoration: none;
+        }
+        .uniformButton:hover { background: #eee; }
+        .uniformButton.-green {
+            background: #22c55e;
+            color: white;
+            border-color: #16a34a;
+        }
+        .uniformButton.-green:hover { background: #16a34a; }
+
+        .uniformInputs input,
+        .uniformInputs select,
+        .uniformInputs textarea {
+            padding: 0.4em 0.6em;
+            border: 1px solid #d1d5db;
+            border-radius: 0.25em;
+            font-size: 1em;
+        }
+        .uniformInputs input:focus,
+        .uniformInputs select:focus,
+        .uniformInputs textarea:focus {
+            outline: 2px solid #6366f1;
+            outline-offset: -1px;
+        }
+
         @keyframes fadein {
             from {
                 opacity: 0;
@@ -230,89 +316,190 @@
         word-break: break-all;
         white-space: pre-wrap;
     }
+    .flex {
+        display: flex;
+        border-purple-20: 
+    }
+    .flex-none {
+        flex: 0 0 auto;
+    }
+    .width-full {
+        width: 100%
+    }
+    .width-1\//2 {
+        width: 50%;
+    }
+    .pad-2x {
+        padding: 2em;
+    }
+    .space-v {
+        & > * {
+            margin-bottom: 1em;
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+    .justify-content-center {
+        justify-content: center;
+    }
+    .justify-content-between {
+        justify-content: space-between;
+    }
 </style>
 
-<div class="demo-layout">
-    <div class="input-container">
-        <div>
-            <label>Name</label>
-            <input type="text" name="name" />
-        </div>
-        <div>
-            <label>Birthdate</label>
-            <input type="date" name="born" />
-        </div>
-        <div>
-            <label><input type="checkbox" name="allStar" /> All Star</label>
-        </div>
-        <div>
-            <label><input type="radio" name="bats" value="left" /> Bats Left</label>
-            <label><input type="radio" name="bats" value="right" /> Bats Right</label>
-        </div>
-        <div>
-            <label>Position</label>
-            <select name="position" data-blank="true">
-                <option>1B</option>
-                <option>2B</option>
-                <option>3B</option>
-                <option>SS</option>
-            </select>
-        </div>
-        <div>
-            <label>Bio</label>
-            <textarea name="bio"></textarea>
+<div class="flex width-full justify-content-center gap-2x">
+    <div class="space-v flex justify-content-center">
+        <div class="uniformInputs bg-white rounded-xl border pad-2x flex flex-col gap-xl">
+            <div>
+                <label class="block text-bold margin-bottom-1/2x">Name</label>
+                <input type="text" class="width-full" name="name" />
+            </div>
+            <div>
+                <label class="block text-bold margin-bottom-1/2x">Birthdate</label>
+                <input type="date" class="width-full" name="born" />
+            </div>
+            <div>
+                <label class="block text-bold">
+                    <input type="checkbox" name="allStar" />
+                    All Star
+                </label>
+            </div>
+            
+            <div>
+                <label class="text-bold margin-bottom-1/2x">Bat</label>
+                <div class="flex gap">
+                    <label class="block">
+                        <input type="radio" name="bats" value="left" />
+                        Bats Left
+                    </label>
+                    <label class="block">
+                        <input type="radio" name="bats" value="right" />
+                        Bats Right
+                    </label>
+                </div>
+            </div>
+            <div>
+                <label class="block text-bold margin-bottom-1/2x">Position</label>
+                <select name="position" data-blank="true" class="width-full">
+                    <option>1B</option>
+                    <option>2B</option>
+                    <option>3B</option>
+                    <option>SS</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-bold margin-bottom-1/2x">Snack Preferences</label>
+                <select name="preferences[snacks]" multiple class="width-full">
+                    <option value="seeds">Sunflower Seeds</option>
+                    <option value="snickers">Snickers</option>
+                    <option value="chips">Chips</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-bold margin-bottom-1/2x">Bio</label>
+                <textarea name="bio" class="width-full"></textarea>
+            </div>
+            <div>
+                <label class="block text-bold margin-bottom-1/2x">Favorite Moment in History</label>
+                <input type="datetime-local" name="farvoriteMoment" class="width-full" />
+            </div>
+            <div>
+                <label class="block text-bold margin-bottom-1/2x">Actions</label>
+                <button name="captain" value="hell yeah!" type="button" class="uniformButton">
+                    Promote to Captain
+                </button>
+            </div>
         </div>
     </div>
-    <div class="data-output" id="data-output"></div>
+    <div class="data pad-2x bg-gray-90 text-green rounded-xl flex flex-col gap-xl"></div>
 </div>
-
 <script type="module">
     import Input from './lib/komps/input.js';
-
+    import { createElement } from 'dolla';
+    
     class Player {
-        _attributes = {};
-        _listeners = [];
-        constructor(attrs) {
-            ['name', 'allStar', 'position', 'bats', 'born', 'bio'].forEach(k => {
+        _attributes = {}
+        _listeners = []
+        constructor (attrs) {
+            ['name', 'allStar', 'position', 'bats', 'preferences', 'born', 'bio', 'farvoriteMoment', 'captain'].forEach(k => {
                 Object.defineProperty(this, k, {
                     get: () => this._attributes[k],
-                    set: (v) => { this._attributes[k] = v; this.dispatchEvent('change'); }
-                });
-            });
-            Object.keys(attrs).forEach(k => { this._attributes[k] = attrs[k]; });
+                    set: (v) => {
+                        this._attributes[k] = v
+                        this.dispatchEvent('change');
+                    }
+                })
+            })
+            Object.keys(attrs).forEach(k => {
+                this._attributes[k] = attrs[k]
+            })
         }
-        addEventListener(type, listener) { this._listeners.push([type, listener]); }
-        dispatchEvent(type) { this._listeners.forEach(([t, l]) => { if (t === type) l[1]?.() || l(); }); }
+        
+        addEventListener (type, listener) {
+            this._listeners.push([type, listener])
+        }
+
+        dispatchEvent (type) {
+            this._listeners.forEach(listener => {
+                if (listener[0] == type) {
+                    listener[1]()
+                }
+            })
+        }
     }
 
     const player = new Player({
         name: 'Corey Seager',
         born: new Date('1986-03-06'),
-        bats: 'left',
-        position: 'SS',
+        bats: 'left', position: 'SS',
         allStar: true,
-        bio: 'Super badass dood.'
-    });
+        preferences: {
+            snacks: ['snickers', 'chips']
+        },
+        bio: 'Super badass dood.',
+        farvoriteMoment: new Date('2023-11-04T04:12:00'),
+        captain: 'no'
+    })
+    player.addEventListener('change', () => {
+        renderAttributes()
+    })
 
-    function renderAttributes() {
-        document.getElementById('data-output').textContent = JSON.stringify(player._attributes, null, 2);
-    }
-    player.addEventListener('change', renderAttributes);
-    renderAttributes();
+    function renderAttributes () {
+        const target = document.querySelector('.data')
+        target.innerHTML = ''
+        Object.keys(player._attributes).forEach(attr => {
+            const v = player._attributes[attr]
+            target.append(createElement({
+                content: [{
+                    class: 'text-bold',
+                    content: attr
+                }, {
+                    class: 'text-white',
+                    content: typeof v == 'object' ? JSON.stringify(v) : v.toLocaleString()
+                }]
+            }))
+        })
+    } 
 
-    document.querySelectorAll('input, select, textarea').forEach(input => {
-        let type = input.type;
-        if (input.tagName === "SELECT") type = "select";
-        input.replaceWith(Input.create(type, {
-            record: player,
-            attribute: input.name,
-            name: input.name,
-            options: Array.from(input.querySelectorAll('option')).map(x => x.value ? [x.value, x.innerText] : x.innerText),
-            value: input.value === '' ? undefined : input.value,
-            multiple: input.multiple,
-            includeBlank: input.dataset.blank
-        }));
-    });
+    document.addEventListener('DOMContentLoaded', () => {
+        renderAttributes()
+        document.querySelectorAll('input, select, textarea, button').forEach(input => {
+            let type = input.type
+            if (input.tagName == "SELECT") { type = "select" }
+            input.replaceWith(Input.create(type, {
+                record: player,
+                attribute: input.name.includes('[') ? input.name.replace(/\]$/, '').split(/\]?\[/) : input.name,
+                name: input.name,
+                options: Array.from(input.querySelectorAll('option')).map(x => x.value ? [x.value, x.innerText] : x.innerText),
+                value: input.value == '' ? undefined : input.value,
+                multiple: input.multiple,
+                includeBlank: input.dataset.blank,
+                class: input.getAttribute('class'),
+                content: input.tagName == "BUTTON" ? input.textContent : null
+            }))
+        })
+    })
 </script>
 
 </main>

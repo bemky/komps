@@ -37,9 +37,9 @@
             box-sizing: border-box;
         }
         a{
-            color: color('blue');
+            color: #3b82f6;
             &:hover{
-                color: color('blue-60');
+                color: #2563eb;
             }
         }
         h1,
@@ -97,7 +97,7 @@
             cursor: pointer;
         }
         button{
-            font-family: map-get($uniform_configs, 'base-font');
+            font-family: inherit;
             font-size: 1em;
         }
         
@@ -138,10 +138,10 @@
             komp-spreadsheet-header-cell,
             komp-spreadsheet-cell {
                 padding: 0.5em 1em;
-                outline: 1px solid color('purple-10');
+                outline: 1px solid #ede8f5;
             }
             komp-table-row {
-                outline: 1px solid color('purple-10');
+                outline: 1px solid #ede8f5;
             }
         
             komp-table-header-cell,
@@ -154,10 +154,96 @@
         komp-table-row {
             &:nth-child(2n) {
                 komp-spreadsheet-cell {
-                    background: lighten(color('purple-10'), 8);
+                    background: #f5f2fa;
                 }
             }
         }
+        /* Uniform-style utility classes */
+        .flex { display: flex; }
+        .flex-col { flex-direction: column; }
+        .flex-wrap { flex-wrap: wrap; }
+        .flex-none { flex: 0 0 auto; }
+        .gap { gap: 0.5em; }
+        .gap-xl { gap: 1.5em; }
+        .gap-2x { gap: 2em; }
+        .block { display: block; }
+        .inline-block { display: inline-block; }
+
+        .justify-content-center { justify-content: center; }
+        .justify-content-between { justify-content: space-between; }
+        .align-center { align-items: center; }
+        .align-start { align-items: flex-start; }
+        .text-center { text-align: center; }
+        .text-right { text-align: right; }
+        .text-bold { font-weight: bold; }
+        .text-white { color: white; }
+        .text-green { color: #4ade80; }
+
+        .width-full { width: 100%; }
+        .width-1\/2 { width: 50%; }
+        .min-width-100-px { min-width: 100px; }
+
+        .pad-2x { padding: 2em; }
+        .pad-h { padding-inline: 0.75em; }
+        .pad-v { padding-block: 0.75em; }
+        .pad-h-2x { padding-inline: 2em; }
+        .pad-v-1\/2x { padding-block: 0.25em; }
+        .pad-h-1\/2x { padding-inline: 0.25em; }
+
+        .margin-bottom-1\/2x { margin-bottom: 0.5em; }
+
+        .space-v > * + * { margin-top: 0.75em; }
+
+        .bg-white { background: white; }
+        .bg-gray-90 { background: #1a1a2e; }
+        .bg-green { background: #22c55e; }
+        .bg-opacity-80 { --bg-opacity: 0.8; }
+        .bg-green.bg-opacity-80 { background: rgba(34, 197, 94, 0.8); }
+
+        .rounded { border-radius: 0.25em; }
+        .rounded-xl { border-radius: 0.75em; }
+        .border { border: 1px solid #e2e2ea; }
+        .border-top { border-top: 1px solid #e2e2ea; }
+        .border-purple-10 { border-color: #ede8f5; }
+        .border-purple-20 { border-color: #dbd1eb; }
+        .border-green-70 { border-color: #16a34a; }
+
+        .bottom-0 { bottom: 0; }
+        .right-0 { right: 0; }
+
+        .uniformButton {
+            display: inline-block;
+            padding: 0.5em 1.25em;
+            border: 1px solid #ccc;
+            border-radius: 0.25em;
+            background: #f5f5f5;
+            cursor: pointer;
+            font-size: 1em;
+            text-decoration: none;
+        }
+        .uniformButton:hover { background: #eee; }
+        .uniformButton.-green {
+            background: #22c55e;
+            color: white;
+            border-color: #16a34a;
+        }
+        .uniformButton.-green:hover { background: #16a34a; }
+
+        .uniformInputs input,
+        .uniformInputs select,
+        .uniformInputs textarea {
+            padding: 0.4em 0.6em;
+            border: 1px solid #d1d5db;
+            border-radius: 0.25em;
+            font-size: 1em;
+        }
+        .uniformInputs input:focus,
+        .uniformInputs select:focus,
+        .uniformInputs textarea:focus {
+            outline: 2px solid #6366f1;
+            outline-offset: -1px;
+        }
+
         @keyframes fadein {
             from {
                 opacity: 0;
@@ -231,66 +317,123 @@
     }
 </style>
 
-<div class="demo-layout">
-    <div class="form-container" id="form-container"></div>
-    <div class="data-output" id="data-output"></div>
+<div class="flex border-purple-20 width-full justify-content-center gap-2x">
+    <div class="flex justify-content-center">
+        <div class="form-container flex-none uniformInputs bg-white rounded-xl border">
+        </div>
+    </div>
+    <div class="data pad-2x bg-gray-90 text-green rounded-xl flex flex-col gap"></div>
 </div>
-
 <script type="module">
+    import { createElement } from 'dolla';
     import Form from './lib/komps/form.js';
-
+    import NotificationCenter from './lib/komps/notification-center.js';
+    
     class Player {
-        _attributes = {};
-        _listeners = [];
-        constructor(attrs) {
-            ['name','allStar','position','bats','born','bio','captain'].forEach(k => {
+        _attributes = {}
+        _listeners = []
+        constructor (attrs) {
+            ['name','allStar','position','bats','preferences','born','bio','favoriteMoment','captain'].forEach(k => {
                 Object.defineProperty(this, k, {
                     get: () => this._attributes[k],
-                    set: (v) => { this._attributes[k] = v; this.dispatchEvent('change'); }
-                });
-            });
-            Object.keys(attrs || {}).forEach(k => { this._attributes[k] = attrs[k]; });
+                    set: (v) => { this._attributes[k] = v; this.dispatchEvent('change') }
+                })
+            })
+            Object.keys(attrs || {}).forEach(k => { this._attributes[k] = attrs[k] })
         }
-        addEventListener(type, listener) { this._listeners.push([type, listener]); }
-        dispatchEvent(type) { this._listeners.forEach(([t, l]) => { if (t === type) l(); }); }
-        async save() { return true; }
+        addEventListener (type, listener) { this._listeners.push([type, listener]) }
+        dispatchEvent (type) { this._listeners.forEach(([t, l]) => { if (t === type) l() }) }
+        async save () { return true }
     }
 
     const player = new Player({
         name: 'Corey Seager',
         born: new Date('1986-03-06'),
-        bats: 'left',
-        position: 'SS',
-        allStar: true,
-        bio: 'Super badass dood.',
-        captain: 'no'
-    });
+        bats: 'left', position: 'SS',
+        position: 'SS'    })
 
-    function renderAttributes() {
-        document.getElementById('data-output').textContent = JSON.stringify(player._attributes, null, 2);
-    }
-    player.addEventListener('change', renderAttributes);
-    renderAttributes();
+    function renderAttributes () {
+        const target = document.querySelector('.data')
+        target.innerHTML = ''
+        Object.keys(player._attributes).forEach(attr => {
+            const v = player._attributes[attr]
+            target.append(createElement({
+                content: [{
+                    class: 'text-bold',
+                    content: attr
+                }, {
+                    class: 'text-white',
+                    content: typeof v == 'object' ? JSON.stringify(v) : v.toLocaleString()
+                }]
+            }))
+        })
+    } 
+    player.addEventListener('change', renderAttributes)
 
-    const formEl = Form.create(player, {
-        content: f => [
-            f.label('name'),
-            f.text('name'),
-            f.label('born'),
-            f.date('born'),
-            f.label('bats'),
-            f.select('bats', { options: ['left', 'right'] }),
-            f.label('position'),
-            f.select('position', { options: ['1B', '2B', '3B', 'SS'] }),
-            f.label('bio'),
-            f.textarea('bio'),
-            f.label('captain'),
-            f.checkbox('captain', { value: 'yes' }),
-            f.submit('Save')
-        ],
-        afterSubmit: rec => console.log('submitted', rec)
-    });
-    document.getElementById('form-container').append(formEl);
+    document.addEventListener('DOMContentLoaded', () => {
+        const notificationCenter = new NotificationCenter()
+        document.body.append(notificationCenter)
+        
+        renderAttributes()
+        const formEl = Form.create(player, {
+            content: f => [
+                {
+                    class: 'flex flex-wrap gap-xl pad-2x',
+                    content: [{
+                        class: 'space-v',
+                        content: [
+                            {
+                                content: [
+                                    f.label('name'),
+                                    f.text('name')
+                                ]
+                            },
+                            {
+                                content: [
+                                    f.label('born'),
+                                    f.date('born')
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        class: 'space-v min-width-100-px',
+                        content: [
+                            {
+                                content: [
+                                    f.label('bats'),
+                                    f.select('bats', { options: ['left','right'] })
+                                ]
+                            },
+                            {
+                                content: [
+                                    f.label('position'),
+                                    f.select('position', { options: ['1B','2B','3B','SS'] })
+                                ]
+                            }
+                        ]
+                    }].map(fields => {
+                        fields.content.forEach(field => {
+                            field.content[0].classList.add("block", "text-bold", "margin-bottom-1/2x")
+                            field.content[1].classList.add('width-full')
+                            return field
+                        })
+                        return fields
+                    })
+                },
+                {
+                    class: 'border-top border-purple-10 pad-h-2x pad-v text-right',
+                    content: f.submit('Save', {class: 'uniformButton -green'})
+                }
+            ],
+            afterSubmit: rec => {
+                notificationCenter.add('Saved!', {
+                    class: 'text-bold bg-green bg-opacity-80 rounded border-green-70 border text-white pad-h pad-v-1/2x bottom-0 right-0'
+                })
+            }
+        })
+        document.querySelector('.form-container').append(formEl)
+    })
 </script>
 
 </main>
