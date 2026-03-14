@@ -1,0 +1,50 @@
+<!--
+title: Resizer
+-->
+<style>
+    .demo-container {
+        position: relative;
+        width: 100%;
+        height: 400px;
+        background: white;
+        border-radius: 0.5em;
+        border: 1px solid #e2e2ea;
+        overflow: hidden;
+    }
+    .resize-target {
+        position: absolute;
+        top: 80px;
+        left: 100px;
+        width: 200px;
+        height: 150px;
+        background: #ede8f5;
+        border: 2px solid #dbd1eb;
+        border-radius: 0.5em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        color: #555;
+        user-select: none;
+    }
+</style>
+
+<div class="demo-container" id="container">
+    <div class="resize-target" id="target">Drag edges to resize</div>
+</div>
+
+<script type="module">
+    import Resizer from './lib/komps/resizer.js';
+
+    const container = document.getElementById('container');
+    const target = document.getElementById('target');
+
+    const resizer = new Resizer({
+        target: target,
+        container: container,
+        autohide: false,
+        move: true,
+        bounds: () => container.getBoundingClientRect()
+    });
+    container.append(resizer);
+</script>
