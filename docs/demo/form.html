@@ -322,9 +322,10 @@
         <div class="form-container flex-none uniformInputs bg-white rounded-xl border">
         </div>
     </div>
-    <div class="data pad-2x bg-gray-90 text-green rounded-xl"></div>
+    <div class="data pad-2x bg-gray-90 text-green rounded-xl flex flex-col gap"></div>
 </div>
 <script type="module">
+    import { createElement } from 'dolla';
     import Form from './lib/komps/form.js';
     import NotificationCenter from './lib/komps/notification-center.js';
     
@@ -352,10 +353,21 @@
         position: 'SS'    })
 
     function renderAttributes () {
-        document.querySelector('.data').innerHTML = JSON.stringify(player._attributes)
-            .replaceAll(/(\"[a-zA-Z]+\")\:/g, '<br>$1:')
-            .replace('}', '<br>}')
-    }
+        const target = document.querySelector('.data')
+        target.innerHTML = ''
+        Object.keys(player._attributes).forEach(attr => {
+            const v = player._attributes[attr]
+            target.append(createElement({
+                content: [{
+                    class: 'text-bold',
+                    content: attr
+                }, {
+                    class: 'text-white',
+                    content: typeof v == 'object' ? JSON.stringify(v) : v.toLocaleString()
+                }]
+            }))
+        })
+    } 
     player.addEventListener('change', renderAttributes)
 
     document.addEventListener('DOMContentLoaded', () => {

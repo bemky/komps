@@ -70,76 +70,73 @@ title: Input
 
 <div class="flex width-full justify-content-center gap-2x">
     <div class="space-v flex justify-content-center">
-        <div class="uniformInputs bg-white rounded-xl border pad-2x flex gap-2x">
-            <div class="flex flex-col gap-xl">
-                <div>
-                    <label class="block text-bold margin-bottom-1/2x">Name</label>
-                    <input type="text" class="width-full" name="name" />
-                </div>
-                <div>
-                    <label class="block text-bold margin-bottom-1/2x">Birthdate</label>
-                    <input type="date" class="width-full" name="born" />
-                </div>
-                <div>
-                    <label class="block text-bold">
-                        <input type="checkbox" name="allStar" />
-                        All Star
+        <div class="uniformInputs bg-white rounded-xl border pad-2x flex flex-col gap-xl">
+            <div>
+                <label class="block text-bold margin-bottom-1/2x">Name</label>
+                <input type="text" class="width-full" name="name" />
+            </div>
+            <div>
+                <label class="block text-bold margin-bottom-1/2x">Birthdate</label>
+                <input type="date" class="width-full" name="born" />
+            </div>
+            <div>
+                <label class="block text-bold">
+                    <input type="checkbox" name="allStar" />
+                    All Star
+                </label>
+            </div>
+            
+            <div>
+                <label class="text-bold margin-bottom-1/2x">Bat</label>
+                <div class="flex gap">
+                    <label class="block">
+                        <input type="radio" name="bats" value="left" />
+                        Bats Left
+                    </label>
+                    <label class="block">
+                        <input type="radio" name="bats" value="right" />
+                        Bats Right
                     </label>
                 </div>
-                
-                <div>
-                    <label class="text-bold margin-bottom-1/2x">Bat</label>
-                    <div class="flex gap">
-                        <label class="block">
-                            <input type="radio" name="bats" value="left" />
-                            Bats Left
-                        </label>
-                        <label class="block">
-                            <input type="radio" name="bats" value="right" />
-                            Bats Right
-                        </label>
-                    </div>
-                </div>
-                <div>
-                    <label class="block text-bold margin-bottom-1/2x">Position</label>
-                    <select name="position" data-blank="true" class="width-full">
-                        <option>1B</option>
-                        <option>2B</option>
-                        <option>3B</option>
-                        <option>SS</option>
-                    </select>
-                </div>
             </div>
-            <div class="flex flex-col gap-xl">
-                <div>
-                    <label class="block text-bold margin-bottom-1/2x">Snack Preferences</label>
-                    <select name="preferences[snacks]" multiple class="width-full">
-                        <option value="seeds">Sunflower Seeds</option>
-                        <option value="snickers">Snickers</option>
-                        <option value="chips">Chips</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="block text-bold margin-bottom-1/2x">Bio</label>
-                    <textarea name="bio" class="width-full"></textarea>
-                </div>
-                <div>
-                    <label class="block text-bold margin-bottom-1/2x">Favorite Moment in History</label>
-                    <input type="datetime-local" name="farvoriteMoment" class="width-full" />
-                </div>
-                <div>
-                    <label class="block text-bold margin-bottom-1/2x">Actions</label>
-                    <button name="captain" value="hell yeah!" type="button" class="uniformButton">
-                        Promote to Captain
-                    </button>
-                </div>
+            <div>
+                <label class="block text-bold margin-bottom-1/2x">Position</label>
+                <select name="position" data-blank="true" class="width-full">
+                    <option>1B</option>
+                    <option>2B</option>
+                    <option>3B</option>
+                    <option>SS</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-bold margin-bottom-1/2x">Snack Preferences</label>
+                <select name="preferences[snacks]" multiple class="width-full">
+                    <option value="seeds">Sunflower Seeds</option>
+                    <option value="snickers">Snickers</option>
+                    <option value="chips">Chips</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-bold margin-bottom-1/2x">Bio</label>
+                <textarea name="bio" class="width-full"></textarea>
+            </div>
+            <div>
+                <label class="block text-bold margin-bottom-1/2x">Favorite Moment in History</label>
+                <input type="datetime-local" name="farvoriteMoment" class="width-full" />
+            </div>
+            <div>
+                <label class="block text-bold margin-bottom-1/2x">Actions</label>
+                <button name="captain" value="hell yeah!" type="button" class="uniformButton">
+                    Promote to Captain
+                </button>
             </div>
         </div>
     </div>
-    <div class="data pad-2x bg-gray-90 text-green rounded-xl"></div>
+    <div class="data pad-2x bg-gray-90 text-green rounded-xl flex flex-col gap-xl"></div>
 </div>
 <script type="module">
     import Input from './lib/komps/input.js';
+    import { createElement } from 'dolla';
     
     class Player {
         _attributes = {}
@@ -189,7 +186,20 @@ title: Input
     })
 
     function renderAttributes () {
-        document.querySelector('.data').innerHTML = JSON.stringify(player._attributes).replaceAll(/(\"[a-zA-Z]+\")\:/g, "<br>$1:").replace("}", "<br>}")
+        const target = document.querySelector('.data')
+        target.innerHTML = ''
+        Object.keys(player._attributes).forEach(attr => {
+            const v = player._attributes[attr]
+            target.append(createElement({
+                content: [{
+                    class: 'text-bold',
+                    content: attr
+                }, {
+                    class: 'text-white',
+                    content: typeof v == 'object' ? JSON.stringify(v) : v.toLocaleString()
+                }]
+            }))
+        })
     } 
 
     document.addEventListener('DOMContentLoaded', () => {
