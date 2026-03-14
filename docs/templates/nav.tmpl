@@ -1,0 +1,157 @@
+<?js
+var fs = this.fs;
+var pathMod = this.pathModule;
+
+var projectRoot = process.cwd();
+var libDir = pathMod.join(projectRoot, 'lib', 'komps');
+var iconsDir = pathMod.join(projectRoot, 'docs-src', 'images', 'icons');
+
+// Read and cache icon SVG contents
+var iconCache = {};
+try {
+    fs.readdirSync(iconsDir).forEach(function(f) {
+        if (f.endsWith('.svg')) {
+            var name = f.replace('.svg', '');
+            var svg = fs.readFileSync(pathMod.join(iconsDir, f), 'utf8');
+            // Add nav-icon class to the svg element
+            iconCache[name] = svg.replace('<svg ', '<svg class="nav-icon" ');
+        }
+    });
+} catch(e) {}
+
+// Build lookup of all documented items by name
+var lookup = {};
+if (navGroups && navGroups.length) {
+    navGroups.forEach(function(group) {
+        (group.items || []).forEach(function(item) {
+            lookup[item.name] = item;
+        });
+    });
+}
+
+// Build tree from doclet meta paths
+// Root items: meta.path ends at lib/komps (no subdirectory)
+// Child items: meta.path has an extra directory level
+var rootItems = [];     // { name, filename, item, children[] }
+var childItems = [];    // { name, filename, parentDir, item }
+
+Object.keys(lookup).forEach(function(name) {
+    var item = lookup[name];
+    if (!item.meta || !item.meta.path) return;
+
+    var relPath = pathMod.relative(libDir, item.meta.path);
+    var filename = (item.meta.filename || '').replace(/\.js$/, '');
+
+    if (relPath === '' || relPath === '.') {
+        rootItems.push({ name: name, filename: filename, item: item, children: [] });
+    } else {
+        // relPath is something like "table" or "table/plugins" or "spreadsheet/columns"
+        var parentDir = relPath.split(pathMod.sep)[0];
+        childItems.push({ name: name, filename: filename, parentDir: parentDir, item: item });
+    }
+});
+
+// Match children to parents: parent directory name matches a root item's filename
+var rootByFilename = {};
+rootItems.forEach(function(r) {
+    rootByFilename[r.filename] = r;
+});
+
+childItems.forEach(function(c) {
+    var parent = rootByFilename[c.parentDir];
+    if (parent) {
+        parent.children.push(c);
+    }
+});
+
+// Sort children alphabetically
+rootItems.forEach(function(r) {
+    r.children.sort(function(a, b) {
+        return a.name.localeCompare(b.name);
+    });
+});
+
+// Sort root items alphabetically, but pull out special items
+var elementItem = null;
+var componentItems = [];
+rootItems.forEach(function(r) {
+    if (r.filename === 'element') {
+        elementItem = r;
+    } else {
+        componentItems.push(r);
+    }
+});
+componentItems.sort(function(a, b) {
+    return a.name.localeCompare(b.name);
+});
+
+// Helper: check if an item or any of its children is active
+function isActiveOrHasActiveChild(root, activeHref) {
+    if (root.item.href === activeHref) return true;
+    if (root.children) {
+        for (var i = 0; i < root.children.length; i++) {
+            if (root.children[i].item.href === activeHref) return true;
+        }
+    }
+    return false;
+}
+
+// Helper: render inline SVG icon if available
+function iconTag(filename) {
+    return iconCache[filename] || '';
+}
+
+// Helper: render a root nav item with optional children
+function renderRoot(root, activeHref) {
+    var isActive = root.item.href === activeHref;
+    var html = '<li>';
+    html += '<a class="nav-item' + (isActive ? ' active' : '') + '" href="' + root.item.href + '">';
+    html += iconTag(root.filename);
+    html += `<span>${root.name}</span>`;
+    html += '</a>';
+
+    if (root.children.length && isActiveOrHasActiveChild(root, activeHref)) {
+        root.children.forEach(function(child) {
+            var childActive = child.item.href === activeHref;
+            html += `
+                <li>
+                <a class="nav-item ${childActive ? ' active' : ''}" href="${child.item.href}">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 42" width="32" height="42" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="15" y1="0" x2="15" y2="42"></line>
+                    </svg>
+                    <span>${child.name}</span>
+                </a>
+                </li>
+            `
+        });
+    }
+
+    html += '</li>';
+    return html;
+}
+?>
+
+<ul class="nav-tree komps-nav-top">
+    <li>
+        <a class="nav-item<?js= (activeHref === 'index.html') ? ' active' : '' ?>" href="index.html">
+            <?js= iconTag('usage') ?>
+            <span>Usage</span>
+        </a>
+    </li>
+    <?js if (elementItem) { ?>
+        <li>
+            <a class="nav-item<?js= (activeHref === elementItem.item.href) ? ' active' : '' ?>" href="<?js= elementItem.item.href ?>">
+                <?js= iconTag(elementItem.filename) ?>
+                <span>Base Element</span>
+            </a>
+        </li>
+    <?js } ?>
+</ul>
+
+<div class="nav-hr"></div>
+
+<ul class="nav-tree komps-nav-components">
+    <?js componentItems.forEach(function(root) { ?>
+        <?js= renderRoot(root, activeHref) ?>
+    <?js }); ?>
+</ul>

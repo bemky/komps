@@ -1,0 +1,44 @@
+<!--
+title: SearchField
+-->
+<style>
+    main {
+        min-height: 350px;
+    }
+    komp-notification {
+        background: rgba(59, 130, 246, 0.9);
+        color: white;
+        font-weight: bold;
+        padding: 0.5em 1em;
+        border-radius: 0.5em;
+        border: 1px solid #2563eb;
+    }
+</style>
+
+<div id="container"></div>
+
+<script type="module">
+    import SearchField from './lib/komps/search-field.js';
+    import NotificationCenter from './lib/komps/notification-center.js';
+
+    const notificationCenter = new NotificationCenter();
+    document.body.append(notificationCenter);
+
+    document.getElementById('container').append(new SearchField({
+        placeholder: 'Search Open Library...',
+        search: async (query) => {
+            const response = await fetch(`https://openlibrary.org/search.json?q=${encodeURIComponent(query)}&limit=5`);
+            const data = await response.json();
+            return data.docs;
+        },
+        result: (doc) => {
+            const author = doc.author_name ? doc.author_name[0] : 'Unknown';
+            const year = doc.first_publish_year || '';
+            return `<strong>${doc.title}</strong> <span style="opacity: 0.6">by ${author}${year ? ` (${year})` : ''}</span>`;
+        },
+        select: (doc) => {
+            notificationCenter.add(`Selected: ${doc.title}`);
+            return true;
+        }
+    }));
+</script>

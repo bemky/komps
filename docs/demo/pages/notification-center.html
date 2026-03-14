@@ -1,0 +1,46 @@
+<!--
+title: NotificationCenter
+-->
+<style>
+    main {
+        min-height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    button {
+        padding: 0.75em 1.5em;
+        font-size: 1.1em;
+        cursor: pointer;
+    }
+    komp-notification {
+        background: rgba(34, 197, 94, 0.9);
+        color: white;
+        font-weight: bold;
+        padding: 0.5em 1em;
+        border-radius: 0.5em;
+        border: 1px solid #16a34a;
+    }
+</style>
+
+<button id="demo-btn">Click Me</button>
+
+<script type="module">
+    import NotificationCenter from './lib/komps/notification-center.js';
+
+    const messages = [
+        'Success!',
+        'You did it!',
+        'Look at us',
+        'Hello!',
+        'Pretty simple, eh?',
+        '<p>Lorem ipsum dolor sit amet.</p>'
+    ];
+
+    const notificationCenter = new NotificationCenter();
+    document.body.append(notificationCenter);
+
+    document.getElementById('demo-btn').addEventListener('click', () => {
+        notificationCenter.add(messages[Math.floor(Math.random() * messages.length)]);
+    });
+</script>

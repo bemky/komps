@@ -1,0 +1,29 @@
+<!--
+title: Dropzone
+-->
+<style>
+    komp-dropzone > * {
+        height: 120px;
+        width: 240px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: white;
+        border: 2px dashed #aaa;
+        border-radius: 0.5em;
+        color: #666;
+    }
+</style>
+
+<div id="container" style="text-align: center;"></div>
+
+<script type="module">
+    import Dropzone from './lib/komps/dropzone.js';
+
+    document.getElementById('container').append(new Dropzone({
+        onFileDrop: (files) => console.log('Dropped:', files),
+        content: {
+            content: 'Drag Something Here'
+        }
+    }));
+</script>
