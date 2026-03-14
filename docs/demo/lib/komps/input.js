@@ -39,6 +39,7 @@ export default class Input {
      * @param {string} type - input type (text, number, checkbox, select, date, textarea, button, etc.)
      * @param {Object} [options={}] - see {@link Input} constructor options
      * @returns {HTMLElement} the created input element
+     * @static
      */
     static create(type, options={}) {
         return this.new(type, options).input
@@ -49,6 +50,7 @@ export default class Input {
      * @param {string} type - input type (text, number, checkbox, select, date, textarea, button, etc.)
      * @param {Object} [options={}] - see {@link Input} constructor options
      * @returns {Input} the Input instance
+     * @static
      */
     static new (type, options={}) {
         const klass = {
