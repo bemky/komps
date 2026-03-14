@@ -71,8 +71,23 @@ export default class KompElement extends HTMLElement {
     static manifest = new Map()
 
      /**
-     * Attributes settable via constructor options
-     * @type {Array|Object}
+     * Attributes settable via constructor options. Each key is the attribute
+     * name and the value is a schema object describing how to handle it.
+     *
+     * @type {Object}
+     *
+     * @property {string|string[]} type - expected type(s): `'string'`, `'number'`, `'boolean'`, `'object'`, `'array'`, `'function'`, or a class/element name like `'HTMLElement'`
+     * @property {*} default - default value when none is provided
+     * @property {boolean} null - whether `null` is an acceptable value
+     * @property {function} [load] - optional transform applied when reading the attribute value
+     *
+     * @example
+     * static assignableAttributes = {
+     *     anchor: { type: 'HTMLElement', default: null, null: true },
+     *     placement: { type: 'string', default: 'bottom', null: false },
+     *     enabled: { type: 'boolean', default: true, null: false },
+     *     data: { type: 'array', default: [], null: false }
+     * }
      */
     static assignableAttributes = {}
 
