@@ -314,6 +314,11 @@ export default class KompElement extends HTMLElement {
                     content(this, value)
                 } else if (value !== null) {
                     this[attribute] = value
+                    if (schema.type === 'number') {
+                        this[attribute] = Number(value)
+                    } else {
+                        this[attribute] = value
+                    }
                 }
             }
             // Reflect serializable defaults to DOM (deferred from constructor)
@@ -411,6 +416,8 @@ export default class KompElement extends HTMLElement {
         })
         if (this.styleLayer) {
             style.replaceSync(`@layer ${this.styleLayer} { ${body} }`)
+        } else {
+            style.replaceSync(body)
         }
         return style
     }
