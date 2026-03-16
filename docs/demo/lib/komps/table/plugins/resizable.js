@@ -43,8 +43,8 @@ export default function (proto) {
     this.include(cellsDimensions)
     
     this.events.push('columnResize', 'rowResize')
-    this.assignableAttributes.resize = true
-    this.assignableAttributes.resizeMin = 5
+    this.assignableAttributes.resize = { type: ['boolean', 'string', 'array'], default: true, null: false }
+    this.assignableAttributes.resizeMin = { type: 'number', default: 5, null: false }
     
     
     const initializeWas = proto.initialize
@@ -68,7 +68,7 @@ export default function (proto) {
         return initializeWas.call(this, ...args)
     }
     
-    this.columnTypeRegistry.default.assignableAttributes.resize = true
+    this.columnTypeRegistry.default.assignableAttributes.resize = { type: 'boolean', default: true, null: false }
     
     const renderColumnHeaderWas = proto.renderColumnHeader
     proto.renderColumnHeader = function (column, ...args) {

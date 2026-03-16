@@ -47,6 +47,7 @@ export default class Form {
      * @param {Object} target - the record object to bind inputs to
      * @param {Object} [options={}] - see {@link Form} constructor options
      * @returns {HTMLFormElement} the built `<form>` element
+     * @static
      */
     static create (target, options = {}) {
         return this.new(target, options).el
@@ -57,6 +58,7 @@ export default class Form {
      * @param {Object} target - the record object to bind inputs to
      * @param {Object} [options={}] - see {@link Form} constructor options
      * @returns {Form} the Form instance (access the element via `.el`)
+     * @static
      */
     static new (target, options = {}) {
         return new this(target, options)

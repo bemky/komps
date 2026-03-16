@@ -5,7 +5,7 @@ import { createElement, trigger } from 'dolla';
 export default class CheckboxColumn extends Column {
     
     static assignableAttributes = {
-        type: 'checkbox'
+        type: { type: 'string', default: 'checkbox', null: false }
     }
     
     input (record, cell) {

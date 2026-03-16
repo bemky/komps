@@ -29,7 +29,9 @@ import KompElement from './element.js';
 export default class ContentArea extends KompElement {
     static tagName = "komp-content-area"
     
-    static assignableAttributes = ['onchange']
+    static assignableAttributes = {
+        onchange: { type: 'function', default: null, null: true }
+    }
     static assignableMethods = ['load']
     
     get value () {

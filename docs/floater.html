@@ -209,63 +209,101 @@
                 boolean
                 
             
-        </code><div class="symbol-description"><p>is floater showing, can be disconnected and not showing in case of Tooltip</p></div></div></section><section id="section-instance_members"><h2 class="section-title kind-instance_member">Instance Properties</h2><div class="symbol-summary instance_members" id="symbol-floater-assignableattributes"><div class="symbol-summary-title"><span class="icon-kind kind-member">P</span>
+        </code><div class="symbol-description"><p>is floater showing, can be disconnected and not showing in case of Tooltip</p></div></div></section><section id="section-static_members"><h2 class="section-title kind-static_member">Static Properties</h2><div class="symbol-summary static_members" id="symbol-floater.assignableattributes"><div class="symbol-summary-title"><span class="icon-kind kind-member">P</span>
         &nbsp;
     
-    <a href="floater.html#symbol-floater-assignableattributes"><code>
+    <a href="floater.html#symbol-floater.assignableattributes"><code>
 <span class="signature"><span class="signature-name">assignableAttributes</span><span class="signature-punctuation">: </span><span class="signature-type">
-            
-                Array
-                |
             
                 Object
                 
             
         </span></span>
-</code></a></div><section class="description"><p>Attributes settable via constructor options</p></section></div><div class="symbol-summary instance_members" id="symbol-floater-assignablemethods"><div class="symbol-summary-title"><span class="icon-kind kind-member">P</span>
+</code></a></div><section class="description"><p>Attributes settable via constructor options. Each key is the attribute
+name and the value is a schema object describing how to handle it.</p></section><section><h2>Example</h2><div class="example"><pre class="overflow-container code-block"><code class="hljs language-pgsql">static assignableAttributes = {
+    anchor: { <span class="hljs-keyword">type</span>: <span class="hljs-string">&#x27;HTMLElement&#x27;</span>, <span class="hljs-keyword">default</span>: <span class="hljs-keyword">null</span>, <span class="hljs-keyword">null</span>: <span class="hljs-keyword">true</span> },
+    placement: { <span class="hljs-keyword">type</span>: <span class="hljs-string">&#x27;string&#x27;</span>, <span class="hljs-keyword">default</span>: <span class="hljs-string">&#x27;bottom&#x27;</span>, <span class="hljs-keyword">null</span>: <span class="hljs-keyword">false</span> },
+    enabled: { <span class="hljs-keyword">type</span>: <span class="hljs-string">&#x27;boolean&#x27;</span>, <span class="hljs-keyword">default</span>: <span class="hljs-keyword">true</span>, <span class="hljs-keyword">null</span>: <span class="hljs-keyword">false</span> },
+    data: { <span class="hljs-keyword">type</span>: <span class="hljs-string">&#x27;array&#x27;</span>, <span class="hljs-keyword">default</span>: [], <span class="hljs-keyword">null</span>: <span class="hljs-keyword">false</span> }
+}</code></pre></div></section><section><h2>Properties</h2><div class="symbol-parameter">
+    <code>type</code>
+    :
+        <code class="clear">
+            
+                string
+                |
+            
+                Array.&lt;string>
+                
+            
+        </code><div class="symbol-description"><p>expected type(s): <code>'string'</code>, <code>'number'</code>, <code>'boolean'</code>, <code>'object'</code>, <code>'array'</code>, <code>'function'</code>, or a class/element name like <code>'HTMLElement'</code></p></div></div><div class="symbol-parameter">
+    <code>default</code>
+    :
+        <code class="clear">
+            
+                *
+                
+            
+        </code><div class="symbol-description"><p>default value when none is provided</p></div></div><div class="symbol-parameter">
+    <code>null</code>
+    :
+        <code class="clear">
+            
+                boolean
+                
+            
+        </code><div class="symbol-description"><p>whether <code>null</code> is an acceptable value</p></div></div><div class="symbol-parameter">
+    <code>load</code>
+    :
+        <code class="clear">
+            
+                function
+                
+            
+        </code><span class="tag-attr tag-optional">optional</span><div class="symbol-description"><p>optional transform applied when reading the attribute value</p></div></div></section></div><div class="symbol-summary static_members" id="symbol-floater.assignablemethods"><div class="symbol-summary-title"><span class="icon-kind kind-member">P</span>
         &nbsp;
     
-    <a href="floater.html#symbol-floater-assignablemethods"><code>
+    <a href="floater.html#symbol-floater.assignablemethods"><code>
 <span class="signature"><span class="signature-name">assignableMethods</span><span class="signature-punctuation">: </span><span class="signature-type">
             
                 Array
                 
             
         </span></span>
-</code></a></div><section class="description"><p>Methods overridable via constructor options</p></section></div><div class="symbol-summary instance_members" id="symbol-floater-bindmethods"><div class="symbol-summary-title"><span class="icon-kind kind-member">P</span>
+</code></a></div><section class="description"><p>Methods overridable via constructor options</p></section></div><div class="symbol-summary static_members" id="symbol-floater.bindmethods"><div class="symbol-summary-title"><span class="icon-kind kind-member">P</span>
         &nbsp;
     
-    <a href="floater.html#symbol-floater-bindmethods"><code>
+    <a href="floater.html#symbol-floater.bindmethods"><code>
 <span class="signature"><span class="signature-name">bindMethods</span><span class="signature-punctuation">: </span><span class="signature-type">
             
                 Array
                 
             
         </span></span>
-</code></a></div><section class="description"><p>Methods to auto-bind to <code>this</code></p></section></div><div class="symbol-summary instance_members" id="symbol-floater-events"><div class="symbol-summary-title"><span class="icon-kind kind-member">P</span>
+</code></a></div><section class="description"><p>Methods to auto-bind to <code>this</code></p></section></div><div class="symbol-summary static_members" id="symbol-floater.events"><div class="symbol-summary-title"><span class="icon-kind kind-member">P</span>
         &nbsp;
     
-    <a href="floater.html#symbol-floater-events"><code>
+    <a href="floater.html#symbol-floater.events"><code>
 <span class="signature"><span class="signature-name">events</span><span class="signature-punctuation">: </span><span class="signature-type">
             
                 Array
                 
             
         </span></span>
-</code></a></div><section class="description"><p>Event names that can be bound via <code>onEventName</code> constructor options</p></section></div><div class="symbol-summary instance_members" id="symbol-floater-style"><div class="symbol-summary-title"><span class="icon-kind kind-member">P</span>
+</code></a></div><section class="description"><p>Event names that can be bound via <code>onEventName</code> constructor options</p></section></div><div class="symbol-summary static_members" id="symbol-floater.style"><div class="symbol-summary-title"><span class="icon-kind kind-member">P</span>
         &nbsp;
     
-    <a href="floater.html#symbol-floater-style"><code>
+    <a href="floater.html#symbol-floater.style"><code>
 <span class="signature"><span class="signature-name">style</span><span class="signature-punctuation">: </span><span class="signature-type">
             
                 string
                 
             
         </span></span>
-</code></a></div><section class="description"><p>CSS injected once per component via <code>adoptedStyleSheets</code></p></section></div><div class="symbol-summary instance_members" id="symbol-floater-watch"><div class="symbol-summary-title"><span class="icon-kind kind-member">P</span>
+</code></a></div><section class="description"><p>CSS injected once per component via <code>adoptedStyleSheets</code></p></section></div><div class="symbol-summary static_members" id="symbol-floater.watch"><div class="symbol-summary-title"><span class="icon-kind kind-member">P</span>
         &nbsp;
     
-    <a href="floater.html#symbol-floater-watch"><code>
+    <a href="floater.html#symbol-floater.watch"><code>
 <span class="signature"><span class="signature-name">watch</span><span class="signature-punctuation">: </span><span class="signature-type">
             
                 Array

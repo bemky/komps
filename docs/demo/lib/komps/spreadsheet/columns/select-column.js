@@ -6,7 +6,7 @@ export default class SelectColumn extends Column {
     static inputAttributes = ['options']
     
     static assignableAttributes = {
-        type: 'select'
+        type: { type: 'string', default: 'select', null: false }
     }
     
     constructor (options) {

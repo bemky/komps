@@ -34,13 +34,13 @@ export default class TableColumn {
     static Cell = TableCell;
     static HeaderCell = HeaderCell;
     static assignableAttributes = {
-        index: null,
-        table: null,
-        width: null,
-        frozen: false,
-        header: null,
-        class: null,
-        splitInto: null
+        index: { type: 'number', default: null, null: true },
+        table: { type: 'object', default: null, null: true },
+        width: { type: 'string', default: null, null: true },
+        frozen: { type: 'boolean', default: false, null: false },
+        header: { type: ['function', 'string'], default: null, null: true },
+        class: { type: 'string', default: null, null: true },
+        splitInto: { type: ['function', 'string'], default: null, null: true }
     }
     static assignableMethods = [
         'record', 'headerChanged', 'indexChanged', 'widthChanged', 'render', 'initialize'
@@ -55,14 +55,15 @@ export default class TableColumn {
         const assignableAttributes = {}
         scanPrototypesFor(this.constructor, 'assignableAttributes').filter(x => x).reverse().forEach(attributes => {
             if (Array.isArray(attributes)) {
+                console.warn(`[Komps] assignableAttributes on ${this.constructor.name} uses deprecated array format. Convert to object schema: { attr: { type, default, null } }`)
                 attributes.forEach(attr => {
-                    assignableAttributes[attr] = assignableAttributes[attr] || null
+                    assignableAttributes[attr] = assignableAttributes[attr] || { type: 'object', default: null, null: true }
                 })
             } else {
                 Object.assign(assignableAttributes, attributes)
             }
         })
-        
+
         Object.keys(assignableAttributes).forEach(attribute => {
             Object.defineProperty(this, attribute, {
                 configurable: true,
@@ -85,7 +86,7 @@ export default class TableColumn {
             if (options.hasOwnProperty(attribute)) {
                 this[attribute] = options[attribute]
             } else {
-                this[attribute] = assignableAttributes[attribute]
+                this[attribute] = assignableAttributes[attribute].default
             }
         })
         

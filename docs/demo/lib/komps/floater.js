@@ -70,23 +70,51 @@ export default class Floater extends KompElement {
     static tagName = 'komp-floater';
     
     static assignableAttributes = {
-        content: null,
-        anchor: null,
-        placement: undefined,
-        strategy: 'absolute',
-        flip: null,
-        offset: null,
-        shift: true,
-        arrow: null,
-        autoPlacement: true,
-        inline: null,
-        autoUpdate: {},
-        removeOnBlur: false,
-        container: null,
-        timeout: 0,
-        onHide: null,
-        onShow: null,
-        scope: null
+        content: { type: ['string', 'HTMLElement', 'array', 'object'], default: null, null: true },
+        anchor: {
+            type: 'HTMLElement',
+            default: null,
+            null: true,
+            load: function (v) {
+                if (typeof v == "string") {
+                    const container = this.getRootNode() == this ? document.body : this.getRootNode();
+                    return container.querySelector(v);
+                } else if (!(v instanceof Element)) {
+                    const coords = v
+                    return {
+                        getBoundingClientRect() {
+                            return {
+                                width: 0,
+                                height: 0,
+                                x: coords.x,
+                                y: coords.y,
+                                left: coords.x,
+                                right: coords.x,
+                                top: coords.y,
+                                bottom: coords.y
+                            };
+                        }
+                    }
+                } else {
+                    return v
+                }
+            }
+        },
+        placement: { type: 'string', default: undefined, null: true },
+        strategy: { type: 'string', default: 'absolute', null: false },
+        flip: { type: ['boolean', 'object'], default: null, null: true },
+        offset: { type: ['boolean', 'object'], default: null, null: true },
+        shift: { type: ['boolean', 'object'], default: true, null: false },
+        arrow: { type: ['boolean', 'number'], default: null, null: true },
+        autoPlacement: { type: ['boolean', 'object'], default: true, null: false },
+        inline: { type: ['boolean', 'object'], default: null, null: true },
+        autoUpdate: { type: ['boolean', 'object'], default: {}, null: false },
+        removeOnBlur: { type: 'boolean', default: false, null: false },
+        container: { type: ['string', 'HTMLElement'], default: null, null: true },
+        timeout: { type: 'number', default: 0, null: false },
+        onHide: { type: 'function', default: null, null: true },
+        onShow: { type: 'function', default: null, null: true },
+        scope: { type: 'string', default: null, null: true }
     }
     static bindMethods = ['show', 'hide', 'checkFocus', 'checkEscape']
     static middlewares = {
@@ -103,25 +131,6 @@ export default class Floater extends KompElement {
     
     initialize () {
         super.initialize()
-        if (typeof this.anchor == "string") {
-            this.anchor = this.getRootNode().querySelector(this.anchor);
-        } else if (!(this.anchor instanceof Element)) {
-            const coords = this.anchor
-            this.anchor = {
-                getBoundingClientRect() {
-                    return {
-                        width: 0,
-                        height: 0,
-                        x: coords.x,
-                        y: coords.y,
-                        left: coords.x,
-                        right: coords.x,
-                        top: coords.y,
-                        bottom: coords.y
-                    };
-                }
-            }
-        }
         
         this.middleware = []
         Object.keys(this.constructor.middlewares).forEach(key => {
