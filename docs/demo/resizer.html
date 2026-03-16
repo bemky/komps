@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AutoGrid – Komps Demo</title>
+    <title>Resizer – Komps Demo</title>
     <style>
         html {
             margin: 0;
@@ -284,71 +284,49 @@
     <style>
     .demo-container {
         position: relative;
-        border: 1px solid #e2e2ea;
-        border-radius: 0.5em;
+        width: 100%;
+        height: 400px;
         background: white;
+        border-radius: 0.5em;
+        border: 1px solid #e2e2ea;
         overflow: hidden;
     }
-    auto-grid {
-        padding: 1em;
-        gap: 1em;
-    }
-    auto-grid > div {
+    .resize-target {
+        position: absolute;
+        top: 80px;
+        left: 100px;
+        width: 200px;
+        height: 150px;
         background: #ede8f5;
-        border-radius: 0.25em;
-        padding: 0.25em 0.75em;
-        white-space: nowrap;
-    }
-    .hint {
-        text-align: center;
-        padding: 0.5em;
-        font-size: 0.85em;
-        color: #888;
+        border: 2px solid #dbd1eb;
+        border-radius: 0.5em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        color: #555;
+        user-select: none;
     }
 </style>
 
-<p class="hint">Drag the right edge to resize and watch the grid reflow</p>
-<div id="wrapper" style="position: relative;">
 <div class="demo-container" id="container">
-    <auto-grid id="grid">
-        <div>lorem</div>
-        <div>Lorem ipsum dolor</div>
-        <div>sit amet, consectetur adipisicing</div>
-        <div>elit</div>
-        <div>sed do</div>
-        <div>eiusmod</div>
-        <div>tempor incididunt ut labore et dolore</div>
-        <div>magna aliqua. Ut enim</div>
-        <div>ad minim</div>
-        <div>veniam, quis nostrud</div>
-        <div>exercitation</div>
-        <div>ullamco laboris nisi ut aliquip ex ea</div>
-        <div>1</div>
-        <div>commodo consequat.</div>
-        <div>Duis aute irure dolor</div>
-    </auto-grid>
-</div>
+    <div class="resize-target" id="target">Drag edges to resize</div>
 </div>
 
 <script type="module">
-    import './lib/komps/auto-grid.js';
     import Resizer from './lib/komps/resizer.js';
 
     const container = document.getElementById('container');
-    const grid = document.getElementById('grid');
+    const target = document.getElementById('target');
 
-    const wrapper = document.getElementById('wrapper');
     const resizer = new Resizer({
-        target: container,
-        container: wrapper,
+        target: target,
+        container: container,
         autohide: false,
-        directions: ['right'],
-        bounds: () => wrapper.getBoundingClientRect(),
-        onResize (el) {
-            container.style.width = el.rect().width + 'px';
-        }
+        move: true,
+        bounds: () => container.getBoundingClientRect()
     });
-    wrapper.append(resizer);
+    container.append(resizer);
 </script>
 
 </main>

@@ -11,4 +11,5 @@ export { default as Spreadsheet } from './komps/spreadsheet.js';
 export { default as ContentArea } from './komps/content-area.js';
 export { default as Element } from './komps/element.js';
 export { default as Form } from './komps/form.js';
+export { default as Resizer } from './komps/resizer.js';
 export { default as SearchField } from './komps/search-field.js';
