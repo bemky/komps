@@ -100,6 +100,20 @@ function to customize how each result is displayed.</p></section><section class=
                 
             
         </code><span class="tag-attr tag-optional">optional</span><div class="symbol-description"><p>content shown when no results found. Set to false to disable.</p></div></div></div><div class="symbol-parameter-property"><div class="symbol-parameter">
+    <code>loader</code>
+    :
+        <code class="clear">
+            
+                string
+                |
+            
+                HTMLElement
+                |
+            
+                function
+                
+            
+        </code><span class="tag-attr tag-optional">optional</span><div class="symbol-description"><p>content shown in results list while search is loading. Defaults to an animated SVG spinner.</p></div></div></div><div class="symbol-parameter-property"><div class="symbol-parameter">
     <code>input</code>
     :
         <code class="clear">
@@ -108,9 +122,12 @@ function to customize how each result is displayed.</p></section><section class=
                 |
             
                 HTMLInputElement
+                |
+            
+                Object
                 
             
-        </code><span class="tag-attr tag-optional">optional</span><div class="symbol-description"><p>custom input element or function that returns one</p></div></div></div><div class="symbol-parameter-property"><div class="symbol-parameter">
+        </code><span class="tag-attr tag-optional">optional</span><div class="symbol-description"><p>custom input element, function that returns one, or options to pass to dolla.createElement</p></div></div></div><div class="symbol-parameter-property"><div class="symbol-parameter">
     <code>floater</code>
     :
         <code class="clear">

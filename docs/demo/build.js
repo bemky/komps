@@ -10,6 +10,9 @@ const layout = readFileSync(join(dir, 'layout.html'), 'utf8');
 
 mkdirSync(distDir, { recursive: true });
 
+// Copy demo stylesheet
+cpSync(join(dir, 'demo.css'), join(distDir, 'demo.css'));
+
 // Copy lib/ and vendor dependencies
 cpSync(join(projectRoot, 'lib'), join(distDir, 'lib'), { recursive: true });
 cpSync(join(projectRoot, 'node_modules', 'dolla', 'lib'), join(distDir, 'vendor', 'dolla'), { recursive: true });

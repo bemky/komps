@@ -400,7 +400,7 @@ export default class KompElement extends HTMLElement {
         eachPrototype(this, proto => {
             body += expandStyle(proto.style)
         })
-        style.replaceSync(body)
+        style.replaceSync(`@layer komps { ${body} }`)
         return style
     }
     

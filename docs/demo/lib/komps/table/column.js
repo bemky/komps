@@ -1,25 +1,72 @@
 /**
- * The configuration class for {@link Table} columns
+ * The configuration class for {@link Table} columns.
+ *
+ * TableColumn is a plain class (not a custom element) that manages rendering,
+ * header creation, and cell lifecycle for a single column in a {@link Table}.
+ * Cells delegate their rendering and behavior to their column instance.
+ *
+ * ## Column Types
+ *
+ * Columns are resolved through a **type registry** on the Table class.
+ * When a column config includes a `type` string, the Table looks it up in
+ * `Table.columnTypeRegistry` and instantiates that class instead of the
+ * default `TableColumn`.
+ *
+ * ### Built-in types
+ *
+ * **Table** ships with one type:
+ * | Type        | Class         | Description                    |
+ * |-------------|---------------|--------------------------------|
+ * | `"default"` | `TableColumn` | Standard read-only table cell  |
+ *
+ * **Spreadsheet** extends the registry with editable types:
+ * | Type         | Class            | Description                                       |
+ * |--------------|------------------|---------------------------------------------------|
+ * | `"default"`  | `SpreadsheetColumn` | Editable text cell (click to edit)              |
+ * | `"select"`   | `SelectColumn`   | Dropdown select input                             |
+ * | `"number"`   | `NumberColumn`   | Numeric input, parses pasted values as floats     |
+ * | `"checkbox"` | `CheckboxColumn` | Checkbox toggle                                   |
+ * | `"radio"`    | `CheckboxColumn` | Radio toggle (same class as checkbox)             |
+ * | `"readonly"` | `ReadonlyColumn` | Non-editable cell, paste disabled                 |
+ *
+ * ### Creating a custom column type
+ *
+ * 1. Extend `TableColumn` (or `SpreadsheetColumn` for spreadsheet features).
+ * 2. Override methods like `render`, `renderCell`, or `initialize` as needed.
+ * 3. Optionally set a custom `static Cell` or `static HeaderCell` class.
+ * 4. Register the type on the Table (or Spreadsheet) class.
+ *
+ * @example <caption>Creating and registering a custom column type</caption>
+ * import Table from 'komps/table';
+ * import TableColumn from 'komps/table/column';
+ *
+ * class CurrencyColumn extends TableColumn {
+ *     render (record) {
+ *         const value = record[this.attribute];
+ *         return '$' + Number(value).toFixed(2);
+ *     }
+ * }
+ *
+ * Table.columnTypeRegistry.currency = CurrencyColumn;
+ *
+ * new Table({
+ *     data: records,
+ *     columns: [
+ *         { header: 'Name', render: r => r.name },
+ *         { header: 'Price', type: 'currency', attribute: 'price' }
+ *     ]
+ * })
  *
  * @class TableColumn
  *
  * @param {Object} [options={}]
- * @param {string} [options.type] - Declares which column class from `Table.columnTypeRegistry` to use. Optional, default is TableColumn
+ * @param {string} [options.type] - Key into `Table.columnTypeRegistry` that determines which column class to instantiate. Defaults to `"default"`.
  * @param {boolean} [options.frozen=false] - Make column stay in place when table body scrolls
  * @param {string} [options.class] - classes to append to header and cells (space separated)
  * @param {function} [options.render] - Render method for the cell. Receives `(record, cell, columnConfiguration, table)`
  * @param {function|string} [options.header] - Render method for the header. Receives `(columnConfiguration, table)`
  * @param {string} [options.width] - Valid value for {@link https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns css grid template} (i.e. px, percent, min-content...)
  * @param {function|string} [options.splitInto] - split cell into multiple rows by the result of this method. If String, key is called on record. If Function, function is called with record as argument.
- *
- * @example <caption>Custom Column Type</caption>
- * Table.columnTypeRegistry.foo = class FooColumn extends TableColumn {
- *     ...
- * }
- * new Table({
- *     data: [...]
- *     columns: [{ type: 'foo' }]
- * })
  */
 
 import { createElement, HTML_ATTRIBUTES, append } from 'dolla';
