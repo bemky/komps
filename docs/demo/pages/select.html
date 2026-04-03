@@ -84,7 +84,17 @@ title: Select
             ['dodgers', 'LA Dodgers'],
             ['astros', 'Houston Astros'],
             ['yankees', 'NY Yankees']
-        ]
+        ].map(team => {
+            team[1] = {
+                class: 'flex',
+                style: {gap: '0.5em', 'align-items': 'center'},
+                content: [
+                    {tag: 'img', src: `/images/${team[0]}.png`, width: 24, height: 24},
+                    team[1]
+                ],
+            }
+            return team
+        })
     });
     teamSelect.addEventListener('change', renderOutput);
     document.getElementById('team-select').append(teamSelect);
