@@ -71,8 +71,9 @@
 
 import { createElement, HTML_ATTRIBUTES, append } from 'dolla';
 import Input from '../input.js';
-import { result, scanPrototypesFor } from '../../support.js';
+import { result, scanPrototypesFor, eachPrototype, isFunction } from '../../support.js';
 
+import Element from '../element.js';
 import TableCell from './cell.js';
 import HeaderCell from './header-cell.js';
 
@@ -149,6 +150,7 @@ export default class TableColumn {
             })
         })
         
+        this.appendStyle()
         this.initialize(options)
         this._is_initialized = true
     }
@@ -249,5 +251,49 @@ export default class TableColumn {
     }
     get offsetLeft () {
         return this.headerCell.offsetLeft
+    }
+    
+    appendStyle () {
+        if (this.constructor.style) {;
+            const root = document
+            if (root && root.adoptedStyleSheets && !root.adoptedStyleSheets.find(s => s.id == this.constructor.name)) {
+                eachPrototype(this.constructor, proto => {
+                    if (proto.hasOwnProperty('style') && proto.renderStyle) {
+                        if (root && root.adoptedStyleSheets && !root.adoptedStyleSheets.find(s => s.id == proto.name)) {
+                            const style = proto.renderStyle()
+                            if (style) root.adoptedStyleSheets.push(style)
+                        }
+                    }
+                })
+            }
+        }
+    }
+    
+    static renderStyle () {
+        if (!this.style) return null;
+        
+        const style = new CSSStyleSheet()
+        style.id = this.name
+        let body = '';
+        
+        const expandStyle = (style) => {
+            if (Array.isArray(style)) {
+                return style.map(expandStyle).join("\n")
+            } else if (isFunction(style)) {
+                return style.call(this)
+            } else if (!!style) {
+                return style
+            }
+        }
+        
+        eachPrototype(this, proto => {
+            body += expandStyle(proto.style)
+        })
+        if (Element.styleLayer) {
+            style.replaceSync(`@layer ${Element.styleLayer} { ${body} }`)
+        } else {
+            style.replaceSync(body)
+        }
+        return style
     }
 }

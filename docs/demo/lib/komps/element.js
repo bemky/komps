@@ -175,8 +175,6 @@ export default class KompElement extends HTMLElement {
             }
         })
         Object.keys(this._assignableAttributes).forEach(attribute => {
-            if (attribute == 'content') return
-            
             let schema = this._assignableAttributes[attribute]
             if (typeof schema != 'object' || schema == null || schema.type == undefined) {
                 console.warn(`[Komps] assignableAttributes on ${this.constructor.name} is direct value. Convert to object schema: { attr: { type, default, null } }`)
