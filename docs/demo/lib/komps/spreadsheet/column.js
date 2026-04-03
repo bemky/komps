@@ -37,9 +37,11 @@ export default class SpreadsheetColumn extends TableColumn {
         'input', 'copy', 'paste'
     ]
     
+    static inputOptions = {}
+    
     initialize (configs) {
         this.configuredContextMenu = configs.contextMenu
-        this.inputOptions = configs.input
+        this.inputOptions = Object.assign({}, configs.input, this.constructor.inputOptions)
         if (configs.hasOwnProperty('copy') && !configs.copy) {
             this.copy = undefined
         }
