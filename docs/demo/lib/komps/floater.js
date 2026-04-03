@@ -5,7 +5,6 @@
  * @extends KompElement
  *
  * @param {Object} [options={}]
- * @param {string|HTMLElement|Array|Object} [options.content] - content for the floater, uses {@link https://dollajs.com/#content Dolla's content}
  * @param {HTMLElement} options.anchor - element to anchor positioning to
  * @param {string|HTMLElement} [options.container=null] - element to append floater to. If `String`, then used as selector for `this.closest(selector)`
  * @param {string} [options.placement="bottom"] - how the floater is anchored, e.g. "top", "top-start", "top-end", "left", "left-start"...
@@ -70,7 +69,6 @@ export default class Floater extends KompElement {
     static tagName = 'komp-floater';
     
     static assignableAttributes = {
-        content: { type: ['string', 'HTMLElement', 'array', 'object'], default: null, null: true },
         anchor: {
             type: 'HTMLElement',
             default: null,

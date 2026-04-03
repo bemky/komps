@@ -36,7 +36,7 @@ export default class Select extends KompElement {
         load: { type: 'function', default: v => v, null: false }
     }
     
-    static bindMethods = ['onKeyUp', 'onKeyDown']
+    static bindMethods = ['onKeyDown']
 
     get value () {
         if (this.target && this.attribute) {
@@ -77,17 +77,7 @@ export default class Select extends KompElement {
             this.toggleAttribute('open', this.dropdown.showing)
         })
         
-        this.addEventListener('keyup', this.onKeyUp)
         this.addEventListener('keydown', this.onKeyDown)
-    }
-    
-    onKeyUp (e) {
-        if (e.key === 'Tab') {
-            const current = this.dropdown.querySelector('button:focus');
-            if (current) {
-                trigger(current, 'click')
-            }
-        }
     }
     
     onKeyDown (e) {
@@ -95,24 +85,33 @@ export default class Select extends KompElement {
             e.preventDefault();
             e.stopPropagation();
             const current = this.dropdown.querySelector('button:focus');
-    
+            const dropdownPosition = this.dropdown.classList.contains('-top') ? 'top' : 'bottom'
+            
             if (current) {
                 const sibling = e.key === 'ArrowUp' ? 'previousElementSibling' : 'nextElementSibling';
                 const target = current[sibling];
                 if (target?.tagName === 'BUTTON') {
                     target.focus();
-                } else if (e.key === 'ArrowUp') {
+                } else if (dropdownPosition == 'bottom' && e.key === 'ArrowUp') {
+                    this.button.focus();
+                } else if (dropdownPosition == 'top' && e.key === 'ArrowDown') {
                     this.button.focus();
                 }
-            } else if (e.key === 'ArrowDown') {
-                this.dropdown.querySelector('button')?.focus();
+            } else if (dropdownPosition == 'bottom' && e.key === 'ArrowDown') {
+                this.dropdown.firstElementChild?.focus();
+            } else if (dropdownPosition == 'top' && e.key === 'ArrowUp') {
+                this.dropdown.lastElementChild?.focus();
+            }
+        } else if (e.key === 'Tab') {
+            const current = this.dropdown.querySelector('button:focus');
+            if (current) {
+                trigger(current, 'click')
             }
         }
     }
     
     disconnected () {
         this.dropdown.remove()
-        this.removeEventListener('keyup', this.onKeyUp )
         this.removeEventListener('keydown', this.onKeyDown )
     }
 
@@ -129,14 +128,14 @@ export default class Select extends KompElement {
             const label = Array.isArray(option) ? option[1] : option
             return listenerElement('button', {
                 type: 'button',
-                tabIndex: -1,
+                tabindex: -1,
                 content: label,
-                class: value == currentValue ? '-active' : undefined,
+                class: value == currentValue ? '-active' : '',
                 value: value
             }, 'click', e => {
                 this.value = e.currentTarget.value
-                this.dropdown.hide()
                 this.button.focus()
+                this.dropdown.hide()
             })
         })
     }
