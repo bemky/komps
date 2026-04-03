@@ -87,10 +87,6 @@ export default class SpreadsheetColumn extends TableColumn {
             return menu
         }
     }
-    
-    inputOffset ({rects}) {
-        return { mainAxis: -rects.reference.height }
-    }
 
     onEnter () {}
 }

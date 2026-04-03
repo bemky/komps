@@ -198,7 +198,9 @@ export default class SpreadsheetCell extends TableCell {
                     allowedPlacements: ['top', 'bottom']
                 },
                 removeOnBlur: true,
-                offset: this.column.inputOffset.bind(this.column)
+                offset: ({rects}) => ({
+                    mainAxis: -rects.reference.height,
+                })
             })
             insertAfter(this, floater)
             return floater.show()
