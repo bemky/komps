@@ -6,6 +6,15 @@ export default class NumberColumn extends Column {
     static assignableAttributes = {
         type: { type: 'string', default: 'number', null: false }
     }
+    
+    static inputOptions = {
+        dump: v => {
+            if (typeof v == 'string') {
+                return v.includes(".") ? parseFloat(v) : parseInt(v)
+            }
+            return v
+        }
+    }
 
     render (record) {
         const value = result(record, this.attribute)
