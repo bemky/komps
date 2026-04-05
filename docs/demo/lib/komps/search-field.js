@@ -294,4 +294,3 @@ export default class SearchField extends KompElement {
     `
 }
 
-window.customElements.define(SearchField.tagName, SearchField);

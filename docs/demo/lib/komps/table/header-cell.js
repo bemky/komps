@@ -23,4 +23,3 @@ export default class HeaderCell extends Cell {
         }
     }
 }
-window.customElements.define(HeaderCell.tagName, HeaderCell);

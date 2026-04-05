@@ -76,4 +76,3 @@ export default class TableCell extends KompElement {
         this.column.cells.delete(this)
     }
 }
-window.customElements.define(TableCell.tagName, TableCell);

@@ -38,7 +38,6 @@ class TableToggle extends KompElement {
         this.column.toggles.delete(this)
     }
 }
-window.customElements.define(TableToggle.tagName, TableToggle);
 
 export default function (proto) {
     this.assignableAttributes.collapseTo = { type: 'string', default: 'auto', null: false }

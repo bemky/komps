@@ -244,4 +244,3 @@ export default class Select extends KompElement {
         }
     `
 }
-window.customElements.define(Select.tagName, Select);

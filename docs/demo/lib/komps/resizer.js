@@ -370,4 +370,3 @@ export default class Resizer extends KompElement {
     `
 }
 
-window.customElements.define(Resizer.tagName, Resizer)

@@ -83,4 +83,3 @@ export default class AutoGrid extends KompElement {
     `
 }
 
-window.customElements.define('auto-grid', AutoGrid)

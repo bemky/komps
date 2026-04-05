@@ -91,4 +91,3 @@ export default class Notification extends KompElement {
         this.timer.play()
     }
 }
-window.customElements.define('komp-notification', Notification);

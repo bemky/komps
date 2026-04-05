@@ -127,4 +127,3 @@ export default class Modal extends KompElement {
         }
     `}
 }
-window.customElements.define(Modal.tagName, Modal);

@@ -102,4 +102,3 @@ export default class Dropdown extends Floater {
     }
 
 }
-window.customElements.define('komp-dropdown', Dropdown);
