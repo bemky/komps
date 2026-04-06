@@ -2,14 +2,22 @@
 
 ## 1.0.0
 
+### New Components
+
+- **SearchField** — Async search input with debounced queries, keyboard navigation, result rendering, empty/loading states, and inline or floater display modes
+- **Resizer** — Overlay element with drag handles for resizing and moving a target element, with optional bounds constraints and autohide. Integrates with AutoGrid
+- **Select** — Custom `komp-select` dropdown with button UI, keyboard navigation, and form association via FormField (#5)
+- **FormField base class** — New `FormField` extends `KompElement` with ElementInternals API support (`setFormValue`, `setValidity`, `checkValidity`, `reportValidity`). Components needing form participation extend this instead of KompElement (#17)
+
 ### New Features
 
-- **Select component** — New `komp-select` custom element with dropdown button UI, keyboard navigation, and form association via FormField (#5)
-- **FormField base class** — New `FormField` extends `KompElement` with ElementInternals API support (`setFormValue`, `setValidity`, `checkValidity`, `reportValidity`). Components needing form participation extend this instead of KompElement (#17)
+- **Attribute schema** — `assignableAttributes` now uses an object schema format (`{ type, default, null, load }`) replacing the old array/direct-value format. Attributes with serializable types (`string`, `number`, `boolean`) are automatically reflected to/from DOM attributes, enabling HTML-first usage and element cloning (#2)
+- **CSS layer isolation** — Component styles are wrapped in `@layer komps` via `adoptedStyleSheets` so they don't override application styles. Configurable via `static styleLayer`
 - **Exports map** — Package.json exports map enables deep imports (e.g., `import Dropdown from 'komps/dropdown'`) with full bundler resolution (#20)
 - **ARIA attributes** — Added `role`, `aria-expanded`, `aria-modal`, `aria-live`, `aria-labelledby`, `aria-describedby`, and `aria-haspopup` across Modal, Dropdown, Tooltip, Table, NotificationCenter, Select, ContentArea, and Dropzone (#15)
 - **Keyboard navigation** — Dropdown: arrow keys, Enter/Space toggle. Modal: focus trap with Tab/Shift+Tab, Escape to close, focus restore. Tooltip: show on focus, hide on blur, Escape to dismiss (#16)
 - **Number column improvements** — `toLocaleString()` rendering, `[type]-cell` class on cells/headers, `text-align: right` for `.number-cell` in spreadsheet (#6)
+- **JSDocs** — Full JSDoc documentation with demo pages for all components (#3)
 
 ### Improvements
 
@@ -18,6 +26,25 @@
 - **Signature migration warnings** — Event listeners bound via constructor options are checked at bind time. Warns if `fn.length > 1` (old multi-arg callback signature) or if a single-arg listener's parameter isn't named `e` or `event`
 
 ### Breaking Changes
+
+#### Attribute schema format
+
+`assignableAttributes` changed from array or direct-value format to object schema:
+
+```js
+// Old
+static assignableAttributes = ['anchor', 'placement']
+// or
+static assignableAttributes = { placement: 'bottom' }
+
+// New
+static assignableAttributes = {
+    anchor: { type: 'HTMLElement', default: null, null: true },
+    placement: { type: 'string', default: 'bottom', null: false }
+}
+```
+
+The old formats still work but emit a deprecation warning (#2).
 
 #### Event naming: verb tense replaces before/after prefixes (#23)
 
