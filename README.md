@@ -1,6 +1,6 @@
 <p align="center">
     <a href="https://komps.js.org" style="display:block; max-width:300px;">
-        <img src="https://raw.githubusercontent.com/bemky/komps/master/docs-src/source/assets/images/logo.svg" width="300" alt="Dolla">
+        <img src="https://raw.githubusercontent.com/bemky/komps/master/docs/source/assets/images/logo.svg" width="300" alt="Dolla">
     </a>
     <p align="center">
         Komps is a library of style-less Web Components for building UIs. Komps is platform-agnostic, and each component is fully tree-shakeable by any bundler. 
