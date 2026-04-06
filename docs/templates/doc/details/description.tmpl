@@ -11,7 +11,7 @@
     var demoFile = '';
     if (doc.meta && doc.meta.filename) {
         var basename = doc.meta.filename.replace(/\.js$/, '');
-        var demoPath = pathMod.join(process.cwd(), 'docs-src', 'demo', 'pages', basename + '.html');
+        var demoPath = pathMod.join(process.cwd(), 'docs', 'demo', 'pages', basename + '.html');
         if (fs.existsSync(demoPath)) {
             demoFile = basename + '.html';
         }
