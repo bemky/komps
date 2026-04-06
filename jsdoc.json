@@ -8,10 +8,10 @@
     "excludePattern": "(^|\\/|\\\\)_"
   },
   "opts": {
-    "destination": "./docs/",
+    "destination": "./_docs/",
     "recurse": true,
     "template": "node_modules/jsdoc-press",
-    "tutorials": "./docs-src/tutorials"
+    "tutorials": "./docs/tutorials"
   },
   "plugins": [
     "node_modules/jsdoc-export-default-interop/dist/index",
@@ -20,7 +20,7 @@
   "templates": {
     "logo": "images/logo.svg",
     "footer": "&copy; 2026 <a href='https://github.com/bemky/'>Ben Ehmke</a> <br/> <a href='https://github.com/bemky/komps'>Komps on GitHub</a>",
-    "staticFiles": "docs-src/",
+    "staticFiles": "docs/",
     "cleanOutput": true,
     "nav": {
       "order": ["class"],
@@ -29,10 +29,10 @@
     "details": {
       "order": ["description", "examples"]
     },
-    "stylesheets": ["./docs-src/stylesheets/komps-jsdoc.css"],
-    "index": "./docs-src/index.md",
+    "stylesheets": ["./docs/stylesheets/komps-jsdoc.css"],
+    "index": "./docs/index.md",
     "highlight": true,
-    "templates": "./docs-src/templates",
-    "afterBuild": "node docs-src/demo/build.js"
+    "templates": "./docs/templates",
+    "afterBuild": "node docs/demo/build.js"
   }
 }

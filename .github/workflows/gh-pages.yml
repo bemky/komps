@@ -1,19 +1,38 @@
-name: Middleman
+name: Deploy Docs
 
 on:
   push:
     branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
-  build_and_deploy:
-    name: Build & Deploy
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - name: Build & Deploy to GitHub Pages
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
-          SITE_LOCATION: docs-src
-          REMOTE_BRANCH: main
-          BUILD_LOCATION: docs
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        uses: yurikoval/middleman-gh-pages-action@master
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run docs
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: _docs
+      - id: deployment
+        uses: actions/deploy-pages@v5
