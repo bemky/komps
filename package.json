@@ -57,7 +57,7 @@
     "jsdoc": "^4.0.3",
     "jsdoc-export-default-interop": "^0.3.1",
     "jsdoc-press": "github:bemky/jsdoc-press",
-    "jsdom": "^28.1.0",
+    "jsdom": "^29.0.1",
     "jsdom-global": "^3.0.2",
     "mocha": "^11.7.5"
   }

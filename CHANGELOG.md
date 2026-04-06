@@ -55,7 +55,7 @@ Pre-action events use present tense (cancellable via `preventDefault()`), post-a
 | `beforeConnect` / `afterConnect` | `connect` | `connected` |
 | `beforeDisconnect` / `afterDisconnect` | `disconnect` | `disconnected` |
 | `beforeRemove` / `afterRemove` | `remove` | `removed` |
-| `beforeSubmit` / `afterSubmit` (Form) | `submit` | `submitted` |
+| `beforeSubmit` / `afterSubmit` (Form) | — | `submitted` |
 | `afterRender` (Table) | — | `rendered` |
 | `columnReorder` / `rowReorder` | — | `columnReordered` / `rowReordered` |
 | `columnResize` / `rowResize` | — | `columnResized` / `rowResized` |
@@ -65,7 +65,7 @@ Constructor option names change accordingly (e.g., `onBeforeConnect` → `onConn
 
 #### Pre-action events are now cancellable
 
-Calling `preventDefault()` on `connect`, `disconnect`, `remove` (KompElement), `show`, `hide` (Floater), `resize` (Resizer), `submit` (Form), `headerChange`, `indexChange`, `widthChange` (Table/Column) will cancel the default behavior and skip the post-action event.
+Calling `preventDefault()` on `connect`, `disconnect`, `remove` (KompElement), `show`, `hide` (Floater), `resize` (Resizer), `headerChange`, `indexChange`, `widthChange` (Table/Column) will cancel the default behavior and skip the post-action event. For Form, call `preventDefault()` in the `onSubmit` listener to prevent `target.save()` and the `submitted` event.
 
 #### Floater: new show/hide event pairs, onShow/onHide attributes removed
 
@@ -93,6 +93,6 @@ Calling `preventDefault()` on `connect`, `disconnect`, `remove` (KompElement), `
 
 Components no longer self-register via `customElements.define()` at import time. Call `Component.define()` explicitly, or import the barrel file which registers all components (#22).
 
-#### Form internal method rename
+#### Form no longer dispatches a custom `submit` event
 
-`Form.onSubmit()` renamed to `Form.formSubmit()` to avoid collision with the `submit` event name.
+Form no longer dispatches a cancelable `submit` event before saving. Instead, the `onSubmit` listener fires before `target.save()`. Call `event.preventDefault()` in the `onSubmit` listener to prevent saving and the `submitted` event.
