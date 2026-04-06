@@ -40,6 +40,8 @@ import { isFunction, result, except, uniq, findClosest, isBetween } from '../sup
 import TableColumn from './table/column.js';
 import TableRow from './table/row.js';
 import TableHeader from './table/header.js';
+import TableCell from './table/cell.js';
+import TableHeaderCell from './table/header-cell.js';
 import KompElement from './element.js';
 
 export default class Table extends KompElement {
@@ -50,6 +52,7 @@ export default class Table extends KompElement {
     }
     
     static tagName = 'komp-table'
+    static composes = [TableRow, TableHeader, TableCell, TableHeaderCell]
     static columnTypeRegistry = {
         default: TableColumn
     }

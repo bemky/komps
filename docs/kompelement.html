@@ -103,7 +103,12 @@ name and the value is a schema object describing how to handle it.</p></section>
                 
             
         </span></span>
-</code></a></div><section class="description"><p>Methods to auto-bind to <code>this</code></p></section></div><div class="symbol-summary static_members" id="symbol-kompelement.events"><div class="symbol-summary-title"><span class="icon-kind kind-member">P</span>
+</code></a></div><section class="description"><p>Methods to auto-bind to <code>this</code></p></section></div><div class="symbol-summary static_members" id="symbol-kompelement.composes"><div class="symbol-summary-title"><span class="icon-kind kind-member">P</span>
+        &nbsp;
+    
+    <a href="kompelement.html#symbol-kompelement.composes"><code>
+<span class="signature"><span class="signature-name">composes</span></span>
+</code></a></div><section class="description"><p>Components used internally by this component. Called recursively by <a href="kompelement.html#symbol-kompelement.define">define()</a>.</p></section></div><div class="symbol-summary static_members" id="symbol-kompelement.events"><div class="symbol-summary-title"><span class="icon-kind kind-member">P</span>
         &nbsp;
     
     <a href="kompelement.html#symbol-kompelement.events"><code>
@@ -277,7 +282,7 @@ via <code>adoptedStyleSheets</code>. Set to a falsy value to disable layering.</
     
     <a href="kompelement.html#symbol-kompelement.define"><code>
 <span class="signature"><span class="signature-name">define</span><span class="signature-punctuation">(</span><span class="signature-param">tagName</span><span class="signature-punctuation">)</span></span>
-</code></a></div><section class="description"><p>Register this component as a custom element. Safe to call multiple times.</p></section><section><h2>Parameters</h2><div class="symbol-parameter">
+</code></a></div><section class="description"><p>Register this component and all components it <a href="kompelement.html#symbol-kompelement.composes">composes</a> as custom elements. Safe to call multiple times.</p></section><section><h2>Parameters</h2><div class="symbol-parameter">
     <code>tagName</code>
     :
         <code class="clear">
