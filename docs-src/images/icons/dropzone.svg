@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-  <!-- Dashed drop zone border -->
-  <rect x="3" y="3" width="26" height="26" stroke-dasharray="3 2.5" />
-  <!-- Down arrow -->
-  <line x1="16" y1="9" x2="16" y2="20" />
-  <polyline points="11,16 16,21 21,16" />
-</svg>
