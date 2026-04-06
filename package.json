@@ -50,7 +50,7 @@
   "homepage": "https://github.com/bemky/komps#readme",
   "dependencies": {
     "@floating-ui/dom": "^1.5.2",
-    "dolla": "github:bemky/dolla"
+    "dolla": "^1.6.1"
   },
   "devDependencies": {
     "highlight.js": "^11.11.1",
