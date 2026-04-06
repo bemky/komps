@@ -19,6 +19,9 @@ title: Tooltip
         border-radius: 50%;
         cursor: help;
         font-weight: bold;
+        &:focus {
+            outline: 2px solid rgba(0, 75, 255, 0.7);
+        }
     }
     komp-tooltip {
         background: rgba(30, 30, 30, 0.85);
@@ -32,9 +35,9 @@ title: Tooltip
 </style>
 
 <div style="display: flex; align-items: center; gap: 0.75em;">
-    <div id="anchor">?</div>
+    <div id="anchor"  tabindex="1">?</div>
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-    Hover This
+    <label tabindex="2">Hover This</label>
 </div>
 
 <script type="module">
