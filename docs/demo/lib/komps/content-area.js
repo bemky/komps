@@ -28,7 +28,8 @@ import KompElement from './element.js';
 
 export default class ContentArea extends KompElement {
     static tagName = "komp-content-area"
-    
+    static { this.define() }
+
     static assignableAttributes = {
         onchange: { type: 'function', default: null, null: true }
     }

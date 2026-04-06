@@ -42,6 +42,7 @@ const DIRECTIONS_ORDER = ['top', 'right', 'bottom', 'left']
 
 export default class Resizer extends KompElement {
     static tagName = 'komp-resizer'
+    static { this.define() }
 
     static _targetMap = new Map()
     static observer = new ResizeObserver(entries => {

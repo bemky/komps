@@ -24,6 +24,7 @@ import TableCell from '../table/cell.js';
 export default class SpreadsheetCell extends TableCell {
     static tagName = 'komp-spreadsheet-cell';
     static composes = [Floater]
+    static { this.define() }
 
     static assignableAttributes = {
         readonly: { type: 'boolean', default: false, null: false }

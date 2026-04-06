@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "description": "Komps is a library of style-less Web Components for building UIs. Komps is platform-agnostic, and each component is fully tree-shakeable by any bundler.",
   "main": "lib/komps.js",
-  "sideEffects": ["./lib/register-all.js"],
+  "sideEffects": true,
   "scripts": {
     "docs": "jsdoc -c jsdoc.json",
     "docs:watch": "npx nodemon --watch lib --watch docs-src --ext js,css,md,html --exec 'npm run docs'",

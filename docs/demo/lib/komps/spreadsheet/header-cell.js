@@ -11,6 +11,7 @@ import Input from '../input.js';
  */
 export default class HeaderCell extends Cell {
     static tagName = 'komp-spreadsheet-header-cell'
+    static { this.define() }
     render () {
         content(this, result(this.column, 'header', this))
         return this

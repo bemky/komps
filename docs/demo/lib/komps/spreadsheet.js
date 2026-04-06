@@ -54,6 +54,7 @@ import { reorderable, resizable } from './plugins.js';
 export default class Spreadsheet extends Table {
     static tagName = 'komp-spreadsheet'
     static composes = [Cell, SpreadsheetHeaderCell, Floater, Modal, Select]
+    static { this.define() }
 
     static assignableAttributes = {
         scrollSnap: { type: 'boolean', default: false, null: false }

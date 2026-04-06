@@ -27,6 +27,7 @@ import KompElement from '../element.js';
 
 export default class TableCell extends KompElement {
     static tagName = 'komp-table-cell'
+    static { this.define() }
     static assignableAttributes = {
         record: { type: ['object', 'function'], default: null, null: true },
         column: { type: 'object', default: null, null: true },

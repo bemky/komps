@@ -10,7 +10,8 @@ import Group from './group.js';
 export default class TableRow extends KompElement {
     static tagName = 'komp-table-row'
     static composes = [Group]
-    
+    static { this.define() }
+
     static assignableAttributes = {
         rowIndex: { type: 'number', default: null, null: true },
         table: { type: 'object', default: null, null: true },

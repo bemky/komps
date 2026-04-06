@@ -24,6 +24,7 @@ import KompElement from '../../element.js';
 
 class TableToggle extends KompElement {
     static tagName = 'komp-table-toggle'
+    static { this.define() }
     static assignableAttributes = {
         column: { type: 'object', default: null, null: true },
         cellIndex: { type: 'number', default: null, null: true }

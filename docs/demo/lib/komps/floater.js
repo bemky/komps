@@ -67,7 +67,8 @@ import KompElement from './element.js';
 
 export default class Floater extends KompElement {
     static tagName = 'komp-floater';
-    
+    static { this.define() }
+
     static assignableAttributes = {
         anchor: {
             type: 'HTMLElement',

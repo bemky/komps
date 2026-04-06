@@ -28,6 +28,7 @@ import { dig, bury } from '../support.js';
 export default class Select extends KompElement {
     static tagName = 'komp-select'
     static composes = [Dropdown]
+    static { this.define() }
 
     static assignableAttributes = {
         target: { type: 'object', default: null, null: true },

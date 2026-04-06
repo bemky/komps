@@ -40,7 +40,9 @@ import KompElement from './element.js';
 import Notification from './notification-center/notification.js';
 
 export default class NotificationCenter extends KompElement {
+    static tagName = 'komp-notification-center'
     static composes = [Notification]
+    static { this.define() }
 
     static assignableAttributes = Notification.assignableAttributes
     

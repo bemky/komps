@@ -23,7 +23,8 @@ import KompElement from './element.js';
 export default class Modal extends KompElement {
 
     static tagName = "komp-modal";
-    
+    static { this.define() }
+
     constructor (...args) {
         super(...args)
         this.container = createElement(`${this.tagName}-popover`, {
