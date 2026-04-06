@@ -73,7 +73,7 @@ title: Select
         attribute: 'position',
         options: ['C', '1B', '2B', '3B', 'SS', 'LF', 'CF', 'RF', 'DH']
     });
-    positionSelect.addEventListener('change', renderOutput);
+    positionSelect.addEventListener('komp:change', renderOutput);
     document.getElementById('position-select').append(positionSelect);
 
     const teamSelect = new Select({
@@ -96,7 +96,7 @@ title: Select
             return team
         })
     });
-    teamSelect.addEventListener('change', renderOutput);
+    teamSelect.addEventListener('komp:change', renderOutput);
     document.getElementById('team-select').append(teamSelect);
 
     renderOutput();
