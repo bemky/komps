@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url';
 const dir = fileURLToPath(new URL('.', import.meta.url));
 const pagesDir = join(dir, 'pages');
 const projectRoot = join(dir, '..', '..');
-const distDir = join(projectRoot, 'docs', 'demo');
+const distDir = join(projectRoot, '_docs', 'demo');
 const layout = readFileSync(join(dir, 'layout.html'), 'utf8');
 
 mkdirSync(distDir, { recursive: true });
@@ -63,4 +63,4 @@ const indexHtml = layout
     </ul>
 `);
 writeFileSync(join(distDir, 'index.html'), indexHtml);
-console.log(`  index.html\nWrote ${pages.length + 1} files to docs/demo/`);
+console.log(`  index.html\nWrote ${pages.length + 1} files to _docs/demo/`);
