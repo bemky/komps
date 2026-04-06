@@ -27,9 +27,9 @@
   },
   "scripts": {
     "docs": "jsdoc -c jsdoc.json",
-    "docs:watch": "npx nodemon --watch lib --watch docs-src --ext js,css,md,html --exec 'npm run docs'",
-    "docs:serve": "npx serve docs",
-    "demo": "node docs-src/demo/build.js",
+    "docs:watch": "npx nodemon --watch lib --watch docs --ext js,css,md,html --exec 'npm run docs'",
+    "docs:serve": "npx serve _docs",
+    "demo": "node docs/demo/build.js",
     "test": "node --import ./test/register.js node_modules/.bin/mocha --config ./.mocha.yml"
   },
   "repository": {
