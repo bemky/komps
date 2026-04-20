@@ -35,16 +35,14 @@ title: Tooltip
 </style>
 
 <div style="display: flex; align-items: center; gap: 0.75em;">
-    <div id="anchor"  tabindex="1">?</div>
+    <div id="anchor" tabindex="1"
+         data-tooltip="Lorem ipsum dolor sit amet, consectetur adipisicing elit.">?</div>
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-    <label tabindex="2">Hover This</label>
+    <label tabindex="2" data-tooltip="Nice job." data-tooltip-placement="bottom">Hover This</label>
 </div>
 
 <script type="module">
     import Tooltip from './lib/komps/tooltip.js';
 
-    new Tooltip({
-        anchor: document.getElementById('anchor'),
-        content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
-    });
+    Tooltip.delegate(document.body);
 </script>
