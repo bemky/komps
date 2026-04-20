@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### Breaking Changes
+
+- **Tooltip auto-wiring removed** — `new Tooltip({ anchor, content })` no longer attaches mouseenter/mouseleave/focus/blur/keydown listeners to the anchor. The `enable()` / `disable()` methods and the `enabled` option are removed. Use `Tooltip.delegate(container, defaults)` to install a single delegated listener that shows tooltips for any descendant with `data-tooltip` (or `title`, which is stripped to suppress the native browser tooltip). Per-element options are read from `data-tooltip-*` attributes.
+
 ## 2.0.0-alpha.1
 
 ### New Components
