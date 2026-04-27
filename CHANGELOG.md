@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### New Features
+
+- **Row-level readonly** — `TableRow` accepts a `readonly` function (called with the record) and a new `renderCell(column, record, options)` method that resolves it per-record before delegating to `column.renderCell`. `Spreadsheet` exposes a matching `readonly` attribute and forwards it to each row, so a single `readonly: record => record.archived` declaration makes all cells in matching rows non-editable. `Table.renderRow` now accepts an optional `attrs` object that is spread into the row's construction options (#28).
+
 ### Breaking Changes
 
 - **Tooltip auto-wiring removed** — `new Tooltip({ anchor, content })` no longer attaches mouseenter/mouseleave/focus/blur/keydown listeners to the anchor. The `enable()` / `disable()` methods and the `enabled` option are removed. Use `Tooltip.delegate(container, defaults)` to install a single delegated listener that shows tooltips for any descendant with `data-tooltip` (or `title`, which is stripped to suppress the native browser tooltip). Per-element options are read from `data-tooltip-*` attributes.
