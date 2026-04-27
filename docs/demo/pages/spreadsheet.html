@@ -21,6 +21,7 @@ title: Spreadsheet
     const data = await response.json();
 
     document.getElementById('container').append(new Spreadsheet({
+        readonly: r => r['Name'] == 'Adolis Garcia',
         data: data,
         columns: [{
             attribute: 'Name',
