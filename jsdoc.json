@@ -24,7 +24,8 @@
     "cleanOutput": true,
     "nav": {
       "order": ["class"],
-      "exclude": ["typedef", "module", "event"]
+      "exclude": ["typedef", "module", "event"],
+      "excludeNames": ["FormField"]
     },
     "details": {
       "order": ["description", "examples"]
