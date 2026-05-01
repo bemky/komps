@@ -16,7 +16,7 @@ export default class SelectColumn extends Column {
     
     async input (record) {
         return Input.create(this.type, Object.assign({
-            record: record,
+            target: record,
             attribute: this.attribute,
             options: this.options,
             autofocus: true

@@ -5,7 +5,6 @@
  * @extends KompElement
  *
  * @param {Object} [options={}]
- * @param {string|HTMLElement|Array|Object} [options.content] - content for the floater, uses {@link https://dollajs.com/#content Dolla's content}
  * @param {HTMLElement} options.anchor - element to anchor positioning to
  * @param {string|HTMLElement} [options.container=null] - element to append floater to. If `String`, then used as selector for `this.closest(selector)`
  * @param {string} [options.placement="bottom"] - how the floater is anchored, e.g. "top", "top-start", "top-end", "left", "left-start"...
@@ -70,7 +69,6 @@ export default class Floater extends KompElement {
     static tagName = 'komp-floater';
     
     static assignableAttributes = {
-        content: { type: ['string', 'HTMLElement', 'array', 'object'], default: null, null: true },
         anchor: {
             type: 'HTMLElement',
             default: null,
@@ -208,13 +206,14 @@ export default class Floater extends KompElement {
 
         if (middlewareData.arrow) {
             const {x, y} = middlewareData.arrow;
+            const arrowLocator = this.querySelector('komp-floater-arrow-locator')
             if (x != null) {
                 this.style.setProperty('--arrow-left', `${x}px`)
-                this.querySelector('komp-floater-arrow-locator').style.setProperty('left', `${x}px`)
+                if (arrowLocator) arrowLocator.style.setProperty('left', `${x}px`)
             }
             if (y != null) {
                 this.style.setProperty('--arrow-top', `${y}px`)
-                this.querySelector('komp-floater-arrow-locator').style.setProperty('top', `${x}px`)
+                if (arrowLocator) arrowLocator.style.setProperty('top', `${y}px`)
             }
         }
     }

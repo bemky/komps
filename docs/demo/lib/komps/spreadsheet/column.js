@@ -75,7 +75,7 @@ export default class SpreadsheetColumn extends TableColumn {
     
     input (record, cell, options) {
         return Input.create(this.type || 'contentarea', Object.assign({
-            record: record,
+            target: record,
             attribute: this.attribute,
             autofocus: true
         }, this.inputOptions, options))

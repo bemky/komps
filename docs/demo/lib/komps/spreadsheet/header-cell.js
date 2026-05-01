@@ -19,7 +19,7 @@ export default class HeaderCell extends Cell {
     createInput () {
         if (this.column.headerEditable) {
             return Input.create('contentarea', Object.assign({
-                record: this.column,
+                target: this.column,
                 attribute: 'header'
             }))
         }
