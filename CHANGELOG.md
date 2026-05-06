@@ -5,6 +5,7 @@
 ### New Features
 
 - **Row-level readonly** — `TableRow` accepts a `readonly` function (called with the record) and a new `renderCell(column, record, options)` method that resolves it per-record before delegating to `column.renderCell`. `Spreadsheet` exposes a matching `readonly` attribute and forwards it to each row, so a single `readonly: record => record.archived` declaration makes all cells in matching rows non-editable. `Table.renderRow` now accepts an optional `attrs` object that is spread into the row's construction options (#28).
+- **SearchField default results** — `SearchField` accepts a `defaultResults` option (Array or async function) shown when the query is below `minLength`, including on focus before the user has typed. Items have the same shape as those returned from `search`, so `result` and `select` apply unchanged. Async functions are resolved once and cached on the instance.
 
 ### Breaking Changes
 
