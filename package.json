@@ -15,6 +15,7 @@
     "./floater": "./lib/komps/floater.js",
     "./form": "./lib/komps/form.js",
     "./input": "./lib/komps/input.js",
+    "./masonry": "./lib/komps/masonry.js",
     "./modal": "./lib/komps/modal.js",
     "./notification-center": "./lib/komps/notification-center.js",
     "./resizer": "./lib/komps/resizer.js",

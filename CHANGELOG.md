@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### New Components
+
+- **Masonry** — Pattern-driven grid layout with optional drag-resize and drag-reorder. `cellPattern` (e.g. `"3 3 6, 6 6, 7 5, 12"`) declares per-row cell column counts; `rowPattern` declares row track heights (e.g. `"200px 100px auto"`); both repeat to cover all children. `gridCount` defaults to the LCM of `cellPattern` row sums. With `resizable`, drag handles snap to integer grid columns and pixel row heights. With `reorderable`, dropping a cell into a row redistributes that row evenly across the grid; the source row likewise redistributes.
+
 ### New Features
 
 - **Row-level readonly** — `TableRow` accepts a `readonly` function (called with the record) and a new `renderCell(column, record, options)` method that resolves it per-record before delegating to `column.renderCell`. `Spreadsheet` exposes a matching `readonly` attribute and forwards it to each row, so a single `readonly: record => record.archived` declaration makes all cells in matching rows non-editable. `Table.renderRow` now accepts an optional `attrs` object that is spread into the row's construction options (#28).
