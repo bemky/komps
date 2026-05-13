@@ -1,0 +1,99 @@
+<!--
+title: Mosaic
+-->
+<style>
+    .demo-container {
+        position: relative;
+        border: 1px solid #e2e2ea;
+        border-radius: 0.5em;
+        background: white;
+        padding: 1em;
+    }
+    komp-mosaic {
+        gap: 8px;
+    }
+    komp-mosaic > .cell {
+        background: #ede8f5;
+        border-radius: 0.25em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.25em;
+        color: #5e5ce6;
+        user-select: none;
+    }
+    .hint {
+        text-align: center;
+        padding: 0.5em;
+        font-size: 0.85em;
+        color: #888;
+    }
+    .controls {
+        display: flex;
+        gap: 1em;
+        justify-content: center;
+        align-items: center;
+        padding: 0.5em;
+        font-size: 0.9em;
+    }
+    .controls label { color: #555; }
+    .controls input[type=number] { inline-size: 4em; }
+</style>
+
+<p class="hint">Drag a cell's right edge to grow its column span. Drag the bottom edge to grow its row span. Drag the body of a cell to move it — collisions bump other cells down.</p>
+
+<div class="controls">
+    <label>columnCount <input id="cc" type="number" value="12" min="1" max="24"></label>
+    <label>rowHeight <input id="rh" type="number" value="" placeholder="auto" min="20" max="400"></label>
+</div>
+
+<div class="demo-container">
+    <komp-mosaic id="m" columnCount="12" resizable reorderable></komp-mosaic>
+</div>
+
+<p class="hint" id="last-event">&nbsp;</p>
+
+<script type="module">
+    import Mosaic from './lib/komps/mosaic.js';
+    import { createElement } from 'dolla';
+
+    const m = document.getElementById('m');
+
+    // Eight starter tiles. Each cell sets its own grid-area.
+    const cells = [
+        { area: '1 / 1 / 2 / 4',  label: '1' },
+        { area: '1 / 4 / 2 / 7',  label: '2' },
+        { area: '1 / 7 / 2 / 13', label: '3' },
+        { area: '2 / 1 / 3 / 7',  label: '4' },
+        { area: '2 / 7 / 3 / 13', label: '5' },
+        { area: '3 / 1 / 4 / 8',  label: '6' },
+        { area: '3 / 8 / 4 / 13', label: '7' },
+        { area: '4 / 1 / 5 / 13', label: '8' },
+    ];
+    for (const c of cells) {
+        m.append(createElement('div', {
+            class: 'cell',
+            style: { 'grid-area': c.area },
+            content: c.label
+        }));
+    }
+
+    const lastEvent = document.getElementById('last-event');
+    m.addEventListener('resize', e => {
+        const { axis, rect, cell } = e.detail;
+        lastEvent.textContent = `resize (${axis}) "${cell.textContent}" → ${rect.r1}/${rect.c1}/${rect.r2}/${rect.c2}`;
+    });
+    m.addEventListener('reorder', e => {
+        const { rect, cell } = e.detail;
+        lastEvent.textContent = `reorder "${cell.textContent}" → ${rect.r1}/${rect.c1}/${rect.r2}/${rect.c2}`;
+    });
+
+    document.getElementById('cc').addEventListener('input', e => {
+        const v = parseInt(e.target.value, 10);
+        if (!isNaN(v) && v > 0) m.columnCount = v;
+    });
+    document.getElementById('rh').addEventListener('input', e => {
+        const v = e.target.value === '' ? null : parseInt(e.target.value, 10);
+        m.rowHeight = v;
+    });
+</script>
