@@ -81,11 +81,19 @@ title: Mosaic
     const lastEvent = document.getElementById('last-event');
     m.addEventListener('resize', e => {
         const { axis, rect, cell } = e.detail;
-        lastEvent.textContent = `resize (${axis}) "${cell.textContent}" → ${rect.r1}/${rect.c1}/${rect.r2}/${rect.c2}`;
+        lastEvent.textContent = `resize (${axis}) "${cell.textContent}" → ${rect.rowStart}/${rect.colStart}/${rect.rowEnd}/${rect.colEnd}`;
     });
     m.addEventListener('reorder', e => {
         const { rect, cell } = e.detail;
-        lastEvent.textContent = `reorder "${cell.textContent}" → ${rect.r1}/${rect.c1}/${rect.r2}/${rect.c2}`;
+        lastEvent.textContent = `reorder "${cell.textContent}" → ${rect.rowStart}/${rect.colStart}/${rect.rowEnd}/${rect.colEnd}`;
+    });
+    // gridAreaChanged bubbles from each affected cell. Brief tint so you can
+    // see which cells were touched (including those bumped by the cascade).
+    m.addEventListener('gridAreaChanged', e => {
+        const cell = e.target;
+        cell.style.transition = 'background 600ms ease';
+        cell.style.background = '#d9d4f0';
+        setTimeout(() => { cell.style.background = ''; }, 600);
     });
 
     document.getElementById('cc').addEventListener('input', e => {
