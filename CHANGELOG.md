@@ -9,6 +9,8 @@
 
 ### Bug Fixes
 
+
+- **Component registration ordering** — Moved every `static { this.define() }` block to the end of its class body, so `customElements.define` always runs after every other static field initializer. Without this, a pre-existing element in the DOM at script load could trigger a constructor on a class whose `assignableAttributes` (and other statics like `observer`) haven't initialized yet. Documented the requirement on `KompElement.define`'s JSDoc and in `CLAUDE.md` so subclasses follow the same pattern.
 - **`scanPrototypesFor` cache invalidation** — Cache entries now invalidate when the constructor's own-property status for a key flips. Without this, an instance constructed during class initialization (e.g. when `customElements.define` upgrades a pre-existing element before the subclass's `static <key> = ...` field has run) would lock in a result missing the subclass's own value, and every subsequent instance would inherit the wrong merged metadata.
 
 ### Breaking Changes
