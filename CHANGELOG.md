@@ -10,6 +10,7 @@
 ### Bug Fixes
 
 - **`scanPrototypesFor` cache invalidation** — Cache entries now invalidate when the constructor's own-property status for a key flips. Without this, an instance constructed during class initialization (e.g. when `customElements.define` upgrades a pre-existing element before the subclass's `static <key> = ...` field has run) would lock in a result missing the subclass's own value, and every subsequent instance would inherit the wrong merged metadata.
+- **Floater arrow alignment** — The arrow now centers on its anchor. floating-ui measures the square `komp-floater-arrow-locator` and returns the cross-axis edge offset, but the visible `:after` was rendered at twice `--arrow-size` with centering math that left it half an arrow-width off (and clamped against the wrong width near the floater edges). The locator and arrow now share a single `--arrow-inset`/`--arrow-size`, and all four placements are handled with logical properties plus `writing-mode`.
 
 ### Breaking Changes
 
