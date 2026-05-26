@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### Fixes
+
+- Fix floater arrow alignment — the arrow rendered half an arrow-width off-center because the visible `:after` was twice `--arrow-size` while floating-ui measures the square locator (and clamping used the wrong width near the floater edges). The locator and arrow now share a single `--arrow-inset`/`--arrow-size`, with all placements handled via logical properties and `writing-mode`.
+
 ## 1.5.0
 
 ### New Components
