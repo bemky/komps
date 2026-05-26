@@ -49,7 +49,7 @@ title: Dropdown
             </nav>
         `
     });
-    dropdown.addEventListener('afterConnect', () => {
+    dropdown.addEventListener('connected', () => {
         dropdown.style.minWidth = dropdown.anchor.offsetWidth + "px";
     });
 </script>
