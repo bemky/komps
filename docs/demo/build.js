@@ -45,9 +45,11 @@ for (const file of pages) {
     const title = titleMatch ? titleMatch[1].trim() : basename(file, '.html');
     const body = raw.replace(/<!--\s*\n?\s*title:\s*.+?\s*\n?\s*-->\s*/, '');
 
+    // Use function replacers so `$`-sequences in title/body (e.g. `'$' + n`) are
+    // inserted literally and not interpreted as String.replace patterns ($&, $', …).
     const html = layout
-        .replace(/\{\{title\}\}/g, title)
-        .replace('{{body}}', body);
+        .replace(/\{\{title\}\}/g, () => title)
+        .replace('{{body}}', () => body);
 
     writeFileSync(join(distDir, file), html);
     index.push({ title, file });

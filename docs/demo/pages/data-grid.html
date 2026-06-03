@@ -1,0 +1,113 @@
+<!--
+title: Data Grid
+-->
+<style>
+    main {
+        height: 600px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+    #status {
+        flex: none;
+        margin: 0 0 .5rem;
+        color: #555;
+        font: 13px/1.4 system-ui, sans-serif;
+        font-variant-numeric: tabular-nums;
+    }
+    #status b { color: #1a73e8; }
+    #container {
+        flex: 1 1 auto;
+        min-height: 0; /* allow the flex child to be shorter than its content so the grid scrolls */
+    }
+
+    /* DataGrid is style-less; the demo supplies presentational CSS. */
+    komp-data-grid {
+        --dg-cell-bg: #fff;
+        height: 100%;
+        width: 100%;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font: 13px/1.4 system-ui, sans-serif;
+        font-variant-numeric: tabular-nums;
+    }
+    komp-data-grid-header-cell {
+        padding: .45em .6em;
+        font-weight: 600;
+        border-right: 1px solid #eee;
+        border-bottom: 2px solid #ddd;
+        background: #fafafa;
+        white-space: nowrap;
+    }
+    komp-data-grid-cell {
+        padding: .4em .6em;
+        border-right: 1px solid hsl(0, 0%, 90%);
+        border-bottom: 1px solid hsl(0, 0%, 90%);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    komp-data-grid-cell.frozen,
+    komp-data-grid-header-cell.frozen { box-shadow: 1px 0 0 #ddd; font-weight: 600; }
+    komp-data-grid-cell-subrow { padding: 1px 0; color: #444; font-size: .92em; }
+    komp-data-grid-cell-subrow + komp-data-grid-cell-subrow { border-top: 1px dotted hsl(0, 0%, 90%); }
+</style>
+
+<div id="status">loading…</div>
+<div id="container"></div>
+
+<script type="module">
+    import DataGrid from './lib/komps/data-grid.js';
+
+    const RATINGS = ['hgt','stre','spd','jmp','endu','ins','dnk','ft','fg','tp','oiq','diq','drb','pss','reb'];
+    const overall = r => {
+        const v = r.ratings || {};
+        return Math.round(RATINGS.reduce((s, k) => s + (v[k] || 0), 0) / RATINGS.length);
+    };
+
+    const db = await fetch('/nba-players.json').then(r => r.json());
+    const players = db.players;
+    const teamAbbrev = Object.fromEntries(db.teams.map(t => [t.tid, t.abbrev]));
+
+    const grid = new DataGrid({
+        data: players,
+        columns: [
+            { header: 'Player', width: 170, frozen: true,
+              render: r => `${r.firstName} ${r.lastName}`,
+              value:  r => `${r.firstName} ${r.lastName}` },
+            { header: 'Pos', width: 60, attribute: 'pos' },
+            { header: 'Team', width: 70, render: r => teamAbbrev[r.tid] ?? r.tid },
+            { header: 'Born', width: 64, render: r => r.born?.year ?? '' },
+            { header: 'College', width: 170, render: r => r.college || '—' },
+            { header: 'Hgt', width: 56, attribute: 'hgt' },
+            { header: 'Wt', width: 56, attribute: 'weight' },
+            { header: 'Overall', width: 76, render: overall },
+            { header: 'Contract', width: 96, render: r => r.contract ? '$' + r.contract.amount.toLocaleString() : '' },
+            { header: 'Draft Yr', width: 76, render: r => r.draft?.year ?? '' },
+            { header: 'Pick', width: 56, render: r => r.draft?.pick ?? '' },
+            ...RATINGS.map(k => ({ header: k.toUpperCase(), width: 52, render: r => r.ratings?.[k] ?? '' })),
+            { header: 'Awards', width: 240, splitInto: r => r.awards, render: a => `${a.season} · ${a.type}` }
+        ]
+    });
+    document.getElementById('container').append(grid);
+
+    const status = document.getElementById('status');
+    const fmtMB = b => (b / 1048576).toFixed(1) + ' MB';
+    const update = () => {
+        // Exact, cross-browser: elements actually in the grid right now…
+        const domNodes = grid.querySelectorAll('*').length;
+        // …vs. what a non-virtualized grid would mount (every cell + row of every record).
+        const fullNodes = grid.rows.length * (grid.columns.length + 1);
+        // JS heap is Chromium-only and coarsely quantized — show it when available.
+        const heap = performance.memory
+            ? ` · JS heap ≈ <b>${fmtMB(performance.memory.usedJSHeapSize)}</b>`
+            : '';
+        status.innerHTML =
+            `Virtualized: mounted <b>${grid.mountedRows.length}</b> of <b>${grid.rows.length}</b> rows ` +
+            `· DOM elements in grid: <b>${domNodes.toLocaleString()}</b> ` +
+            `(vs ~${fullNodes.toLocaleString()} if fully rendered)` + heap;
+    };
+    grid.addEventListener('scroll', update);
+    grid.addEventListener('rendered', update);
+    setInterval(update, 500);
+</script>
