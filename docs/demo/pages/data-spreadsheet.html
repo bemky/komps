@@ -47,7 +47,7 @@ title: Data Spreadsheet
         columns: [
             { header: 'Player', width: 170, frozen: true, type: 'readonly',
               render: r => `${r.firstName} ${r.lastName}` },
-            { header: '★', width: 40, frozen: true, type: 'checkbox', attribute: 'starred' },
+            { header: '★', width: 40, frozen: true, type: 'checkbox', attribute: 'starred', resize: false },
             { header: 'Pos', width: 64, type: 'select', attribute: 'pos', options: POSITIONS },
             { header: 'Team', width: 70, type: 'readonly', render: r => teamAbbrev[r.tid] ?? r.tid },
             { header: 'College', width: 180, attribute: 'college' },
