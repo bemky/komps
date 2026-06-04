@@ -49,10 +49,6 @@ title: Select
         <label>Team</label>
         <div id="team-select"></div>
     </div>
-    <div>
-        <label>Bats (inline)</label>
-        <div id="bats-select"></div>
-    </div>
 </div>
 <div class="data-output" id="output"></div>
 
@@ -62,8 +58,7 @@ title: Select
     const player = {
         name: 'Corey Seager',
         position: 'SS',
-        team: 'rangers',
-        bats: 'L'
+        team: 'rangers'
     };
 
     function renderOutput () {
@@ -103,19 +98,6 @@ title: Select
     });
     teamSelect.addEventListener('change', renderOutput);
     document.getElementById('team-select').append(teamSelect);
-
-    const batsSelect = new Select({
-        target: player,
-        attribute: 'bats',
-        inline: true,
-        options: [
-            ['L', 'Left'],
-            ['R', 'Right'],
-            ['S', 'Switch']
-        ]
-    });
-    batsSelect.addEventListener('change', renderOutput);
-    document.getElementById('bats-select').append(batsSelect);
 
     renderOutput();
 </script>
