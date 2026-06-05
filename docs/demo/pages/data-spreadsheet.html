@@ -33,9 +33,10 @@ title: Data Spreadsheet
 
 <script type="module">
     import DataSpreadsheet from './lib/komps/data-spreadsheet.js';
-    import { resizable } from './lib/komps/data-grid/plugins.js';
+    import { resizable, reorderable } from './lib/komps/data-grid/plugins.js';
 
     DataSpreadsheet.include(resizable);
+    DataSpreadsheet.include(reorderable);
 
     const db = await fetch('/nba-players.json').then(r => r.json());
     const players = db.players;
@@ -66,7 +67,7 @@ title: Data Spreadsheet
         const sel = r ? `${(r.r1-r.r0+1)}×${(r.c1-r.c0+1)} selected` : 'no selection';
         status.innerHTML = `Editable + virtualized · mounted <b>${grid.mountedRows.length}</b> of ` +
             `<b>${grid.rows.length}</b> rows · ${sel} · ` +
-            `<i>click to select, drag/shift-arrows to extend, type or Enter to edit, ⌘C/⌘V to copy/paste, drag a column/row edge to resize</i>`;
+            `<i>click to select, drag/shift-arrows to extend, type or Enter to edit, ⌘C/⌘V to copy/paste, drag a column/row edge to resize, drag the grip to reorder</i>`;
     };
     grid.addEventListener('rendered', update);
     grid.addEventListener('cellChanged', update);
