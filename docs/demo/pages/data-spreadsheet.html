@@ -21,7 +21,7 @@ title: Data Spreadsheet
     }
     komp-data-spreadsheet-cell {
         padding: .4em .6em;
-        border-right: 1px solid hsl(0,0%,92%); border-bottom: 1px solid hsl(0,0%,92%);
+        border-right: 1px solid hsl(0,0%,85%); border-bottom: 1px solid hsl(0,0%,85%);
         white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
     komp-data-spreadsheet-cell.frozen,
@@ -33,6 +33,9 @@ title: Data Spreadsheet
 
 <script type="module">
     import DataSpreadsheet from './lib/komps/data-spreadsheet.js';
+    import { resizable } from './lib/komps/data-grid/plugins.js';
+
+    DataSpreadsheet.include(resizable);
 
     const db = await fetch('/nba-players.json').then(r => r.json());
     const players = db.players;
@@ -44,7 +47,7 @@ title: Data Spreadsheet
         columns: [
             { header: 'Player', width: 170, frozen: true, type: 'readonly',
               render: r => `${r.firstName} ${r.lastName}` },
-            { header: '★', width: 40, frozen: true, type: 'checkbox', attribute: 'starred' },
+            { header: '★', width: 40, frozen: true, type: 'checkbox', attribute: 'starred', resize: false },
             { header: 'Pos', width: 64, type: 'select', attribute: 'pos', options: POSITIONS },
             { header: 'Team', width: 70, type: 'readonly', render: r => teamAbbrev[r.tid] ?? r.tid },
             { header: 'College', width: 180, attribute: 'college' },
@@ -63,7 +66,7 @@ title: Data Spreadsheet
         const sel = r ? `${(r.r1-r.r0+1)}×${(r.c1-r.c0+1)} selected` : 'no selection';
         status.innerHTML = `Editable + virtualized · mounted <b>${grid.mountedRows.length}</b> of ` +
             `<b>${grid.rows.length}</b> rows · ${sel} · ` +
-            `<i>click to select, drag/shift-arrows to extend, type or Enter to edit, ⌘C/⌘V to copy/paste</i>`;
+            `<i>click to select, drag/shift-arrows to extend, type or Enter to edit, ⌘C/⌘V to copy/paste, drag a column/row edge to resize</i>`;
     };
     grid.addEventListener('rendered', update);
     grid.addEventListener('cellChanged', update);
