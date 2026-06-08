@@ -24,6 +24,7 @@
     "./table": "./lib/komps/table.js",
     "./tooltip": "./lib/komps/tooltip.js",
     "./plugins": "./lib/komps/plugins.js",
+    "./data-grid/plugins": "./lib/komps/data-grid/plugins.js",
     "./support": "./lib/support.js"
   },
   "scripts": {
