@@ -49,7 +49,7 @@
     "url": "https://github.com/bemky/komps/issues"
   },
   "homepage": "https://github.com/bemky/komps#readme",
-  "dependencies": {
+  "peerDependencies": {
     "@floating-ui/dom": "^1.5.2",
     "dolla": "^1.6.1"
   },
@@ -60,6 +60,7 @@
     "jsdoc-press": "github:bemky/jsdoc-press",
     "jsdom": "^29.0.1",
     "jsdom-global": "^3.0.2",
-    "mocha": "^11.7.5"
+    "mocha": "^11.7.5",
+    "dolla": "^1.6.1"
   }
 }
