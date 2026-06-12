@@ -26,6 +26,7 @@ title: Data Spreadsheet
     }
     komp-data-spreadsheet-cell.frozen,
     komp-data-spreadsheet-header-cell.frozen { box-shadow: 1px 0 0 #ddd; }
+    komp-data-spreadsheet-cell.wrap { white-space: pre-line; }
 </style>
 
 <div id="status">loading…</div>
@@ -33,10 +34,11 @@ title: Data Spreadsheet
 
 <script type="module">
     import DataSpreadsheet from './lib/komps/data-spreadsheet.js';
-    import { resizable, reorderable } from './lib/komps/data-grid/plugins.js';
+    import { resizable, reorderable, collapsible } from './lib/komps/data-grid/plugins.js';
 
     DataSpreadsheet.include(resizable);
     DataSpreadsheet.include(reorderable);
+    DataSpreadsheet.include(collapsible);
 
     const db = await fetch('/nba-players.json').then(r => r.json());
     const players = db.players;
@@ -45,6 +47,7 @@ title: Data Spreadsheet
 
     const grid = new DataSpreadsheet({
         data: players,
+        collapseTo: '60px',
         columns: [
             { header: 'Player', width: 170, frozen: true, type: 'readonly',
               render: r => `${r.firstName} ${r.lastName}` },
@@ -56,7 +59,9 @@ title: Data Spreadsheet
             { header: 'Wt', width: 64, type: 'number', attribute: 'weight' },
             { header: 'Born', width: 64, type: 'readonly', render: r => r.born?.year ?? '' },
             { header: 'Contract', width: 100, type: 'readonly',
-              render: r => r.contract ? '$' + r.contract.amount.toLocaleString() : '' }
+              render: r => r.contract ? '$' + r.contract.amount.toLocaleString() : '' },
+            { header: 'Awards', width: 240, type: 'readonly', class: 'wrap',
+              render: r => (r.awards || []).map(a => `${a.season} ${a.type}`).join('\n') }
         ]
     });
     document.getElementById('container').append(grid);
@@ -67,7 +72,7 @@ title: Data Spreadsheet
         const sel = r ? `${(r.r1-r.r0+1)}×${(r.c1-r.c0+1)} selected` : 'no selection';
         status.innerHTML = `Editable + virtualized · mounted <b>${grid.mountedRows.length}</b> of ` +
             `<b>${grid.rows.length}</b> rows · ${sel} · ` +
-            `<i>click to select, drag/shift-arrows to extend, type or Enter to edit, ⌘C/⌘V to copy/paste, drag a column/row edge to resize, drag the grip to reorder</i>`;
+            `<i>click to select, drag/shift-arrows to extend, type or Enter to edit, ⌘C/⌘V to copy/paste, drag a column/row edge to resize, drag the grip to reorder, click a ▾ to expand a truncated row</i>`;
     };
     grid.addEventListener('rendered', update);
     grid.addEventListener('cellChanged', update);
