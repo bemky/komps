@@ -17,6 +17,8 @@
 
 ### Breaking Changes
 
+- **Legacy `Table` and `Spreadsheet` removed; `DataSpreadsheet` renamed to `Spreadsheet`** — the non-virtualized `Table` and its editable `Spreadsheet` subclass are gone, along with their sub-components (`lib/komps/table/`, `lib/komps/spreadsheet/`) and the Table-based plugins under `lib/komps/table/plugins/`. The surviving components are the virtualized `DataGrid` and its editable subclass, which is now named **`Spreadsheet`** (was `DataSpreadsheet`). Migration: replace `Table` → `DataGrid` (`komps/table` → `komps/data-grid`; note `DataGrid` requires a bounded height and its plugins are opt-in via `.include()`), and `DataSpreadsheet` → `Spreadsheet` (`komps/data-spreadsheet` → `komps/spreadsheet`; custom element `komp-data-spreadsheet` → `komp-spreadsheet`, cells `komp-data-spreadsheet-cell` → `komp-spreadsheet-cell`). The `komps/plugins` barrel and `komps/data-grid/plugins` now both re-export the DataGrid plugins (`resizable`, `reorderable`, `collapsible`). A new `komps/data-grid` subpath export was added.
+
 - **Tooltip auto-wiring removed** — `new Tooltip({ anchor, content })` no longer attaches mouseenter/mouseleave/focus/blur/keydown listeners to the anchor. The `enable()` / `disable()` methods and the `enabled` option are removed. Use `Tooltip.delegate(container, defaults)` to install a single delegated listener that shows tooltips for any descendant with `data-tooltip` (or `title`, which is stripped to suppress the native browser tooltip). Per-element options are read from `data-tooltip-*` attributes.
 
 ## 2.0.0-alpha.1

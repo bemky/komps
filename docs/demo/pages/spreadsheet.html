@@ -1,63 +1,81 @@
 <!--
-title: Spreadsheet
+title: Data Spreadsheet
 -->
 <style>
-    main {
-        height: 500px;
-        overflow: hidden;
-    }
+    main { height: 600px; overflow: hidden; display: flex; flex-direction: column; }
+    #status { flex: none; margin: 0 0 .5rem; color: #555; font: 13px/1.4 system-ui, sans-serif; }
+    #status b { color: #1a73e8; }
+    #container { flex: 1 1 auto; min-height: 0; }
+
     komp-spreadsheet {
-        width: 100%;
-        height: 100%;
+        --dg-cell-bg: #fff;
+        --ds-select: #1a73e8;
+        height: 100%; width: 100%;
+        border: 1px solid #ccc; border-radius: 6px;
+        font: 13px/1.4 system-ui, sans-serif; font-variant-numeric: tabular-nums;
     }
+    komp-spreadsheet-header-cell {
+        padding: .45em .6em; font-weight: 600;
+        border-right: 1px solid #eee; border-bottom: 2px solid #ddd;
+        background: #fafafa; white-space: nowrap;
+    }
+    komp-spreadsheet-cell {
+        padding: .4em .6em;
+        border-right: 1px solid hsl(0,0%,85%); border-bottom: 1px solid hsl(0,0%,85%);
+        white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    komp-spreadsheet-cell.frozen,
+    komp-spreadsheet-header-cell.frozen { box-shadow: 1px 0 0 #ddd; }
+    komp-spreadsheet-cell.wrap { white-space: pre-line; }
 </style>
 
-<div id="container" style="width: 100%; height: 100%;"></div>
+<div id="status">loading…</div>
+<div id="container"></div>
 
 <script type="module">
     import Spreadsheet from './lib/komps/spreadsheet.js';
+    import { resizable, reorderable, collapsible } from './lib/komps/data-grid/plugins.js';
 
-    const response = await fetch("/texas-rangers-roster.json");
-    const data = await response.json();
+    Spreadsheet.include(resizable);
+    Spreadsheet.include(reorderable);
+    Spreadsheet.include(collapsible);
 
-    document.getElementById('container').append(new Spreadsheet({
-        readonly: r => r['Name'] == 'Adolis Garcia',
-        data: data,
-        columns: [{
-            attribute: 'Name',
-            resize: false,
-            reorder: false,
-            frozen: true,
-            type: 'readonly',
-            copy: false,
-            paste: false
-        }, {
-            attribute: 'TEAM',
-            frozen: true,
-            copy: false,
-            paste: false
-        }, {
-            attribute: 'CAPTAIN',
-            type: 'checkbox'
-        }, {
-            attribute: 'POS',
-            type: 'select',
-            options: ['C', '1B', '2B', '3B', 'SS', 'LF', 'RF', 'CF', 'P']
-        }, {
-            attribute: "RBI",
-            type: 'number'
-        }, {
-            attribute: "AVG",
-            type: 'number'
-        }, {
-            attribute: "DOB",
-            type: 'date'
-        }, {
-            attribute: "OPS",
-            type: 'number'
-        }, {
-            attribute: "WAR",
-            type: 'number'
-        }]
-    }));
+    const db = await fetch('/nba-players.json').then(r => r.json());
+    const players = db.players;
+    const teamAbbrev = Object.fromEntries(db.teams.map(t => [t.tid, t.abbrev]));
+    const POSITIONS = ['PG','SG','SF','PF','C','G','F'];
+
+    const grid = new Spreadsheet({
+        data: players,
+        collapseTo: '60px',
+        columns: [
+            { header: 'Player', width: 170, frozen: true, type: 'readonly',
+              render: r => `${r.firstName} ${r.lastName}` },
+            { header: '★', width: 40, frozen: true, type: 'checkbox', attribute: 'starred', resize: false },
+            { header: 'Pos', width: 64, type: 'select', attribute: 'pos', options: POSITIONS },
+            { header: 'Team', width: 70, type: 'readonly', render: r => teamAbbrev[r.tid] ?? r.tid },
+            { header: 'College', width: 180, attribute: 'college' },
+            { header: 'Hgt', width: 64, type: 'number', attribute: 'hgt' },
+            { header: 'Wt', width: 64, type: 'number', attribute: 'weight' },
+            { header: 'Born', width: 64, type: 'readonly', render: r => r.born?.year ?? '' },
+            { header: 'Contract', width: 100, type: 'readonly',
+              render: r => r.contract ? '$' + r.contract.amount.toLocaleString() : '' },
+            { header: 'Awards', width: 240, type: 'readonly', class: 'wrap',
+              render: r => (r.awards || []).map(a => `${a.season} ${a.type}`).join('\n') }
+        ]
+    });
+    document.getElementById('container').append(grid);
+
+    const status = document.getElementById('status');
+    const update = () => {
+        const r = grid.range();
+        const sel = r ? `${(r.r1-r.r0+1)}×${(r.c1-r.c0+1)} selected` : 'no selection';
+        status.innerHTML = `Editable + virtualized · mounted <b>${grid.mountedRows.length}</b> of ` +
+            `<b>${grid.rows.length}</b> rows · ${sel} · ` +
+            `<i>click to select, drag/shift-arrows to extend, type or Enter to edit, ⌘C/⌘V to copy/paste, drag a column/row edge to resize, drag the grip to reorder, click a ▾ to expand a truncated row</i>`;
+    };
+    grid.addEventListener('rendered', update);
+    grid.addEventListener('cellChanged', update);
+    grid.addEventListener('scroll', update);
+    setInterval(update, 400);
 </script>
