@@ -35,10 +35,10 @@ For smaller bundles, import components directly instead of from the barrel:
 
 ```javascript
 import Modal from 'komps/modal';
-import Table from 'komps/table';
+import DataGrid from 'komps/data-grid';
 ```
 
-Each component self-registers as a custom element when imported. Sub-components (e.g., TableRow, TableCell) are registered automatically through the import chain — no extra setup needed.
+Each component self-registers as a custom element when imported. Sub-components (e.g., DataGridRow, DataGridCell) are registered automatically through the import chain — no extra setup needed.
 
 ## Documentation
 Checkout details about each method on [komps.js.org](https://komps.js.org/)

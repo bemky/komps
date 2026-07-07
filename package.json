@@ -21,7 +21,7 @@
     "./search-field": "./lib/komps/search-field.js",
     "./select": "./lib/komps/select.js",
     "./spreadsheet": "./lib/komps/spreadsheet.js",
-    "./table": "./lib/komps/table.js",
+    "./data-grid": "./lib/komps/data-grid.js",
     "./tooltip": "./lib/komps/tooltip.js",
     "./plugins": "./lib/komps/plugins.js",
     "./data-grid/plugins": "./lib/komps/data-grid/plugins.js",
