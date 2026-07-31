@@ -314,4 +314,44 @@ describe('KompElement', function () {
             document.body.removeChild(container)
         })
     })
+
+    describe('remove', function () {
+        it('passes eventOptions through to the remove and removed events', async function () {
+            const el = new TestElement()
+            document.body.append(el)
+
+            const sourceEvent = new window.MouseEvent('click')
+            const seen = {}
+            el.addEventListener('remove', e => seen.remove = e.detail)
+            el.addEventListener('removed', e => seen.removed = e.detail)
+
+            await el.remove({ detail: { sourceEvent } })
+
+            assert.equal(seen.remove.sourceEvent, sourceEvent)
+            assert.equal(seen.removed.sourceEvent, sourceEvent)
+            assert.equal(el.parentElement, null)
+        })
+
+        it('still awaits a deprecated callback argument', async function () {
+            const el = new TestElement()
+            document.body.append(el)
+
+            const order = []
+            el.addEventListener('removed', () => order.push('removed'))
+
+            const warn = console.warn
+            const warnings = []
+            console.warn = msg => warnings.push(msg)
+            try {
+                await el.remove(async () => order.push('callback'))
+            } finally {
+                console.warn = warn
+            }
+
+            assert.deepEqual(order, ['callback', 'removed'])
+            assert.equal(warnings.length, 1)
+            assert.ok(warnings[0].includes('deprecated'))
+            assert.equal(el.parentElement, null)
+        })
+    })
 })
