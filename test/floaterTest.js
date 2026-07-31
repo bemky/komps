@@ -66,4 +66,57 @@ describe('Floater', function () {
             anchor.remove();
         });
     });
+
+    describe('show', function () {
+        it('forwards the source event to the show and shown events', async function () {
+            const anchor = createElement('button', { content: 'Open' });
+            document.body.append(anchor);
+
+            const floater = new Floater({ anchor, content: 'hi' });
+            const seen = {};
+            floater.addEventListener('show', e => seen.show = e.detail);
+            floater.addEventListener('shown', e => seen.shown = e.detail);
+
+            const event = new window.MouseEvent('click');
+            floater.show({ detail: { sourceEvent: event } });
+            await wait();
+
+            assert.equal(seen.show?.sourceEvent, event);
+            assert.equal(seen.shown?.sourceEvent, event);
+
+            anchor.remove();
+        });
+
+        it('keeps eventOptions intact when re-showing during a pending removal', async function () {
+            const anchor = createElement('button', { content: 'Open' });
+            document.body.append(anchor);
+
+            const floater = new Floater({ anchor, content: 'hi' });
+            floater.show();
+            await wait();
+
+            // Start hiding, then ask to show again while the removal is still
+            // pending. show() used to queue `.then(this.show)`, which handed
+            // the promise's resolved value (the element) to trigger() as the
+            // CustomEvent init dict.
+            floater.hide();
+            await wait();
+            assert.ok(floater._removing, 'removal should be pending');
+
+            let detail;
+            floater.addEventListener('show', e => detail = e.detail);
+
+            const event = new window.MouseEvent('click');
+            const reshown = floater.show({ detail: { sourceEvent: event } });
+
+            // Settle the exit animation so the queued show runs.
+            floater.dispatchEvent(new window.Event('animationend'));
+            await reshown;
+            await wait();
+
+            assert.equal(detail?.sourceEvent, event);
+
+            anchor.remove();
+        });
+    });
 });
