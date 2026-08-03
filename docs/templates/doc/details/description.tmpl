@@ -4,16 +4,28 @@
     <section class="description"><?js= doc.description ?></section>
 <?js } ?>
 
-<?js if (doc.kind == 'class') { ?>
+<?js if (doc.kind == 'class' || doc.kind == 'mixin') { ?>
     <?js
     var fs = this.fs;
     var pathMod = this.pathModule;
     var demoFile = '';
+    // Candidate demo pages, most specific first. Classes are one-per-file, so the source
+    // basename names their demo. Plugins share a directory of small files whose basenames
+    // (collapsible, resizable) don't say which component they apply to, so their demo is
+    // named after the doc itself (DataGridCollapsible -> data-grid-collapsible).
+    var candidates = [];
     if (doc.meta && doc.meta.filename) {
-        var basename = doc.meta.filename.replace(/\.js$/, '');
-        var demoPath = pathMod.join(process.cwd(), 'docs', 'demo', 'pages', basename + '.html');
-        if (fs.existsSync(demoPath)) {
-            demoFile = basename + '.html';
+        candidates.push(doc.meta.filename.replace(/\.js$/, ''));
+    }
+    if (doc.name) {
+        // Plugins are documented as `Plugin/DataGridCollapsible`; keep the last segment.
+        var leaf = doc.name.split(/[\/#.~]/).pop();
+        candidates.push(leaf.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase());
+    }
+    for (var i = 0; i < candidates.length; i++) {
+        if (fs.existsSync(pathMod.join(process.cwd(), 'docs', 'demo', 'pages', candidates[i] + '.html'))) {
+            demoFile = candidates[i] + '.html';
+            break;
         }
     }
     ?>
