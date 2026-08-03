@@ -72,7 +72,7 @@ title: Data Spreadsheet
         const sel = r ? `${(r.r1-r.r0+1)}×${(r.c1-r.c0+1)} selected` : 'no selection';
         status.innerHTML = `Editable + virtualized · mounted <b>${grid.mountedRows.length}</b> of ` +
             `<b>${grid.rows.length}</b> rows · ${sel} · ` +
-            `<i>click to select, drag/shift-arrows to extend, type or Enter to edit, ⌘C/⌘V to copy/paste, drag a column/row edge to resize, drag the grip to reorder, click a ▾ to expand a truncated row</i>`;
+            `<i>click to select, drag/shift-arrows to extend, type or Enter to edit, ⌘C/⌘V to copy/paste, drag a column/row edge to resize, drag the grip to reorder, hover a truncated cell and click the ⤢ to expand the row</i>`;
     };
     grid.addEventListener('rendered', update);
     grid.addEventListener('cellChanged', update);
