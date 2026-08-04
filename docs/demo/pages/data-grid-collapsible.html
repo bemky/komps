@@ -37,11 +37,12 @@ title: Data Grid Collapsible
 </style>
 
 <div id="controls">
-    <label>Row height budget (<code>collapseTo</code>):
+    <label>Cell content budget (<code>collapseTo</code>):
         <select id="budget">
-            <option value="40px">40px</option>
-            <option value="60px" selected>60px</option>
-            <option value="120px">120px</option>
+            <option value="1lh">1lh (one line)</option>
+            <option value="3lh" selected>3lh</option>
+            <option value="6lh">6lh</option>
+            <option value="50px">50px</option>
             <option value="auto">auto (no clamp)</option>
         </select>
     </label>
@@ -63,7 +64,7 @@ title: Data Grid Collapsible
 
     const grid = new DataGrid({
         data: players,
-        collapseTo: '60px',
+        collapseTo: '3lh',
         columns: [
             { header: 'Player', width: 170, frozen: true,
               render: r => `${r.firstName} ${r.lastName}` },
