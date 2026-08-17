@@ -115,6 +115,28 @@ describe('Floater', function () {
         });
     });
 
+    describe('setContent', function () {
+        it('replaces the content without orphaning the arrow locator', async function () {
+            const anchor = createElement('button', { content: 'Open' });
+            document.body.append(anchor);
+
+            const floater = new Floater({ anchor, arrow: true, content: 'hi' });
+            floater.show();
+            await wait();
+
+            const locator = floater.querySelector('komp-floater-arrow-locator');
+            assert.ok(locator, 'arrow locator should be rendered');
+
+            floater.setContent('bye');
+
+            assert.ok(floater.textContent.includes('bye'));
+            assert.equal(floater.textContent.includes('hi'), false);
+            assert.equal(floater.querySelector('komp-floater-arrow-locator'), locator);
+
+            anchor.remove();
+        });
+    });
+
     describe('show', function () {
         it('forwards the source event to the show and shown events', async function () {
             const anchor = createElement('button', { content: 'Open' });
