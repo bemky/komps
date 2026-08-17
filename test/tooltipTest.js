@@ -139,6 +139,74 @@ describe('Tooltip', function () {
             assert.equal(hides, 1);
         });
 
+        it('fires a cancellable tooltip event on the target', async function () {
+            const a = anchorFor('A');
+            container.append(a);
+            cleanup = Tooltip.delegate(container);
+
+            let detail;
+            a.addEventListener('tooltip', e => {
+                detail = e.detail;
+                e.preventDefault();
+            });
+
+            hover(a);
+            await wait();
+
+            assert.equal(detail?.content, 'A');
+            assert.equal(detail?.sourceEvent?.type, 'mouseover');
+            assert.deepEqual(detail?.options, {});
+            assert.equal(container.querySelector('komp-tooltip'), null, 'should not render');
+        });
+
+        it('lets an ancestor cancel tooltips for its subtree', async function () {
+            const a = anchorFor('A');
+            container.append(a);
+            cleanup = Tooltip.delegate(container);
+
+            container.addEventListener('tooltip', e => e.preventDefault());
+
+            hover(a);
+            await wait();
+
+            assert.equal(container.querySelector('komp-tooltip'), null);
+        });
+
+        it('leaves title in place when cancelled, strips it when not', async function () {
+            const a = createElement('button', { content: 'A', title: 'A' });
+            const b = createElement('button', { content: 'B', title: 'B' });
+            container.append(a, b);
+            cleanup = Tooltip.delegate(container);
+
+            a.addEventListener('tooltip', e => e.preventDefault());
+
+            hover(a);
+            await wait();
+            assert.equal(a.getAttribute('title'), 'A', 'native tooltip should survive');
+
+            hover(b);
+            await wait();
+            assert.equal(b.hasAttribute('title'), false);
+            assert.ok(container.querySelector('komp-tooltip').textContent.includes('B'));
+        });
+
+        it('keeps showing the existing tooltip when a later target cancels', async function () {
+            const [a, b] = ['A', 'B'].map(x => anchorFor(x));
+            container.append(a, b);
+            cleanup = Tooltip.delegate(container);
+
+            b.addEventListener('tooltip', e => e.preventDefault());
+
+            hover(a);
+            await wait();
+            const tooltip = container.querySelector('komp-tooltip');
+            assert.equal(tooltip.anchor, a);
+
+            hover(b);
+            await wait();
+            assert.equal(tooltip.anchor, a, 'should not re-anchor to the cancelled target');
+        });
+
         it('stops showing tooltips after cleanup', async function () {
             const a = anchorFor('A');
             container.append(a);
