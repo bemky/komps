@@ -67,6 +67,76 @@ describe('Floater', function () {
         });
     });
 
+    describe('anchor', function () {
+        it('rebinds autoUpdate to a new anchor without disconnecting', async function () {
+            const { anchor, floater } = await openFloater();
+            const next = createElement('button', { content: 'Next' });
+            document.body.append(next);
+
+            const boundTo = floater._autoUpdateCleanup;
+            let positions = 0;
+            const computePosition = floater.computePosition.bind(floater);
+            floater.computePosition = (args) => { positions++; return computePosition(args) };
+
+            floater.anchor = next;
+            await wait();
+
+            assert.ok(floater.isConnected, 'should stay in the DOM');
+            assert.notEqual(floater._autoUpdateCleanup, boundTo, 'autoUpdate should be rebound');
+            assert.ok(positions > 0, 'should reposition against the new anchor');
+
+            anchor.remove();
+            next.remove();
+        });
+
+        it('tears down autoUpdate when disconnected', async function () {
+            const { anchor, floater } = await openFloater();
+            assert.ok(floater._autoUpdateCleanup);
+
+            floater.hide();
+            await wait();
+            floater.dispatchEvent(new window.Event('animationend'));
+            await wait();
+
+            assert.equal(floater._autoUpdateCleanup, undefined);
+
+            anchor.remove();
+        });
+
+        it('does not bind autoUpdate while disconnected', function () {
+            const anchor = createElement('button', { content: 'Open' });
+            document.body.append(anchor);
+
+            const floater = new Floater({ anchor, content: 'hi' });
+            floater.anchor = createElement('button');
+            assert.equal(floater._autoUpdateCleanup, undefined);
+
+            anchor.remove();
+        });
+    });
+
+    describe('setContent', function () {
+        it('replaces the content without orphaning the arrow locator', async function () {
+            const anchor = createElement('button', { content: 'Open' });
+            document.body.append(anchor);
+
+            const floater = new Floater({ anchor, arrow: true, content: 'hi' });
+            floater.show();
+            await wait();
+
+            const locator = floater.querySelector('komp-floater-arrow-locator');
+            assert.ok(locator, 'arrow locator should be rendered');
+
+            floater.setContent('bye');
+
+            assert.ok(floater.textContent.includes('bye'));
+            assert.equal(floater.textContent.includes('hi'), false);
+            assert.equal(floater.querySelector('komp-floater-arrow-locator'), locator);
+
+            anchor.remove();
+        });
+    });
+
     describe('show', function () {
         it('forwards the source event to the show and shown events', async function () {
             const anchor = createElement('button', { content: 'Open' });
