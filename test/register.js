@@ -20,6 +20,8 @@ global.getComputedStyle = dom.window.getComputedStyle;
 global.MutationObserver = dom.window.MutationObserver;
 global.CustomEvent = dom.window.CustomEvent;
 global.Event = dom.window.Event;
+global.DOMParser = dom.window.DOMParser;
+global.FileList = dom.window.FileList;
 global.HTMLCollection = dom.window.HTMLCollection;
 global.ResizeObserver = class ResizeObserver {
     observe() {}
@@ -35,6 +37,8 @@ global.CSSStyleSheet = class CSSStyleSheet {
     constructor() { this.id = null }
     replaceSync() {}
 };
+global.requestAnimationFrame = cb => setTimeout(cb, 0);
+global.cancelAnimationFrame = id => clearTimeout(id);
 
 if (!document.adoptedStyleSheets) {
     Object.defineProperty(document, 'adoptedStyleSheets', {
