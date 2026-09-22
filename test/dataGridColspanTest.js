@@ -63,6 +63,31 @@ describe('DataGridColumn colspan', function () {
             col.setWidth(600);
             assert.deepEqual(col.trackSizes(80), [200, 200, 200]);
         });
+
+        it('resizeTrack redistributes between neighbors, keeping the total', function () {
+            const col = new DataGridColumn({ colspan: 3, tracks: [150, 130, 120] });
+            col.resizeTrack(0, 180);
+            assert.deepEqual(col.trackSizes(80), [180, 100, 120]);
+            assert.equal(col.totalWidth(80), 400);
+        });
+
+        it('resizeTrack clamps both sides to min', function () {
+            const col = new DataGridColumn({ colspan: 3, tracks: [150, 130, 120] });
+            col.resizeTrack(0, 500, 24); // pair is 280 → capped at 256
+            assert.deepEqual(col.trackSizes(80), [256, 24, 120]);
+        });
+
+        it('resizeTrack materializes a default-split column', function () {
+            const col = new DataGridColumn({ colspan: 3, width: 300 });
+            col.resizeTrack(0, 150, 0, 100); // even split [100,100,100] → [150,50,100]
+            assert.deepEqual(col.trackSizes(100), [150, 50, 100]);
+        });
+
+        it('resizeTrack is a no-op on the last track (no right neighbor)', function () {
+            const col = new DataGridColumn({ colspan: 3, tracks: [150, 130, 120] });
+            col.resizeTrack(2, 200);
+            assert.deepEqual(col.trackSizes(80), [150, 130, 120]);
+        });
     });
 
     describe('grid integration — template + start lines', function () {
