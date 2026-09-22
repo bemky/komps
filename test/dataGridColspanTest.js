@@ -85,6 +85,11 @@ describe('DataGridColumn colspan', function () {
             assert.equal(grid.columns[1].headerCell.style.gridColumn, '2 / span 3');
             assert.equal(grid.columns[2].headerCell.style.gridColumn, '5');
 
+            // The colspan header cell is a subgrid so its content aligns to the sub-tracks.
+            assert.equal(grid.columns[1].headerCell.style.display, 'grid');
+            assert.equal(grid.columns[1].headerCell.style.gridTemplateColumns, 'subgrid');
+            assert.equal(grid.columns[0].headerCell.style.display, '');
+
             grid.remove();
         });
 
