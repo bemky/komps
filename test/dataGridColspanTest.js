@@ -30,12 +30,12 @@ describe('DataGridColumn colspan', function () {
             assert.equal(col.totalWidth(80), 360);
         });
 
-        it('honors explicit tracks (array or px string); width is their sum', function () {
-            const arr = new DataGridColumn({ colspan: 2, tracks: [100, 200] });
+        it('honors explicit widths (array or px string); total is their sum', function () {
+            const arr = new DataGridColumn({ colspan: 2, widths: [100, 200] });
             assert.deepEqual(arr.trackSizes(80), [100, 200]);
             assert.equal(arr.totalWidth(80), 300);
 
-            const str = new DataGridColumn({ colspan: 3, tracks: '90px 90px 120px' });
+            const str = new DataGridColumn({ colspan: 3, widths: '90px 90px 120px' });
             assert.deepEqual(str.trackSizes(80), [90, 90, 120]);
             assert.equal(str.totalWidth(80), 300);
         });
@@ -51,8 +51,8 @@ describe('DataGridColumn colspan', function () {
             assert.equal(col.gridColumn(), '2 / span 3');
         });
 
-        it('setWidth rescales explicit tracks proportionally', function () {
-            const col = new DataGridColumn({ colspan: 2, tracks: [100, 300] }); // total 400
+        it('setWidth rescales explicit widths proportionally', function () {
+            const col = new DataGridColumn({ colspan: 2, widths: [100, 300] }); // total 400
             col.setWidth(200); // halve
             assert.deepEqual(col.trackSizes(80), [50, 150]);
             assert.equal(col.width, 200);
@@ -65,14 +65,14 @@ describe('DataGridColumn colspan', function () {
         });
 
         it('resizeTrack redistributes between neighbors, keeping the total', function () {
-            const col = new DataGridColumn({ colspan: 3, tracks: [150, 130, 120] });
+            const col = new DataGridColumn({ colspan: 3, widths: [150, 130, 120] });
             col.resizeTrack(0, 180);
             assert.deepEqual(col.trackSizes(80), [180, 100, 120]);
             assert.equal(col.totalWidth(80), 400);
         });
 
         it('resizeTrack clamps both sides to min', function () {
-            const col = new DataGridColumn({ colspan: 3, tracks: [150, 130, 120] });
+            const col = new DataGridColumn({ colspan: 3, widths: [150, 130, 120] });
             col.resizeTrack(0, 500, 24); // pair is 280 → capped at 256
             assert.deepEqual(col.trackSizes(80), [256, 24, 120]);
         });
@@ -84,7 +84,7 @@ describe('DataGridColumn colspan', function () {
         });
 
         it('resizeTrack is a no-op on the last track (no right neighbor)', function () {
-            const col = new DataGridColumn({ colspan: 3, tracks: [150, 130, 120] });
+            const col = new DataGridColumn({ colspan: 3, widths: [150, 130, 120] });
             col.resizeTrack(2, 200);
             assert.deepEqual(col.trackSizes(80), [150, 130, 120]);
         });
