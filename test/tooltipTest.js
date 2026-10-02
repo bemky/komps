@@ -33,6 +33,20 @@ describe('Tooltip', function () {
             container.remove();
         });
 
+        it('skips anchors the onMouseEnter option rejects', async function () {
+            const [a, b] = ['A', 'B'].map(x => anchorFor(x));
+            container.append(a, b);
+            cleanup = Tooltip.delegate(container, { onMouseEnter: el => el !== a });
+
+            hover(a);
+            await wait();
+            assert.equal(container.querySelector('komp-tooltip'), null);
+
+            hover(b);
+            await wait();
+            assert.equal(container.querySelector('komp-tooltip')?.anchor, b);
+        });
+
         it('reuses one instance across anchors sharing the same options', async function () {
             const [a, b] = ['A', 'B'].map(x => anchorFor(x));
             container.append(a, b);
