@@ -33,10 +33,10 @@ describe('Tooltip', function () {
             container.remove();
         });
 
-        it('skips anchors the filter option rejects', async function () {
+        it('skips anchors the onMouseEnter option rejects', async function () {
             const [a, b] = ['A', 'B'].map(x => anchorFor(x));
             container.append(a, b);
-            cleanup = Tooltip.delegate(container, { filter: el => el !== a });
+            cleanup = Tooltip.delegate(container, { onMouseEnter: el => el !== a });
 
             hover(a);
             await wait();
