@@ -16,6 +16,7 @@
 
 ### Bug Fixes
 
+- **Mosaic reorder placeholder drift on scroll** — `Mosaic._startReorder` measured the mosaic's bounding rect once at drag start, so scrolling mid-drag left the snap math off by the scrolled distance and the placeholder drifted from the dragged tile. The rect is now re-read on every update, and a capturing `scroll` listener re-runs the update so the placeholder also follows scrolling while the pointer is still.
 - **Floater Escape on keydown** — `Floater.checkEscape` now listens on `keydown` rather than `keyup`, and tests `e.key !== 'Escape'` instead of the deprecated `e.which != 27`. Every other Escape handler in the library (`Modal`, `Spreadsheet`, `Tooltip`, `Mosaic`) is already on `keydown`, so a Dropdown inside a Modal saw the modal close on keydown and the floater close on the keyup of the same press.
 - **`Floater.show` re-show argument leak** — When a show was requested while a removal was still pending, `show` queued `this._removing.then(this.show)`. The promise resolves with the element, so the re-show received the floater itself as its first argument. Harmless while `show` took no parameters; now that it takes `eventOptions`, the element would have been handed to `trigger()` as the CustomEvent init dict. Now queues an arrow function.
 - **`Dropdown.anchorChanged` listener cleanup** — The teardown branch called `now.removeEventListener('keydown', …)` inside the `was` block, so the old anchor kept its keydown listener and a null `now` threw. Now removes from `was`.
