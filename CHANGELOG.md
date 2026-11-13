@@ -17,6 +17,7 @@
 
 ### Bug Fixes
 
+- **Mosaic handles no longer cause overflow** — Resize handles on the outer edges of the mosaic extend half their width past it, so a full-width or full-height cell produced a scroll bar (gone when the handles were hidden). `komp-mosaic` now uses `overflow: clip`, so the handles stay usable but no longer add scrollable overflow.
 - **Mosaic height locked during reorder** — Dragging the bottom-most tile up shrank the mosaic (and the page), shifting the scroll position mid-drag and producing a runaway feedback loop. `Mosaic._startReorder` now pins the mosaic's `min-height` to its height at drag start and restores the prior value on release or Escape.
 - **Mosaic reorder placeholder drift on scroll** — `Mosaic._startReorder` measured the mosaic's bounding rect once at drag start, so scrolling mid-drag left the snap math off by the scrolled distance and the placeholder drifted from the dragged tile. The rect is now re-read on every update, and a capturing `scroll` listener re-runs the update so the placeholder also follows scrolling while the pointer is still.
 - **Floater Escape on keydown** — `Floater.checkEscape` now listens on `keydown` rather than `keyup`, and tests `e.key !== 'Escape'` instead of the deprecated `e.which != 27`. Every other Escape handler in the library (`Modal`, `Spreadsheet`, `Tooltip`, `Mosaic`) is already on `keydown`, so a Dropdown inside a Modal saw the modal close on keydown and the floater close on the keyup of the same press.
